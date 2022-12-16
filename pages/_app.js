@@ -12,7 +12,7 @@ function MyApp({ Component, pageProps }) {
   // - Sean numeros consecutivos del 1 al [numero de fotos] (ej. "1.jpg", "2.jpg", etc.)
   // 3. Cambia la variable folder al nombre del folder que creaste
   // 4. Cambia la variable img_count al numero de fotos en el folder
-  // y listo
+  // y listo!
 
   const folder = "mariah"; // elegir nombre de folder (ej. "classic" "space" "mariah"...)
   const img_count = 2; // cambiar!! en base a cuantas imágenes hay en ese folder
