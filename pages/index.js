@@ -303,9 +303,9 @@ export default function Home(props) {
                     height="315"
                     src="https://www.youtube.com/embed/Bue7qQqGqu8"
                     title="Youtube Video 1"
-                    frameborder="0"
+                    frameBorder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowfullscreen
+                    allowFullScreen
                   />
                 </div>
                 <div className="col-lg-6">
@@ -315,9 +315,9 @@ export default function Home(props) {
                     height="315"
                     src="https://www.youtube.com/embed/ZwXb_c5ErNI"
                     title="YouTube Video 2"
-                    frameborder="0"
+                    frameBorder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                    allowfullscreen
+                    allowFullScreen
                   />
                 </div>
               </div>
