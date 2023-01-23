@@ -1,0 +1,137 @@
+.menu_desktop {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background-image: url("/img/menu/pattern.jpg");
+  background-position: center;
+  background-size: contain;
+  background-repeat: repeat-x;
+  z-index: 999;
+}
+.menu_desktop a {
+  color: #1b1e21;
+}
+.menu_desktop .logo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  cursor: pointer;
+}
+.menu_desktop .clock_box {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+}
+.menu_desktop .clock {
+  position: absolute;
+  top: 13px;
+  right: 20px;
+  height: 100%;
+  color: white;
+  font-size: 22px;
+}
+.menu_desktop .social {
+  position: absolute;
+  top: 13px;
+  right: 110px;
+  height: 100%;
+  color: white;
+  font-size: 22px;
+}
+.menu_desktop .social img {
+  width: 35px;
+}
+.menu_desktop .social_mobile {
+  display: none;
+  position: absolute;
+  top: 13px;
+  right: 20px;
+  height: 100%;
+  color: white;
+  font-size: 22px;
+}
+.menu_desktop .social_mobile img {
+  width: 30px;
+}
+.menu_desktop .hidden {
+  position: absolute;
+  top: -500px;
+  left: 0;
+  width: 500px;
+  height: 500px;
+  overflow: hidden;
+}
+.menu_desktop .hidden .head img {
+  width: 100%;
+}
+.menu_desktop .hidden .content {
+  background-color: white;
+}
+.menu_desktop .hidden .content .left {
+  padding: 10px !important;
+  height: 440px;
+  border-right: 1px solid #a8c9f1;
+}
+.menu_desktop .hidden .content .right {
+  padding: 10px !important;
+  height: 440px;
+  background-color: #d3e5fa;
+  border-right: 4px solid #2a54b5;
+}
+.menu_desktop .hidden .menu_item {
+  display: block;
+  padding: 5px 0;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+.menu_desktop .hidden .menu_item img {
+  width: 30px;
+  margin-right: 5px;
+}
+.menu_desktop .hidden .menu_item .arrow {
+  opacity: 0;
+}
+.menu_desktop .hidden .menu_item .arrow img {
+  width: 20px;
+  position: absolute;
+  right: 5px;
+}
+.menu_desktop .hidden .menu_box {
+  height: 400px;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+.menu_desktop .hidden .menu_box a {
+  color: #1d2124;
+}
+.menu_desktop .hidden .menu_box_item {
+  padding: 5px 0;
+  cursor: pointer;
+}
+.menu_desktop .hidden .menu_box_item img {
+  width: 25px;
+  margin-right: 5px;
+}
+.menu_desktop .hidden .menu_item:hover .arrow {
+  opacity: 1;
+}
+.menu_desktop .hidden .menu_item.active .arrow {
+  opacity: 1;
+}
+.menu_mobile {
+  display: none;
+}
+.menu_mobile {
+}
+@media only screen and (max-width: 1000px) {
+  .menu_desktop {
+    display: none;
+  }
+  .menu_mobile {
+    display: block;
+  }
+}

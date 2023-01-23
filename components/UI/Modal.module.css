@@ -1,0 +1,90 @@
+.modal {
+  position: fixed;
+  width: 600px;
+  top: 0;
+  left: 50%;
+  margin-left: -300px;
+  z-index: 999;
+  border: 3px solid #0055e6;
+  border-radius: 4px;
+  margin-top: 18vh;
+}
+.modal .top {
+  height: 50px;
+  background-image: url("/img/modal/bg.jpg");
+  background-position: center;
+  background-size: contain;
+  background-repeat: repeat-x;
+  padding-top: 10px;
+  padding-left: 5px;
+  color: white;
+  font-size: 20px;
+}
+.modal .top img {
+  height: 35px;
+  margin-top: -5px;
+  margin-right: 5px;
+}
+.modal .top .close_img {
+  position: absolute;
+  height: 35px;
+  top: 13px;
+  right: -3px;
+  cursor: pointer;
+}
+.modal .content {
+  background-color: #ece9d8;
+  padding: 20px;
+  text-align: center;
+}
+.modal .content .message {
+  margin-bottom: 20px;
+}
+.modal .content .form {
+  margin: 20px 0;
+}
+.modal .content .message_img {
+  width: 50px;
+  margin-bottom: 20px;
+}
+
+.modal .content p {
+  width: 90%;
+  margin: auto;
+}
+.modal .content label {
+  display: block;
+  text-align: center;
+  margin-bottom: 5px;
+}
+.modal .content input {
+  width: 60%;
+  text-align: center;
+  margin-bottom: 10px;
+}
+.modal .content .submit_box {
+  margin-bottom: 5px;
+}
+.modal .content .submit_box button {
+  padding: 5px 50px;
+  font-size: 14px;
+  outline: 1px solid #0055e6;
+  border-top: 2px solid #0055e6;
+  border-left: 2px solid #0055e6;
+  border-bottom: 2px solid #a6bedc;
+  border-right: 2px solid #a6bedc;
+}
+
+@media only screen and (max-width: 1000px) {
+  .modal {
+    position: fixed;
+    width: 90%;
+    top: 0;
+    left: 5%;
+    margin-left: 0;
+    z-index: 999;
+    border: 3px solid #0055e6;
+    border-radius: 4px;
+    margin-top: 18vh;
+  }
+}
