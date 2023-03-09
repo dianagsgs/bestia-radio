@@ -1,4 +1,3 @@
-import Link from "next/link";
 import styles from "./Icon.module.css";
 
 const Backdrop = () => {
@@ -13,12 +12,10 @@ const Icon = (props) => {
   let content;
   if (props.type === "link") {
     content = (
-      <Link href={props.link}>
-        <a>
-          <img src={`img/icons/${props.img}.png`} alt="La Bestia Icon" />
-          <div className="text">{props.title}</div>
-        </a>
-      </Link>
+      <a href={props.link} target="_blank">
+        <img src={`img/icons/${props.img}.png`} alt="La Bestia Icon" />
+        <div className="text">{props.title}</div>
+      </a>
     );
   } else {
     content = (

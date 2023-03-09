@@ -116,7 +116,7 @@ export default function Home(props) {
           id="iconos-y-bestia"
           style={{ backgroundImage: background_src }}
         >
-          <div className={styles.winamp}>{winampIsActive && <Winamp />}</div>
+          {/*<div className={styles.winamp}>{winampIsActive && <Winamp />}</div>*/}
           <div className={styles.icons_desktop}>
             <div className={styles.box}>
               <Icon
@@ -136,6 +136,12 @@ export default function Home(props) {
                 link="https://labestiaradio.com/radioteca"
                 img="icon-radioteca"
                 title="Radioteca"
+              />
+              <Icon
+                type="link"
+                link="https://form.jotform.com/230665533000040"
+                img="RUIDOENCASA"
+                title="Ruido en Casa"
               />
             </div>
             <div className={styles.box}>
@@ -198,12 +204,6 @@ export default function Home(props) {
                 onClickTrigger={modalHandler.bind(null, "2")}
               />
               <Icon
-                type="link"
-                link="https://labestiaradio.com/radioteca"
-                img="icon7"
-                title="Radioteca"
-              />
-              <Icon
                 type="button"
                 img="icon5"
                 title="Las Más Sonaditas"
@@ -211,7 +211,8 @@ export default function Home(props) {
               />
               <Icon
                 type="link"
-                link="https://www.somoslabestia.com/shop"
+                target="_blank"
+                link="https://www.somoslabestia.com/shop-1"
                 img="icon9"
                 title="Merch"
               />
@@ -238,6 +239,12 @@ export default function Home(props) {
                 img="icon-wallpaper"
                 title="Cambia Tu Wallpaper"
                 onClickTrigger={modalHandler.bind(null, "3")}
+              />
+              <Icon
+                type="link"
+                link="https://form.jotform.com/230665533000040"
+                img="RUIDOENCASA"
+                title="Ruido en Casa"
               />
             </div>
           </div>

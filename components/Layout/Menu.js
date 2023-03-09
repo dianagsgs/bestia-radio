@@ -35,6 +35,8 @@ const Menu = (props) => {
     setMenuActive((state) => !state);
   };
 
+  let mobile = props.windowSize === "small";
+
   return (
     <Fragment>
       <div className={styles.menu_desktop}>
@@ -63,7 +65,9 @@ const Menu = (props) => {
           </div>
           <Radio />
         </div>
-        <div className={styles.social}>
+
+        {/** Note right now mobile has display none so social icons only appear in desktop */}
+        <div className={mobile ? styles.social_mobile : styles.social}>
           <Link href="https://www.instagram.com/labestiaradiomx/">
             <a>
               <img src="/img/menu/social1.png" alt="Instagram de La Bestia" />
@@ -75,18 +79,7 @@ const Menu = (props) => {
             </a>
           </Link>
         </div>
-        <div className={styles.social_mobile}>
-          <Link href="https://www.instagram.com/labestiaradiomx/">
-            <a>
-              <img src="/img/menu/social1.png" alt="Instagram de La Bestia" />
-            </a>
-          </Link>
-          <Link href="https://www.facebook.com/labestiaradiomx">
-            <a>
-              <img src="/img/menu/social2.png" alt="Facebook de La Bestia" />
-            </a>
-          </Link>
-        </div>
+
         <Clock />
         {menuActive && (
           <div className={styles.hidden} ref={ref}>

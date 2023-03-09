@@ -3,6 +3,29 @@ import "../styles/bootstrap.min.css";
 import "../styles/globals.css";
 
 function MyApp({ Component, pageProps }) {
+
+  //  CHECK FOR MOBILE
+  const [windowWidth, setWindowWidth] = useState(0);
+  const [windowSize, setWindowSize] = useState(null);
+
+  useEffect(() => {
+    updateDimensions();
+    window.addEventListener("resize", updateDimensions);
+
+    return () => window.removeEventListener("resize", updateDimensions);
+  }, []);
+
+  const updateDimensions = () => {
+    const width = window.visualViewport.width;
+    setWindowWidth(width);
+    if (width <= 640 && windowSize !== "small") {
+      setWindowSize("small");
+    } else if (width <= 1007 && windowSize !== "medium") {
+      setWindowSize("medium");
+    } else if (width > 1007 && windowSize !== "large") {
+      setWindowSize("large");
+    }
+  };
   
   // PARA CAMBIAR WALLPAPERS
 
