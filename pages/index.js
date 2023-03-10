@@ -139,7 +139,7 @@ export default function Home(props) {
               />
               <Icon
                 type="link"
-                link="https://form.jotform.com/230665533000040"
+                link="https://form.jotform.com/230677650574059"
                 img="RUIDOENCASA"
                 title="Ruido en Casa"
               />
