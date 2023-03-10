@@ -139,7 +139,7 @@ export default function Home(props) {
               />
               <Icon
                 type="link"
-                link="https://form.jotform.com/230677650574059"
+                link="https://www.eventbrite.com/e/la-bestia-presenta-ruido-en-casa-mengers-kexp-dj-set-tickets-579796144877"
                 img="RUIDOENCASA"
                 title="Ruido en Casa"
               />
