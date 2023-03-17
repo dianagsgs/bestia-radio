@@ -8,6 +8,7 @@ import Modal from "../components/UI/Modal";
 import styles from "../styles/index.module.css";
 import { useCallback, useEffect, useRef, useState } from "react";
 import Script from "next/script";
+import Banner from "../components/UI/Banner";
 
 const Model = Dynamic(() => import("../components/UI/Model"), { ssr: false });
 const Winamp = Dynamic(() => import("../components/UI/Winamp"), { ssr: false });
@@ -38,6 +39,8 @@ export default function Home(props) {
   const [modalType, setModalType] = useState(null);
   const ref = useRef();
   useOnClickOutside(ref, () => setModalIsActive(false));
+
+  let mobile = props.windowSize === "small";
 
   const fetchVideosHandler = useCallback(async () => {
     try {
@@ -110,7 +113,13 @@ export default function Home(props) {
             wallpaperCount={props.wallpaperCount}
             custom_names={props.customWallpaperNames}
           />
-        )}
+        )}  
+
+        <Banner 
+          img_list={["TPSM.gif","Salvaxe.gif","DTarima.gif"]}
+          link_list={["https://www.todoparasumudanza.com/","https://www.salvaxe.mx/","https://dtarima.com/"]}
+          mobile={mobile}
+        />      
         <section
           className={`section-box ${styles.section} ${styles.section1}`}
           id="iconos-y-bestia"
@@ -330,9 +339,8 @@ export default function Home(props) {
               </div>
             </div>
           </div>
-        </section>
+        </section>        
       </main>
-      <footer></footer>
     </div>
   );
 }

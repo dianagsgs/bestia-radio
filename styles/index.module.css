@@ -1,22 +1,21 @@
 .section {
   position: relative;
-  width: 100%;
   min-height: 100vh;
-  background-position: top center;
   background-size: cover;
 }
+
 .section1 .icons_desktop {
   position: absolute;
-  top: 20px;
-  right: 20px;
+  top: 3vh;
+  right: 1vw;
 }
 .section1 .icons_desktop .box {
   display: inline-block;
   vertical-align: top;
 }
 .section1 .model {
-  position: absolute;
-  top: 15%;
+  position: relative;
+  top: 15vh;
   left: 50%;
   margin-left: -300px;
   width: 600px;

@@ -18,10 +18,10 @@ function MyApp({ Component, pageProps }) {
   const updateDimensions = () => {
     const width = window.visualViewport.width;
     setWindowWidth(width);
-    if (width <= 640 && windowSize !== "small") {
+    if (width <= 1000 && windowSize !== "small") {
       setWindowSize("small");
-    } else if (width <= 1007 && windowSize !== "medium") {
-      setWindowSize("medium");
+    /*} else if (width <= 1007 && windowSize !== "medium") {
+      setWindowSize("medium");*/
     } else if (width > 1007 && windowSize !== "large") {
       setWindowSize("large");
     }
@@ -63,6 +63,7 @@ function MyApp({ Component, pageProps }) {
             randomWallpaper={randomBg}
             wallpaperCount={img_count}
             customWallpaperNames={custom_names}
+            windowSize={windowSize} 
           />;
 }
 

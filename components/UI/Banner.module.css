@@ -1,0 +1,25 @@
+.mobile_banner {
+  position: sticky;
+  top: 83vh;
+  padding-left: 19px;
+  z-index: 10;
+  margin-top: -50px;
+}
+
+.desktop_banner {
+  position: sticky;
+  top: 76vh;
+  padding-left: 25vw;
+  z-index: 10;
+  margin-top: -90px; 
+}
+
+.close {
+    width: 3vh;
+    z-index: 15;
+    padding-bottom: 9vh;
+}
+
+.invisible {
+    display: none;
+}
