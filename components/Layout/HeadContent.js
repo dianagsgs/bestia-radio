@@ -28,7 +28,7 @@ const HeadContent = () => {
       <meta property="og:url" content="https://www.labestiaradio.com/" />
       <meta
         property="og:image"
-        content="meta.png"
+        content="/img/meta.png"
       />
       <meta property="og:type" content="website" />
       <meta name="twitter:card" content="player" />        
