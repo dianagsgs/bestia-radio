@@ -8,6 +8,7 @@ import Modal from "../components/UI/Modal";
 import styles from "../styles/index.module.css";
 import { useCallback, useEffect, useRef, useState } from "react";
 import Script from "next/script";
+
 import Banner from "../components/UI/Banner";
 
 const Model = Dynamic(() => import("../components/UI/Model"), { ssr: false });
@@ -119,7 +120,8 @@ export default function Home(props) {
           img_list={["TPSM.gif","Salvaxe.gif","DTarima.gif"]}
           link_list={["https://www.todoparasumudanza.com/","https://www.salvaxe.mx/","https://dtarima.com/"]}
           mobile={mobile}
-        />      
+        />
+
         <section
           className={`section-box ${styles.section} ${styles.section1}`}
           id="iconos-y-bestia"

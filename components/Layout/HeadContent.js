@@ -16,7 +16,10 @@ const HeadContent = () => {
       <meta name="copyright" content="Vannelo - http://www.vannelo.com" />
       <link rel="icon" href="/img/icon.jpg" />
 
+
+
       {/* SOCIAL */}
+
       <meta property="og:title" content="La Bestia Radio" />
       <meta
         property="og:description"
@@ -25,9 +28,10 @@ const HeadContent = () => {
       <meta property="og:url" content="https://www.labestiaradio.com/" />
       <meta
         property="og:image"
-        content="https://www.labestiaradio.com/img/meta.jpg"
+        content="meta.png"
       />
       <meta property="og:type" content="website" />
+      <meta name="twitter:card" content="player" />        
     </Fragment>
   );
 };
