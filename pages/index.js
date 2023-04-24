@@ -9,7 +9,7 @@ import styles from "../styles/index.module.css";
 import { useCallback, useEffect, useRef, useState } from "react";
 import Script from "next/script";
 
-// import Banner from "../components/UI/Banner";
+import Banner from "../components/UI/Banner";
 
 const Model = Dynamic(() => import("../components/UI/Model"), { ssr: false });
 const Winamp = Dynamic(() => import("../components/UI/Winamp"), { ssr: false });
@@ -116,11 +116,11 @@ export default function Home(props) {
           />
         )}  
 
-        {/*<Banner 
-          img_list={["TPSM.gif","Salvaxe.gif","DTarima.gif"]}
-          link_list={["https://www.todoparasumudanza.com/","https://www.salvaxe.mx/","https://dtarima.com/"]}
+        <Banner 
+          img_list={["marvin.jpg"]}
+          link_list={["https://marvin.com.mx/evento/marvin-gateway-2023/"]}
           mobile={mobile}
-        />*/}
+        />
 
         <section
           className={`section-box ${styles.section} ${styles.section1}`}
