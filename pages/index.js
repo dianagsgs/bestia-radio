@@ -117,8 +117,8 @@ export default function Home(props) {
         )}  
 
         <Banner 
-          img_list={["marvin.jpg"]}
-          link_list={["https://marvin.com.mx/evento/marvin-gateway-2023/"]}
+          img_list={["marvin.jpg","TPSM.gif", "Salvaxe.gif"]}
+          link_list={["https://marvin.com.mx/evento/marvin-gateway-2023/","https://www.todoparasumudanza.com/","https://www.salvaxe.mx/"]}
           mobile={mobile}
         />
 
