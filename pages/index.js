@@ -102,19 +102,38 @@ export default function Home(props) {
         `}
         </Script>
          
-
-        <Banner 
-          img_list={["marvin.jpg","TPSM.gif", "Salvaxe.gif"]}
-          link_list={["https://marvin.com.mx/evento/marvin-gateway-2023/","https://www.todoparasumudanza.com/","https://www.salvaxe.mx/"]}
+        {/*<Banner 
+          img_list={["marvin.jpg"]}
+          link_list={["https://marvin.com.mx/evento/marvin-gateway-2023/"]}
           mobile={mobile}
-        />
+        />*/}
+
+        <Menu/>
 
         <section
           className={`section-box ${styles.section} ${styles.section1}`}
           id="iconos-y-bestia"
           style={{ backgroundImage: background_src }}
         >
-          section1
+          <div className="row">
+            <div className="col-lg-6">
+              <iframe
+                src="https://player.twitch.tv/?channel=labestiaradio&parent=labestiaradio.com&parent=www.labestiaradio.com&parent=bestia-radio.vercel.app"
+                frameBorder="0"
+                allowFullScreen={true}
+                scrolling="no"
+                height="378"
+                width="100%"
+              ></iframe>
+            </div>
+            <div className="col-lg-6">
+              <iframe
+                src="https://www.twitch.tv/embed/labestiaradio/chat?parent=labestiaradio.com&parent=www.labestiaradio.com&parent=bestia-radio.vercel.app"
+                height="378"
+                width="100%"
+              ></iframe>
+            </div>
+          </div>
         </section>  
 
         <section

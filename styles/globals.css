@@ -25,44 +25,35 @@ a {
   font-size: 22px;
 }
 .radioco-playButton-playing {
-  width: 45px;
-  height: 45px;
-  background-image: url("/img/radio/play.png");
+  width: 10vh;
+  height: 10vh;
+  background-image: url("/img/botones/play.jpg");
   background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  margin-right: 10px;
+  z-index: 999;
 }
 .radioco-playButton-paused {
-  width: 45px;
-  height: 45px;
-  background-image: url("/img/radio/stop.png");
+  width: 10vh;
+  height: 10vh;
+  background-image: url("/img/botones/pause.jpg");
   background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-  margin-right: 10px;
 }
 .radioco-nowPlaying {
   display: inline-block;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-left: 20px;
-  padding-right: 20px;
-  height: 40px;
-  width: auto;
-  font-size: 16px;
+  padding-top: 3vh;
+  padding-left: 2vw;
+
+  height: 10vh;
+  border-top-right-radius: 10vw;
+  border-bottom-right-radius: 10vw;
+  width: 70vw;
+  font-size: 3vh;
   color: #3eda58;
   background-color: black !important;
-  margin-right: 20px;
   overflow: hidden;
+
+  z-index: 999;
 }
-.radioco-volume {
-  width: 100px;
-  height: 50px;
-  vertical-align: top;
-  margin-top: 20px;
-  position: relative;
-}
+
 input[type="range"] {
   -webkit-appearance: none;
   -moz-apperance: none;
@@ -97,27 +88,4 @@ input[type="range"]::-webkit-slider-thumb {
   width: 100%;
 }
 
-@media only screen and (max-width: 1000px) {
-  .radio_box {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    height: 100%;
-    color: white;
-    font-size: 22px;
-  }
-  .radioco-nowPlaying {
-    display: inline-block;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
-    height: 40px;
-    width: 150px;
-    font-size: 16px;
-    color: #3eda58;
-    background-color: black !important;
-    margin-right: 20px;
-    overflow: hidden;
-  }
-}
+
