@@ -1,0 +1,12 @@
+.section {
+    position: static;
+    min-height: 100vh;
+    min-width: 100vw;
+    padding-top: 15vh;
+    padding-left: 5vw;
+    padding-right: 5vw;
+    background-size: cover;
+}
+.titulo {
+    padding: 3vh;
+}

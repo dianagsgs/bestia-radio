@@ -8,3 +8,15 @@
   z-index: 999;
 }
 
+.logo {
+  position: absolute;
+  left: 3vw;
+  top: 1vh;
+}
+
+.dona {
+  position: absolute;
+  left: 93vw;
+  top: 2vh;
+  border-radius: 100%;
+}

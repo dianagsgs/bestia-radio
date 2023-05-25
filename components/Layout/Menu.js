@@ -1,11 +1,8 @@
 import { Fragment, useEffect, useRef, useState } from "react";
 import Dynamic from "next/dynamic";
-import Link from "next/link";
-import Clock from "../UI/Clock";
-import MenuThemes from "./MenuThemes";
-import MenuPodcasts from "./MenuPodcasts";
 import styles from "./Menu.module.css";
-import Image from "next/dist/client/image";
+import CustomImage from "../UI/CustomImage";
+import CustomButton from "../UI/CustomButton";
 
 const Radio = Dynamic(() => import("../UI/Radio"), { ssr: false });
 
@@ -41,7 +38,16 @@ const Menu = (props) => {
   return (
     <Fragment>
       <div className={mobile ? styles.menu_mobile : styles.menu_desktop}>
-        <Image width="140" height="90" src="/img/logo.png"></Image>
+
+        <CustomImage
+          resp_w="9vw"
+          src="/img/logo.png"
+          w="140"
+          h="90"
+          id="logo"
+          class={styles.logo}
+        />;
+
         <div className="radio_box">
           <div className="radio_player">
             <span
@@ -54,8 +60,21 @@ const Menu = (props) => {
               data-showplayer="false"
             ></span>
           </div>
-          <Radio />
+          <Radio/>
         </div>
+
+        <CustomButton
+          src={"/img/dona.gif"}
+          hover_src={"/img/dona.gif"}
+          w={90}
+          h={90}
+          resp_w={"5vw"}
+          type="action"
+          href="https://ko-fi.com/labestiaradiocdmx"
+          button_class={styles.dona}
+        />
+
+
       </div>
     </Fragment>
   );
