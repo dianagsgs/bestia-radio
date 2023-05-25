@@ -18,35 +18,35 @@ a {
 /* RADIO */
 .radio_box {
   position: absolute;
-  top: 10px;
-  left: 230px;
+
+  left: 13.5vw;
   height: 100%;
   color: white;
   font-size: 22px;
 }
 .radioco-playButton-playing {
-  width: 10vh;
-  height: 10vh;
+  width: 8vh;
+  height: 8vh;
   background-image: url("/img/botones/play.jpg");
   background-size: contain;
   z-index: 999;
 }
 .radioco-playButton-paused {
-  width: 10vh;
-  height: 10vh;
+  width: 8vh;
+  height: 8vh;
   background-image: url("/img/botones/pause.jpg");
   background-size: contain;
 }
 .radioco-nowPlaying {
   display: inline-block;
-  padding-top: 3vh;
+  padding-top: 2vh;
   padding-left: 2vw;
 
-  height: 10vh;
+  height: 8vh;
   border-top-right-radius: 10vw;
   border-bottom-right-radius: 10vw;
-  width: 70vw;
-  font-size: 3vh;
+  width: 32vw;
+  font-size: 2.5vh;
   color: #3eda58;
   background-color: black !important;
   overflow: hidden;
