@@ -12,8 +12,7 @@ const HeadContent = () => {
         name="keywords"
         content="la bestia, radio, musica, independiente, mexico, usa, rock, pop, alternativo"
       />
-      <meta name="author" content="Vannelo - http://www.vannelo.com" />
-      <meta name="copyright" content="Vannelo - http://www.vannelo.com" />
+      <meta name="author" content="DianaGS" />
       <link rel="icon" href="/img/icon.jpg" />
 
 

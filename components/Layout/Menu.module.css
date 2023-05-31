@@ -20,3 +20,35 @@
   top: 2vh;
   border-radius: 100%;
 }
+
+.twitch {
+  left: 51vw;
+}
+.radioteca {
+  left: 56vw;
+}
+.programacion {
+  left: 62vw;
+}
+.discos {
+  left: 70vw;
+}
+.raro {
+  left: 81vw;
+}
+.sesiones {
+  left: 85vw; 
+}
+
+.menu_item {
+  position:absolute;
+  color:rgb(16, 230, 16);
+  background-color: rgb(24, 24, 24);
+  padding: 1.5vh;
+  border-radius: 2vh;
+  font-size: 0.9vw;
+  top: 5vh;
+}
+.menu_link:hover {
+  color:rgb(16, 230, 16);
+}

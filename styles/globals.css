@@ -18,7 +18,7 @@ a {
 /* RADIO */
 .radio_box {
   position: absolute;
-
+  top: 3.5vh;
   left: 13.5vw;
   height: 100%;
   color: white;

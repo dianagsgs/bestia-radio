@@ -1,52 +1,47 @@
 import { Fragment, useEffect, useRef, useState } from "react";
 import Dynamic from "next/dynamic";
 import styles from "./Menu.module.css";
-import CustomImage from "../UI/CustomImage";
 import CustomButton from "../UI/CustomButton";
 
 const Radio = Dynamic(() => import("../UI/Radio"), { ssr: false });
 
-function useOnClickOutside(ref, handler) {
-  useEffect(() => {
-    const listener = (event) => {
-      if (!ref.current || ref.current.contains(event.target)) {
-        return;
-      }
-      handler(event);
-    };
-    document.addEventListener("mousedown", listener);
-    document.addEventListener("touchstart", listener);
-    return () => {
-      document.removeEventListener("mousedown", listener);
-      document.removeEventListener("touchstart", listener);
-    };
-  }, [ref, handler]);
-}
-
 const Menu = (props) => {
-  const [menuActive, setMenuActive] = useState(false);
-  const [submenuActive, setSubmenuActive] = useState(null);
-  const ref = useRef();
-
-  useOnClickOutside(ref, () => setMenuActive(false));
-  const menuHandler = () => {
-    setMenuActive((state) => !state);
-  };
-
   let mobile = props.windowSize === "small";
+  let sections = [
+    ["Twitch","#twitch_y_chat",styles.twitch],
+    ["Radioteca","#radioteca",styles.radioteca],
+    ["Programación","#programacion",styles.programacion],
+    ["Discos de la Semana","#discos_semana",styles.discos],
+    ["Raro","#raro",styles.raro],
+    ["Sesiones","#sesiones",styles.sesiones]
+  ];
+
+  const getMenuItems = () => {
+    let items = []
+    for(let i = 0; i < sections.length; i++) {
+      let item =
+        <div className={sections[i][2] +" "+ styles.menu_item} key={i}>
+          <a href={sections[i][1]} className={styles.menu_link}>
+            {sections[i][0]}
+          </a>
+        </div>;
+      items.push(item);
+    }
+    return items;
+  }
 
   return (
     <Fragment>
       <div className={mobile ? styles.menu_mobile : styles.menu_desktop}>
-
-        <CustomImage
-          resp_w="9vw"
-          src="/img/logo.png"
-          w="140"
-          h="90"
-          id="logo"
-          class={styles.logo}
-        />;
+        <CustomButton
+          src={"/img/logo.png"}
+          hover_src={"/img/logo.png"}
+          w={140}
+          h={90}
+          resp_w={"9vw"}
+          type="home"
+          button_class={styles.logo}
+        />
 
         <div className="radio_box">
           <div className="radio_player">
@@ -63,18 +58,18 @@ const Menu = (props) => {
           <Radio/>
         </div>
 
+        {getMenuItems()}
+        
         <CustomButton
           src={"/img/dona.gif"}
           hover_src={"/img/dona.gif"}
           w={90}
           h={90}
           resp_w={"5vw"}
-          type="action"
+          type="external"
           href="https://ko-fi.com/labestiaradiocdmx"
           button_class={styles.dona}
         />
-
-
       </div>
     </Fragment>
   );

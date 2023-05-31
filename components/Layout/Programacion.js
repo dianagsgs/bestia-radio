@@ -13,10 +13,10 @@ export default function Programacion(props) {
         titulo="/img/titulos/horario.png"
       >
         <CustomImage
-          resp_w="80vw"
+          resp_w="61vw"
           src="/img/calendario.png"
           w="140"
-          h="80"
+          h="75"
           id="calendario"
           class={styles.calendario}
         />
