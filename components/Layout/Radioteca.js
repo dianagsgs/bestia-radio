@@ -22,6 +22,7 @@ export default function Radioteca(props) {
     for (let i = 0; i < soundcloud_playlist_ids.length; i++){
       let item = 
         <iframe
+          key={i}
           width="77%"
           height="320"
           frameBorder="no"

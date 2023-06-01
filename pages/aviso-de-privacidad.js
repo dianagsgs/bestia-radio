@@ -1,7 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import HeadContent from "../components/Layout/HeadContent";
-import classes from "../styles/radioteca.module.css";
+//import classes from "../styles/radioteca.module.css";
 
 const Radioteca = () => {
   return (
@@ -10,12 +10,12 @@ const Radioteca = () => {
         <title>La Bestia Radio</title>
         <HeadContent />
       </Head>
-      <main className={classes.radioteca}>
-        <div className={classes.container}>
-          <div className={classes.title}>
+      <main>
+        <div>
+          <div>
             <h2>Aviso de privacidad</h2>
           </div>
-          <div className={classes.divider} />
+          <div/>
           <div>
             <p>
               When connecting to our radio stream, your IP address will be sent
