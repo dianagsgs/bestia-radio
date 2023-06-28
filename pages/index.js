@@ -9,7 +9,7 @@ import styles from "../styles/index.module.css";
 import { useCallback, useEffect, useRef, useState } from "react";
 import Script from "next/script";
 
-import Banner from "../components/UI/Banner";
+// import Banner from "../components/UI/Banner";
 
 const Model = Dynamic(() => import("../components/UI/Model"), { ssr: false });
 const Winamp = Dynamic(() => import("../components/UI/Winamp"), { ssr: false });
@@ -116,26 +116,15 @@ export default function Home(props) {
           />
         )}  
 
-        <Banner 
+        {/*<Banner 
           img_list={["marvin.jpg"]}
           link_list={["https://marvin.com.mx/evento/marvin-gateway-2023/"]}
           mobile={mobile}
-        />
+        />*/}
 
-        <section
-          className={`section-box ${styles.section} ${styles.section1}`}
-          id="iconos-y-bestia"
-          style={{ backgroundImage: background_src }}
-        >
-          {/*<div className={styles.winamp}>{winampIsActive && <Winamp />}</div>*/}
+        <div className={styles.icons}>
           <div className={styles.icons_desktop}>
             <div className={styles.box}>
-              <Icon
-                type="link"
-                link="https://www.bose.mx/es_mx/index.html"
-                img="icon-bose"
-                title="Bose ®"
-              />
               <Icon
                 type="link"
                 link="https://www.ko-fi.com/labestiaradiocdmx"
@@ -149,26 +138,6 @@ export default function Home(props) {
                 title="Radioteca"
               />
               <Icon
-                type="link"
-                link="https://www.eventbrite.com/e/la-bestia-presenta-ruido-en-casa-mengers-kexp-dj-set-tickets-579796144877"
-                img="RUIDOENCASA"
-                title="Ruido en Casa"
-              />
-            </div>
-            <div className={styles.box}>
-              <Icon
-                type="link"
-                link="#la-bestia-tv"
-                img="icon1"
-                title="La Bestia TV"
-              />
-              <Icon
-                type="link"
-                link="#twitch-y-chat"
-                img="icon2"
-                title="Twitch Y Chat!"
-              />
-              <Icon
                 type="button"
                 img="icon3"
                 title="Pacta Con La Bestia"
@@ -180,17 +149,11 @@ export default function Home(props) {
                 title="Rola Una Rola"
                 onClickTrigger={modalHandler.bind(null, "2")}
               />
-              <Icon
-                type="button"
-                img="icon5"
-                title="Las Más Sonaditas"
-                onClickTrigger={winampHandler}
-              />
             </div>
           </div>
           <div className={styles.icons_mobile}>
             <div className={styles.box}>
-              <Icon
+              {/*<Icon
                 type="link"
                 link="#la-bestia-tv"
                 img="icon1"
@@ -201,7 +164,7 @@ export default function Home(props) {
                 link="#twitch-y-chat"
                 img="icon2"
                 title="Twitch Y Chat"
-              />
+              />*/}
               <Icon
                 type="button"
                 img="icon3"
@@ -214,7 +177,7 @@ export default function Home(props) {
                 title="Rola Una Rola"
                 onClickTrigger={modalHandler.bind(null, "2")}
               />
-              <Icon
+              {/*<Icon
                 type="button"
                 img="icon5"
                 title="Las Más Sonaditas"
@@ -232,7 +195,7 @@ export default function Home(props) {
                 link="https://www.bose.mx/es_mx/index.html"
                 img="icon-bose"
                 title="Bose"
-              />
+              />*/}
               <Icon
                 type="link"
                 link="https://www.ko-fi.com/labestiaradiocdmx"
@@ -251,18 +214,15 @@ export default function Home(props) {
                 title="Cambia Tu Wallpaper"
                 onClickTrigger={modalHandler.bind(null, "3")}
               />
-              <Icon
+              {/*<Icon
                 type="link"
                 link="https://www.eventbrite.com/e/la-bestia-presenta-ruido-en-casa-mengers-kexp-dj-set-tickets-579796144877"
                 img="RUIDOENCASA"
                 title="Ruido en Casa"
-              />
+              />*/}
             </div>
           </div>
-          <div className={styles.model}>
-            <Model />
-          </div>
-        </section>
+        </div>
         <section
           className={`section-box ${styles.section} ${styles.section2}`}
           id="twitch-y-chat"
@@ -296,7 +256,11 @@ export default function Home(props) {
                 ></iframe>
               </div>
             </div>
+
+
+            
           </div>
+          
         </section>
         <section
           className={`section-box ${styles.section} ${styles.section3}`}

@@ -1,3 +1,11 @@
+.icons {
+  position: fixed;
+  top: 20vh;
+  padding-left: 92vw;
+  z-index: 10;
+  margin-top: -90px; 
+}
+
 .section {
   position: relative;
   min-height: 100vh;
