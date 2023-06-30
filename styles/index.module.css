@@ -1,7 +1,7 @@
 .icons {
   position: fixed;
   top: 20vh;
-  padding-left: 92vw;
+  left: 92vw;
   z-index: 10;
   margin-top: -90px; 
 }
@@ -65,9 +65,12 @@
     display: none;
   }
   .icons_mobile {
+    display: none;
+    /*
     display: block;
     padding: 10px;
     z-index: 2;
+    */
   }
 
   .section2 {
