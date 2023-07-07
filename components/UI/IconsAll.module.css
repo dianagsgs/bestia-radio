@@ -1,0 +1,28 @@
+  .icons_desktop {
+    position: absolute;
+    top: 3vh;
+    right: 1vw;
+  }
+  .icons_desktop .box {
+    display: inline-block;
+    vertical-align: top;
+  }
+  
+  .icons_mobile {
+    display: none;
+  }
+  
+  @media only screen and (max-width: 1000px) {
+    .icons_desktop {
+      display: none;
+    }
+    .icons_mobile {
+      display: none;
+      /*
+      display: block;
+      padding: 10px;
+      z-index: 2;
+      */
+    }
+  }
+  
