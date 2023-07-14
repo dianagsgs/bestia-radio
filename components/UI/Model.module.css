@@ -3,6 +3,8 @@
   height: 450px;
   background-color: transparent;
   --poster-color: transparent;
+  top: 11vh;
+  left: 30vw;
 }
 
 @media only screen and (max-width: 1000px) {

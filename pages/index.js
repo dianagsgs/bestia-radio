@@ -81,10 +81,18 @@ export default function Home(props) {
           link_list={["https://marvin.com.mx/evento/marvin-gateway-2023/"]}
           mobile={mobile}
         />*/}
-
-        <div className={styles.icons}>
-          {/*<IconsAll/>*/}
-        </div>
+        {mobile ? <span/> :
+          <section
+            className={`section-box ${styles.section}`}
+            id="twitch-y-chat"
+            style={{ backgroundImage: background_src }}
+          >
+            <div className={styles.icons}>
+              <IconsAll/>
+            </div>
+            <Model/>
+          </section>
+        }
         <section
           className={`section-box ${styles.section} ${styles.section2}`}
           id="twitch-y-chat"

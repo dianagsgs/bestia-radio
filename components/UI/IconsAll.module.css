@@ -1,7 +1,6 @@
   .icons_desktop {
     position: absolute;
     top: 3vh;
-    right: 1vw;
   }
   .icons_desktop .box {
     display: inline-block;
@@ -17,12 +16,7 @@
       display: none;
     }
     .icons_mobile {
-      display: none;
-      /*
       display: block;
-      padding: 10px;
-      z-index: 2;
-      */
     }
   }
   

@@ -1,5 +1,5 @@
 .icons {
-  position: fixed;
+  position: absolute;
   top: 20vh;
   left: 92vw;
   z-index: 10;
@@ -10,13 +10,6 @@
   position: relative;
   min-height: 100vh;
   background-size: cover;
-}
-.section1 .model {
-  position: relative;
-  top: 15vh;
-  left: 50%;
-  margin-left: -300px;
-  width: 600px;
 }
 
 .section2 {
@@ -40,13 +33,8 @@
 }
 
 @media only screen and (max-width: 1000px) {
-  .section1 .model {
-    position: absolute;
-    top: 30%;
-    left: 0;
-    margin-left: 0;
-    width: 100%;
-    z-index: 1;
+  .icons {
+    display: block;
   }
 
   .section2 {

@@ -53,6 +53,12 @@ const IconsAll = (props) => {
         <div className={styles.box}>
           <Icon
             type="link"
+            img="aniv"
+            title="Regístrate"
+            link="https://www.twitch.tv/labestiaradio"
+          />
+          <Icon
+            type="link"
             link="https://www.ko-fi.com/labestiaradiocdmx"
             img="icon-dona"
             title="Dona"
