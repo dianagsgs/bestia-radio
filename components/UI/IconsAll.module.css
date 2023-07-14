@@ -6,17 +6,9 @@
     display: inline-block;
     vertical-align: top;
   }
-  
+
   .icons_mobile {
-    display: none;
+    position:fixed;
+    top: 4vh;
+    left: 3vw;
   }
-  
-  @media only screen and (max-width: 1000px) {
-    .icons_desktop {
-      display: none;
-    }
-    .icons_mobile {
-      display: block;
-    }
-  }
-  
