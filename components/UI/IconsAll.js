@@ -53,12 +53,6 @@ const IconsAll = (props) => {
       )} 
       <div className={props.mobile ? styles.icons_mobile : styles.icons_desktop}>
         <div className={styles.box}>
-          <Icon
-            type="link"
-            img="aniv"
-            title="Regístrate"
-            link="https://www.twitch.tv/labestiaradio"
-          />
           {props.mobile ? <span/> :
             <span>
               <Icon
