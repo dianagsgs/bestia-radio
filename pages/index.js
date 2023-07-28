@@ -8,7 +8,7 @@ import styles from "../styles/index.module.css";
 import { useCallback, useEffect, useState } from "react";
 import Script from "next/script";
 
-// import Banner from "../components/UI/Banner";
+import Banner from "../components/UI/Banner";
 
 const Model = Dynamic(() => import("../components/UI/Model"), { ssr: false });
 const Winamp = Dynamic(() => import("../components/UI/Winamp"), { ssr: false });
@@ -76,11 +76,12 @@ export default function Home(props) {
         </Script>
          
 
-        {/*<Banner 
-          img_list={["marvin.jpg"]}
-          link_list={["https://marvin.com.mx/evento/marvin-gateway-2023/"]}
+        <Banner 
+          img_list={["jimbeam.png"]}
+          link_list={["https://www.instagram.com/jimbeammx/"]}
           mobile={mobile}
-        />*/}
+        />
+
         <section
           className={`section-box ${styles.section}`}
           id="twitch-y-chat"
