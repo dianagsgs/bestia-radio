@@ -1,41 +1,31 @@
 .item {
-  display: block;
   text-align: center;
   color: white;
-  margin-bottom: 5px;
-  width: 90px;
-  height: 100px;
+  margin-bottom: 3vh;
+  width: 6vw;
 }
+.item_mobile {
+  text-align: center;
+  color: white;
+  width: 28vw;
+  display: inline-block;
+  margin: 1vw;
+}
+
 .item:hover a {
   color: #ccc;
 }
 .item img {
-  width: 50px;
+  width: 4vw;
 }
+.item_mobile img {
+  width: 17vw;
+}
+
 .button {
   cursor: pointer;
 }
 .button:hover {
   color: #ccc;
   text-decoration: underline;
-}
-.showMobile {
-  display: none;
-}
-
-@media only screen and (max-width: 1000px) {
-  .item {
-    display: inline-block;
-    vertical-align: top;
-    text-align: center;
-    color: white;
-    margin: 10px 5px;
-    width: 60px;
-    height: 70px;
-    font-size: 12px;
-    z-index: 5;
-  }
-  .showMobile {
-    display: block;
-  }
 }

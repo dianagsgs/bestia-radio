@@ -1,13 +1,5 @@
 import styles from "./Icon.module.css";
 
-const Backdrop = () => {
-  return <div className={styles.backdrop}></div>;
-};
-
-const ModalOverlay = () => {
-  return <div className={styles.modal}>hola</div>;
-};
-
 const Icon = (props) => {
   let content;
   if (props.type === "link") {
@@ -25,7 +17,7 @@ const Icon = (props) => {
       </div>
     );
   }
-  return <div className={styles.item}>{content}</div>;
+  return <div className={props.mobile ? styles.item_mobile : styles.item}>{content}</div>;
 };
 
 export default Icon;

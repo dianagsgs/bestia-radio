@@ -21,23 +21,20 @@ function useOnClickOutside(ref, handler) {
   }, [ref, handler]);
 }
 
-const modalHandler = (type) => {
-  setModalIsActive(true);
-  setModalType(type);
-};
-const hideModalHandler = () => {
-  setModalIsActive(false);
-  setModalType(null);
-};
-
 const IconsAll = (props) => {
   const [modalIsActive, setModalIsActive] = useState(false);
   const [modalType, setModalType] = useState(null);
   const ref = useRef();
   useOnClickOutside(ref, () => setModalIsActive(false));
-  
 
-  console.log("mob"+props.mobile);
+  const modalHandler = (type) => {
+    setModalIsActive(true);
+    setModalType(type);
+  };
+  const hideModalHandler = () => {
+    setModalIsActive(false);
+    setModalType(null);
+  };
 
   let content = 
     <span>
@@ -53,42 +50,43 @@ const IconsAll = (props) => {
       )} 
       <div className={props.mobile ? styles.icons_mobile : styles.icons_desktop}>
         <div className={styles.box}>
-          {props.mobile ? <span/> :
-            <span>
-              <Icon
-                type="link"
-                link="https://www.ko-fi.com/labestiaradiocdmx"
-                img="icon-dona"
-                title="Dona"
-              />
-              <Icon
-                type="link"
-                link="https://labestiaradio.com/radioteca"
-                img="icon-radioteca"
-                title="Radioteca"
-              />
-              <Icon
-                type="button"
-                img="icon3"
-                title="Pacta Con La Bestia"
-                onClickTrigger={modalHandler.bind(null, "1")}
-              />
-              <Icon
-                type="button"
-                img="icon4"
-                title="Rola Una Rola"
-                onClickTrigger={modalHandler.bind(null, "2")}
-              />
-              {props.mobile ?
-                <Icon
-                  type="button"
-                  img="icon-wallpaper"
-                  title="Cambia Tu Wallpaper"
-                  onClickTrigger={modalHandler.bind(null, "3")}
-                /> :
-                <span/>
-              }
-            </span>
+          <Icon
+            type="link"
+            link="https://www.ko-fi.com/labestiaradiocdmx"
+            img="icon-dona"
+            title="Dona"
+            mobile={props.mobile}
+          />
+          <Icon
+            type="link"
+            link="https://labestiaradio.com/radioteca"
+            img="icon-radioteca"
+            title="Radioteca"
+            mobile={props.mobile}
+          />
+          <Icon
+            type="button"
+            img="icon3"
+            title="Pacta Con La Bestia"
+            onClickTrigger={modalHandler.bind(null, "1")}
+            mobile={props.mobile}
+          />
+          <Icon
+            type="button"
+            img="icon4"
+            title="Rola Una Rola"
+            onClickTrigger={modalHandler.bind(null, "2")}
+            mobile={props.mobile}
+          />
+          {props.mobile ?
+            <Icon
+              type="button"
+              img="icon-wallpaper"
+              title="Cambia Tu Wallpaper"
+              onClickTrigger={modalHandler.bind(null, "3")}
+              mobile={props.mobile}
+            /> :
+            <span/>
           }
         </div>
       </div>

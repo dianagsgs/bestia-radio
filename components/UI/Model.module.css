@@ -1,16 +1,16 @@
 .model model-viewer {
-  width: 600px;
-  height: 450px;
+  height: 65vh;
+  width:100%;
+  top:11vh;
   background-color: transparent;
   --poster-color: transparent;
-  top: 11vh;
-  left: 28vw;
+
 }
 
 @media only screen and (max-width: 1000px) {
   .model model-viewer {
     width: 100%;
-    top:20vh;
+    top:29vh;
     left:0;
     background-color: transparent;
     --poster-color: transparent;

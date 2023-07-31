@@ -1,14 +1,8 @@
-  .icons_desktop {
-    position: absolute;
-    top: 3vh;
-  }
-  .icons_desktop .box {
-    display: inline-block;
-    vertical-align: top;
-  }
-
-  .icons_mobile {
-    position:fixed;
-    top: 4vh;
-    left: 3vw;
-  }
+.icons_desktop {
+  position: absolute;
+  top: 3vh;
+}
+.icons_desktop .box {
+  display: inline-block;
+  vertical-align: top;
+}

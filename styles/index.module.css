@@ -1,9 +1,17 @@
-.icons {
+.icons_desktop {
   position: absolute;
   top: 20vh;
   left: 92vw;
   z-index: 10;
   margin-top: -90px; 
+}
+.icons_mobile {
+  position: absolute;
+  width: 90vw;
+  height:25vh;
+  left: 5vw;
+  top: 9vh;
+  z-index: 10;
 }
 
 .section {
@@ -33,9 +41,6 @@
 }
 
 @media only screen and (max-width: 1000px) {
-  .icons {
-    display: block;
-  }
 
   .section2 {
     padding: 20px 0;

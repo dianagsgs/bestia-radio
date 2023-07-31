@@ -88,8 +88,13 @@ export default function Home(props) {
           style={{ backgroundImage: background_src }}
         >
           <Model/>
-          <div className={styles.icons}>
-            <IconsAll mobile={mobile}/>
+          <div className={mobile ? styles.icons_mobile : styles.icons_desktop}>
+            <IconsAll
+              mobile={mobile}
+              wallpaperFolder={props.wallpaperFolder}
+              wallpaperCount={props.wallpaperCount}
+              customWallpaperNames={props.customWallpaperNames}
+            />
           </div>
         </section>
         <section
