@@ -1,9 +1,11 @@
-.mobile_banner {
-  position: sticky;
-  top: 80vh;
-  margin-left: 5vw;
+.mobile_banner{
+  position: fixed;
+  width: 100vw;
+  top: 80%;
+  left: 50%;
+  margin-left: -50vw;  /* Negative half of width. */
   z-index: 10;
-  margin-top: -13vh;
+  text-align: center;
 }
 
 .desktop_banner {
@@ -25,6 +27,7 @@
   width: 2vh;
   z-index: 15;
   padding-bottom: 4vh;
+  position: absolute;
 }
 
 .invisible {

@@ -7,10 +7,10 @@
 .item_mobile {
   text-align: center;
   color: white;
-  width: 20vw;
+  width: 25vw;
   display: inline-block;
   margin-bottom: 2vh;
-  margin-right: 10vw;
+  margin-right: 5vw;
 }
 
 .item:hover a {
@@ -20,7 +20,7 @@
   width: 4vw;
 }
 .item_mobile img {
-  width: 17vw;
+  width: 13vw;
 }
 
 .button {

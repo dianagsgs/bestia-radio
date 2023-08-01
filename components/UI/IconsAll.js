@@ -51,20 +51,6 @@ const IconsAll = (props) => {
       <div className={props.mobile ? styles.icons_mobile : styles.icons_desktop}>
         <div className={styles.box}>
           <Icon
-            type="link"
-            link="https://www.ko-fi.com/labestiaradiocdmx"
-            img="icon-dona"
-            title="Dona"
-            mobile={props.mobile}
-          />
-          <Icon
-            type="link"
-            link="https://labestiaradio.com/radioteca"
-            img="icon-radioteca"
-            title="Radioteca"
-            mobile={props.mobile}
-          />
-          <Icon
             type="button"
             img="icon3"
             title="Pacta Con La Bestia"
@@ -88,6 +74,20 @@ const IconsAll = (props) => {
             /> :
             <span/>
           }
+          <Icon
+            type="link"
+            link="https://www.ko-fi.com/labestiaradiocdmx"
+            img="icon-dona"
+            title="Dona"
+            mobile={props.mobile}
+          />
+          <Icon
+            type="link"
+            link="https://labestiaradio.com/radioteca"
+            img="icon-radioteca"
+            title="Radioteca"
+            mobile={props.mobile}
+          />
         </div>
       </div>
   </span>
