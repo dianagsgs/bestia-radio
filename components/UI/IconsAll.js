@@ -51,6 +51,13 @@ const IconsAll = (props) => {
       <div className={props.mobile ? styles.icons_mobile : styles.icons_desktop}>
         <div className={styles.box}>
           <Icon
+            type="link"
+            link="https://www.amazon.com.mx/Online-Radio-La-Bestia/dp/B08VRFFV92"
+            img="alexa"
+            title="Instala LBR en tu Alexa"
+            mobile={props.mobile}
+          />
+          <Icon
             type="button"
             img="icon3"
             title="Pacta Con La Bestia"
