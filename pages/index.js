@@ -9,8 +9,8 @@ import Menu from "../components/Layout/Menu";
 import TwitchYChat from "../components/Layout/TwitchYChat";
 import Radioteca from "../components/Layout/Radioteca";
 import Programacion from "../components/Layout/Programacion";
-import DiscosSemana from "../components/Layout/DiscosSemana";
-import Raro from "../components/Layout/Raro";
+import Locutores from "../components/Layout/Locutores";
+import Editorial from "../components/Layout/Editorial";
 import Sesiones from "../components/Layout/Sesiones";
 
 
@@ -51,8 +51,8 @@ export default function Home(props) {
         <TwitchYChat/>
         <Radioteca/>
         <Programacion/>
-        <DiscosSemana/>
-        <Raro/>
+        <Locutores/>
+        <Editorial/>
         <Sesiones/>
     
       </main>

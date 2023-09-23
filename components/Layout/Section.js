@@ -5,7 +5,11 @@ import { Fragment } from "react";
 
 export default function TwitchYChat(props) {
 
-  const background_src = "url(/img/Fondo/Fondo.jpg)";
+  function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+  }
+
+  const background_src = "url(/img/Fondo/fondo_"+getRandomInt(4)+".png)";
   
   return (
     <Fragment>

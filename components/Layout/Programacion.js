@@ -10,7 +10,7 @@ export default function Programacion(props) {
     <Fragment>
       <Section
         id="programacion"
-        titulo="/img/titulos/horario.png"
+        titulo="/img/titulos/programacion.png"
       >
         <CustomImage
           resp_w="61vw"

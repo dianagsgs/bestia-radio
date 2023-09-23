@@ -2,6 +2,7 @@ import { Fragment, useEffect, useRef, useState } from "react";
 import Dynamic from "next/dynamic";
 import styles from "./Menu.module.css";
 import CustomButton from "../UI/CustomButton";
+import CustomImage from "../UI/CustomImage";
 
 const Radio = Dynamic(() => import("../UI/Radio"), { ssr: false });
 
@@ -11,8 +12,8 @@ const Menu = (props) => {
     ["Twitch","#twitch_y_chat",styles.twitch],
     ["Radioteca","#radioteca",styles.radioteca],
     ["Programación","#programacion",styles.programacion],
-    ["Discos de la Semana","#discos_semana",styles.discos],
-    ["Raro","#raro",styles.raro],
+    ["Locutores","#locutores",styles.locutores],
+    ["Editorial","#editorial",styles.editorial],
     ["Sesiones","#sesiones",styles.sesiones]
   ];
 
@@ -37,39 +38,34 @@ const Menu = (props) => {
           src={"/img/logo.png"}
           hover_src={"/img/logo.png"}
           w={140}
-          h={90}
+          h={190}
           resp_w={"9vw"}
           type="home"
           button_class={styles.logo}
         />
 
-        <div className="radio_box">
-          <div className="radio_player">
-            <span
-              className="radioplayer"
-              data-src="https://streams.radio.co/s4aaec47cd/listen"
-              data-playbutton="true"
-              data-volumeslider="false"
-              data-elapsedtime="false"
-              data-nowplaying="true"
-              data-showplayer="false"
-            ></span>
-          </div>
-          <Radio/>
-        </div>
+        <CustomImage
+          resp_w="13vw"
+          src="/img/player/player_base.png"
+          w="83"
+          h="75"
+          id="player"
+          class={styles.player}
+        />
+        <span
+          className="radioplayer"
+          data-src="https://streams.radio.co/s4aaec47cd/listen"
+          data-playbutton="true"
+          data-volumeslider="false"
+          data-elapsedtime="false"
+          data-nowplaying="true"
+          data-showplayer="false"
+        ></span>
+
+        <Radio/>
+     
 
         {getMenuItems()}
-        
-        <CustomButton
-          src={"/img/dona.gif"}
-          hover_src={"/img/dona.gif"}
-          w={90}
-          h={90}
-          resp_w={"5vw"}
-          type="external"
-          href="https://ko-fi.com/labestiaradiocdmx"
-          button_class={styles.dona}
-        />
       </div>
     </Fragment>
   );

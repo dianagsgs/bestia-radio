@@ -16,39 +16,30 @@ a {
 }
 
 /* RADIO */
-.radio_box {
-  position: absolute;
-  top: 3.5vh;
-  left: 13.5vw;
-  height: 100%;
-  color: white;
-  font-size: 22px;
-}
+
 .radioco-playButton-playing {
   width: 8vh;
   height: 8vh;
-  background-image: url("/img/botones/play.jpg");
+  background-image: url("/img/player/player_boton.png");
   background-size: contain;
   z-index: 999;
 }
 .radioco-playButton-paused {
   width: 8vh;
   height: 8vh;
-  background-image: url("/img/botones/pause.jpg");
+  background-image: url("/img/player/player_boton.png");
   background-size: contain;
 }
 .radioco-nowPlaying {
   display: inline-block;
-  padding-top: 2vh;
-  padding-left: 2vw;
-
-  height: 8vh;
-  border-top-right-radius: 10vw;
-  border-bottom-right-radius: 10vw;
-  width: 32vw;
-  font-size: 2.5vh;
-  color: #3eda58;
-  background-color: black !important;
+  padding-top: 0.4vh;
+  padding-left: 0.8vw;
+  height: 2.5vh;
+  border-radius: 10vw;
+  width: 10vw;
+  font-size: 1.2vh;
+  color: #000000;
+  background-color: rgb(232, 156, 156) !important;
   overflow: hidden;
 
   z-index: 999;
