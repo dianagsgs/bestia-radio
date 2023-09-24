@@ -18,17 +18,22 @@ a {
 /* RADIO */
 
 .radioco-playButton-playing {
-  width: 8vh;
-  height: 8vh;
-  background-image: url("/img/player/player_boton.png");
+  position:absolute;
+  width: 3.5vh;
+  height: 3.5vh;
+  background-image: url("/img/player/player_boton_play.png");
   background-size: contain;
-  z-index: 999;
+  top: 50.5vh;
+  left: 1.6vw;
 }
 .radioco-playButton-paused {
-  width: 8vh;
-  height: 8vh;
-  background-image: url("/img/player/player_boton.png");
+  position: absolute;
+  width: 3.5vh;
+  height: 3.5vh;
+  background-image: url("/img/player/player_boton_pausa.png");
   background-size: contain;
+  top: 50.5vh;
+  left: 1.6vw;
 }
 .radioco-nowPlaying {
   display: inline-block;
@@ -43,6 +48,12 @@ a {
   overflow: hidden;
 
   z-index: 999;
+}
+
+.radioco-volume {
+  position: absolute;
+  z-index: 999;
+  top:15vh;
 }
 
 input[type="range"] {

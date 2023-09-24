@@ -9,23 +9,31 @@ const Radio = Dynamic(() => import("../UI/Radio"), { ssr: false });
 const Menu = (props) => {
   let mobile = props.windowSize === "small";
   let sections = [
-    ["Twitch","#twitch_y_chat",styles.twitch],
-    ["Radioteca","#radioteca",styles.radioteca],
-    ["Programación","#programacion",styles.programacion],
-    ["Locutores","#locutores",styles.locutores],
-    ["Editorial","#editorial",styles.editorial],
-    ["Sesiones","#sesiones",styles.sesiones]
+    ["dona","https://ko-fi.com/labestiaradiocdmx",styles.dona],
+    ["programacion","#programacion",styles.programacion],
+    ["sesiones","#sesiones",styles.sesiones],
+    ["eventos","#eventos",styles.eventos],
+    ["locutores","/locutores",styles.locutores],
+    ["radioteca","#radioteca",styles.radioteca],
+    ["editorial","#editorial",styles.editorial],
+    ["tienda","https://www.somoslabestia.com/shop-1",styles.tienda],
+    ["quees","#quees",styles.quees]
   ];
 
   const getMenuItems = () => {
     let items = []
     for(let i = 0; i < sections.length; i++) {
       let item =
-        <div className={sections[i][2] +" "+ styles.menu_item} key={i}>
-          <a href={sections[i][1]} className={styles.menu_link}>
-            {sections[i][0]}
-          </a>
-        </div>;
+        <CustomButton
+          src={"/img/menu/menu_"+sections[i][0]+".png"}
+          hover_src={"/img/menu/menu_"+sections[i][0]+".png"}
+          w={10}
+          h={1.5}
+          resp_w={"10vw"}
+          type="internal"
+          href={sections[i][1]}
+          button_class={sections[i][2] +" "+ styles.menu_item}
+        />;
       items.push(item);
     }
     return items;
@@ -56,7 +64,7 @@ const Menu = (props) => {
           className="radioplayer"
           data-src="https://streams.radio.co/s4aaec47cd/listen"
           data-playbutton="true"
-          data-volumeslider="false"
+          data-volumeslider="true"
           data-elapsedtime="false"
           data-nowplaying="true"
           data-showplayer="false"
