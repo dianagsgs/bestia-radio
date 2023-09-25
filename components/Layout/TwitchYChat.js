@@ -10,6 +10,7 @@ export default function TwitchYChat(props) {
       <Section
         id="twitch_y_chat"
         titulo="/img/titulos/twitch.png"
+        title_width="100"
       >
         <div className="row">
             <div className="col-lg-6">

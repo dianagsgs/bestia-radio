@@ -19,9 +19,9 @@ export default function TwitchYChat(props) {
           style={{ backgroundImage: background_src }}
         >
           <CustomImage
-            resp_w="30vw"
+            resp_w="15vw"
             src={props.titulo}
-            w="200"
+            w={props.title_width}
             h="35"
             id={"titulo" + props.id}
             class={styles.titulo}

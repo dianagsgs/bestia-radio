@@ -58,6 +58,7 @@ export default function Radioteca(props) {
       <Section
         id="radioteca"
         titulo="/img/titulos/radioteca.png"
+        title_width="130"
       >
         <Carousel
           responsive={responsive}

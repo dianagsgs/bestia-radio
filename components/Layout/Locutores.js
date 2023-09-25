@@ -10,6 +10,7 @@ export default function Locutores(props) {
       <Section
         id="locutores"
         titulo="/img/titulos/locutores.png"
+        title_width="110"
       >
         LOCUTORES
       </Section>

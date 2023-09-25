@@ -36,46 +36,35 @@ a {
   left: 1.6vw;
 }
 .radioco-nowPlaying {
-  display: inline-block;
+  position:absolute;
+  top: 46vh;
+  left: 1.8vw;
+  height: 2.5vh;
+  width: 11vw;
   padding-top: 0.4vh;
   padding-left: 0.8vw;
-  height: 2.5vh;
   border-radius: 10vw;
-  width: 10vw;
   font-size: 1.2vh;
   color: #000000;
   background-color: rgb(232, 156, 156) !important;
   overflow: hidden;
-
-  z-index: 999;
 }
 
 .radioco-volume {
   position: absolute;
   z-index: 999;
-  top:15vh;
+  top:51.7vh;
+  left: 3.9vw;
 }
 
 input[type="range"] {
   -webkit-appearance: none;
-  -moz-apperance: none;
-  border-radius: 6px;
-  height: 6px;
-  background-image: -webkit-gradient(
-    linear,
-    left top,
-    right top,
-    color-stop(0.15, #ccc),
-    color-stop(0.15, #ccc)
-  );
+  background-image: url("/img/player/player_volumen_barra.png");
+  background-repeat: no-repeat;
+  background-size: 18vh;
 }
 input[type="range"]::-webkit-slider-thumb {
-  -webkit-appearance: none !important;
-  border-radius: 50%;
-  height: 15px;
-  width: 15px;
-  background-color: #bad5e0;
-  border: 1px solid #aaa;
+  background-image: url("/img/player/player_volumen_modulador.png");
 }
 .volume-icon {
   position: absolute;

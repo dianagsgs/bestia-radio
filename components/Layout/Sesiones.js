@@ -32,6 +32,7 @@ export default function Sesiones(props) {
       <Section
         id="sesiones"
         titulo="/img/titulos/sesiones.png"
+        title_width="110"
       >
         <div className={styles.videos}>
           <div className="row">

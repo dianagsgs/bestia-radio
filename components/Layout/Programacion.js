@@ -11,6 +11,7 @@ export default function Programacion(props) {
       <Section
         id="programacion"
         titulo="/img/titulos/programacion.png"
+        title_width="130"
       >
         <CustomImage
           resp_w="61vw"

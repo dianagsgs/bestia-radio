@@ -2,7 +2,7 @@ import Head from "next/head";
 import Script from "next/script";
 import styles from "../styles/index.module.css";
 
-// import Banner from "../components/UI/Banner";
+import Banner from "../components/UI/Banner";
 
 import HeadContent from "../components/Layout/HeadContent";
 import Menu from "../components/Layout/Menu";
@@ -40,11 +40,11 @@ export default function Home(props) {
         `}
         </Script>
          
-        {/*<Banner 
+        {<Banner 
           img_list={["marvin.jpg"]}
           link_list={["https://marvin.com.mx/evento/marvin-gateway-2023/"]}
           mobile={mobile}
-        />*/}
+        />}
 
         <Menu/>
 
