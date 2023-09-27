@@ -77,8 +77,8 @@ export default function Home(props) {
          
 
         <Banner 
-          img_list={["jimbeam.png"]}
-          link_list={["https://www.instagram.com/jimbeammx/"]}
+          img_list={["corona.gif"]}
+          link_list={["https://coronacapital.com.mx/index.html"]}
           mobile={mobile}
         />
 
