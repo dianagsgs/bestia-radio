@@ -9,10 +9,11 @@ import Menu from "../components/Layout/Menu";
 import TwitchYChat from "../components/Layout/TwitchYChat";
 import Radioteca from "../components/Layout/Radioteca";
 import Programacion from "../components/Layout/Programacion";
-import Locutores from "../components/Layout/Locutores";
 import Editorial from "../components/Layout/Editorial";
 import Sesiones from "../components/Layout/Sesiones";
-
+import Dona from "../components/Layout/Dona";
+import Eventos from "../components/Layout/Eventos";
+import Quees from "../components/Layout/Quees";
 
 export default function Home(props) {
 
@@ -41,20 +42,22 @@ export default function Home(props) {
         </Script>
          
         {<Banner 
-          img_list={["marvin.jpg"]}
-          link_list={["https://marvin.com.mx/evento/marvin-gateway-2023/"]}
+          img_list={["corona.gif"]}
+          link_list={["https://coronacapital.com.mx/index.html"]}
           mobile={mobile}
         />}
 
         <Menu/>
 
         <TwitchYChat/>
-        <Radioteca/>
+        <Dona/>
         <Programacion/>
-        <Locutores/>
-        <Editorial/>
         <Sesiones/>
-    
+        <Eventos/>
+        <Radioteca/>
+        <Editorial/>
+        <Quees/>
+
       </main>
     </div>
   );

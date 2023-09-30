@@ -9,7 +9,7 @@ const Radio = Dynamic(() => import("../UI/Radio"), { ssr: false });
 const Menu = (props) => {
   let mobile = props.windowSize === "small";
   let sections = [
-    ["dona","https://ko-fi.com/labestiaradiocdmx",styles.dona],
+    ["dona","#dona",styles.dona],
     ["programacion","#programacion",styles.programacion],
     ["sesiones","#sesiones",styles.sesiones],
     ["eventos","#eventos",styles.eventos],
