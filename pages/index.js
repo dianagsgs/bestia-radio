@@ -47,7 +47,7 @@ export default function Home(props) {
           mobile={mobile}
         />}
 
-        <Menu/>
+        <Menu home={true}/>
 
         <TwitchYChat/>
         <Dona/>

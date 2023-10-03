@@ -27,10 +27,14 @@ const Menu = (props) => {
         <CustomButton
           src={"/img/menu/menu_"+sections[i][0]+".png"}
           hover_src={"/img/menu/menu_"+sections[i][0]+".png"}
+          section_id={sections[i][0]}
           w={10}
           h={1.5}
           resp_w={"10vw"}
-          type="internal"
+          type={
+            sections[i][1].startsWith("https://") ? "external" : 
+            sections[i][1].startsWith("#") ? "scroll" : "internal"
+          }
           href={sections[i][1]}
           button_class={sections[i][2] +" "+ styles.menu_item}
         />;
@@ -73,7 +77,7 @@ const Menu = (props) => {
         <Radio/>
      
 
-        {getMenuItems()}
+        {props.home ? getMenuItems() : <span/>}
       </div>
     </Fragment>
   );

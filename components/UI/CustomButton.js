@@ -27,6 +27,10 @@ export default function CustomButton(props) {
     }
   }
 
+  const handleClickScroll = (id) => {
+    document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+  }
+
   const image =
     <CustomImage
       resp_w={props.resp_w}
@@ -37,7 +41,7 @@ export default function CustomButton(props) {
     />;
 
   const getButton = () => {
-    //type can be internal, external, home, or action
+    //type can be internal, external, home, scroll
     if(props.type === "home" || props.type === "internal") {
       // use Link, no target
       return(
@@ -57,11 +61,19 @@ export default function CustomButton(props) {
           </span>
         </Link>
       );
+    } else if(props.type === "scroll"){
+      return(
+        <div
+          onClick={() => handleClickScroll(props.section_id)}
+        >
+          {image}
+        </div>
+      );
     } else {
-      // use a, target="_blank"
+      // i.e. external, use a, target="_blank"
       return( 
         <a
-          target={props.href.indexOf("somoslabestia.com") >= 0 ? "" : "_blank"} // don't open to new tab if moving within "same" domain
+          target="_blank" // don't open to new tab if moving within "same" domain
           href={props.href}
           className={styles.customButton_container}
           style={{ "display": "block", "width": props.resp_w }}

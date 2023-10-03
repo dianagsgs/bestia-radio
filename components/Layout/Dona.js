@@ -5,7 +5,6 @@ import Section from "./Section"
 import head from 'next/head'
 
 export default function Dona(props) {
-
   /*const kofi = 
     `<script src='https://storage.ko-fi.com/cdn/scripts/overlay-widget.js'/>
     <script>
