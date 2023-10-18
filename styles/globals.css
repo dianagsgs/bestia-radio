@@ -22,18 +22,22 @@ a {
   width: 3.5vh;
   height: 3.5vh;
   background-image: url("/img/player/player_boton_play.png");
+  background-repeat: no-repeat;
   background-size: contain;
   top: 50.5vh;
   left: 1.6vw;
+  cursor: pointer;
 }
 .radioco-playButton-paused {
   position: absolute;
   width: 3.5vh;
   height: 3.5vh;
   background-image: url("/img/player/player_boton_pausa.png");
+  background-repeat: no-repeat;
   background-size: contain;
   top: 50.5vh;
   left: 1.6vw;
+  cursor: pointer;
 }
 .radioco-nowPlaying {
   position:absolute;
@@ -53,18 +57,29 @@ a {
 .radioco-volume {
   position: absolute;
   z-index: 999;
-  top:51.7vh;
-  left: 3.9vw;
+  top:51vh;
+  left: 3.8vw;
 }
 
 input[type="range"] {
   -webkit-appearance: none;
+  appearance: none;
   background-image: url("/img/player/player_volumen_barra.png");
   background-repeat: no-repeat;
-  background-size: 18vh;
+  background-size: 18.5vh;
+  border-radius: 1vw;
+  height: 2.6vh;
+  cursor: pointer;
 }
 input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
   background-image: url("/img/player/player_volumen_modulador.png");
+  background-size: 3.3vh;
+  background-repeat: no-repeat;
+  width: 1.6vw;
+  height: 3vh;
+  
 }
 .volume-icon {
   position: absolute;

@@ -68,5 +68,5 @@ export default function Radioteca(props) {
         </Carousel>;
       </Section>
     </Fragment>
-  );
+  )
 }
