@@ -4,10 +4,7 @@ import styles from "./Banner.module.css";
 
 const Banner = (props) => {
   const [visible, setVisible] = useState(true);
-  const [chosen_banner, setBanner] = useState(0);
-  
-  // use this instead of chosen_banner if we want to just have a random one on page load instead of rotating
-  // let rnd_banner = Math.floor(Math.random() * props.img_list.length);
+  const [chosen_banner, setBanner] = useState(Math.floor(Math.random() * props.img_list.length));
 
   const rotateBanner = (list, current) => {
     setTimeout(() => {

@@ -77,8 +77,8 @@ export default function Home(props) {
          
 
         <Banner 
-          img_list={["corona.gif"]}
-          link_list={["https://coronacapital.com.mx/index.html"]}
+          img_list={["corona.gif","shure1.gif","hipnosis.gif","shure2.gif"]}
+          link_list={["https://coronacapital.com.mx/index.html","https://www.shure.com/es-MX","https://hipnosis2023.boletia.com/","https://www.shure.com/es-MX"]}
           mobile={mobile}
         />
 
