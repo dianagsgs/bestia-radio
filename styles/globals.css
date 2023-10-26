@@ -42,15 +42,18 @@ a {
 .radioco-nowPlaying {
   position:absolute;
   top: 46vh;
-  left: 1.8vw;
-  height: 2.5vh;
-  width: 11vw;
-  padding-top: 0.4vh;
+  left: 1.7vw;
+  height: 5vh;
+  width: 15vw;
+  padding-top: 1.2vh;
   padding-left: 0.8vw;
-  border-radius: 10vw;
   font-size: 1.2vh;
   color: #000000;
-  background-color: rgb(232, 156, 156) !important;
+  background-image: url("/img/player/player_programas.png");
+  background-size: 23vh;
+  background-repeat: no-repeat;
+
+  /*background-color: rgb(232, 156, 156) !important;*/
   overflow: hidden;
 }
 
