@@ -4,8 +4,8 @@ import json
 
 api = Flask(__name__)
 
-@api.route('/get_locutores')
-def my_profile():
+@api.route('/api/get_locutores', methods=["GET"])
+def get_locutores():
 
     personas = [
         {
@@ -38,3 +38,6 @@ def my_profile():
     resp = Response(response=json.dumps(personas), status=200, mimetype="text/plain")
     resp.headers['Access-Control-Allow-Origin'] = 'http://localhost:3000'
     return resp
+
+if __name__ == "__main__":
+    api.run()
