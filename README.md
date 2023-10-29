@@ -6,15 +6,18 @@ by Diana GS.
 First, run the development server for the frontend:
 
 ```bash
-npm run dev
-# or
-yarn dev
+npm run next-dev
 ```
 
 Then, run the development server for the backend:
 
 ```bash
-npm run start-backend
+npm run flask-dev
+```
+
+You can also run both dev servers concurrently with 
+```bash
+npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.

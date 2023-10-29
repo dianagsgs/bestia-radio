@@ -9,7 +9,7 @@ def get_locutores():
 
     personas = [
         {
-            "nombre":"Jennifer",
+            "nombre":"Jen",
             "programas": [
                 {"nombre":"Lunes Inexpertos","horario":"Lunes 11am"},
                 {"nombre":"Playlists Inexpertas","horario":"Viernes 11am"}

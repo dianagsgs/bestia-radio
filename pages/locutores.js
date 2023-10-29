@@ -25,7 +25,7 @@ export default function Locutores(props) {
   useEffect(() => {
     axios({
       method: "GET",
-      url:"http://localhost:5000/get_locutores",
+      url:"/api/get_locutores",
     })
     .then((response) => {
       const personas = response.data;
