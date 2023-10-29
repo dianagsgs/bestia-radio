@@ -25,9 +25,11 @@ export default function Locutores(props) {
   useEffect(() => {
     axios({
       method: "GET",
-      url:"/api/get_locutores",
+      url:"/api/get_locutores"
+      //url:"/api/healthchecker"
     })
     .then((response) => {
+      console.log('NO ERROR');
       const personas = response.data;
       let items = []
       for(let i = 0; i < personas.length; i++) {

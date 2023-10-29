@@ -41,5 +41,9 @@ def get_locutores():
     print("created a response")
     return resp
 
+#@app.route("/api/healthchecker", methods=["GET"])
+#def healthchecker():
+#    return {"status": "success", "message": "Integrate Flask Framework with Next.js"}
+
 if __name__ == "__main__":
     app.run()
