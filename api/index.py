@@ -9,7 +9,7 @@ def my_profile():
 
     personas = [
         {
-            "nombre":"Jen",
+            "nombre":"Jennifer",
             "programas": [
                 {"nombre":"Lunes Inexpertos","horario":"Lunes 11am"},
                 {"nombre":"Playlists Inexpertas","horario":"Viernes 11am"}
