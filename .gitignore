@@ -34,5 +34,5 @@ yarn-error.log*
 .vercel
 
 # backend
-backend/env
-backend/__pycache__
+api/env
+api/__pycache__

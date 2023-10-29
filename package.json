@@ -7,7 +7,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start -H 0.0.0.0 -p ${PORT:-8080}",
-    "start-backend": "cd backend && flask run --no-debugger",
+    "start-backend": "cd api && flask run --no-debugger",
     "lint": "next lint",
     "export": "npm run build && next export && mv out _static"
   },
