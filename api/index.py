@@ -3,10 +3,10 @@ from flask_cors import CORS
 
 import json
 
-api = Flask(__name__)
-CORS(api)
+app = Flask(__name__)
+CORS(app)
 
-@api.route('/api/get_locutores', methods=["GET"])
+@app.route('/api/get_locutores', methods=["GET"])
 def get_locutores():
 
     personas = [
@@ -41,4 +41,4 @@ def get_locutores():
     return resp
 
 if __name__ == "__main__":
-    api.run()
+    app.run()

@@ -53,7 +53,6 @@ export default function Locutores(props) {
       }
       setLocutores(items);
     }).catch((error) => {
-      console.log("ERROR HERE")
       if (error.response) {
         console.log(error.response)
         console.log(error.response.status)
