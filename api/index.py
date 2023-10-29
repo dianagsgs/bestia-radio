@@ -8,7 +8,7 @@ CORS(app)
 
 @app.route('/api/get_locutores', methods=["GET"])
 def get_locutores():
-
+    print("I am entering get locutores")
     personas = [
         {
             "nombre":"Jen",
@@ -36,8 +36,9 @@ def get_locutores():
             "bio":"Sandy lleva desde el principio"
         },
     ]
-
+    print("Set personas")
     resp = Response(response=json.dumps(personas), status=200, mimetype="text/plain")
+    print("created a response")
     return resp
 
 if __name__ == "__main__":
