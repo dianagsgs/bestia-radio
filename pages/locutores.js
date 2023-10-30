@@ -26,7 +26,6 @@ export default function Locutores(props) {
     axios({
       method: "GET",
       url:"/api/get_locutores"
-      //url:"/api/healthchecker"
     })
     .then((response) => {
       console.log('NO ERROR');

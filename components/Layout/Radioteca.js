@@ -65,7 +65,7 @@ export default function Radioteca(props) {
           infinite={true}
         >
           {getWidgets()}
-        </Carousel>;
+        </Carousel>
       </Section>
     </Fragment>
   )

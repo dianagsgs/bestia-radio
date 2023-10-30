@@ -32,7 +32,7 @@ export default function Sesiones(props) {
         titulo="/img/titulos/sesiones.png"
         title_width="110"
       >
-        <div className={styles.videos}>
+        <div>
           <div className="row">
             <div className="col-lg-6">
               {/*<div dangerouslySetInnerHTML={{ __html: video1 }} />*/}
