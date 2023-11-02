@@ -22,35 +22,38 @@ export default function Locutores(props) {
     return points;
   }
 
+  const getItem = (persona) => {
+    let item =
+    <Section
+      id={"locutor_"+persona.id}
+      titulo="/img/titulos/locutores.png"
+      title_width="110"
+    >
+      {persona.nombre + ": "}
+      {getBulletPoints(persona.programas)}
+      <CustomImage
+        resp_w="20vw"
+        src={"/img/locutores/"+persona.foto}
+        w="83"
+        h="75"
+        id={"foto"+persona.id}
+        // class={styles.player}
+      />
+      {persona.bio}
+    </Section>;
+    return item;
+  }
+
   useEffect(() => {
     axios({
       method: "GET",
       url:"/api/get_locutores"
     })
     .then((response) => {
-      console.log('NO ERROR');
       const personas = response.data;
       let items = []
       for(let i = 0; i < personas.length; i++) {
-        let item =
-          <Section
-            id={"locutor_"+i}
-            titulo="/img/titulos/locutores.png"
-            title_width="110"
-          >
-            {personas[i].nombre + ": "}
-            {getBulletPoints(personas[i].programas)}
-            <CustomImage
-              resp_w="13vw"
-              src={"/img/locutores/"+personas[i].foto}
-              w="83"
-              h="75"
-              id={"foto"+i}
-              // class={styles.player}
-            />
-            {personas[i].bio}
-          </Section>;
-        items.push(item);
+        items.push(getItem(personas[i]));
       }
       setLocutores(items);
     }).catch((error) => {

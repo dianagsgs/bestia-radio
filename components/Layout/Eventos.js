@@ -19,20 +19,19 @@ export default function Eventos(props) {
       for(let i = 0; i < eventos.length; i++) {
         console.log('here' + eventos[i].nombre)
         let item =
-          <div
-            className="row"
-            id={"evento_"+i}
-          >
-            <div className="col-lg-6">
-              {eventos[i].nombre}
-              <CustomImage
-                resp_w="20vw"
-                src={"/img/eventos/"+eventos[i].flyer}
-                w="83"
-                h="110"
-                id={"foto"+i}
-              />
-            </div>
+          <div className="col-lg-6" id={"evento_"+i}>
+            {/*{eventos[i].nombre}
+            {eventos[i].fecha}
+            {eventos[i].hora}
+            {eventos[i].precio}*/}
+            <CustomImage
+              resp_w="25vw"
+              src={"/img/eventos/"+eventos[i].flyer}
+              w="83"
+              h="110"
+              id={"foto"+i}
+              class={styles.flyer}
+            />
           </div>
         items.push(item);
       }
@@ -53,7 +52,9 @@ export default function Eventos(props) {
         titulo="/img/titulos/eventos.png"
         title_width="100"
       >
-        {eventos}
+        <div className="row">
+          {eventos}
+        </div>
       </Section>
     </Fragment>
   );

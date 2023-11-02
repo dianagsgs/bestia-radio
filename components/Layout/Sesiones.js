@@ -32,32 +32,30 @@ export default function Sesiones(props) {
         titulo="/img/titulos/sesiones.png"
         title_width="110"
       >
-        <div>
-          <div className="row">
-            <div className="col-lg-6">
-              {/*<div dangerouslySetInnerHTML={{ __html: video1 }} />*/}
-              <iframe
-                width="560"
-                height="315"
-                src="https://www.youtube.com/embed/KxActAM1luM"
-                title="Youtube Video 1"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-              />
-            </div>
-            <div className="col-lg-6">
-              {/*<div dangerouslySetInnerHTML={{ __html: video2 }} />*/}
-              <iframe
-                width="560"
-                height="315"
-                src="https://www.youtube.com/embed/ZwXb_c5ErNI"
-                title="YouTube Video 2"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowFullScreen
-              />
-            </div>
+        <div className="row">
+          <div className="col-lg-6">
+            {/*<div dangerouslySetInnerHTML={{ __html: video1 }} />*/}
+            <iframe
+              width="560"
+              height="315"
+              src="https://www.youtube.com/embed/KxActAM1luM"
+              title="Youtube Video 1"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+            />
+          </div>
+          <div className="col-lg-6">
+            {/*<div dangerouslySetInnerHTML={{ __html: video2 }} />*/}
+            <iframe
+              width="560"
+              height="315"
+              src="https://www.youtube.com/embed/ZwXb_c5ErNI"
+              title="YouTube Video 2"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowFullScreen
+            />
           </div>
         </div>
       </Section>

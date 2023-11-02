@@ -10,6 +10,7 @@ CORS(app)
 def get_locutores():
     personas = [
         {
+            "id":"1",
             "nombre":"Jen",
             "programas": [
                 {"nombre":"Lunes Inexpertos","horario":"Lunes 11am"},
@@ -19,6 +20,7 @@ def get_locutores():
             "bio":"Jen es chida"
         },
         {
+            "id":"2",
             "nombre":"Remofis",
             "programas": [
                 {"nombre":"La Hora de la Bestia","horario":"Lunes a Viernes 10am"}
@@ -27,6 +29,7 @@ def get_locutores():
             "bio":"Es la jefa de la bestia"
         },
         {
+            "id":"3",
             "nombre":"Sandy",
             "programas": [
                 {"nombre":"Supernova","horario":"Jueves 7pm"}
