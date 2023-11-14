@@ -1,52 +1,59 @@
 from flask import Flask, request, Response
 from flask_cors import CORS
-from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy.sql import text
-from sqlalchemy import Integer, String
-from sqlalchemy.orm import Mapped, mapped_column
+#from flask_sqlalchemy import SQLAlchemy
+#from sqlalchemy.sql import text
+#from sqlalchemy import Integer, String
+#from sqlalchemy.orm import Mapped, mapped_column
 import json
 import sys
+import psycopg2 
+
 
 app = Flask(__name__)
 CORS(app)
 
-db = SQLAlchemy()
-db_name = 'bestia_radio.db'
+#db = SQLAlchemy()
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + db_name
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
-db.init_app(app)
+#app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + db_name
+#app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
+#db.init_app(app)
 
 # MODELS
-class Locutor(db.Model):
-    ID: Mapped[int] = mapped_column(Integer, primary_key=True)
-    nombre: Mapped[str] = mapped_column(String)
-    foto: Mapped[str] = mapped_column(String)
-    bio: Mapped[str] = mapped_column(String)
-    instagram: Mapped[str] = mapped_column(String)
+#class Locutor(db.Model):
+#    ID: Mapped[int] = mapped_column(Integer, primary_key=True)
+#    nombre: Mapped[str] = mapped_column(String)
+#    foto: Mapped[str] = mapped_column(String)
+#    bio: Mapped[str] = mapped_column(String)
+#    instagram: Mapped[str] = mapped_column(String)
 
-with app.app_context():
-    db.create_all()
+#with app.app_context():
+#    db.create_all()
 
 # ROUTES
-
-# this route will test the database connection - and nothing more
-@app.route('/')
-def testdb():
-    try:
-        db.session.query(text('1')).from_statement(text('SELECT 1')).all()
-        return '<h1>It works.</h1>'
-    except Exception as e:
-        # e holds description of the error
-        error_text = "<p>The error:<br>" + str(e) + "</p>"
-        hed = '<h1>Something is broken.</h1>'
-        return hed + error_text
 
 # DATABASE ACTUAL ROUTES
 @app.route('/api/get_locutores', methods=["GET"])
 def get_locutores():
-    locutores = db.session.execute(db.select(Locutor).order_by(Locutor.nombre)).fetchall()
-    print(locutores[1], file=sys.stderr)
+    # Connect to the database 
+    conn = psycopg2.connect(database="verceldb",#process.env.NEXT_PUBLIC_POSTGRES_DATABASE, 
+                            user="default",#process.env.NEXT_PUBLIC_POSTGRES_USER, 
+                            password="huBg5wXDkAE7",#process.env.NEXT_PUBLIC_POSTGRES_PASSWORD, 
+                            host="ep-yellow-silence-34984390-pooler.us-east-1.postgres.vercel-storage.com",#process.env.NEXT_PUBLIC_POSTGRES_HOST,
+                            port="5432") 
+  
+    # create a cursor 
+    cur = conn.cursor() 
+  
+    # Select all products from the table 
+    cur.execute('''SELECT * FROM locutor''') 
+  
+    # Fetch the data 
+    data = cur.fetchall() 
+  
+    # close the cursor and connection 
+    cur.close() 
+    conn.close() 
+    print(data, file=sys.stderr)
     personas = [
         {
             "id":"1",

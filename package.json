@@ -5,9 +5,8 @@
   "proxy": "http://localhost:5000",
   "scripts": {
     "next-dev": "next dev",
-    "flask-dev":"set FLASK_DEBUG=1 && pip3 install -r requirements.txt && python3 -m flask --app api/index run -p 5000 --reload",
+    "flask-dev": "set FLASK_DEBUG=1 && pip3 install -r requirements.txt && python3 -m flask --app api/index run -p 5000 --reload",
     "dev": "concurrently \"npm run next-dev\" \"npm run flask-dev\"",
-
     "build": "next build",
     "start": "next start -H 0.0.0.0 -p ${PORT:-8080}",
     "lint": "next lint",
@@ -15,9 +14,11 @@
   },
   "dependencies": {
     "@google/model-viewer": "^1.8.0",
+    "@vercel/postgres-kysely": "^0.6.0",
     "axios": "^1.5.1",
     "concurrently": "^8.2.2",
     "jquery": "^3.6.0",
+    "kysely": "^0.26.3",
     "next": "^11.1.4",
     "react": "17.0.2",
     "react-dom": "17.0.2",
