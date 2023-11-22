@@ -9,7 +9,7 @@ const Radio = Dynamic(() => import("../UI/Radio"), { ssr: false });
 const Menu = (props) => {
   let mobile = props.windowSize === "small";
   let sections = [
-    ["dona","#dona",styles.dona],
+    ["dona","https://ko-fi.com/labestiaradiocdmx",styles.dona],// ["dona","#dona",styles.dona],
     ["programacion","#programacion",styles.programacion],
     ["sesiones","#sesiones",styles.sesiones],
     ["eventos","#eventos",styles.eventos],
@@ -42,6 +42,12 @@ const Menu = (props) => {
     }
     return items;
   }
+
+  let admin = false;
+  const toggleAdminMode = () => {
+    admin = !admin;
+    console.log(admin);
+  };
 
   return (
     <Fragment>
@@ -78,6 +84,10 @@ const Menu = (props) => {
      
 
         {props.home ? getMenuItems() : <span/>}
+
+        <span onClick={() => toggleAdminMode()}>
+          admin
+        </span>
       </div>
     </Fragment>
   );

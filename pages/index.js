@@ -50,7 +50,7 @@ export default function Home(props) {
         <Menu home={true}/>
 
         <TwitchYChat/>
-        <Dona/>
+        {/*<Dona/>*/}
         <Programacion/>
         <Sesiones/>
         <Eventos/>
