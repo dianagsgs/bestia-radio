@@ -81,7 +81,6 @@ export default function Home(props) {
             "bangers.gif",
             "shure1.gif",
             "butchernsons.gif",
-            "corona.gif",
             "shure2.gif",
             "coppola.gif",
             "ortiz.gif"
@@ -90,7 +89,6 @@ export default function Home(props) {
             "https://www.instagram.com/bangers.hotdogs/",
             "https://www.shure.com/es-MX",
             "https://www.instagram.com/butcherandsons/",
-            "https://coronacapital.com.mx/index.html",
             "https://www.shure.com/es-MX",
             "https://www.instagram.com/coppola_pizzabar/",
             "https://www.facebook.com/p/Transportes-y-mudanzas-Ortiz-100075927796574/"
