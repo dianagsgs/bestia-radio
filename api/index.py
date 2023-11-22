@@ -12,22 +12,6 @@ import psycopg2
 app = Flask(__name__)
 CORS(app)
 
-#db = SQLAlchemy()
-
-#app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + db_name
-#app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
-#db.init_app(app)
-
-# MODELS
-#class Locutor(db.Model):
-#    ID: Mapped[int] = mapped_column(Integer, primary_key=True)
-#    nombre: Mapped[str] = mapped_column(String)
-#    foto: Mapped[str] = mapped_column(String)
-#    bio: Mapped[str] = mapped_column(String)
-#    instagram: Mapped[str] = mapped_column(String)
-
-#with app.app_context():
-#    db.create_all()
 
 # ROUTES
 
@@ -52,38 +36,36 @@ def get_locutores():
   
     # close the cursor and connection 
     cur.close() 
-    conn.close() 
-    print(data, file=sys.stderr)
-    personas = [
-        {
-            "id":"1",
-            "nombre":"Jen",
-            "programas": [
-                {"nombre":"Lunes Inexpertos","horario":"Lunes 11am"},
-                {"nombre":"Playlists Inexpertas","horario":"Viernes 11am"}
-            ],
-            "foto":"jen.png",
-            "bio":"Jen es chida"
-        },
-        {
-            "id":"2",
-            "nombre":"Remofis",
-            "programas": [
-                {"nombre":"La Hora de la Bestia","horario":"Lunes a Viernes 10am"}
-            ],
-            "foto":"remofis.png",
-            "bio":"Es la jefa de la bestia"
-        },
-        {
-            "id":"3",
-            "nombre":"Sandy",
-            "programas": [
-                {"nombre":"Supernova","horario":"Jueves 7pm"}
-            ],
-            "foto":"sandy.png",
-            "bio":"Sandy lleva desde el principio"
-        },
-    ]
+
+    personas = []
+    for locutor in data:
+        cur = conn.cursor()
+        cur.execute('''SELECT Programa_id FROM locutor_programa WHERE Locutor_id = '''+str(locutor[0]))
+        ids_programa = cur.fetchall()
+        cur.close()
+        programas = []
+        for i in ids_programa:
+            cur = conn.cursor()
+            cur.execute('''SELECT * FROM programa WHERE Id = '''+str(i[0]))
+            fetch = cur.fetchall()
+            programa = fetch[0]
+            cur.close()
+            programas.append({
+                "id":programa[0],
+                "nombre":programa[1],
+                "horario":programa[2] + " - " + str(programa[3].hour) + "hrs",
+                "activo":programa[4]
+            })
+        persona = {
+            "id":locutor[0],
+            "nombre":locutor[1],
+            "programas": programas,
+            "foto":locutor[2],
+            "bio":locutor[3],
+            "insta":locutor[4]
+        }
+        personas.append(persona)
+    conn.close()
     resp = Response(response=json.dumps(personas), status=200, mimetype="text/plain")
     return resp
 
