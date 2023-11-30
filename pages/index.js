@@ -78,20 +78,12 @@ export default function Home(props) {
 
         <Banner 
           img_list={[
-            "bangers.gif",
             "shure1.gif",
-            "butchernsons.gif",
-            "shure2.gif",
-            "coppola.gif",
-            "ortiz.gif"
+            "shure2.gif"
           ]}
           link_list={[
-            "https://www.instagram.com/bangers.hotdogs/",
             "https://www.shure.com/es-MX",
-            "https://www.instagram.com/butcherandsons/",
-            "https://www.shure.com/es-MX",
-            "https://www.instagram.com/coppola_pizzabar/",
-            "https://www.facebook.com/p/Transportes-y-mudanzas-Ortiz-100075927796574/"
+            "https://www.shure.com/es-MX"
           ]}
           mobile={mobile}
         />
