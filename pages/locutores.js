@@ -29,17 +29,31 @@ export default function Locutores(props) {
       titulo="/img/titulos/locutores.png"
       title_width="110"
     >
-      {persona.nombre + ": "}
-      {getBulletPoints(persona.programas)}
-      <CustomImage
-        resp_w="20vw"
-        src={"/img/locutores/"+persona.foto}
-        w="83"
-        h="75"
-        id={"foto"+persona.id}
-        // class={styles.player}
-      />
-      {persona.bio}
+      <div class={styles.content}>
+        <div className="row">
+          <div className="col-lg-3" class={styles.foto_locutor_fuera}>
+            <CustomImage
+              resp_w="20vw"
+              src={"/img/locutores/"+persona.foto}
+              w="83"
+              h="75"
+              id={"foto"+persona.id}
+              class={styles.foto_locutor_dentro}
+            />
+          </div>
+          <div className="col-lg-8">
+            <p class={styles.font_nombre}>
+              {persona.nombre + ": "}
+            </p>
+            <p class={styles.font_horario}>
+              {getBulletPoints(persona.programas)}
+            </p>
+            <p class={styles.font_bio}>
+              {persona.bio}
+            </p>
+          </div>
+        </div>
+      </div>
     </Section>;
     return item;
   }
