@@ -1,29 +1,50 @@
 import styles from "./Sesiones.module.css";
-import { useCallback, useEffect, Fragment } from "react";
+import { useCallback, useEffect, Fragment, useState } from "react";
 import Section from "./Section"
+import axios from "axios";
 
 export default function Sesiones(props) {
-  const fetchVideosHandler = useCallback(async () => {
-    try {
-      const response = await fetch(
-        "https://admin.labestiaradio.com/api/v1/youtube_videos"
-      );
-      if (!response.ok) {
-        throw new Error("Something went wrong");
-      }
-      const data = await response.json();
-      data.data.map((videosData) => {
-        setVideo1(videosData.video_1);
-        setVideo2(videosData.video_2);
-      });
-    } catch (error) {
-      console.log(error.message);
-    }
-  }, []);
+  const [sesiones, setSesiones] = useState(null);
+
+  const getItem = (sesion) => {
+    let item =
+    <div className="col-lg-6">
+      <div class={styles.sesion}>
+        <iframe
+          width="100%"
+          height="100%"
+          src={sesion[1]}
+          title={sesion[3]}
+          frameBorder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowFullScreen
+        />
+      </div>    
+    </div>
+    return item;
+  };
 
   useEffect(() => {
-    fetchVideosHandler();
-  }, [fetchVideosHandler]);
+    axios({
+      method: "GET",
+      url:"/api/get_sesiones"
+    })
+    .then((response) => {
+      const dos_sesiones = response.data;
+      let items = []
+      for(let i = 0; i < dos_sesiones.length; i++) {
+        items.push(getItem(dos_sesiones[i]));
+      }
+      console.log(dos_sesiones);
+      setSesiones(items);
+    }).catch((error) => {
+      if (error.response) {
+        console.log(error.response)
+        console.log(error.response.status)
+        console.log(error.response.headers)
+      }
+    })
+  }, []);
 
   return (
     <Fragment>
@@ -33,30 +54,7 @@ export default function Sesiones(props) {
         title_width="110"
       >
         <div className="row">
-          <div className="col-lg-6">
-            {/*<div dangerouslySetInnerHTML={{ __html: video1 }} />*/}
-            <iframe
-              width="560"
-              height="315"
-              src="https://www.youtube.com/embed/KxActAM1luM"
-              title="Youtube Video 1"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen
-            />
-          </div>
-          <div className="col-lg-6">
-            {/*<div dangerouslySetInnerHTML={{ __html: video2 }} />*/}
-            <iframe
-              width="560"
-              height="315"
-              src="https://www.youtube.com/embed/ZwXb_c5ErNI"
-              title="YouTube Video 2"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen
-            />
-          </div>
+          {sesiones}
         </div>
       </Section>
     </Fragment>
