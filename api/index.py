@@ -7,16 +7,16 @@ from flask_cors import CORS
 import json
 import sys
 import psycopg2 
-
+import os
 
 app = Flask(__name__)
 CORS(app)
 
 # SECRETS (TODO REMOVE!!!)
-DATABASE = "verceldb" #process.env.NEXT_PUBLIC_POSTGRES_DATABASE
-USER = "default" #process.env.NEXT_PUBLIC_POSTGRES_USER
-PASSWORD = "huBg5wXDkAE7" #process.env.NEXT_PUBLIC_POSTGRES_PASSWORD
-HOST = "ep-yellow-silence-34984390-pooler.us-east-1.postgres.vercel-storage.com" #process.env.NEXT_PUBLIC_POSTGRES_HOST
+DATABASE = os.environ.get('NEXT_PUBLIC_POSTGRES_DATABASE')
+USER = os.environ.get('NEXT_PUBLIC_POSTGRES_USER')
+PASSWORD = os.environ.get('NEXT_PUBLIC_POSTGRES_PASSWORD')
+HOST = os.environ.get('NEXT_PUBLIC_POSTGRES_HOST')
 PORT = "5432"
 
 # HELPERS
