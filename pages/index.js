@@ -41,11 +41,7 @@ export default function Home(props) {
         `}
         </Script>
          
-        {<Banner 
-          img_list={["corona.gif"]}
-          link_list={["https://coronacapital.com.mx/index.html"]}
-          mobile={mobile}
-        />}
+        <Banner mobile={mobile}/>
 
         <Menu home={true}/>
 

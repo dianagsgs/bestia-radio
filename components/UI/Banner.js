@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react";
 import styles from "./Banner.module.css";
 
-
 const Banner = (props) => {
   const [visible, setVisible] = useState(true);
   const [chosen_banner, setBanner] = useState(0);
   
   // use this instead of chosen_banner if we want to just have a random one on page load instead of rotating
-  // let rnd_banner = Math.floor(Math.random() * props.img_list.length);
+  // let rnd_banner = Math.floor(Math.random() * img_list.length);
 
   const rotateBanner = (list, current) => {
     setTimeout(() => {
@@ -23,17 +22,20 @@ const Banner = (props) => {
   };
 
   useEffect(() => {
-    rotateBanner(props.img_list, chosen_banner);
+    rotateBanner(img_list, chosen_banner);
   }, []);
 
-  let content = (
+  let img_list = ["corona.gif"];
+  let link_list = ["https://coronacapital.com.mx/index.html"];
+
+  let content = img_list.length >= 1 ? (
     <div className={visible ? (props.mobile ? styles.mobile_banner : styles.desktop_banner) : styles.invisible}>
-      <a href={props.link_list[chosen_banner]} target="_blank">
-        <img src={`img/banners/${props.mobile ? "mobile" : "desktop"}/${props.img_list[chosen_banner]}`} alt="Promotional Banner" />
+      <a href={link_list[chosen_banner]} target="_blank">
+        <img src={`img/banners/${props.mobile ? "mobile" : "desktop"}/${img_list[chosen_banner]}`} alt="Promotional Banner" />
       </a>
       <img src={`img/banners/close.png`} className={props.mobile ? styles.close_mobile : styles.close} onClick={() => setVisible(false)}/>
     </div>
-  );
+  ) : <span/>;
   return content;
 };
 
