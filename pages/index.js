@@ -155,8 +155,8 @@ export default function Home(props) {
             <div className={styles.videos}>
               <div className="row">
                 <div className="col-lg-6">
-                  {/*<div dangerouslySetInnerHTML={{ __html: video1 }} />*/}
-                  <iframe
+                  <div dangerouslySetInnerHTML={{ __html: video1 }} />
+                  {/*<iframe
                     width="560"
                     height="315"
                     src="https://www.youtube.com/embed/KxActAM1luM"
@@ -164,11 +164,11 @@ export default function Home(props) {
                     frameBorder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     allowFullScreen
-                  />
+                  />*/}
                 </div>
                 <div className="col-lg-6">
-                  {/*<div dangerouslySetInnerHTML={{ __html: video2 }} />*/}
-                  <iframe
+                  <div dangerouslySetInnerHTML={{ __html: video2 }} />
+                  {/*<iframe
                     width="560"
                     height="315"
                     src="https://www.youtube.com/embed/ZwXb_c5ErNI"
@@ -176,7 +176,7 @@ export default function Home(props) {
                     frameBorder="0"
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                     allowFullScreen
-                  />
+                  />*/}
                 </div>
               </div>
             </div>
