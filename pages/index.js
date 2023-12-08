@@ -156,7 +156,7 @@ export default function Home(props) {
               <div className="row">
                 <div className="col-lg-6">
                   <div dangerouslySetInnerHTML={{ __html: video1 }} />
-                  {/*<iframe
+                  {/* CHANGE FOR GIT <iframe
                     width="560"
                     height="315"
                     src="https://www.youtube.com/embed/KxActAM1luM"
