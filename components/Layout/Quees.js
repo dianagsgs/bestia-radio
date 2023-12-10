@@ -11,6 +11,7 @@ export default function Quees(props) {
         id="quees"
         titulo="/img/titulos/quees.png"
         title_width="100"
+        mobile={props.mobile}
       >
         <p class={styles.customfont}>
           Desde su fundación en 2020, La Bestia Radio no sólo se ha dado a conocer gracias a sus rituales

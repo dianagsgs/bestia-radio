@@ -21,6 +21,13 @@
     margin-top: 3vh;
 }
 
+.font_insta {
+    font-family: "ContentFont", sans-serif;
+    font-size: 2vh;
+    margin-left: 3vw;
+    margin-right: 4vw;
+}
+
 .font_bio {
     font-family: "ContentFont", sans-serif;
     font-size: 3.2vh;

@@ -8,6 +8,9 @@ import CustomImage from "../components/UI/CustomImage";
 
 
 export default function Locutores(props) {
+
+  let mobile = props.windowSize === "small";
+
   const [locutores, setLocutores] = useState(null);
 
   const getBulletPoints = (list) => {
@@ -28,6 +31,7 @@ export default function Locutores(props) {
       id={"locutor_"+persona.id}
       titulo="/img/titulos/locutores.png"
       title_width="110"
+      mobile={props.mobile}
     >
       <div class={styles.content}>
         <div className="row">
@@ -43,10 +47,10 @@ export default function Locutores(props) {
           </div>
           <div className="col-lg-8">
             <p class={styles.font_nombre}>
-              {persona.nombre + ": "}
-            </p>
-            <p class={styles.font_horario}>
-              {persona.insta}
+              {persona.nombre + ":\n"}
+              <span class={styles.font_insta}>
+                {persona.insta}
+              </span>
             </p>
             <p class={styles.font_horario}>
               {getBulletPoints(persona.programas)}
@@ -84,7 +88,7 @@ export default function Locutores(props) {
   
   return (
     <Fragment>
-      <Menu home={false}/>
+      <Menu home={false} mobile={mobile}/>
         {locutores}
     </Fragment>
   );

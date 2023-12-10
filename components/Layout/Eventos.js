@@ -17,7 +17,6 @@ export default function Eventos(props) {
       const eventos = response.data;
       let items = [];
       for(let i = 0; i < eventos.length; i++) {
-        console.log('here' + eventos[i].nombre)
         let item =
           <div className="col-lg-6" id={"evento_"+i}>
             {/*{eventos[i].nombre}
@@ -51,6 +50,7 @@ export default function Eventos(props) {
         id="eventos"
         titulo="/img/titulos/eventos.png"
         title_width="100"
+        mobile={props.mobile}
       >
         <div className="row">
           {eventos}

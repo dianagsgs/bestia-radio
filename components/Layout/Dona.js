@@ -22,6 +22,7 @@ export default function Dona(props) {
         id="dona"
         titulo="/img/titulos/dona.png"
         title_width="100"
+        mobile={props.mobile}
       >
         DONA
       </Section>

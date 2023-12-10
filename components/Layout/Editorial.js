@@ -11,6 +11,7 @@ export default function Editorial(props) {
         id="editorial"
         titulo="/img/titulos/editorial.png"
         title_width="110"
+        mobile={props.mobile}
       >
         EDITORIAL
       </Section>

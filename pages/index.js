@@ -43,16 +43,16 @@ export default function Home(props) {
          
         <Banner mobile={mobile}/>
 
-        <Menu home={true}/>
+        <Menu home={true} mobile={mobile}/>
 
-        <TwitchYChat/>
+        <TwitchYChat mobile={mobile}/>
         {/*<Dona/>*/}
-        <Programacion/>
-        <Sesiones/>
-        <Eventos/>
-        <Radioteca/>
-        <Editorial/>
-        <Quees/>
+        <Programacion mobile={mobile}/>
+        <Sesiones mobile={mobile}/>
+        <Eventos mobile={mobile}/>
+        <Radioteca mobile={mobile}/>
+        <Editorial mobile={mobile}/>
+        <Quees mobile={mobile}/>
 
       </main>
     </div>

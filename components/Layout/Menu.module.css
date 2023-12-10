@@ -4,20 +4,49 @@
   left: 0;
   width: 15vw;
   height: 100vh;
-  /*background-color: #2c2d2f1c;*/
   z-index: 999;
 }
 
-.logo {
+.menu_mobile {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 10vh;
+  background-image: url("/img/menu/barra_superior.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  z-index: 999;
+}
+
+.menu_button {
+  position: absolute;
+  left: 80vw;
+  top: 3.2vh;
+}
+
+.logo_desktop {
   position: absolute;
   left: 3vw;
   top: 4vh;
 }
 
-.player {
+.logo_mobile {
+  position: absolute;
+  left: 44vw;
+  top: 1.4vh;
+}
+
+.player_desktop {
   position: absolute;
   left: 1vw;
   top: 32vh;
+  border-radius: 100%;
+}
+
+.player_mobile {
+  position: absolute;
+  top: 9vh;
   border-radius: 100%;
 }
 
@@ -49,10 +78,43 @@
   top: 90vh; 
 }
 
+.dona_mobile {
+  top: 7vh;
+}
+.programacion_mobile {
+  top: 10vh;
+}
+.sesiones_mobile {
+  top: 14vh;
+}
+.eventos_mobile {
+  top: 18vh;
+}
+.locutores_mobile {
+  top: 22vh;
+}
+.radioteca_mobile {
+  top: 26vh;
+}
+.editorial_mobile {
+  top: 30vh;
+}
+.tienda_mobile {
+  top: 34vh; 
+}
+.quees_mobile {
+  top: 38vh; 
+}
+
 .menu_item {
   position:absolute;
-  left: 2vw;
+  left: 69vw;
 }
+
+.invisible {
+  display:none;
+}
+
 .menu_link:hover {
   color:rgb(16, 230, 16);
 }

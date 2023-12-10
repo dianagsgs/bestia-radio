@@ -7,17 +7,17 @@ import CustomImage from "../UI/CustomImage";
 const Radio = Dynamic(() => import("../UI/Radio"), { ssr: false });
 
 const Menu = (props) => {
-  let mobile = props.windowSize === "small";
+  let mobile = props.mobile;
   let sections = [
-    ["dona","https://ko-fi.com/labestiaradiocdmx",styles.dona],// ["dona","#dona",styles.dona],
-    ["programacion","#programacion",styles.programacion],
-    ["sesiones","#sesiones",styles.sesiones],
-    ["eventos","#eventos",styles.eventos],
-    ["locutores","/locutores",styles.locutores],
-    ["radioteca","#radioteca",styles.radioteca],
-    ["editorial","#editorial",styles.editorial],
-    ["tienda","https://www.somoslabestia.com/shop-1",styles.tienda],
-    ["quees","#quees",styles.quees]
+    ["dona","https://ko-fi.com/labestiaradiocdmx",mobile ? styles.dona_mobile : styles.dona],// ["dona","#dona",styles.dona],
+    ["programacion","#programacion",mobile ? styles.programacion_mobile : styles.programacion],
+    ["sesiones","#sesiones",mobile ? styles.sesiones_mobile : styles.sesiones],
+    ["eventos","#eventos",mobile ? styles.eventos_mobile : styles.eventos],
+    ["locutores","/locutores",mobile ? styles.locutores_mobile : styles.locutores],
+    ["radioteca","#radioteca",mobile ? styles.radioteca_mobile : styles.radioteca],
+    ["editorial","#editorial",mobile ? styles.editorial_mobile : styles.editorial],
+    ["tienda","https://www.somoslabestia.com/shop-1",mobile ? styles.tienda_mobile : styles.tienda],
+    ["quees","#quees",mobile ? styles.quees_mobile : styles.quees]
   ];
 
   const getMenuItems = () => {
@@ -29,8 +29,8 @@ const Menu = (props) => {
           hover_src={"/img/menu/menu_"+sections[i][0]+".png"}
           section_id={sections[i][0]}
           w={10}
-          h={1.5}
-          resp_w={"10vw"}
+          h={mobile ? 2.5 : 1.5}
+          resp_w={mobile ? "25vw" : "10vw"}
           type={
             sections[i][1].startsWith("https://") ? "external" : 
             sections[i][1].startsWith("#") ? "scroll" : "internal"
@@ -53,23 +53,34 @@ const Menu = (props) => {
     <Fragment>
       <div className={mobile ? styles.menu_mobile : styles.menu_desktop}>
         <CustomButton
-          src={"/img/logo.png"}
-          hover_src={"/img/logo.png"}
+          src={mobile ? "/img/logo_mobile.png" : "/img/logo.png"}
+          hover_src={mobile ? "/img/logo_mobile.png" : "/img/logo.png"}
           w={140}
-          h={190}
-          resp_w={"9vw"}
+          h={mobile ? 140 : 190}
+          resp_w={mobile ? "15vw" : "9vw"}
           type="home"
-          button_class={styles.logo}
+          button_class={mobile ? styles.logo_mobile : styles.logo_desktop}
         />
 
+        {mobile ? <CustomButton
+            src={"/img/menu/menu_mobile.png"}
+            hover_src={"/img/menu/menu_mobile.png"}
+            w={100}
+            h={30}
+            resp_w={"16vw"}
+            type="action"
+            button_class={styles.menu_button}
+          /> : <span/>}
+
         <CustomImage
-          resp_w="13vw"
-          src="/img/player/player_base.png"
+          resp_w={mobile ? "100vw" : "13vw"}
+          src={mobile ? "/img/player/player_mobile.png" : "/img/player/player_base.png"}
           w="83"
-          h="75"
+          h={mobile ? "10" : "75"}
           id="player"
-          class={styles.player}
+          class={mobile ? styles.player_mobile : styles.player_desktop}
         />
+
         <span
           className="radioplayer"
           data-src="https://streams.radio.co/s4aaec47cd/listen"
@@ -82,7 +93,6 @@ const Menu = (props) => {
 
         <Radio/>
      
-
         {props.home ? getMenuItems() : <span/>}
 
         {/*<span onClick={() => toggleAdminMode()}>

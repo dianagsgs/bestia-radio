@@ -35,7 +35,6 @@ export default function Sesiones(props) {
       for(let i = 0; i < dos_sesiones.length; i++) {
         items.push(getItem(dos_sesiones[i]));
       }
-      console.log(dos_sesiones);
       setSesiones(items);
     }).catch((error) => {
       if (error.response) {
@@ -52,6 +51,7 @@ export default function Sesiones(props) {
         id="sesiones"
         titulo="/img/titulos/sesiones.png"
         title_width="110"
+        mobile={props.mobile}
       >
         <div className="row">
           {sesiones}

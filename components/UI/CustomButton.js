@@ -31,6 +31,10 @@ export default function CustomButton(props) {
     document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
   }
 
+  const openMenu = () => {
+    console.log('toggle open menu');
+  }
+
   const image =
     <CustomImage
       resp_w={props.resp_w}
@@ -41,7 +45,7 @@ export default function CustomButton(props) {
     />;
 
   const getButton = () => {
-    //type can be internal, external, home, scroll
+    //type can be internal, external, home, scroll, action
     if(props.type === "home" || props.type === "internal") {
       // use Link, no target
       return(
@@ -69,6 +73,14 @@ export default function CustomButton(props) {
           {image}
         </div>
       );
+    } else if(props.type === "action") {
+        return(
+          <div
+            onClick={() => openMenu()}
+          >
+            {image}
+          </div>
+        );
     } else {
       // i.e. external, use a, target="_blank"
       return( 
