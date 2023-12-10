@@ -46,6 +46,9 @@ export default function Locutores(props) {
               {persona.nombre + ": "}
             </p>
             <p class={styles.font_horario}>
+              {persona.insta}
+            </p>
+            <p class={styles.font_horario}>
               {getBulletPoints(persona.programas)}
             </p>
             <p class={styles.font_bio}>

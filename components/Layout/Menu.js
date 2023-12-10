@@ -85,9 +85,9 @@ const Menu = (props) => {
 
         {props.home ? getMenuItems() : <span/>}
 
-        <span onClick={() => toggleAdminMode()}>
+        {/*<span onClick={() => toggleAdminMode()}>
           admin
-        </span>
+        </span>*/}
       </div>
     </Fragment>
   );

@@ -8,15 +8,16 @@ import json
 import sys
 import psycopg2 
 import os
+import numpy as np
 
 app = Flask(__name__)
 CORS(app)
 
-# SECRETS (TODO REMOVE!!!)
-DATABASE = os.environ.get('NEXT_PUBLIC_POSTGRES_DATABASE')
-USER = os.environ.get('NEXT_PUBLIC_POSTGRES_USER')
-PASSWORD = os.environ.get('NEXT_PUBLIC_POSTGRES_PASSWORD')
-HOST = os.environ.get('NEXT_PUBLIC_POSTGRES_HOST')
+# SECRETS
+DATABASE = os.environ.get('POSTGRES_DATABASE')
+USER = os.environ.get('POSTGRES_USER')
+PASSWORD = os.environ.get('POSTGRES_PASSWORD')
+HOST = os.environ.get('POSTGRES_HOST')
 PORT = "5432"
 
 # HELPERS
@@ -44,6 +45,15 @@ def execute_query(query, conn):
 # ROUTES
 
 # DATABASE ACTUAL ROUTES
+@app.route('/api/get_banners', methods=["GET"])
+def get_banners():
+    conn = start_connection()
+    data = execute_query('''SELECT Mobile_path, Desktop_path, Url FROM banner WHERE Activo = true''', conn)
+    transposed_data = np.transpose(np.array(data))
+    conn.close()
+    resp = Response(response=json.dumps(transposed_data.tolist()), status=200, mimetype="text/plain")
+    return resp
+
 @app.route('/api/get_sesiones', methods=["GET"])
 def get_sesiones():
     conn = start_connection()
