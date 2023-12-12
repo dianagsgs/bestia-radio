@@ -19,6 +19,7 @@ const Menu = (props) => {
     ["tienda","https://www.somoslabestia.com/shop-1",mobile ? styles.tienda_mobile : styles.tienda],
     ["quees","#quees",mobile ? styles.quees_mobile : styles.quees]
   ];
+  const [visible, setVisible] = useState(false);
 
   const getMenuItems = () => {
     let items = []
@@ -30,13 +31,13 @@ const Menu = (props) => {
           section_id={sections[i][0]}
           w={10}
           h={mobile ? 2.5 : 1.5}
-          resp_w={mobile ? "25vw" : "10vw"}
+          resp_w={mobile ? "30vw" : "10vw"}
           type={
             sections[i][1].startsWith("https://") ? "external" : 
             sections[i][1].startsWith("#") ? "scroll" : "internal"
           }
           href={sections[i][1]}
-          button_class={sections[i][2] +" "+ styles.menu_item}
+          button_class={sections[i][2] +" "+ (mobile ? styles.menu_item_mobile : styles.menu_item)}
         />;
       items.push(item);
     }
@@ -48,6 +49,10 @@ const Menu = (props) => {
     admin = !admin;
     console.log(admin);
   };
+
+  const openMenu = () => {
+    setVisible(!visible);
+  }
 
   return (
     <Fragment>
@@ -61,16 +66,6 @@ const Menu = (props) => {
           type="home"
           button_class={mobile ? styles.logo_mobile : styles.logo_desktop}
         />
-
-        {mobile ? <CustomButton
-            src={"/img/menu/menu_mobile.png"}
-            hover_src={"/img/menu/menu_mobile.png"}
-            w={100}
-            h={30}
-            resp_w={"16vw"}
-            type="action"
-            button_class={styles.menu_button}
-          /> : <span/>}
 
         <CustomImage
           resp_w={mobile ? "100vw" : "13vw"}
@@ -92,8 +87,25 @@ const Menu = (props) => {
         ></span>
 
         <Radio/>
-     
-        {props.home ? getMenuItems() : <span/>}
+
+        {props.home ? 
+          <span>
+            <div class={mobile ? (visible ? styles.menu_container : styles.invisible) : ""}>
+              {getMenuItems()}
+            </div>
+            {mobile ? <CustomButton
+              src={"/img/menu/menu_mobile.png"}
+              hover_src={"/img/menu/menu_mobile.png"}
+              w={100}
+              h={30}
+              resp_w={"16vw"}
+              type="action"
+              actionClickHandler={openMenu}
+              button_class={styles.menu_button}
+            /> : <span/>}
+          </span>
+          : <span/>
+        }
 
         {/*<span onClick={() => toggleAdminMode()}>
           admin

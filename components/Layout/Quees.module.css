@@ -11,3 +11,11 @@ p.customfont {
     margin-right: 4vw;
     margin-top: 3vh;
 }
+
+p.mobilefont { 
+  font-family: "ContentFont", sans-serif;
+  font-size: 2vh;
+  margin-left: 3vw;
+  margin-right: 4vw;
+  margin-top: 3vh;
+}

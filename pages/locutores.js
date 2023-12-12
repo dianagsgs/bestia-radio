@@ -31,18 +31,25 @@ export default function Locutores(props) {
       id={"locutor_"+persona.id}
       titulo="/img/titulos/locutores.png"
       title_width="110"
-      mobile={props.mobile}
+      mobile={mobile}
     >
       <div class={styles.content}>
         <div className="row">
-          <div className="col-lg-3" class={styles.foto_locutor_fuera}>
+          <div
+            className={"col-lg-3"}
+            class={
+              mobile ? 
+                styles.foto_locutor_fuera_mobile
+              : styles.foto_locutor_fuera
+            }
+          >
             <CustomImage
-              resp_w="20vw"
+              resp_w={mobile ? "58vw" : "20vw"}
               src={"/img/locutores/"+persona.foto}
               w="83"
               h="75"
               id={"foto"+persona.id}
-              class={styles.foto_locutor_dentro}
+              class={mobile ? styles.foto_locutor_dentro_mobile : styles.foto_locutor_dentro}
             />
           </div>
           <div className="col-lg-8">
@@ -52,10 +59,10 @@ export default function Locutores(props) {
                 {persona.insta}
               </span>
             </p>
-            <p class={styles.font_horario}>
+            <p class={mobile ? styles.font_horario_mobile : styles.font_horario}>
               {getBulletPoints(persona.programas)}
             </p>
-            <p class={styles.font_bio}>
+            <p class={mobile ? styles.font_bio_mobile : styles.font_bio}>
               {persona.bio}
             </p>
           </div>

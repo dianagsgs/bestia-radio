@@ -14,17 +14,17 @@ export default function Section(props) {
   return (
     <Fragment>
       <section
-          className={styles.section}
+          className={props.mobile ? styles.section_mobile : styles.section}
           id={props.id}
           style={{ backgroundImage: background_src }}
         >
           <CustomImage
-            resp_w="15vw"
+            resp_w={props.mobile ? "50vw ": "15vw"}
             src={props.titulo}
             w={props.title_width}
             h="35"
             id={"titulo" + props.id}
-            class={styles.titulo}
+            class={props.mobile ? styles.titulo_mobile : styles.titulo}
           />
           {props.children}
         </section>  

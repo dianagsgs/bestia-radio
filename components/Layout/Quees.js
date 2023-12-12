@@ -13,7 +13,7 @@ export default function Quees(props) {
         title_width="100"
         mobile={props.mobile}
       >
-        <p class={styles.customfont}>
+        <p class={props.mobile ? styles.mobilefont : styles.customfont}>
           Desde su fundación en 2020, La Bestia Radio no sólo se ha dado a conocer gracias a sus rituales
           satánicos y partidas de ouija con músicos fallecidos por sobredosis en los años 90, sino también
           por ser la nueva estación de rock alternativo de La CDMX. Entre nuestros locutores se encuentran

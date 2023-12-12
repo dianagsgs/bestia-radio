@@ -22,7 +22,7 @@ function MyApp({ Component, pageProps }) {
       setWindowSize("small");
     /*} else if (width <= 1007 && windowSize !== "medium") {
       setWindowSize("medium");*/
-    } else if (width > 1007 && windowSize !== "large") {
+    } else if (width > 1000 && windowSize !== "large") {
       setWindowSize("large");
     }
   };

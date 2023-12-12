@@ -9,7 +9,7 @@ export default function Sesiones(props) {
   const getItem = (sesion) => {
     let item =
     <div className="col-lg-6">
-      <div class={styles.sesion}>
+      <div class={props.mobile ? styles.sesion_mobile : styles.sesion}>
         <iframe
           width="100%"
           height="100%"

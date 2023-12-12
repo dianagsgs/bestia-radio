@@ -31,10 +31,6 @@ export default function CustomButton(props) {
     document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
   }
 
-  const openMenu = () => {
-    console.log('toggle open menu');
-  }
-
   const image =
     <CustomImage
       resp_w={props.resp_w}
@@ -76,7 +72,7 @@ export default function CustomButton(props) {
     } else if(props.type === "action") {
         return(
           <div
-            onClick={() => openMenu()}
+            onClick={props.actionClickHandler}
           >
             {image}
           </div>

@@ -7,6 +7,23 @@
     padding-right: 3vw;
     background-size: cover;
 }
+
+.section_mobile {
+    position: static;
+    min-height: 100vh;
+    min-width: 100vw;
+    padding-top: 12vh;
+    padding-left: 3vw;
+    padding-right: 3vw;
+    background-size: cover;
+}
+
 .titulo {
     padding: 3vh;
+}
+
+.titulo_mobile {
+    padding-top: 4vh;
+    margin-left: 20vw;
+    padding-bottom: 2vh;
 }
