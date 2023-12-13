@@ -8,6 +8,9 @@ function MyApp({ Component, pageProps }) {
   const [windowWidth, setWindowWidth] = useState(0);
   const [windowSize, setWindowSize] = useState(null);
 
+  const backgroundCount = 4;
+  const randomBackground = Math.floor(Math.random() * backgroundCount);
+
   useEffect(() => {
     updateDimensions();
     window.addEventListener("resize", updateDimensions);
@@ -38,6 +41,7 @@ function MyApp({ Component, pageProps }) {
   return <Component
             {...pageProps}
             windowSize={windowSize} 
+            randomBackground={randomBackground}
           />;
 }
 

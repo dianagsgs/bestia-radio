@@ -32,6 +32,7 @@ export default function Locutores(props) {
       titulo="/img/titulos/locutores.png"
       title_width="110"
       mobile={mobile}
+      background_num={props.randomBackground}
     >
       <div class={styles.content}>
         <div className="row">
@@ -45,7 +46,7 @@ export default function Locutores(props) {
           >
             <CustomImage
               resp_w={mobile ? "58vw" : "20vw"}
-              src={"/img/locutores/"+persona.foto}
+              src={persona.foto}
               w="83"
               h="75"
               id={"foto"+persona.id}

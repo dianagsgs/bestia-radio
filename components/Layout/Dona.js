@@ -23,6 +23,7 @@ export default function Dona(props) {
         titulo="/img/titulos/dona.png"
         title_width="100"
         mobile={props.mobile}
+        background_num={props.background_num}
       >
         DONA
       </Section>

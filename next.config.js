@@ -1,5 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  images: {
+    domains: ["vvqskzptir4l8fs6.public.blob.vercel-storage.com"]
+  },
   rewrites: async () => {
     return [
       {

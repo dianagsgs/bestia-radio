@@ -60,6 +60,7 @@ export default function Radioteca(props) {
         titulo="/img/titulos/radioteca.png"
         title_width="130"
         mobile={props.mobile}
+        background_num={props.background_num}
       >
         <Carousel
           responsive={responsive}

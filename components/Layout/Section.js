@@ -5,11 +5,7 @@ import { Fragment } from "react";
 
 export default function Section(props) {
 
-  function getRandomInt(max) {
-    return Math.floor(Math.random() * max);
-  }
-
-  const background_src = "url(/img/Fondo/fondo_"+(props.mobile ? "mobile" : "desktop")+"_"+getRandomInt(4)+".png)";
+  const background_src = "url(/img/Fondo/fondo_"+(props.mobile ? "mobile" : "desktop")+"_"+props.background_num+".png)";
   
   return (
     <Fragment>

@@ -12,6 +12,7 @@ export default function TwitchYChat(props) {
         titulo="/img/titulos/twitch.png"
         title_width="100"
         mobile={props.mobile}
+        background_num={props.background_num}
       >
         <div className="row">
             <div className="col-lg-6">

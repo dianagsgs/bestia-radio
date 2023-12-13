@@ -13,6 +13,7 @@ export default function Programacion(props) {
         titulo="/img/titulos/programacion.png"
         title_width="130"
         mobile={props.mobile}
+        background_num={props.background_num}
       >
         <CustomImage
           resp_w="61vw"

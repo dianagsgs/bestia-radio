@@ -9,6 +9,7 @@ import sys
 import psycopg2 
 import os
 import numpy as np
+from datetime import datetime
 
 app = Flask(__name__)
 CORS(app)
@@ -93,24 +94,22 @@ def get_locutores():
 
 @app.route('/api/get_eventos', methods=["GET"])
 def get_eventos():
-    eventos = [
-        {
-            "id":"1",
-            "flyer":"evento1.png",
-            "nombre":"Ruido En Casa",
-            "fecha":"14 de Octubre, 2023",
-            "hora":"7pm",            
-            "precio":"Gratis"
-        },
-        {
-            "id":"2",
-            "flyer":"evento2.png",
-            "nombre":"Ruido En Casa: Halloween",
-            "fecha":"20 de Octubre, 2023",
-            "hora":"7pm",            
-            "precio":"Gratis con disfraz mamalón"
+    conn = start_connection()
+    data = execute_query('''SELECT * FROM evento''', conn)
+    conn.close()
+    eventos = []
+    for item in data:
+        evento = {
+            "id":item[0],
+            "flyer":item[1],
+            "nombre":item[2],
+            "lugar":item[3],
+            "fecha":item[4].strftime("%Y-%m-%d"),
+            "hora":item[5].strftime("%H:%M:%S"),            
+            "precio":item[6],
+            "registro":item[7]
         }
-    ]
+        eventos.append(evento)
     resp = Response(response=json.dumps(eventos), status=200, mimetype="text/plain")
     return resp
 

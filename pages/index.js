@@ -45,14 +45,14 @@ export default function Home(props) {
 
         <Menu home={true} mobile={mobile}/>
 
-        <TwitchYChat mobile={mobile}/>
-        {/*<Dona/>*/}
-        <Programacion mobile={mobile}/>
-        <Sesiones mobile={mobile}/>
-        <Eventos mobile={mobile}/>
-        <Radioteca mobile={mobile}/>
-        <Editorial mobile={mobile}/>
-        <Quees mobile={mobile}/>
+        <TwitchYChat mobile={mobile} background_num={props.randomBackground}/>
+        {/*<Dona mobile={mobile} background_num={props.randomBackground}/>*/}
+        <Programacion mobile={mobile} background_num={props.randomBackground}/>
+        <Sesiones mobile={mobile} background_num={props.randomBackground}/>
+        <Eventos mobile={mobile} background_num={props.randomBackground}/>
+        <Radioteca mobile={mobile} background_num={props.randomBackground}/>
+        <Editorial mobile={mobile} background_num={props.randomBackground}/>
+        <Quees mobile={mobile} background_num={props.randomBackground}/>
 
       </main>
     </div>

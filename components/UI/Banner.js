@@ -51,7 +51,7 @@ const Banner = (props) => {
       <a href={link_list[chosen_banner]} target="_blank">
         <img src={props.mobile ? mobile_list[chosen_banner] : desktop_list[chosen_banner]} alt="Promotional Banner" />
       </a>
-      <img src={`img/banners/close.png`} className={props.mobile ? styles.close_mobile : styles.close} onClick={() => setVisible(false)}/>
+      <img src={`img/close.png`} className={props.mobile ? styles.close_mobile : styles.close} onClick={() => setVisible(false)}/>
     </div>
   ) : <span/>;
   return content;
