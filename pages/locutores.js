@@ -14,7 +14,7 @@ export default function Locutores(props) {
   const [locutores, setLocutores] = useState(null);
 
   const getBulletPoints = (list) => {
-    let points = []
+    let points = [];
     for(let i = 0; i < list.length; i++) {
       let point =
         <div>
@@ -73,18 +73,23 @@ export default function Locutores(props) {
     return item;
   }
 
+  const getItems = () => {
+    let items = [];
+    if(locutores !== null){
+      for(let i = 0; i < locutores.length; i++) {
+        items.push(getItem(locutores[i]));
+      }
+    }
+    return items;
+  };
+
   useEffect(() => {
     axios({
       method: "GET",
       url:"/api/get_locutores"
     })
     .then((response) => {
-      const personas = response.data;
-      let items = []
-      for(let i = 0; i < personas.length; i++) {
-        items.push(getItem(personas[i]));
-      }
-      setLocutores(items);
+      setLocutores(response.data);      
     }).catch((error) => {
       if (error.response) {
         console.log(error.response)
@@ -97,7 +102,7 @@ export default function Locutores(props) {
   return (
     <Fragment>
       <Menu home={false} mobile={mobile}/>
-        {locutores}
+        {getItems()}
     </Fragment>
   );
 }

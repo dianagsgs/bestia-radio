@@ -9,7 +9,32 @@ import 'react-multi-carousel/lib/styles.css';
 import CustomImage from "../UI/CustomImage";
 
 export default function Eventos(props) {
-  const [eventos, setEventos] = useState([]);
+  const [eventos, setEventos] = useState(null);
+
+  const getItems = () => {
+    let items = [];
+    if(eventos !== null){
+      for(let i = 0; i < eventos.length; i++){
+        let evento = eventos[i];
+        let item =
+          <div className="col-lg-3" id={"evento_"+i}>
+            <CustomImage
+              resp_w={props.mobile ? "80vw" : "20vw"}
+              src={evento.flyer}
+              w="83"
+              h="110"
+              id={"foto"+i}
+              class={styles.flyer}
+            />
+            <div class={props.mobile ? styles.event_desc_mob : styles.event_desc}>
+              {evento.nombre}, {evento.precio} - {evento.registro ? <a class={styles.boton_registro} href="mailto:contacto@somoslabestia.com?Subject=Solicitud%20de%20registro%20para%20evento&body=Me%20quiero%20registrar%20para%3A%0ANombre%3A%0AApellido%3A%0ACorreo%3A">con registro</a> :" sin registro"}
+            </div>
+          </div>
+        items.push(item);
+      }
+    }
+    return items;
+  };
 
   useEffect(() => {
     axios({
@@ -17,30 +42,7 @@ export default function Eventos(props) {
       url:"/api/get_eventos"
     })
     .then((response) => {
-      const eventos = response.data;
-      let items = [];
-      for(let i = 0; i < eventos.length; i++) {
-        // OTHER AVAILABLE DATA
-        // eventos[i].fecha
-        // eventos[i].hora
-        // eventos[i].lugar
-        let item =
-          <div className="col-lg-3" id={"evento_"+i}>
-            <CustomImage
-              resp_w="20vw"
-              src={eventos[i].flyer}
-              w="83"
-              h="110"
-              id={"foto"+i}
-              class={styles.flyer}
-            />
-            <div class={styles.event_desc}>
-              {eventos[i].nombre}, {eventos[i].precio} - {eventos[i].registro ? <a class={styles.boton_registro} href="mailto:contacto@somoslabestia.com?Subject=Solicitud%20de%20registro%20para%20evento&body=Me%20quiero%20registrar%20para%3A%0ANombre%3A%0AApellido%3A%0ACorreo%3A">con registro</a> :" sin registro"}
-            </div>
-          </div>
-        items.push(item);
-      }
-      setEventos(items);
+      setEventos(response.data);
     }).catch((error) => {
       if (error.response) {
         console.log(error.response)
@@ -83,7 +85,7 @@ export default function Eventos(props) {
           responsive={responsive}
           infinite={true}
         >
-          {eventos}
+          {getItems()}
         </Carousel>
       </Section>
     </Fragment>
