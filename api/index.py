@@ -73,11 +73,38 @@ def get_locutores():
         programas = []
         for i in ids_programa:
             programa = execute_query('''SELECT * FROM programa WHERE Id = '''+str(i[0]),conn)[0]
+            dias = ""
+            if programa[4]:
+                dias += "Lunes"
+            if programa[5]:
+                if dias != "":
+                    dias += ", "
+                dias += "Martes"
+            if programa[6]:
+                if dias != "":
+                    dias += ", "
+                dias += "Miercoles"
+            if programa[7]:
+                if dias != "":
+                    dias += ", "
+                dias += "Jueves"
+            if programa[8]:
+                if dias != "":
+                    dias += ", "
+                dias += "Viernes"
+            if programa[9]:
+                if dias != "":
+                    dias += ", "
+                dias += "Sabado"
+            if programa[10]:
+                if dias != "":
+                    dias += ", "
+                dias += "Domingo"
             programas.append({
                 "id":programa[0],
                 "nombre":programa[1],
-                "horario":programa[2] + " - " + str(programa[3].hour) + "hrs",
-                "activo":programa[4]
+                "horario":dias + " - " + str(programa[2].hour) + "hrs",
+                "activo":programa[3]
             })
         persona = {
             "id":locutor[0],
@@ -112,6 +139,49 @@ def get_eventos():
         eventos.append(evento)
     resp = Response(response=json.dumps(eventos), status=200, mimetype="text/plain")
     return resp
+
+@app.route('/api/get_programas', methods=["GET"])
+def get_programas():
+    conn = start_connection()
+    data_lunes = execute_query('''SELECT Nombre, Hora FROM programa WHERE Lunes = true AND Activo = true''', conn)
+    data_martes = execute_query('''SELECT Nombre, Hora FROM programa WHERE Martes = true AND Activo = true''', conn)
+    data_miercoles = execute_query('''SELECT Nombre, Hora FROM programa WHERE Miercoles = true AND Activo = true''', conn)
+    data_jueves = execute_query('''SELECT Nombre, Hora FROM programa WHERE Jueves = true AND Activo = true''', conn)
+    data_viernes = execute_query('''SELECT Nombre, Hora FROM programa WHERE Viernes = true AND Activo = true''', conn)
+    conn.close()
+
+    programas = {
+        "LUNES":{},
+        "MARTES":{},
+        "MIERCOLES":{},
+        "JUEVES":{},
+        "VIERNES":{}
+    }
+    for item in data_lunes:
+        programas["LUNES"][str(item[1].hour)+"hrs"] = item[0]
+    for item in data_martes:
+        programas["MARTES"][str(item[1].hour)+"hrs"] = item[0]
+    for item in data_miercoles:
+        programas["MIERCOLES"][str(item[1].hour)+"hrs"] = item[0]
+    for item in data_jueves:
+        programas["JUEVES"][str(item[1].hour)+"hrs"] = item[0]
+    for item in data_viernes:
+        programas["VIERNES"][str(item[1].hour)+"hrs"] = item[0]
+
+    resp = Response(response=json.dumps(programas), status=200, mimetype="text/plain")
+    return resp
+
+@app.route('/api/post_programa', methods=["POST"])
+def post_programa():
+    conn = start_connection()
+    cur = conn.cursor()  
+    cur.execute('''INSERT INTO programa (Id, Nombre, Hora, Activo, Lunes, Martes, Miercoles, Jueves, Viernes, Sabado, Domingo)
+                VALUES ''' + request.args["values"])
+    cur.close()
+    conn.commit()
+    conn.close()
+    return "success"
+
 
 if __name__ == "__main__":
     app.run(debug=True)

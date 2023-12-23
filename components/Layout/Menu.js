@@ -10,13 +10,13 @@ const Menu = (props) => {
   let mobile = props.mobile;
   let sections = [
     ["dona","https://ko-fi.com/labestiaradiocdmx",mobile ? styles.dona_mobile : styles.dona],// ["dona","#dona",styles.dona],
-    ["programacion","#programacion",mobile ? styles.programacion_mobile : styles.programacion],
-    ["sesiones","#sesiones",mobile ? styles.sesiones_mobile : styles.sesiones],
-    ["eventos","#eventos",mobile ? styles.eventos_mobile : styles.eventos],
-    ["locutores","/locutores",mobile ? styles.locutores_mobile : styles.locutores],
-    ["radioteca","#radioteca",mobile ? styles.radioteca_mobile : styles.radioteca],
-    ["editorial","#editorial",mobile ? styles.editorial_mobile : styles.editorial],
     ["tienda","https://www.somoslabestia.com/shop-1",mobile ? styles.tienda_mobile : styles.tienda],
+    ["editorial","#editorial",mobile ? styles.editorial_mobile : styles.editorial],
+    ["eventos","#eventos",mobile ? styles.eventos_mobile : styles.eventos],
+    ["radioteca","#radioteca",mobile ? styles.radioteca_mobile : styles.radioteca],
+    ["sesiones","#sesiones",mobile ? styles.sesiones_mobile : styles.sesiones],
+    ["programacion","#programacion",mobile ? styles.programacion_mobile : styles.programacion],
+    ["locutores","/locutores",mobile ? styles.locutores_mobile : styles.locutores],
     ["quees","#quees",mobile ? styles.quees_mobile : styles.quees]
   ];
   const [visible, setVisible] = useState(false);

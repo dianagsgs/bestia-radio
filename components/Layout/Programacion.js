@@ -1,11 +1,31 @@
 import styles from "./Programacion.module.css";
-import { Fragment } from "react";
+import { Fragment, useEffect, useState } from "react";
 import Section from "./Section"
+
+import axios from "axios";
 
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 
 export default function Programacion(props) {
+  const [programacion, setProgramacion] = useState({});
+
+  const getProgramas = (day) => {
+    let items = [];
+    let programacion_day = programacion[day];
+    if (programacion_day !== undefined) {
+      for (let i = 10; i < 21; i++) {
+        let time = i + "hrs";
+        let programa = programacion_day[time] == undefined ? "" : programacion_day[time];
+        let item = 
+          <p class={styles.font_horario}>
+            {time} - {programa}
+          </p>
+        items.push(item)
+      }
+    }
+    return items
+  };
 
   const getItems = () => {
     let items = [];
@@ -19,44 +39,28 @@ export default function Programacion(props) {
       let item =
         <div class={props.mobile ? styles.un_dia_mobile : styles.un_dia}>
           <p class={styles.font_nombre_dia}>{days[index]}</p>
-          <p class={styles.font_horario}>
-            10am - La Hora de la Bestia
-          </p>
-          <p class={styles.font_horario}>
-            11am - Desinformando a la Banda
-          </p>
-          <p class={styles.font_horario}>
-            12pm - Carolina in PJs
-          </p>
-          <p class={styles.font_horario}>
-            12pm - Carolina in PJs
-          </p>
-          <p class={styles.font_horario}>
-            12pm - Carolina in PJs
-          </p>
-          <p class={styles.font_horario}>
-            12pm - Carolina in PJs
-          </p>
-          <p class={styles.font_horario}>
-            12pm - Carolina in PJs
-          </p>
-          <p class={styles.font_horario}>
-            12pm - Carolina in PJs
-          </p>
-          <p class={styles.font_horario}>
-            12pm - Carolina in PJs
-          </p>
-          <p class={styles.font_horario}>
-            12pm - Carolina in PJs
-          </p>
-          <p class={styles.font_horario}>
-            12pm - Carolina in PJs
-          </p>
+          {getProgramas(days[index])}
         </div>
       items.push(item);
     }
     return items;
   };
+
+  useEffect(() => {
+    axios({
+      method: "GET",
+      url:"/api/get_programas"
+    })
+    .then((response) => {
+      setProgramacion(response.data);
+    }).catch((error) => {
+      if (error.response) {
+        console.log(error.response)
+        console.log(error.response.status)
+        console.log(error.response.headers)
+      }
+    })
+  }, []);
 
   const responsive = {
     superLargeDesktop: {
