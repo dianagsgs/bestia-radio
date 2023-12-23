@@ -89,7 +89,7 @@ export default function Programacion(props) {
       >
        <Carousel
           responsive={responsive}
-          infinite={true}
+          infinite={props.mobile ? true : false}
         >
           {getItems()}
         </Carousel>

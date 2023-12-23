@@ -14,7 +14,7 @@ export default function TwitchYChat(props) {
         mobile={props.mobile}
         background_num={props.background_num}
       >
-        <div className="row">
+        <div className="row" class={styles.contenido}>
             <div className="col-lg-6">
               <iframe
                 src="https://player.twitch.tv/?channel=labestiaradio&parent=labestiaradio.com&parent=www.labestiaradio.com&parent=bestia-radio.vercel.app"

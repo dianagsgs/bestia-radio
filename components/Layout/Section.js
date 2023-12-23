@@ -18,7 +18,7 @@ export default function Section(props) {
             resp_w={props.mobile ? "50vw ": "15vw"}
             src={props.titulo}
             w={props.title_width}
-            h="35"
+            h="30"
             id={"titulo" + props.id}
             class={props.mobile ? styles.titulo_mobile : styles.titulo}
           />

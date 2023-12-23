@@ -1,11 +1,6 @@
-.calendario{
-    position: relative;
-    margin-left:14vw;
-}
 .un_dia {
     background-color: rgba(216, 216, 249, 0.38);
     width:15vw;
-    margin-left: 1.4vw;
     padding-left: 1vw;
     padding-top: 1vh;
     padding-bottom: 1vh;
