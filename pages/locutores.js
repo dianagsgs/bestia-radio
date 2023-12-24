@@ -2,9 +2,10 @@ import styles from "../styles/locutores.module.css";
 import axios from "axios";
 
 import { Fragment, useEffect, useState } from "react";
-import Section from "../components/Layout/Section"
 import Menu from "../components/Layout/Menu";
 import CustomImage from "../components/UI/CustomImage";
+import Section from "../components/UI/Section";
+import Player from "../components/Layout/Player";
 
 
 export default function Locutores(props) {
@@ -30,7 +31,6 @@ export default function Locutores(props) {
     <Section
       id={"locutor_"+persona.id}
       titulo="/img/titulos/locutores.png"
-      title_width="110"
       mobile={mobile}
       background_num={props.randomBackground}
     >
@@ -102,7 +102,8 @@ export default function Locutores(props) {
   return (
     <Fragment>
       <Menu home={false} mobile={mobile}/>
-        {getItems()}
+      <Player mobile={mobile}/>
+      {getItems()}
     </Fragment>
   );
 }

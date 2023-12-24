@@ -6,14 +6,15 @@ import Banner from "../components/UI/Banner";
 
 import HeadContent from "../components/Layout/HeadContent";
 import Menu from "../components/Layout/Menu";
-import TwitchYChat from "../components/Layout/TwitchYChat";
-import Radioteca from "../components/Layout/Radioteca";
-import Programacion from "../components/Layout/Programacion";
-import Editorial from "../components/Layout/Editorial";
-import Sesiones from "../components/Layout/Sesiones";
+import TwitchYChat from "../components/Layout/Secciones/TwitchYChat";
+import Radioteca from "../components/Layout/Secciones/Radioteca";
+import Programacion from "../components/Layout/Secciones/Programacion";
+import Editorial from "../components/Layout/Secciones/Editorial";
+import Sesiones from "../components/Layout/Secciones/Sesiones";
 import Dona from "../components/Layout/Dona";
-import Eventos from "../components/Layout/Eventos";
-import Quees from "../components/Layout/Quees";
+import Eventos from "../components/Layout/Secciones/Eventos";
+import Quees from "../components/Layout/Secciones/Quees";
+import Player from "../components/Layout/Player";
 
 export default function Home(props) {
 
@@ -43,18 +44,20 @@ export default function Home(props) {
          
         <Banner mobile={mobile}/>
 
+        <Player mobile={mobile}/>
+
         <Menu home={true} mobile={mobile}/>
 
-        <TwitchYChat mobile={mobile} background_num={props.randomBackground}/>
+        <Dona mobile={mobile}/>
 
+        {/* SECCIONES */}
+        <TwitchYChat mobile={mobile} background_num={props.randomBackground}/>
         {/* Might change: */}
         <Editorial mobile={mobile} background_num={props.randomBackground}/>
-        
         <Eventos mobile={mobile} background_num={props.randomBackground}/>
         <Radioteca mobile={mobile} background_num={props.randomBackground}/>
         <Sesiones mobile={mobile} background_num={props.randomBackground}/>
         <Programacion mobile={mobile} background_num={props.randomBackground}/>
-        
         {/* Might change: */}
         <Quees mobile={mobile} background_num={props.randomBackground}/>
 

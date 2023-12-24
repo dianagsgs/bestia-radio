@@ -1,5 +1,6 @@
 .section {
-    position: static;
+    position: relative;
+    top: 8vh;
     min-height: 100vh;
     min-width: 100vw;
     padding-top: 10vh;

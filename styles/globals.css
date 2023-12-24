@@ -16,8 +16,8 @@ a {
 }
 
 @font-face {
-  font-family: "ContentFont";
-  src: url("/fonts/HelveticaRoundedLTStd-Bd.otf") format('opentype');
+  font-family: "PlayerFont";
+  src: url("/fonts/ConcertOne-Regular.ttf") format('opentype');
   font-weight: normal;
   font-style: normal;
 }
@@ -32,50 +32,49 @@ p.customfont {
 /* RADIO */
 
 .radioco-playButton-playing {
-  position:absolute;
-  width: 3.5vh;
-  height: 3.5vh;
+  position:fixed;
+  width: 6vh;
+  height: 6vh;
   background-image: url("/img/player/player_boton_play.png");
   background-repeat: no-repeat;
   background-size: contain;
-  top: 50.5vh;
-  left: 1.6vw;
+  top: 3vh;
+  left: 16vw;
   cursor: pointer;
+  z-index: 7;
 }
 .radioco-playButton-paused {
-  position: absolute;
-  width: 3.5vh;
-  height: 3.5vh;
+  position: fixed;
+  width: 6vh;
+  height: 6vh;
   background-image: url("/img/player/player_boton_pausa.png");
   background-repeat: no-repeat;
   background-size: contain;
-  top: 50.5vh;
-  left: 1.6vw;
+  top: 3vh;
+  left: 16vw;
   cursor: pointer;
+  z-index: 7;
 }
 .radioco-nowPlaying {
-  position:absolute;
-  top: 46vh;
-  left: 1.7vw;
-  height: 3.9vh;
-  width: 11.5vw;
-  padding-top: 1.2vh;
-  padding-left: 0.8vw;
-  padding-right: 0.7vw;
-  font-size: 1.2vh;
-  font-family: "ContentFont", sans-serif;
+  position:fixed;
+  top: 3.5vh;
+  left: 20vw;
+  height: 5vh;
+  padding-bottom: 0.5vh;
+  width: 62vw;
+  font-size: 3.1vh;
+  font-family: "PlayerFont";
   color: #000000;
-  background-image: url("/img/player/player_programas.png");
-  background-size: 23vh;
-  background-repeat: no-repeat;
   overflow: hidden;
+  z-index: 7;
 }
 
 .radioco-volume {
-  position: absolute;
-  z-index: 999;
-  top:51vh;
-  left: 3.8vw;
+  position: fixed;
+  z-index: 7;
+  top: 5vh;
+  left: 87vw;
+  width: 10vw;
 }
 
 input[type="range"] {
@@ -83,7 +82,7 @@ input[type="range"] {
   appearance: none;
   background-image: url("/img/player/player_volumen_barra.png");
   background-repeat: no-repeat;
-  background-size: 18.5vh;
+  background-size: 10vw 2.5vh;
   border-radius: 1vw;
   height: 2.6vh;
   cursor: pointer;
@@ -92,23 +91,11 @@ input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
   background-image: url("/img/player/player_volumen_modulador.png");
-  background-size: 3.3vh;
+  background-size: 3.8vh;
   background-repeat: no-repeat;
-  width: 1.6vw;
-  height: 3vh;
+  width: 1.9vw;
+  height: 4vh;
   
-}
-.volume-icon {
-  position: absolute;
-  top: 3px;
-  left: 470px;
-  height: 100%;
-  color: white;
-  font-size: 22px;
-  width: 25px;
-}
-.volume-icon img {
-  width: 100%;
 }
 
 @media only screen and (max-width: 1000px) {
@@ -183,18 +170,6 @@ input[type="range"]::-webkit-slider-thumb {
     width: 4.8vw;
     height: 2.5vh;
     
-  }
-  .volume-icon {
-    position: absolute;
-    top: 5vh;
-    left: 470px;
-    height: 100%;
-    color: white;
-    font-size: 22px;
-    width: 25px;
-  }
-  .volume-icon img {
-    width: 100%;
   }
 }
 

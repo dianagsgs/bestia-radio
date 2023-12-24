@@ -1,6 +1,6 @@
 import styles from "./Editorial.module.css";
 import { Fragment } from "react";
-import Section from "./Section"
+import Section from "../../UI/Section"
 
 
 export default function Editorial(props) {
@@ -10,7 +10,6 @@ export default function Editorial(props) {
       <Section
         id="editorial"
         titulo="/img/titulos/editorial.png"
-        title_width="110"
         mobile={props.mobile}
         background_num={props.background_num}
       >

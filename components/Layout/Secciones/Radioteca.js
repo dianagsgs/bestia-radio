@@ -1,6 +1,6 @@
 import styles from "./Radioteca.module.css";
 import { Fragment } from "react";
-import Section from "./Section";
+import Section from "../../UI/Section";
 
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
@@ -58,7 +58,6 @@ export default function Radioteca(props) {
       <Section
         id="radioteca"
         titulo="/img/titulos/radioteca.png"
-        title_width="130"
         mobile={props.mobile}
         background_num={props.background_num}
       >

@@ -1,6 +1,6 @@
 import styles from "./Quees.module.css";
 import { Fragment } from "react";
-import Section from "./Section"
+import Section from "../../UI/Section"
 
 
 export default function Quees(props) {
@@ -10,7 +10,6 @@ export default function Quees(props) {
       <Section
         id="quees"
         titulo="/img/titulos/quees.png"
-        title_width="100"
         mobile={props.mobile}
         background_num={props.background_num}
       >

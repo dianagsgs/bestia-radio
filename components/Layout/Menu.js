@@ -9,7 +9,6 @@ const Radio = Dynamic(() => import("../UI/Radio"), { ssr: false });
 const Menu = (props) => {
   let mobile = props.mobile;
   let sections = [
-    ["dona","https://ko-fi.com/labestiaradiocdmx",mobile ? styles.dona_mobile : styles.dona],// ["dona","#dona",styles.dona],
     ["tienda","https://www.somoslabestia.com/shop-1",mobile ? styles.tienda_mobile : styles.tienda],
     ["editorial","#editorial",mobile ? styles.editorial_mobile : styles.editorial],
     ["eventos","#eventos",mobile ? styles.eventos_mobile : styles.eventos],
@@ -30,8 +29,8 @@ const Menu = (props) => {
           hover_src={"/img/menu/menu_"+sections[i][0]+".png"}
           section_id={sections[i][0]}
           w={10}
-          h={mobile ? 2.5 : 1.5}
-          resp_w={mobile ? "30vw" : "10vw"}
+          h={mobile ? 1.7 : 1.5}
+          resp_w={mobile ? "32vw" : "10vw"}
           type={
             sections[i][1].startsWith("https://") ? "external" : 
             sections[i][1].startsWith("#") ? "scroll" : "internal"
@@ -62,31 +61,10 @@ const Menu = (props) => {
           hover_src={mobile ? "/img/logo_mobile.png" : "/img/logo.png"}
           w={140}
           h={mobile ? 140 : 190}
-          resp_w={mobile ? "15vw" : "9vw"}
+          resp_w={mobile ? "15vw" : "12vw"}
           type="home"
           button_class={mobile ? styles.logo_mobile : styles.logo_desktop}
         />
-
-        <CustomImage
-          resp_w={mobile ? "100vw" : "13vw"}
-          src={mobile ? "/img/player/player_mobile.png" : "/img/player/player_base.png"}
-          w="83"
-          h={mobile ? "10" : "75"}
-          id="player"
-          class={mobile ? styles.player_mobile : styles.player_desktop}
-        />
-
-        <span
-          className="radioplayer"
-          data-src="https://streams.radio.co/s4aaec47cd/listen"
-          data-playbutton="true"
-          data-volumeslider="true"
-          data-elapsedtime="false"
-          data-nowplaying="true"
-          data-showplayer="false"
-        ></span>
-
-        <Radio/>
 
         {props.home ? 
           <span>

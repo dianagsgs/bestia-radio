@@ -1,7 +1,6 @@
+import Section from "../../UI/Section";
 import styles from "./TwitchYChat.module.css";
 import { Fragment } from "react";
-import Section from "./Section"
-
 
 export default function TwitchYChat(props) {
   
@@ -10,7 +9,6 @@ export default function TwitchYChat(props) {
       <Section
         id="twitch_y_chat"
         titulo="/img/titulos/twitch.png"
-        title_width="100"
         mobile={props.mobile}
         background_num={props.background_num}
       >

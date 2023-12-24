@@ -1,7 +1,7 @@
 import styles from "./Sesiones.module.css";
 import { useCallback, useEffect, Fragment, useState } from "react";
-import Section from "./Section"
 import axios from "axios";
+import Section from "../../UI/Section";
 
 export default function Sesiones(props) {
   const [sesiones, setSesiones] = useState(null);
@@ -52,7 +52,6 @@ export default function Sesiones(props) {
       <Section
         id="sesiones"
         titulo="/img/titulos/sesiones.png"
-        title_width="110"
         mobile={props.mobile}
         background_num={props.background_num}
       >

@@ -27,8 +27,8 @@
 
 .logo_desktop {
   position: absolute;
-  left: 3vw;
-  top: 4vh;
+  left: 2vw;
+  top: 17vh;
 }
 
 .logo_mobile {
@@ -37,84 +37,66 @@
   top: 1.4vh;
 }
 
-.player_desktop {
-  position: absolute;
-  left: 1vw;
-  top: 32vh;
-  border-radius: 100%;
-}
 
-.player_mobile {
-  position: absolute;
-  top: 9vh;
-  border-radius: 100%;
-  z-index: -1;
-}
-
-.dona {
-  top: 60vh;
-}
-.programacion {
-  top: 63vh;
-}
-.sesiones {
-  top: 67vh;
-}
-.eventos {
-  top: 71vh;
-}
-.locutores {
-  top: 75vh;
-}
-.radioteca {
-  top: 79vh;
+.tienda {
+  top: 57vh; 
 }
 .editorial {
-  top: 83vh;
+  top: 62vh;
 }
-.tienda {
-  top: 87vh; 
+.eventos {
+  top: 67vh;
+}
+.radioteca {
+  top: 72vh;
+}
+.sesiones {
+  top: 77vh;
+}
+.programacion {
+  top: 82vh;
+}
+.locutores {
+  top: 87vh;
 }
 .quees {
-  top: 90vh; 
+  top: 92vh; 
 }
 
-.dona_mobile {
-  top: 7vh;
-}
-.programacion_mobile {
-  top: 10vh;
-}
-.sesiones_mobile {
-  top: 14vh;
-}
-.eventos_mobile {
-  top: 18vh;
-}
-.locutores_mobile {
-  top: 22vh;
-}
-.radioteca_mobile {
-  top: 26vh;
+
+.tienda_mobile {
+  top: 8vh; 
 }
 .editorial_mobile {
-  top: 30vh;
+  top: 12vh;
 }
-.tienda_mobile {
-  top: 34vh; 
+.eventos_mobile {
+  top: 16vh;
+}
+.radioteca_mobile {
+  top: 20vh;
+}
+.sesiones_mobile {
+  top: 24vh;
+}
+.programacion_mobile {
+  top: 28vh;
+}
+.locutores_mobile {
+  top: 32vh;
 }
 .quees_mobile {
-  top: 38vh; 
+  top: 36vh; 
 }
 
 .menu_item_mobile {
   position:absolute;
-  left: 65vw;
+  left: 64vw;
 }
 
 .menu_item {
   position:absolute;
-  left: 2.1vw;
+  left: 3.3vw;
 }
 
 .menu_container {

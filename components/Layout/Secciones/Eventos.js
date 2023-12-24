@@ -1,12 +1,12 @@
 import styles from "./Eventos.module.css";
 import { Fragment, useEffect, useState } from "react";
-import Section from "./Section";
+import Section from "../../UI/Section";
 import axios from "axios";
 
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 
-import CustomImage from "../UI/CustomImage";
+import CustomImage from "../../UI/CustomImage";
 
 export default function Eventos(props) {
   const [eventos, setEventos] = useState(null);
@@ -90,7 +90,6 @@ export default function Eventos(props) {
       <Section
         id="eventos"
         titulo="/img/titulos/eventos.png"
-        title_width="100"
         mobile={props.mobile}
         background_num={props.background_num}
       >
