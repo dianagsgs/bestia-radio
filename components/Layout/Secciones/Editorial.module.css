@@ -1,0 +1,72 @@
+.font_blurb {
+    padding-left: 1vw;
+    width: 23vw;
+    font-family: "ContentFont", sans-serif;
+    font-size: 2vh;
+}
+
+.font_titulo {
+    padding-top: 1vh;
+    padding-left: 1vw;
+    width: 23vw;
+    font-family: "PlayerFont", sans-serif;
+    font-size: 2vw;
+}
+
+.font_tipo {
+    padding-top: 1vh;
+    padding-left: 1vw;
+    width: 23vw;
+    font-family: "PlayerFont", sans-serif;
+    font-size: 1.2vw;
+}
+
+.font_cover {
+    padding-top: 1vh;
+    padding-left: 20vw;
+    width: 80vw;
+    font-family: "PlayerFont", sans-serif;
+    font-size: 5vw;
+}
+
+.mini_noticia{
+    background-color: rgba(216, 216, 249, 0.38);
+    width: 24vw;
+    height: 62vh;
+    overflow-y: scroll;
+}
+
+.link {
+    color: blue;   
+}
+
+.font_titulo_mobile {
+    padding-top: 1vh;
+    padding-left: 1vw;
+    width: 100vw;
+    font-family: "PlayerFont", sans-serif;
+    font-size: 4vh;
+}
+
+.font_tipo_mobile {
+    padding-top: 1vh;
+    padding-left: 1vw;
+    width: 100vw;
+    font-family: "PlayerFont", sans-serif;
+    font-size: 3vh;
+}
+
+.font_cover_mobile {
+    padding-top: 1vh;
+    padding-left: 20vw;
+    width: 100vw;
+    font-family: "PlayerFont", sans-serif;
+    font-size: 7vh;
+}
+
+.mini_noticia_mobile {
+    background-color: rgba(216, 216, 249, 0.38);
+    width: 100vw;
+    height: 62vh;
+    overflow-y: scroll;
+}

@@ -28,8 +28,23 @@ export default function CustomButton(props) {
   }
 
   const handleClickScroll = (id) => {
-    document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+    let element = document.getElementById(id);
+    let headerOffset = 45;
+    let elementPosition = element.getBoundingClientRect().top;
+    let offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: "smooth"
+    }); 
   }
+
+
+
+  function backToTop() {
+    window.scrollTo(0, 0);
+  }
+
+
 
   const image =
     <CustomImage
