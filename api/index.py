@@ -181,6 +181,25 @@ def get_programas():
     resp = Response(response=json.dumps(programas), status=200, mimetype="text/plain")
     return resp
 
+@app.route('/api/get_articulos', methods=["GET"])
+def get_articulos():
+    conn = start_connection()
+    data = execute_query('''SELECT Id, Tipo, Titulo, Foto_path, Blurb, Link FROM articulo''', conn)
+    conn.close()
+    articulos = []
+    for item in data:
+        articulo = {
+            "id":item[0],
+            "tipo":item[1],
+            "titulo":item[2],
+            "foto_path":item[3],          
+            "blurb":item[4],
+            "link":item[5]
+        }
+        articulos.append(articulo)
+    resp = Response(response=json.dumps(articulos), status=200, mimetype="text/plain")
+    return resp
+
 @app.route('/api/post_programa', methods=["POST"])
 def post_programa():
     execute_insert('''INSERT INTO programa (Id, Nombre, Hora, Activo, Lunes, Martes, Miercoles, Jueves, Viernes, Sabado, Domingo)
@@ -204,6 +223,12 @@ def post_evento():
     execute_insert('''INSERT INTO evento (Id, Flyer, Nombre, Lugar, Fecha, Hora, Precio, Registro)
                 VALUES ''' + request.args["values"])
     return "success evento"
+
+@app.route('/api/post_articulo', methods=["POST"])
+def post_articulo():
+    execute_insert('''INSERT INTO articulo (Id, Tipo, Titulo, Foto_path, Blurb, Texto, Fecha, Autor, Link)
+                VALUES ''' + request.args["values"])
+    return "success articulo"
 
 
 if __name__ == "__main__":

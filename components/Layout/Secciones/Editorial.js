@@ -1,5 +1,5 @@
 import styles from "./Editorial.module.css";
-import { Fragment } from "react";
+import { Fragment, useEffect, useState } from "react";
 import Section from "../../UI/Section"
 
 import Carousel from 'react-multi-carousel';
@@ -7,42 +7,12 @@ import 'react-multi-carousel/lib/styles.css';
 
 import CustomImage from "../../UI/CustomImage";
 
+import axios from "axios";
+
+
 export default function Editorial(props) {
 
-  const articulos = [
-    {
-      "id":"1",
-      "tipo":"NOTICIA",
-      "titulo":"Turnstile anuncia concierto en CDMX",
-      "foto_path":"/img/mininoticia1.png",
-      "blurb":"El concierto sera en el pabellon del palacio de los deportes y todos iremos a ver a daniel fang mi amor. Compra tus boletos ",
-      "link":"https://www.ticketmaster.com.mx/turnstile-boletos/artist/1984721"
-    },
-    {
-      "id":"2",
-      "tipo":"RARO",
-      "titulo":"Aqui va algo raro",
-      "foto_path":"/img/mininoticia1.png",
-      "blurb":"Todavia no entiendo bien cual es la sección de raro, pero iría aquí. Como ejemplo, voy a escribir un párrafo más largo para ver como se vería si Jen se inspira y escribe una mini noticia no tan mini, que se pase del largo del espacio que le puse.",
-      "link":""
-    },
-    {
-      "id":"3",
-      "tipo":"ENTREVISTA",
-      "titulo":"Entrevista con Chai",
-      "foto_path":"/img/mininoticia1.png",
-      "blurb":"Descubre cuál es el Pokemon más delicioso según la banda y como se la pasaron en México. Chécala ",
-      "link":"https://www.instagram.com/reel/CzDFRwrOE3R/"
-    },
-    {
-      "id":"4",
-      "tipo":"S.P.A.",
-      "titulo":"Aqui va algo para adultos",
-      "foto_path":"/img/mininoticia1.png",
-      "blurb":"Tampoco entiendo esta sección pero oí que la mencionaron en nuestra reunión.",
-      "link":""
-    }
-  ];
+  const [articulos, setArticulos] = useState([]);
 
   const getItems = () => {
     let items = [];
@@ -81,6 +51,22 @@ export default function Editorial(props) {
     }
     return items;
   };
+
+  useEffect(() => {
+    axios({
+      method: "GET",
+      url:"/api/get_articulos"
+    })
+    .then((response) => {
+      setArticulos(response.data);
+    }).catch((error) => {
+      if (error.response) {
+        console.log(error.response)
+        console.log(error.response.status)
+        console.log(error.response.headers)
+      }
+    })
+  }, []);
 
   const responsive = {
     superLargeDesktop: {
