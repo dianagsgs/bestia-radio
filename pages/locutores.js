@@ -19,7 +19,7 @@ export default function Locutores(props) {
     for(let i = 0; i < list.length; i++) {
       let point =
         <div>
-          {list[i].nombre + ", " + list[i].horario}
+          {list[i].nombre + ": " + list[i].horario}
         </div>;
       points.push(point);
     }

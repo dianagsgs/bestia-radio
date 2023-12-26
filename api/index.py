@@ -43,6 +43,14 @@ def execute_query(query, conn):
     #return the data
     return data
 
+def execute_insert(query):
+    conn = start_connection()
+    cur = conn.cursor()  
+    cur.execute(query)
+    cur.close()
+    conn.commit()
+    conn.close()
+
 # ROUTES
 
 # DATABASE ACTUAL ROUTES
@@ -69,10 +77,12 @@ def get_locutores():
     data = execute_query('''SELECT * FROM locutor''', conn)
     personas = []
     for locutor in data:
-        ids_programa = execute_query('''SELECT Programa_id FROM locutor_programa WHERE Locutor_id = '''+str(locutor[0]),conn)
+        programas_raw = execute_query('''
+            SELECT * FROM programa WHERE Activo = true AND Id IN 
+              (SELECT Programa_id FROM locutor_programa WHERE Locutor_id = '''+str(locutor[0])+''')
+        ''',conn)
         programas = []
-        for i in ids_programa:
-            programa = execute_query('''SELECT * FROM programa WHERE Id = '''+str(i[0]),conn)[0]
+        for programa in programas_raw:
             dias = ""
             if programa[4]:
                 dias += "Lunes"
@@ -173,14 +183,27 @@ def get_programas():
 
 @app.route('/api/post_programa', methods=["POST"])
 def post_programa():
-    conn = start_connection()
-    cur = conn.cursor()  
-    cur.execute('''INSERT INTO programa (Id, Nombre, Hora, Activo, Lunes, Martes, Miercoles, Jueves, Viernes, Sabado, Domingo)
+    execute_insert('''INSERT INTO programa (Id, Nombre, Hora, Activo, Lunes, Martes, Miercoles, Jueves, Viernes, Sabado, Domingo)
                 VALUES ''' + request.args["values"])
-    cur.close()
-    conn.commit()
-    conn.close()
-    return "success"
+    return "success programa"
+
+@app.route('/api/post_locutor', methods=["POST"])
+def post_locutor():
+    execute_insert('''INSERT INTO locutor (Id, Nombre, Foto_path, Bio, Instagram)
+                VALUES ''' + request.args["values"])
+    return "success locutor"
+
+@app.route('/api/link_locutor_programa', methods=["POST"])
+def link_locutor_programa():
+    execute_insert('''INSERT INTO locutor_programa (Id, Locutor_id, Programa_id)
+                VALUES ''' + request.args["values"])
+    return "success link"
+
+@app.route('/api/post_evento', methods=["POST"])
+def post_evento():
+    execute_insert('''INSERT INTO evento (Id, Flyer, Nombre, Lugar, Fecha, Hora, Precio, Registro)
+                VALUES ''' + request.args["values"])
+    return "success evento"
 
 
 if __name__ == "__main__":
