@@ -5,15 +5,43 @@
     z-index: 5;
   }
 
-  .speaker {
+.speaker {
     position: fixed;
-    left: 84vw;
-    top: 3.8vh;
+    left: 67vw;
+    top: 4.6vh;
     z-index: 7;
-  }
+}
+
+.insta {
+  position: fixed;
+  left: 83vw;
+  top: 3.8vh;
+  z-index: 7;
+}
+
+.spoti {
+  position: fixed;
+  left: 87vw;
+  top: 3.8vh;
+  z-index: 7;
+}
+
+.face {
+  position: fixed;
+  left: 91vw;
+  top: 3.8vh;
+  z-index: 7;
+}
+
+.icon {
+  position: fixed;
+  left: 95vw;
+  top: 3.8vh;
+  z-index: 7;
+}
   
-  .player_mobile {
+.player_mobile {
     position: fixed;
-    top: 10vh;
-    border-radius: 100%;
-  }
+    top: 9.8vh;
+    z-index: 1;
+}

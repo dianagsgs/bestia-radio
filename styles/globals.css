@@ -61,19 +61,22 @@ p.customfont {
   left: 20vw;
   height: 5vh;
   padding-bottom: 0.5vh;
-  width: 62vw;
+  padding-left: 1vw;
+  width: 44vw;
   font-size: 3.1vh;
   font-family: "PlayerFont";
   color: #000000;
   overflow: hidden;
   z-index: 7;
+  background-color: rgba(164, 45, 102, 0.186);
+  border-radius: 1vw;;
 }
 
 .radioco-volume {
   position: fixed;
   z-index: 7;
   top: 5vh;
-  left: 87vw;
+  left: 69vw;
   width: 10vw;
 }
 
@@ -100,32 +103,31 @@ input[type="range"]::-webkit-slider-thumb {
 
 @media only screen and (max-width: 1000px) {
   .radioco-playButton-playing {
-    position:absolute;
+    position:fixed;
     width: 2.5vh;
     height: 2.5vh;
     background-image: url("/img/player/play_mobile.png");
     background-repeat: no-repeat;
     background-size: contain;
-    top: 10.5vh;
+    top: 11.5vh;
     left: 69vw;
     cursor: pointer;
-    z-index: -1;
+    
   }
   .radioco-playButton-paused {
-    position:absolute;
+    position:fixed;
     width: 2.5vh;
     height: 2.5vh;
     background-image: url("/img/player/pausa_mobile.png");
     background-repeat: no-repeat;
     background-size: contain;
-    top: 10.5vh;
+    top: 11.5vh;
     left: 69vw;
     cursor: pointer;
-    z-index: -1;
   }
   .radioco-nowPlaying {
-    position:absolute;
-    top: 10vh;
+    position:fixed;
+    top: 11vh;
     left: 22vw;
     height: 3.4vh;
     width: 45vw;
@@ -136,16 +138,16 @@ input[type="range"]::-webkit-slider-thumb {
     font-family: "ContentFont", sans-serif;
     color: #000000;
     background-image: url("/img/player/player_programas.png");
-    background-size: 20vh;
+    background-size: 42vw;
     background-repeat: no-repeat;
     overflow: hidden;
-    z-index: -1;
+   
   }
   
   .radioco-volume {
-    position: absolute;
+    position: fixed;
     z-index: 999;
-    top:11vh;
+    top:11.8vh;
     left: 75vw;
   }
   
@@ -159,7 +161,6 @@ input[type="range"]::-webkit-slider-thumb {
     height: 1.7vh;
     width: 11vh;
     cursor: pointer;
-    z-index: -1;
   }
   input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;

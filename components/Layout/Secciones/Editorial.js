@@ -106,7 +106,7 @@ export default function Editorial(props) {
           PORTADA
         </p>
         <CustomImage
-          resp_w={props.mobile ? "100vw" : "75vw"}
+          resp_w={props.mobile ? "95vw" : "75vw"}
           src="/img/placeholdercover.png"
           w="2048"
           h="2570"

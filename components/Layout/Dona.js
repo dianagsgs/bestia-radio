@@ -10,10 +10,10 @@ export default function Dona(props) {
         hover_src={"/img/dona.png"}
         w={10}
         h={10}
-        resp_w={props.mobile ? "30vw" : "6.5vw"}
+        resp_w={props.mobile ? "20vw" : "6.5vw"}
         type="external"
         href="https://ko-fi.com/labestiaradiocdmx"
-        button_class={styles.dona}
+        button_class={props.mobile ? styles.dona_mobile : styles.dona}
       />
     </Fragment>
   );

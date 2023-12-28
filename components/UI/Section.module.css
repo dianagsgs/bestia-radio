@@ -27,4 +27,5 @@
     padding-top: 4vh;
     margin-left: 20vw;
     padding-bottom: 2vh;
+    z-index: -1;
 }

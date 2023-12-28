@@ -3,4 +3,11 @@
     top:85vh;
     left: 91vw;
     z-index: 999;
-  }
+}
+
+.dona_mobile {
+    position: fixed;
+    top:17vh;
+    left: 78vw;
+    z-index: 999;
+}
