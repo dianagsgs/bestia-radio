@@ -6,51 +6,112 @@ import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 
 import CustomImage from "../../UI/CustomImage";
+import CustomButton from "../../UI/CustomButton";
+
+import { useRouter } from "next/router";
 
 import axios from "axios";
 
-
 export default function Editorial(props) {
-
   const [articulos, setArticulos] = useState([]);
+  const router = useRouter();
 
-  const getItems = () => {
+  const goToStory = (id) => {
+    console.log('go to story ' + id);
+    router.push("/archivo?id=" + id);
+  }
+
+  const getItems = (noticias) => {
     let items = [];
+    let first_one = true;
     for (let i = 0; i < articulos.length; i++) {
-      let item =
-        <div class={props.mobile ? styles.mini_noticias_mobile : styles.mini_noticia}>
-          <p class={props.mobile ? styles.font_tipo_mobile : styles.font_tipo}>
-            {articulos[i].tipo}
-          </p>
-          <CustomImage
-            resp_w={props.mobile ? "80vw" : "24vw"}
-            src={articulos[i].foto_path}
-            w="1200"
-            h="675"
-            id={"foto"+i}
-            class={props.mobile ? styles.foto_mobile : styles.foto}
-          />
-          <p class={props.mobile ? styles.font_titulo_mobile : styles.font_titulo}>
-            {articulos[i].titulo}
-          </p>
-          <p class={props.mobile ? styles.font_blurb_mobile : styles.font_blurb}>
-            {articulos[i].blurb}
-            {articulos[i].link === "" ? 
-              <span/> :
-              <a 
-                class={styles.link}
-                target="_blank"
-                href={articulos[i].link}
-              >
-                aquí.
-              </a>
-            }
-          </p>
-        </div>;
-      items.push(item);
+      let check = noticias ? articulos[i].tipo === "NOTICIA" : articulos[i].tipo !== "NOTICIA";
+      if (check) {
+        if(!noticias && first_one) {
+          first_one = false;
+        } else {
+          let item =
+            <div class={props.mobile ? 
+              (noticias ? styles.mini_noticias_mobile : styles.editorial_mobile) :
+              (noticias ? styles.mini_noticia : styles.editorial)
+            }>
+              <div class={props.mobile ? styles.font_tipo_mobile : styles.font_tipo}>
+                {articulos[i].tipo}
+              </div>
+              <CustomImage
+                resp_w={props.mobile ? "80vw" : "24vw"}
+                src={articulos[i].foto_path}
+                w={noticias ? "1200" :"2048"}
+                h={noticias ? "675" : "2570"}
+                id={"foto"+i}
+                class={props.mobile ?
+                  (noticias ? styles.noticias_foto_mobile : styles.otra_foto_mobile) :
+                  (noticias ? styles.noticias_foto : styles.otra_foto)}
+                onclick={noticias ? () => console.log("nothing") : () => goToStory(articulos[i].id)}
+              />
+              {noticias ?
+                <span>
+                  <div class={props.mobile ? styles.font_titulo_mobile : styles.font_titulo}>
+                    {articulos[i].titulo}
+                  </div>
+                  <p class={props.mobile ? styles.font_blurb_mobile : styles.font_blurb}>
+                    {articulos[i].blurb}
+                    {articulos[i].link === "" ? 
+                      <span/> :
+                      <a 
+                        class={styles.link}
+                        target="_blank"
+                        href={articulos[i].link}
+                      >
+                        aquí.
+                      </a>
+                    }
+                  </p>
+                </span> :
+                <span/>
+              }
+            </div>;
+          items.push(item);
+        }
+      }
     }
     return items;
   };
+
+  const getPortada = () => {
+    let portada_data = {"tipo":"","foto_path":"/dummy.png","blurb":""};
+    for (let i = 0; i < articulos.length; i++) {
+      portada_data = articulos[i];
+      if (portada_data.tipo !== "NOTICIA") break;
+    } 
+    let portada =
+      <div class={styles.cover_container}>
+        <p class={props.mobile ? styles.font_cover_mobile : styles.font_cover}>
+          PORTADA
+        </p>
+        <CustomImage
+          resp_w={props.mobile ? "95vw" : "75vw"}
+          src={portada_data.foto_path}
+          w="2048"
+          h="2570"
+          class={props.mobile ? styles.cover_mobile : styles.cover}
+        />
+        <p class={styles.cover_blurb_font}>
+          {portada_data.blurb}
+        </p>
+        <CustomButton
+          src={"/img/leer_mas.png"}
+          hover_src={"/img/leer_mas.png"}
+          w={28}
+          h={10}
+          resp_w={props.mobile ? "20vw" : "10vw"}
+          type="internal"
+          href={"/archivo?id="+portada_data.id}
+          button_class={props.mobile ? styles.boton_mas_mobile : styles.boton_mas}
+        />
+      </div>
+    return portada;
+  }
 
   useEffect(() => {
     axios({
@@ -91,8 +152,8 @@ export default function Editorial(props) {
   return (
     <Fragment>
       <Section
-        id="editorial"
-        titulo="/img/titulos/editorial.png"
+        id="ruidodeldia"
+        titulo="/img/titulos/ruidodeldia.png"
         mobile={props.mobile}
         background_num={props.background_num}
       >
@@ -100,18 +161,28 @@ export default function Editorial(props) {
           responsive={responsive}
           infinite={true}
         >
-          {getItems()}
+          {getItems(true)}
         </Carousel>
-        <p class={props.mobile ? styles.font_cover_mobile : styles.font_cover}>
-          PORTADA
+      </Section>
+      <Section
+        id="editorial"
+        titulo="/img/titulos/editorial.png"
+        mobile={props.mobile}
+        background_num={props.background_num}
+      >
+        {getPortada()}
+        <p
+          class={props.mobile ? styles.font_cover_mobile : styles.font_cover}
+          onClick={() => router.push("/archivo")}
+        >
+          ARCHIVO
         </p>
-        <CustomImage
-          resp_w={props.mobile ? "95vw" : "75vw"}
-          src="/img/placeholdercover.png"
-          w="2048"
-          h="2570"
-          class={props.mobile ? styles.cover_mobile : styles.cover}
-        />
+        <Carousel
+          responsive={responsive}
+          infinite={true}
+        >
+          {getItems(false)}
+        </Carousel>
       </Section>
     </Fragment>
   );

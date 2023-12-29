@@ -11,6 +11,7 @@ const Menu = (props) => {
   let sections = [
     ["tienda","https://www.somoslabestia.com/shop-1",mobile ? styles.tienda_mobile : styles.tienda],
     ["editorial","#editorial",mobile ? styles.editorial_mobile : styles.editorial],
+    ["ruidodeldia","#ruidodeldia",mobile ? styles.ruidodeldia_mobile : styles.ruidodeldia],
     ["eventos","#eventos",mobile ? styles.eventos_mobile : styles.eventos],
     ["radioteca","#radioteca",mobile ? styles.radioteca_mobile : styles.radioteca],
     ["sesiones","#sesiones",mobile ? styles.sesiones_mobile : styles.sesiones],

@@ -184,7 +184,7 @@ def get_programas():
 @app.route('/api/get_articulos', methods=["GET"])
 def get_articulos():
     conn = start_connection()
-    data = execute_query('''SELECT Id, Tipo, Titulo, Foto_path, Blurb, Link FROM articulo''', conn)
+    data = execute_query('''SELECT Id, Tipo, Titulo, Foto_path, Blurb, Link FROM articulo ORDER BY Fecha DESC''', conn)
     conn.close()
     articulos = []
     for item in data:
@@ -198,6 +198,14 @@ def get_articulos():
         }
         articulos.append(articulo)
     resp = Response(response=json.dumps(articulos), status=200, mimetype="text/plain")
+    return resp
+
+@app.route('/api/get_articulo', methods=["GET"])
+def get_articulo():
+    conn = start_connection()
+    data = execute_query('''SELECT * FROM articulo WHERE Id ='''+ request.args["id"], conn)
+    conn.close()
+    resp = Response(response=json.dumps(str(data[0])), status=200, mimetype="text/plain")
     return resp
 
 @app.route('/api/post_programa', methods=["POST"])

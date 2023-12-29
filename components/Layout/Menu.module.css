@@ -39,54 +39,60 @@
 
 
 .tienda {
-  top: 57vh; 
+  top: 54vh; 
+}
+.ruidodeldia {
+  top: 59vh;
 }
 .editorial {
-  top: 62vh;
+  top: 64vh;
 }
 .eventos {
-  top: 67vh;
+  top: 69vh;
 }
 .radioteca {
-  top: 72vh;
+  top: 74vh;
 }
 .sesiones {
-  top: 77vh;
+  top: 79vh;
 }
 .programacion {
-  top: 82vh;
+  top: 84vh;
 }
 .locutores {
-  top: 87vh;
+  top: 89vh;
 }
 .quees {
-  top: 92vh; 
+  top: 94vh; 
 }
 
 
 .tienda_mobile {
-  top: 8vh; 
+  top: 7vh; 
+}
+.ruidodeldia_mobile {
+  top: 11vh;
 }
 .editorial_mobile {
-  top: 12vh;
+  top: 15vh;
 }
 .eventos_mobile {
-  top: 16vh;
+  top: 19vh;
 }
 .radioteca_mobile {
-  top: 20vh;
+  top: 23vh;
 }
 .sesiones_mobile {
-  top: 24vh;
+  top: 27vh;
 }
 .programacion_mobile {
-  top: 28vh;
+  top: 31vh;
 }
 .locutores_mobile {
-  top: 32vh;
+  top: 35vh;
 }
 .quees_mobile {
-  top: 36vh; 
+  top: 39vh; 
 }
 
 .menu_item_mobile {
