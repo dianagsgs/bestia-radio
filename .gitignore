@@ -37,5 +37,3 @@ yarn-error.log*
 # backend
 api/env
 api/__pycache__
-
-subirblob.js

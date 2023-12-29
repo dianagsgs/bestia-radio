@@ -208,6 +208,14 @@ def get_articulo():
     resp = Response(response=json.dumps(str(data[0])), status=200, mimetype="text/plain")
     return resp
 
+@app.route('/api/login', methods=["GET"])
+def login():
+    conn = start_connection()
+    data = execute_query(request.args["query"], conn)
+    conn.close()
+    resp = Response(response=json.dumps(str(data)), status=200, mimetype="text/plain")
+    return resp
+
 @app.route('/api/post_programa', methods=["POST"])
 def post_programa():
     execute_insert('''INSERT INTO programa (Id, Nombre, Hora, Activo, Lunes, Martes, Miercoles, Jueves, Viernes, Sabado, Domingo)
