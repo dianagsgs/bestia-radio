@@ -1,9 +1,7 @@
 import Head from "next/head";
-import Image from "next/image";
 import HeadContent from "../components/Layout/HeadContent";
-//import classes from "../styles/radioteca.module.css";
 
-const Radioteca = () => {
+const AvisoPrivacidad = () => {
   return (
     <div>
       <Head>
@@ -50,4 +48,4 @@ const Radioteca = () => {
   );
 };
 
-export default Radioteca;
+export default AvisoPrivacidad;

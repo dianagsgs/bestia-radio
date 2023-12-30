@@ -171,7 +171,8 @@ export default function Editorial(props) {
         background_num={props.background_num}
       >
         {getPortada()}
-        <p
+
+        {/*<p
           class={props.mobile ? styles.font_cover_mobile : styles.font_cover}
           onClick={() => router.push("/archivo")}
         >
@@ -182,7 +183,7 @@ export default function Editorial(props) {
           infinite={true}
         >
           {getItems(false)}
-        </Carousel>
+        </Carousel>*/}
       </Section>
     </Fragment>
   );

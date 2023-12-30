@@ -13,7 +13,7 @@ const HeadContent = () => {
         content="la bestia, radio, musica, independiente, mexico, usa, rock, pop, alternativo"
       />
       <meta name="author" content="DianaGS" />
-      <link rel="icon" href="/img/icon.jpg" />
+      <link rel="icon" href="/img/icon_new.jpg" />
 
 
 

@@ -39,31 +39,31 @@
 
 
 .tienda {
-  top: 54vh; 
+  top: 56vh; 
 }
 .ruidodeldia {
-  top: 59vh;
+  top: 61vh;
 }
 .editorial {
-  top: 64vh;
+  top: 66vh;
 }
 .eventos {
-  top: 69vh;
+  top: 71vh;
 }
-.radioteca {
+/*.radioteca {
   top: 74vh;
-}
+}*/
 .sesiones {
-  top: 79vh;
+  top: 76vh;
 }
 .programacion {
-  top: 84vh;
+  top: 81vh;
 }
 .locutores {
-  top: 89vh;
+  top: 86vh;
 }
 .quees {
-  top: 94vh; 
+  top: 91vh; 
 }
 
 
@@ -79,9 +79,9 @@
 .eventos_mobile {
   top: 19vh;
 }
-.radioteca_mobile {
+/*.radioteca_mobile {
   top: 23vh;
-}
+}*/
 .sesiones_mobile {
   top: 27vh;
 }

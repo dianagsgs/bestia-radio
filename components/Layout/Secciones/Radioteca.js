@@ -7,6 +7,8 @@ import 'react-multi-carousel/lib/styles.css';
 
 export default function Radioteca(props) {
 
+  /** TODO: ESTE COMPONENTE VA A CAMBIAR PORQUE AHORA VAN A VENIR DE SPOTIFY */
+
   const getWidgets = () => {
     let soundcloud_playlist_ids = [
       "1426978537","1426941700","1495489246","1494067222",

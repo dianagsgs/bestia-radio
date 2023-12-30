@@ -7,7 +7,7 @@ import Banner from "../components/UI/Banner";
 import HeadContent from "../components/Layout/HeadContent";
 import Menu from "../components/Layout/Menu";
 import TwitchYChat from "../components/Layout/Secciones/TwitchYChat";
-import Radioteca from "../components/Layout/Secciones/Radioteca";
+// import Radioteca from "../components/Layout/Secciones/Radioteca";
 import Programacion from "../components/Layout/Secciones/Programacion";
 import Editorial from "../components/Layout/Secciones/Editorial";
 import Sesiones from "../components/Layout/Secciones/Sesiones";
@@ -20,8 +20,15 @@ export default function Home(props) {
 
   let mobile = props.windowSize === "small";
 
+  const background_src = "url(/img/Fondo/fondo_"+(mobile ? "mobile" : "desktop")+"_"+props.randomBackground+".png)";
+
   return (
-    <div>
+    <div style={{
+      backgroundImage: background_src,
+      backgroundSize: "100vw 100%",
+      backgroundAttachment: "fixed",
+      backgroundPosition: "0vw 10vh"
+    }}>
       <Head>
         <title>La Bestia Radio</title>
         <HeadContent />
@@ -55,7 +62,7 @@ export default function Home(props) {
         {/* Might change: */}
         <Editorial mobile={mobile} background_num={props.randomBackground}/>
         <Eventos mobile={mobile} background_num={props.randomBackground}/>
-        <Radioteca mobile={mobile} background_num={props.randomBackground}/>
+        {/*<Radioteca mobile={mobile} background_num={props.randomBackground}/>*/}
         <Sesiones mobile={mobile} background_num={props.randomBackground}/>
         <Programacion mobile={mobile} background_num={props.randomBackground}/>
         {/* Might change: */}
