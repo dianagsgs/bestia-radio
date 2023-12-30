@@ -88,7 +88,6 @@ export default function Programacion(props) {
         id="programacion"
         titulo="/img/titulos/programacion.png"
         mobile={props.mobile}
-        background_num={props.background_num}
       >
        <Carousel
           responsive={responsive}

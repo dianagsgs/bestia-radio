@@ -11,6 +11,15 @@ function MyApp({ Component, pageProps }) {
   const backgroundCount = 4;
   const randomBackground = Math.floor(Math.random() * backgroundCount);
 
+  const background_src = "url(/img/Fondo/fondo_"+(windowSize === "small" ? "mobile" : "desktop")+"_"+randomBackground+".png)";
+
+  const background_style = {
+    backgroundImage: background_src,
+    backgroundSize: "100vw 100%",
+    backgroundAttachment: "fixed",
+    backgroundPosition: "0vw 10vh"
+  };
+
   useEffect(() => {
     updateDimensions();
     window.addEventListener("resize", updateDimensions);
@@ -41,7 +50,7 @@ function MyApp({ Component, pageProps }) {
   return <Component
             {...pageProps}
             windowSize={windowSize} 
-            randomBackground={randomBackground}
+            background_style={background_style}
           />;
 }
 

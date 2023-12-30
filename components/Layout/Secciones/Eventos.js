@@ -91,7 +91,6 @@ export default function Eventos(props) {
         id="eventos"
         titulo="/img/titulos/eventos.png"
         mobile={props.mobile}
-        background_num={props.background_num}
       >
         <Carousel
           responsive={responsive}

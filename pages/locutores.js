@@ -32,7 +32,6 @@ export default function Locutores(props) {
       id={"locutor_"+persona.id}
       titulo="/img/titulos/locutores.png"
       mobile={mobile}
-      background_num={props.randomBackground}
     >
       <div class={styles.content}>
         <div className="row">
@@ -100,10 +99,10 @@ export default function Locutores(props) {
   }, []);
   
   return (
-    <Fragment>
+    <main style={props.background_style}>
       <Menu home={false} mobile={mobile}/>
       <Player mobile={mobile}/>
       {getItems()}
-    </Fragment>
+    </main>
   );
 }

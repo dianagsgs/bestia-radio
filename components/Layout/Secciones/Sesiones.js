@@ -53,7 +53,6 @@ export default function Sesiones(props) {
         id="sesiones"
         titulo="/img/titulos/sesiones.png"
         mobile={props.mobile}
-        background_num={props.background_num}
       >
         <div className="row">
           {getItems()}

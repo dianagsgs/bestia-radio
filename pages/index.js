@@ -3,6 +3,8 @@ import Script from "next/script";
 import styles from "../styles/index.module.css";
 
 import Banner from "../components/UI/Banner";
+import Fade from "react-reveal";
+import Flip from "react-reveal";
 
 import HeadContent from "../components/Layout/HeadContent";
 import Menu from "../components/Layout/Menu";
@@ -20,21 +22,14 @@ export default function Home(props) {
 
   let mobile = props.windowSize === "small";
 
-  const background_src = "url(/img/Fondo/fondo_"+(mobile ? "mobile" : "desktop")+"_"+props.randomBackground+".png)";
-
   return (
-    <div style={{
-      backgroundImage: background_src,
-      backgroundSize: "100vw 100%",
-      backgroundAttachment: "fixed",
-      backgroundPosition: "0vw 10vh"
-    }}>
+    <div>
       <Head>
         <title>La Bestia Radio</title>
         <HeadContent />
       </Head>
       
-      <main>
+      <main style={props.background_style}>
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-7SYHST9BWV"
           strategy="afterInteractive"
@@ -58,16 +53,27 @@ export default function Home(props) {
         <Dona mobile={mobile}/>
 
         {/* SECCIONES */}
-        <TwitchYChat mobile={mobile} background_num={props.randomBackground}/>
-        {/* Might change: */}
-        <Editorial mobile={mobile} background_num={props.randomBackground}/>
-        <Eventos mobile={mobile} background_num={props.randomBackground}/>
-        {/*<Radioteca mobile={mobile} background_num={props.randomBackground}/>*/}
-        <Sesiones mobile={mobile} background_num={props.randomBackground}/>
-        <Programacion mobile={mobile} background_num={props.randomBackground}/>
-        {/* Might change: */}
-        <Quees mobile={mobile} background_num={props.randomBackground}/>
+        <Flip top>
+          <TwitchYChat mobile={mobile} />
+        </Flip>
 
+        <Editorial mobile={mobile} />
+
+        <Fade left>
+          <Eventos mobile={mobile} />
+        </Fade>
+        
+        {/*<Radioteca mobile={mobile} />*/}
+
+        <Fade right>
+          <Sesiones mobile={mobile} />
+        </Fade>
+        <Fade left>
+          <Programacion mobile={mobile} />
+        </Fade>
+        <Fade right>
+          <Quees mobile={mobile} />
+        </Fade>
       </main>
     </div>
   );

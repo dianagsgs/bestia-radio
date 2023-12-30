@@ -11,13 +11,13 @@ import CustomButton from "../../UI/CustomButton";
 import { useRouter } from "next/router";
 
 import axios from "axios";
+import { Fade, Flip } from "react-reveal";
 
 export default function Editorial(props) {
   const [articulos, setArticulos] = useState([]);
   const router = useRouter();
 
   const goToStory = (id) => {
-    console.log('go to story ' + id);
     router.push("/archivo?id=" + id);
   }
 
@@ -113,6 +113,59 @@ export default function Editorial(props) {
     return portada;
   }
 
+  const getArchivo = () => {
+    return (
+      <span>
+        <p
+          class={props.mobile ? styles.font_cover_mobile : styles.font_cover}
+          onClick={() => router.push("/archivo")}
+        >
+          ARCHIVO
+        </p>
+        <Carousel
+          responsive={responsive}
+          infinite={true}
+        >
+          {getItems(false)}
+        </Carousel>
+      </span>
+    );
+  };
+
+  const getRaro = () => {
+    return (
+      <div class={styles.cover_container}>
+        <p class={props.mobile ? styles.font_raro_mobile : styles.font_raro}>
+          RARO
+        </p>
+        <CustomImage
+          resp_w={props.mobile ? "95vw" : "75vw"}
+          src="https://vvqskzptir4l8fs6.public.blob.vercel-storage.com/articulos/placeholderraro-pDEYgQ484Np3mj2kRXT3UjYctRLI39.png"
+          w="1200"
+          h="475"
+          class={props.mobile ? styles.raro_mobile : styles.raro}
+        />
+      </div>
+    );
+  };
+
+  const getSPA = () => {
+    return (
+      <div class={styles.cover_container}>
+        <p class={props.mobile ? styles.font_SPA_mobile : styles.font_SPA}>
+          SOLO PARA ADULTOS
+        </p>
+        <CustomImage
+          resp_w={props.mobile ? "95vw" : "75vw"}
+          src="https://vvqskzptir4l8fs6.public.blob.vercel-storage.com/articulos/placeholderraro-pDEYgQ484Np3mj2kRXT3UjYctRLI39.png"
+          w="1200"
+          h="475"
+          class={props.mobile ? styles.raro_mobile : styles.raro}
+        />
+      </div>
+    );
+  };
+
   useEffect(() => {
     axios({
       method: "GET",
@@ -151,39 +204,34 @@ export default function Editorial(props) {
   
   return (
     <Fragment>
-      <Section
-        id="ruidodeldia"
-        titulo="/img/titulos/ruidodeldia.png"
-        mobile={props.mobile}
-        background_num={props.background_num}
-      >
-        <Carousel
-          responsive={responsive}
-          infinite={true}
+      <Fade left>
+        <Section
+          id="ruidodeldia"
+          titulo="/img/titulos/ruidodeldia.png"
+          mobile={props.mobile}
         >
-          {getItems(true)}
-        </Carousel>
-      </Section>
+          <Carousel
+            responsive={responsive}
+            infinite={true}
+          >
+            {getItems(true)}
+          </Carousel>
+        </Section>
+      </Fade>
+
       <Section
         id="editorial"
         titulo="/img/titulos/editorial.png"
         mobile={props.mobile}
-        background_num={props.background_num}
       >
         {getPortada()}
-
-        {/*<p
-          class={props.mobile ? styles.font_cover_mobile : styles.font_cover}
-          onClick={() => router.push("/archivo")}
-        >
-          ARCHIVO
-        </p>
-        <Carousel
-          responsive={responsive}
-          infinite={true}
-        >
-          {getItems(false)}
-        </Carousel>*/}
+        <Fade left>
+          {getRaro()}
+        </Fade>
+        <Fade right>
+          {getSPA()}
+        </Fade>
+        {/*getArchivo()*/}
       </Section>
     </Fragment>
   );

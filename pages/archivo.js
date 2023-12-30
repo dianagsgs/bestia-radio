@@ -35,14 +35,13 @@ export default function Archivo(props) {
   }
 
   return (
-    <Fragment>
+    <main style={props.background_style}>
       <Menu home={false} mobile={mobile}/>
       <Player mobile={mobile}/>
       <Section
         id={show}
         titulo="/img/titulos/editorial.png"
         mobile={mobile}
-        background_num={props.randomBackground}
       >
         {show === "archivo" ?
         <span>
@@ -51,6 +50,6 @@ export default function Archivo(props) {
         getArticle(show)
         }
       </Section>
-    </Fragment>
+    </main>
   );
 }

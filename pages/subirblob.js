@@ -13,14 +13,13 @@ export default function Subirblob(props) {
   // 5. Esperar a la alerta y tomar nota del URL para usar despues
 
 
-  const BLOB_NAME = 'articulos/placeholdercover.png';
+  const BLOB_NAME = 'articulos/placeholderraro.png';
   const [file, setFile] = useState(null);
   const [logged_in, setLoggedIn] = useState(false);
 
   const login = () => {
     let email = document.getElementById("login_email").value;
     let password = document.getElementById("login_pw").value;
-    console.log(email + ", " + password);
     axios({
       method: "GET",
       url:"/api/login?query=SELECT Id FROM login WHERE Email = '"+ email+"' AND Pass = '"+password+"'"
@@ -29,7 +28,6 @@ export default function Subirblob(props) {
       if(response.data == '[]'){
         alert("LOGIN INCORRECTO");
       } else {
-        console.log(response);
         setLoggedIn(true);
       }
     }).catch((error) => {
@@ -42,7 +40,6 @@ export default function Subirblob(props) {
   }
 
   const subir_blob = async () => {
-    console.log(file);
     // TODO: no subir el TOKEN ASI
     const { url } = await put(BLOB_NAME, file, { access: 'public', token: "vercel_blob_rw_VVQSKZPtiR4L8fS6_2GXlbBWoqH8N9DPnAoUCoq8tQKFazo" });
     alert('URL: ' + url);
@@ -146,8 +143,7 @@ export default function Subirblob(props) {
     let link = document.getElementById("link_articulo").value;
     let values = 
       "("+id+", '"+tipo+"', '"+titulo+"', '"+path_foto+"', '"+blurb+"', '"+texto+"', '"+fecha+"', '"+autor+"', '"+link+"')";
-    
-    //console.log(values);
+
     guardar_cosas("post_articulo",values);
   }
 

@@ -25,6 +25,7 @@
 
 .cover_container {
     background-color: rgba(216, 216, 249, 0.38);
+    margin-bottom: 4vh;
 }
 
 .font_cover {
@@ -35,9 +36,31 @@
     font-size: 5vw;
 }
 
+.font_raro {
+    padding-top: 1vh;
+    padding-left: 33.5vw;
+    width: 75vw;
+    font-family: "PlayerFont", sans-serif;
+    font-size: 5vw;
+}
+
+.font_SPA {
+    padding-top: 1vh;
+    padding-left: 19vw;
+    width: 75vw;
+    font-family: "PlayerFont", sans-serif;
+    font-size: 5vw;
+}
+
 .cover {
     padding-left: 5vw;
     margin-bottom: 3vh;
+}
+
+.raro {
+    padding-left: 5vw;
+    margin-bottom: 3vh;
+    padding-bottom: 4vh;
 }
 
 .cover_blurb_font {
