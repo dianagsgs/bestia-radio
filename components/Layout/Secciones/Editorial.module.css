@@ -128,9 +128,29 @@
     font-size: 7vh;
 }
 
+.font_raro_mobile {
+    padding-top: 1vh;
+    padding-left: 31vw;
+    width: 100vw;
+    font-family: "PlayerFont", sans-serif;
+    font-size: 7vh;
+}
+
+.font_SPA_mobile {
+    padding-top: 1vh;
+    padding-left: 31vw;
+    width: 100vw;
+    font-family: "PlayerFont", sans-serif;
+    font-size: 7vh;
+}
+
 .mini_noticia_mobile {
     background-color: rgba(37, 37, 118, 0.38);
     width: 100vw;
     height: 62vh;
     overflow-y: scroll;
 }
+
+.raro_mobile {
+  padding-bottom: 5vh;
+};

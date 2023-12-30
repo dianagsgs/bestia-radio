@@ -24,6 +24,7 @@ export default function Editorial(props) {
     let items = [];
     let first_one = true;
     for (let i = 0; i < articulos.length; i++) {
+      console.log(articulos[i])
       let check = noticias ? articulos[i].tipo === "NOTICIA" : articulos[i].tipo !== "NOTICIA";
       if (check) {
         if(!noticias && first_one) {
@@ -55,7 +56,7 @@ export default function Editorial(props) {
                   </div>
                   <p class={props.mobile ? styles.font_blurb_mobile : styles.font_blurb}>
                     {articulos[i].blurb}
-                    {articulos[i].link === "" ? 
+                    {articulos[i].link === "" || articulos[i].link === null ?
                       <span/> :
                       <a 
                         class={styles.link}
@@ -152,7 +153,7 @@ export default function Editorial(props) {
     return (
       <div class={styles.cover_container}>
         <p class={props.mobile ? styles.font_SPA_mobile : styles.font_SPA}>
-          SOLO PARA ADULTOS
+          {props.mobile ? "S.P.A." : "SOLO PARA ADULTOS"}
         </p>
         <CustomImage
           resp_w={props.mobile ? "95vw" : "75vw"}

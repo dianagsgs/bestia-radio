@@ -144,14 +144,35 @@ export default function Subirblob(props) {
     let values = 
       "("+id+", '"+tipo+"', '"+titulo+"', '"+path_foto+"', '"+blurb+"', '"+texto+"', '"+fecha+"', '"+autor+"', '"+link+"')";
 
-    guardar_cosas("post_articulo",values);
+    let confirm = window.confirm("Asegurate de que todos los datos estén corretos y si es así, da click en ok Aceptar para guardar");
+    if (confirm) guardar_cosas("post_articulo",values);
   }
 
 
   return (
     <Fragment>
       {logged_in ? 
-      <span>
+      <span style={{padding: "2vw"}}>
+
+        <h4>AGREGAR ARTICULO</h4>
+        <p>Id:<input id="id_articulo" type="text"/></p>
+        <p>Tipo:<select id="tipo">
+          <option>RARO</option>
+          <option>NOTICIA</option>
+          <option>S.P.A.</option>
+          <option>ENTREVISTA</option>
+        </select></p>
+        <p>Titulo:<input id="titulo_articulo" type="text"/></p>
+        <p>Path foto:<input id="path_foto_articulo" type="text"/></p>
+        <p>Blurb:<input id="blurb" type="text"/></p>
+        <p>Texto (opcional):<textarea id="texto_articulo" cols="40" rows="5"/></p>
+        <p>Fecha:<input id="fecha_articulo" type="date"/></p>
+        <p>Autor (opcional):<input id="autor" type="text"/></p>
+        <p>Link (opcional):<input id="link_articulo" type="text"/></p>
+        <button onClick={() => guardar_articulo()}>GUARDAR</button>
+
+        <h1 style={{color: "red"}}> --------------- DANGER ZONE ---------------  </h1>
+        <p style={{color: "red"}}>no usar ninguna de las herramientas debajo de este punto</p>
         <h4>SUBIR BLOB:</h4>
         <p>
           VERIFICA QUE EL BLOB_NAME SEA CORRECTO: {BLOB_NAME}
@@ -220,23 +241,6 @@ export default function Subirblob(props) {
         <p>
           ------------------------
         </p>
-
-        <h4>AGREGAR ARTICULO</h4>  
-        Id:<input id="id_articulo" type="text"></input>
-        Tipo:<select id="tipo">
-          <option>RARO</option>
-          <option>NOTICIA</option>
-          <option>S.P.A.</option>
-          <option>ENTREVISTA</option>
-        </select>
-        Titulo:<input id="titulo_articulo" type="text"></input>
-        Path foto:<input id="path_foto_articulo" type="text"></input>
-        Blurb:<input id="blurb" type="text"></input>
-        Texto (opcional):<textarea id="texto_articulo" cols="40" rows="5"></textarea>
-        Fecha:<input id="fecha_articulo" type="date"></input>
-        Autor (opcional):<input id="autor" type="text"></input>
-        Link (opcional):<input id="link_articulo" type="text"></input>
-        <button onClick={() => guardar_articulo()}>GUARDAR</button>
       </span>
       :
       <span>
