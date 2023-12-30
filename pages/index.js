@@ -3,8 +3,6 @@ import Script from "next/script";
 import styles from "../styles/index.module.css";
 
 import Banner from "../components/UI/Banner";
-import Fade from "react-reveal";
-import Flip from "react-reveal";
 
 import HeadContent from "../components/Layout/HeadContent";
 import Menu from "../components/Layout/Menu";
@@ -53,27 +51,17 @@ export default function Home(props) {
         <Dona mobile={mobile}/>
 
         {/* SECCIONES */}
-        <Flip top>
-          <TwitchYChat mobile={mobile} />
-        </Flip>
+        <TwitchYChat mobile={mobile} />
 
         <Editorial mobile={mobile} />
 
-        <Fade left>
-          <Eventos mobile={mobile} />
-        </Fade>
+        <Eventos mobile={mobile} />
         
         {/*<Radioteca mobile={mobile} />*/}
 
-        <Fade right>
-          <Sesiones mobile={mobile} />
-        </Fade>
-        <Fade left>
-          <Programacion mobile={mobile} />
-        </Fade>
-        <Fade right>
-          <Quees mobile={mobile} />
-        </Fade>
+        <Sesiones mobile={mobile} />
+        <Programacion mobile={mobile} />
+        <Quees mobile={mobile} />
       </main>
     </div>
   );

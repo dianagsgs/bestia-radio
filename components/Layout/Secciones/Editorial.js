@@ -11,7 +11,6 @@ import CustomButton from "../../UI/CustomButton";
 import { useRouter } from "next/router";
 
 import axios from "axios";
-import { Fade, Flip } from "react-reveal";
 
 export default function Editorial(props) {
   const [articulos, setArticulos] = useState([]);
@@ -204,20 +203,18 @@ export default function Editorial(props) {
   
   return (
     <Fragment>
-      <Fade left>
-        <Section
-          id="ruidodeldia"
-          titulo="/img/titulos/ruidodeldia.png"
-          mobile={props.mobile}
+      <Section
+        id="ruidodeldia"
+        titulo="/img/titulos/ruidodeldia.png"
+        mobile={props.mobile}
+      >
+        <Carousel
+          responsive={responsive}
+          infinite={true}
         >
-          <Carousel
-            responsive={responsive}
-            infinite={true}
-          >
-            {getItems(true)}
-          </Carousel>
-        </Section>
-      </Fade>
+          {getItems(true)}
+        </Carousel>
+      </Section>
 
       <Section
         id="editorial"
@@ -225,12 +222,8 @@ export default function Editorial(props) {
         mobile={props.mobile}
       >
         {getPortada()}
-        <Fade left>
-          {getRaro()}
-        </Fade>
-        <Fade right>
-          {getSPA()}
-        </Fade>
+        {getRaro()}
+        {getSPA()}
         {/*getArchivo()*/}
       </Section>
     </Fragment>
