@@ -1,8 +1,6 @@
 .section {
-    position: relative;
-    top: 8vh;
     min-width: 100vw;
-    padding-top: 10vh;
+    padding-top: 18vh;
     padding-left: 17vw;
     padding-right: 3vw;
 }
