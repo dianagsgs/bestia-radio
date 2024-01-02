@@ -17,7 +17,7 @@ export default function Subirblob(props) {
   // TODO: no subir el TOKEN ASI
   const BLOB_TOKEN = "vercel_blob_rw_VVQSKZPtiR4L8fS6_2GXlbBWoqH8N9DPnAoUCoq8tQKFazo";
   const [file, setFile] = useState(null);
-  const [logged_in, setLoggedIn] = useState(window.location.href === 'http://localhost:3000/subirblob' ? true : false);
+  const [logged_in, setLoggedIn] = useState(false);
   const [articulos, setArticulos] = useState([{id: "wait"}]);
 
   const login = () => {
