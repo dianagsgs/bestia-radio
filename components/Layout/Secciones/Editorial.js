@@ -2,15 +2,13 @@ import styles from "./Editorial.module.css";
 import { Fragment, useEffect, useState } from "react";
 import Section from "../../UI/Section"
 
-import Carousel from 'react-multi-carousel';
-import 'react-multi-carousel/lib/styles.css';
-
 import CustomImage from "../../UI/CustomImage";
 import CustomButton from "../../UI/CustomButton";
 
 import { useRouter } from "next/router";
 
 import axios from "axios";
+import ResponsiveCarousel from "../../UI/ResponsiveCarousel";
 
 export default function Editorial(props) {
   const [articulos, setArticulos] = useState([]);
@@ -24,7 +22,6 @@ export default function Editorial(props) {
     let items = [];
     let first_one = true;
     for (let i = 0; i < articulos.length; i++) {
-      console.log(articulos[i])
       let check = noticias ? articulos[i].tipo === "NOTICIA" : articulos[i].tipo !== "NOTICIA";
       if (check) {
         if(!noticias && first_one) {
@@ -122,12 +119,11 @@ export default function Editorial(props) {
         >
           ARCHIVO
         </p>
-        <Carousel
-          responsive={responsive}
+        <ResponsiveCarousel
           infinite={true}
         >
           {getItems(false)}
-        </Carousel>
+        </ResponsiveCarousel>
       </span>
     );
   };
@@ -181,26 +177,6 @@ export default function Editorial(props) {
       }
     })
   }, []);
-
-  const responsive = {
-    superLargeDesktop: {
-      // the naming can be any, depends on you.
-      breakpoint: { max: 4000, min: 3000 },
-      items: 5
-    },
-    desktop: {
-      breakpoint: { max: 3000, min: 1024 },
-      items: 3
-    },
-    tablet: {
-      breakpoint: { max: 1024, min: 464 },
-      items: 2
-    },
-    mobile: {
-      breakpoint: { max: 464, min: 0 },
-      items: 1
-    }
-  };
   
   return (
     <Fragment>
@@ -209,12 +185,11 @@ export default function Editorial(props) {
         titulo="/img/titulos/ruidodeldia.png"
         mobile={props.mobile}
       >
-        <Carousel
-          responsive={responsive}
+        <ResponsiveCarousel
           infinite={true}
         >
           {getItems(true)}
-        </Carousel>
+        </ResponsiveCarousel>
       </Section>
 
       <Section

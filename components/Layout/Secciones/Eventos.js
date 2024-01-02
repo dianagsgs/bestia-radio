@@ -3,10 +3,8 @@ import { Fragment, useEffect, useState } from "react";
 import Section from "../../UI/Section";
 import axios from "axios";
 
-import Carousel from 'react-multi-carousel';
-import 'react-multi-carousel/lib/styles.css';
-
 import CustomImage from "../../UI/CustomImage";
+import ResponsiveCarousel from "../../UI/ResponsiveCarousel";
 
 export default function Eventos(props) {
   const [eventos, setEventos] = useState(null);
@@ -65,26 +63,6 @@ export default function Eventos(props) {
     })
   }, []);
 
-  const responsive = {
-    superLargeDesktop: {
-      // the naming can be any, depends on you.
-      breakpoint: { max: 4000, min: 3000 },
-      items: 5
-    },
-    desktop: {
-      breakpoint: { max: 3000, min: 1024 },
-      items: 3
-    },
-    tablet: {
-      breakpoint: { max: 1024, min: 464 },
-      items: 2
-    },
-    mobile: {
-      breakpoint: { max: 464, min: 0 },
-      items: 1
-    }
-  };
-
   return (
     <Fragment>
       <Section
@@ -92,12 +70,11 @@ export default function Eventos(props) {
         titulo="/img/titulos/eventos.png"
         mobile={props.mobile}
       >
-        <Carousel
-          responsive={responsive}
+        <ResponsiveCarousel
           infinite={true}
         >
           {getItems()}
-        </Carousel>
+        </ResponsiveCarousel>
       </Section>
     </Fragment>
   );

@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { put } from "@vercel/blob";
 import axios from "axios";
 
@@ -14,8 +14,11 @@ export default function Subirblob(props) {
 
 
   const BLOB_NAME = 'articulos/placeholderraro.png';
+  // TODO: no subir el TOKEN ASI
+  const BLOB_TOKEN = "vercel_blob_rw_VVQSKZPtiR4L8fS6_2GXlbBWoqH8N9DPnAoUCoq8tQKFazo";
   const [file, setFile] = useState(null);
-  const [logged_in, setLoggedIn] = useState(false);
+  const [logged_in, setLoggedIn] = useState(window.location.href === 'http://localhost:3000/subirblob' ? true : false);
+  const [articulos, setArticulos] = useState([{id: "wait"}]);
 
   const login = () => {
     let email = document.getElementById("login_email").value;
@@ -40,8 +43,7 @@ export default function Subirblob(props) {
   }
 
   const subir_blob = async () => {
-    // TODO: no subir el TOKEN ASI
-    const { url } = await put(BLOB_NAME, file, { access: 'public', token: "vercel_blob_rw_VVQSKZPtiR4L8fS6_2GXlbBWoqH8N9DPnAoUCoq8tQKFazo" });
+    const { url } = await put(BLOB_NAME, file, { access: 'public', token: BLOB_TOKEN });
     alert('URL: ' + url);
   };
 
@@ -57,7 +59,8 @@ export default function Subirblob(props) {
       url:"/api/"+api+"?values="+values
     })
     .then((response) => {
-      alert("listo "+response);
+      alert("listo "+api);
+      location.reload();
     }).catch((error) => {
       if (error.response) {
         console.log(error.response)
@@ -131,22 +134,44 @@ export default function Subirblob(props) {
 
    // GUARDAR ARTICULO:
 
-   const guardar_articulo = () => {
-    let id = document.getElementById("id_articulo").value;
-    let tipo = document.getElementById("tipo").value;
-    let titulo = document.getElementById("titulo_articulo").value;
-    let path_foto = document.getElementById("path_foto_articulo").value;
-    let blurb = document.getElementById("blurb").value;
-    let texto = document.getElementById("texto_articulo").value;
-    let fecha = document.getElementById("fecha_articulo").value;
-    let autor = document.getElementById("autor").value;
-    let link = document.getElementById("link_articulo").value;
-    let values = 
-      "("+id+", '"+tipo+"', '"+titulo+"', '"+path_foto+"', '"+blurb+"', '"+texto+"', '"+fecha+"', '"+autor+"', '"+link+"')";
-
+   const guardar_articulo = async () => {
     let confirm = window.confirm("Asegurate de que todos los datos estén corretos y si es así, da click en ok Aceptar para guardar");
-    if (confirm) guardar_cosas("post_articulo",values);
+
+    if (confirm) {
+
+      const { url } = await put("articulos/"+file.name, file, { access: 'public', token: BLOB_TOKEN });
+
+      let id = document.getElementById("id_articulo").value;
+      let tipo = document.getElementById("tipo").value;
+      let titulo = document.getElementById("titulo_articulo").value; 
+      let blurb = document.getElementById("blurb").value;
+      let texto = document.getElementById("texto_articulo").value;
+      let fecha = document.getElementById("fecha_articulo").value;
+      let autor = document.getElementById("autor").value;
+      let link = document.getElementById("link_articulo").value;
+      let values = 
+        "("+id+", '"+tipo+"', '"+titulo+"', '"+url+"', '"+blurb+"', '"+texto+"', '"+fecha+"', '"+autor+"', '"+link+"')";
+
+      guardar_cosas("post_articulo",values);
+    }
   }
+
+
+  useEffect(() => {
+    axios({
+      method: "GET",
+      url:"/api/get_articulos"
+    })
+    .then((response) => {
+      setArticulos(response.data);
+    }).catch((error) => {
+      if (error.response) {
+        console.log(error.response)
+        console.log(error.response.status)
+        console.log(error.response.headers)
+      }
+    })
+  }, []);
 
 
   return (
@@ -155,7 +180,12 @@ export default function Subirblob(props) {
       <span style={{padding: "2vw"}}>
 
         <h4>AGREGAR ARTICULO</h4>
-        <p>Id:<input id="id_articulo" type="text"/></p>
+        <p>Id (no cambiar):<input
+          id="id_articulo"
+          type="text"
+          value={articulos[0]["id"]+1}
+          disabled
+        /></p>
         <p>Tipo:<select id="tipo">
           <option>RARO</option>
           <option>NOTICIA</option>
@@ -163,13 +193,22 @@ export default function Subirblob(props) {
           <option>ENTREVISTA</option>
         </select></p>
         <p>Titulo:<input id="titulo_articulo" type="text"/></p>
-        <p>Path foto:<input id="path_foto_articulo" type="text"/></p>
-        <p>Blurb:<input id="blurb" type="text"/></p>
-        <p>Texto (opcional):<textarea id="texto_articulo" cols="40" rows="5"/></p>
+
+        <p>Subir foto -- medidas:</p>
+        <p>1200x675 - NOTICIA, 2048x2560 - PORTADA, 1200x474 - RARO y S.P.A.</p>
+        <p>
+          <input type="file" onChange={showFile}></input>
+        </p>
+
         <p>Fecha:<input id="fecha_articulo" type="date"/></p>
+        <p>Blurb:<input id="blurb" type="text"/></p>
+
+        <p>Texto largo (opcional):<textarea id="texto_articulo" cols="40" rows="5"/></p>
         <p>Autor (opcional):<input id="autor" type="text"/></p>
-        <p>Link (opcional):<input id="link_articulo" type="text"/></p>
+        <p>Link noticia (opcional):<input id="link_articulo" type="text"/></p>
         <button onClick={() => guardar_articulo()}>GUARDAR</button>
+
+
 
         <h1 style={{color: "red"}}> --------------- DANGER ZONE ---------------  </h1>
         <p style={{color: "red"}}>no usar ninguna de las herramientas debajo de este punto</p>

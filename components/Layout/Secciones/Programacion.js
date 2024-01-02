@@ -3,9 +3,7 @@ import { Fragment, useEffect, useState } from "react";
 import Section from "../../UI/Section"
 
 import axios from "axios";
-
-import Carousel from 'react-multi-carousel';
-import 'react-multi-carousel/lib/styles.css';
+import ResponsiveCarousel from "../../UI/ResponsiveCarousel";
 
 export default function Programacion(props) {
   const [programacion, setProgramacion] = useState({});
@@ -61,26 +59,6 @@ export default function Programacion(props) {
       }
     })
   }, []);
-
-  const responsive = {
-    superLargeDesktop: {
-      // the naming can be any, depends on you.
-      breakpoint: { max: 4000, min: 3000 },
-      items: 5
-    },
-    desktop: {
-      breakpoint: { max: 3000, min: 1024 },
-      items: 5
-    },
-    tablet: {
-      breakpoint: { max: 1024, min: 464 },
-      items: 2
-    },
-    mobile: {
-      breakpoint: { max: 464, min: 0 },
-      items: 1
-    }
-  };
   
   return (
     <Fragment>
@@ -89,12 +67,12 @@ export default function Programacion(props) {
         titulo="/img/titulos/programacion.png"
         mobile={props.mobile}
       >
-       <Carousel
-          responsive={responsive}
+       <ResponsiveCarousel
           infinite={props.mobile ? true : false}
+          num_items={5}
         >
           {getItems()}
-        </Carousel>
+        </ResponsiveCarousel>
       </Section>
     </Fragment>
   );
