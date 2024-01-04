@@ -79,8 +79,8 @@ export default function Editorial(props) {
     let portada_data = {"tipo":"","foto_path":"/dummy.png","blurb":""};
     for (let i = 0; i < articulos.length; i++) {
       portada_data = articulos[i];
-      if (portada_data.tipo !== "NOTICIA") break;
-    } 
+      if (portada_data.tipo === "ENTREVISTA") break;
+    }
     let portada =
       <div class={styles.cover_container}>
         <p class={props.mobile ? styles.font_cover_mobile : styles.font_cover}>
@@ -93,9 +93,15 @@ export default function Editorial(props) {
           h="2570"
           class={props.mobile ? styles.cover_mobile : styles.cover}
         />
-        <p class={styles.cover_blurb_font}>
+        {/*<p class={styles.cover_blurb_font}>
           {portada_data.blurb}
-        </p>
+        </p>*/}
+
+        {/*<a class={props.mobile ? styles.boton_mas_mobile : styles.boton_mas} href={"/archivo?id="+portada_data.id}>
+          CHÉCALA YA
+      </a>*/}
+
+
         <CustomButton
           src={"/img/leer_mas.png"}
           hover_src={"/img/leer_mas.png"}

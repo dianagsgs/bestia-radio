@@ -2,6 +2,8 @@ import { Fragment, useEffect, useState } from "react";
 import { put } from "@vercel/blob";
 import axios from "axios";
 
+import styles from "../styles/subirblob.module.css";
+
 export default function Subirblob(props) {
   
   // ----------------------- SUBIR BLOB:
@@ -61,6 +63,7 @@ export default function Subirblob(props) {
     .then((response) => {
       alert("listo "+api);
       location.reload();
+      setLoggedIn(true);
     }).catch((error) => {
       if (error.response) {
         console.log(error.response)
@@ -146,7 +149,8 @@ export default function Subirblob(props) {
       let titulo = document.getElementById("titulo_articulo").value; 
       let blurb = document.getElementById("blurb").value;
       let texto = document.getElementById("texto_articulo").value;
-      let fecha = document.getElementById("fecha_articulo").value;
+      let date = new Date();
+      let fecha =date.toISOString();// document.getElementById("fecha_articulo").value;
       let autor = document.getElementById("autor").value;
       let link = document.getElementById("link_articulo").value;
       let values = 
@@ -172,6 +176,34 @@ export default function Subirblob(props) {
       }
     })
   }, []);
+
+  const getListaArticulos = () => {
+    let items=[];
+    for(let i = 0; i < articulos.length; i++) {
+      let item = 
+      <div>
+        {articulos[i].tipo}: {articulos[i].titulo}
+        <button onClick={() => hideArticulo(articulos[i].id)}>HIDE</button>
+        <button onClick={() => editArticulo(articulos[i].id)}>EDIT</button>
+        <button onClick={() => dropArticulo(articulos[i].id, articulos[i].titulo)}>DROP</button>
+      </div>;
+      items.push(item);
+    }
+    return items;
+  };
+
+  const hideArticulo = (id, ) => {
+    console.log("hide " + id);
+  };
+  const editArticulo = (id) => {
+    console.log("edit " + id);
+  };
+  const dropArticulo = (id, titulo) => {
+    let yes = confirm("estas segura de que quieres borrar " + titulo + "??");
+    if (yes) {
+      console.log("drop " + id);
+    }
+  };
 
 
   return (
@@ -200,15 +232,16 @@ export default function Subirblob(props) {
           <input type="file" onChange={showFile}></input>
         </p>
 
-        <p>Fecha:<input id="fecha_articulo" type="date"/></p>
+        {/*<p>Fecha:<input id="fecha_articulo" type="date"/></p>*/}
         <p>Blurb:<input id="blurb" type="text"/></p>
 
         <p>Texto largo (opcional):<textarea id="texto_articulo" cols="40" rows="5"/></p>
         <p>Autor (opcional):<input id="autor" type="text"/></p>
         <p>Link noticia (opcional):<input id="link_articulo" type="text"/></p>
         <button onClick={() => guardar_articulo()}>GUARDAR</button>
-
-
+        <p>----------------------------------</p>
+        <h4>GESTIONAR ARTICULOS</h4>
+        {getListaArticulos()}
 
         <h1 style={{color: "red"}}> --------------- DANGER ZONE ---------------  </h1>
         <p style={{color: "red"}}>no usar ninguna de las herramientas debajo de este punto</p>

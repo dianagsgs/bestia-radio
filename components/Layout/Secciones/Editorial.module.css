@@ -54,7 +54,7 @@
 
 .cover {
     padding-left: 5vw;
-    margin-bottom: 3vh;
+    margin-bottom: 7vh;
 }
 
 .raro {
@@ -71,8 +71,19 @@
 }
 
 .boton_mas {
-    padding-left: 34vw;
-    padding-bottom: 4vh;
+  margin-left: 34vw;
+  padding-bottom: 6vh;
+   /*margin-left: 34vw;
+    background-color: black;
+    color: rgb(248, 104, 104);
+    font-family: "PlayerFont", sans-serif;
+    font-size: 3.2vh;
+    padding-left: 1vw;
+    padding-right: 1vw;
+    padding-top: 1.5vh;
+    padding-bottom: 1.5vh;
+    border-radius: 0.5vw;
+    margin-bottom: 10vh;*/
 }
 
 .mini_noticia{
