@@ -23,7 +23,7 @@ export default function Editorial(props) {
     let first_one = true;
     for (let i = 0; i < articulos.length; i++) {
       let check = noticias ? articulos[i].tipo === "NOTICIA" : articulos[i].tipo !== "NOTICIA";
-      if (check) {
+      if (check && articulos[i].activo) {
         if(!noticias && first_one) {
           first_one = false;
         } else {
@@ -79,7 +79,7 @@ export default function Editorial(props) {
     let portada_data = {"tipo":"","foto_path":"/dummy.png","blurb":""};
     for (let i = 0; i < articulos.length; i++) {
       portada_data = articulos[i];
-      if (portada_data.tipo === "ENTREVISTA") break;
+      if (portada_data.tipo === "ENTREVISTA" && portada_data.activo) break;
     }
     let portada =
       <div class={styles.cover_container}>

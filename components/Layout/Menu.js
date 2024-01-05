@@ -16,8 +16,8 @@ const Menu = (props) => {
     //["radioteca","#radioteca",mobile ? styles.radioteca_mobile : styles.radioteca],
     ["sesiones","#sesiones",mobile ? styles.sesiones_mobile : styles.sesiones],
     ["programacion","#programacion",mobile ? styles.programacion_mobile : styles.programacion],
-    ["locutores","/locutores",mobile ? styles.locutores_mobile : styles.locutores],
-    ["quees","#quees",mobile ? styles.quees_mobile : styles.quees]
+    // ["locutores","/locutores",mobile ? styles.locutores_mobile : styles.locutores],
+    ["quees","#quees",mobile ? styles.locutores_mobile : styles.locutores] // styles.quees_mobile : styles.quees
   ];
   const [visible, setVisible] = useState(false);
 

@@ -154,7 +154,7 @@ export default function Subirblob(props) {
       let autor = document.getElementById("autor").value;
       let link = document.getElementById("link_articulo").value;
       let values = 
-        "("+id+", '"+tipo+"', '"+titulo+"', '"+url+"', '"+blurb+"', '"+texto+"', '"+fecha+"', '"+autor+"', '"+link+"')";
+        "("+id+", '"+tipo+"', '"+titulo+"', '"+url+"', '"+blurb+"', '"+texto+"', '"+fecha+"', '"+autor+"', '"+link+"', true)";
 
       guardar_cosas("post_articulo",values);
     }
@@ -183,18 +183,34 @@ export default function Subirblob(props) {
       let item = 
       <div>
         {articulos[i].tipo}: {articulos[i].titulo}
-        <button onClick={() => hideArticulo(articulos[i].id)}>HIDE</button>
-        <button onClick={() => editArticulo(articulos[i].id)}>EDIT</button>
-        <button onClick={() => dropArticulo(articulos[i].id, articulos[i].titulo)}>DROP</button>
+        <button onClick={() => hideArticulo(articulos[i].id, articulos[i].activo)}>{articulos[i].activo ? "HIDE" : "UNHIDE"}</button>
+        <button disabled onClick={() => editArticulo(articulos[i].id)}>EDIT</button>
+        <button disabled onClick={() => dropArticulo(articulos[i].id, articulos[i].titulo)}>DROP</button>
       </div>;
       items.push(item);
     }
     return items;
   };
 
-  const hideArticulo = (id, ) => {
-    console.log("hide " + id);
+  const hideArticulo = (id, activo) => {
+    let set_where = `SET Activo = ${!activo} WHERE Id = ${id}`
+    axios({
+      method: "POST",
+      url:"/api/update_articulo?set_where="+set_where
+    })
+    .then((response) => {
+      alert("listo update_articulo");
+      location.reload();
+      setLoggedIn(true);
+    }).catch((error) => {
+      if (error.response) {
+        console.log(error.response)
+        console.log(error.response.status)
+        console.log(error.response.headers)
+      }
+    })
   };
+
   const editArticulo = (id) => {
     console.log("edit " + id);
   };
@@ -241,10 +257,14 @@ export default function Subirblob(props) {
         <button onClick={() => guardar_articulo()}>GUARDAR</button>
         <p>----------------------------------</p>
         <h4>GESTIONAR ARTICULOS</h4>
+        <p>Nota: Si necesitas editar o borrar por completo un artículo pide ayuda a Diana por ahora. Si necesitas que solo deje de aparecer, lo puedes ocultar haciendo click en "hide"</p>
         {getListaArticulos()}
 
+        <p style={{color: "red"}}>///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////</p>
         <h1 style={{color: "red"}}> --------------- DANGER ZONE ---------------  </h1>
-        <p style={{color: "red"}}>no usar ninguna de las herramientas debajo de este punto</p>
+        <p style={{color: "red"}}>no usar ninguna de las herramientas debajo de este punto, si necesitas editar el contenido de esas tablas pedir ayuda a Diana por ahora.</p>
+        <p style={{color: "red"}}>///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////</p>
+
         <h4>SUBIR BLOB:</h4>
         <p>
           VERIFICA QUE EL BLOB_NAME SEA CORRECTO: {BLOB_NAME}
@@ -258,7 +278,7 @@ export default function Subirblob(props) {
 
         <p>
           ------------------------
-        </p>      
+        </p>
         <h4>AGREGAR PROGRAMA</h4>
         Id:<input id="id_programa" type="text"></input>
         Nombre:<input id="nombre_programa" type="text"></input>

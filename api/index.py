@@ -184,7 +184,7 @@ def get_programas():
 @app.route('/api/get_articulos', methods=["GET"])
 def get_articulos():
     conn = start_connection()
-    data = execute_query('''SELECT Id, Tipo, Titulo, Foto_path, Blurb, Link FROM articulo ORDER BY Fecha DESC''', conn)
+    data = execute_query('''SELECT Id, Tipo, Titulo, Foto_path, Blurb, Link, Activo FROM articulo ORDER BY Fecha DESC''', conn)
     conn.close()
     articulos = []
     for item in data:
@@ -194,7 +194,8 @@ def get_articulos():
             "titulo":item[2],
             "foto_path":item[3],          
             "blurb":item[4],
-            "link":item[5]
+            "link":item[5],
+            "activo":item[6]
         }
         articulos.append(articulo)
     resp = Response(response=json.dumps(articulos), status=200, mimetype="text/plain")
@@ -242,9 +243,14 @@ def post_evento():
 
 @app.route('/api/post_articulo', methods=["POST"])
 def post_articulo():
-    execute_insert('''INSERT INTO articulo (Id, Tipo, Titulo, Foto_path, Blurb, Texto, Fecha, Autor, Link)
+    execute_insert('''INSERT INTO articulo (Id, Tipo, Titulo, Foto_path, Blurb, Texto, Fecha, Autor, Link, Activo)
                 VALUES ''' + request.args["values"])
     return "success articulo"
+
+@app.route('/api/update_articulo', methods=["POST"])
+def update_articulo():
+    execute_insert('''UPDATE articulo ''' + request.args["set_where"])
+    return "success update articulo"
 
 
 if __name__ == "__main__":

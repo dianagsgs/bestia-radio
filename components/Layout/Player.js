@@ -5,6 +5,58 @@ import styles from "./Player.module.css";
 import { Fragment } from "react";
 
 export default function Player(props) {  
+
+  const getRedesIcons = () => {
+    const redes = [
+      {
+        icon_src: "insta.png",
+        link: "https://www.instagram.com/labestiaradiomx/",
+        class: styles.insta
+      },
+      {
+        icon_src: "face.png",
+        link: "https://www.facebook.com/labestiaradiomx/",
+        class: styles.face
+      },
+      {
+        icon_src: "youtube.png",
+        link: "https://www.youtube.com/@LaBestiaRadio",
+        class: styles.youtube
+      },
+      {
+        icon_src: "twitch.png",
+        link: "https://www.twitch.tv/labestiaradio",
+        class: styles.twitch
+      },
+      {
+        icon_src: "tiktok.png",
+        link: "https://www.tiktok.com/@labestia.666",
+        class: styles.tiktok
+      },
+      {
+        icon_src: "whats.png",
+        link: "https://wa.me/5624698330",
+        class: styles.whats
+      },
+    ];
+    const items = [];
+    for (let i = 0; i < redes.length; i++){
+      let item =
+      <CustomButton
+        src={"/img/player/redes/"+redes[i].icon_src}
+        hover_src={"/img/player/redes/"+redes[i].icon_src}
+        w={10}
+        h={10}
+        resp_w="3.2vw"
+        type="external"
+        href={redes[i].link}
+        button_class={redes[i].class}
+      />;
+      items.push(item);
+    }
+    return items;
+  };
+
   return (
     <Fragment>
       <CustomImage
@@ -38,47 +90,7 @@ export default function Player(props) {
               h={10}
               class={styles.speaker}
             />
-
-            <CustomButton
-              src="/img/player/redes/insta.png"
-              hover_src="/img/player/redes/insta.png"
-              w={10}
-              h={10}
-              resp_w="2.5vw"
-              type="external"
-              href="https://www.instagram.com/labestiaradiomx/"
-              button_class={styles.insta}
-            />
-            <CustomButton
-              src="/img/player/redes/face.png"
-              hover_src="/img/player/redes/face.png"
-              w={10}
-              h={10}
-              resp_w="2.5vw"
-              type="external"
-              href="https://www.facebook.com/labestiaradiomx/"
-              button_class={styles.face}
-            />
-            <CustomButton
-              src="/img/player/redes/spoti.png"
-              hover_src="/img/player/redes/spoti.png"
-              w={10}
-              h={10}
-              resp_w="2.5vw"
-              type="external"
-              href="https://open.spotify.com/playlist/7awX75pQJ7YGV75mReBsrU"
-              button_class={styles.spoti}
-            />
-            <CustomButton
-              src="/img/player/redes/icon.png"
-              hover_src="/img/player/redes/icon.png"
-              w={10}
-              h={10}
-              resp_w="2.5vw"
-              type="external"
-              href="https://www.somoslabestia.com"
-              button_class={styles.icon}
-            />
+            {getRedesIcons()}
           </span>
         }
     </Fragment>
