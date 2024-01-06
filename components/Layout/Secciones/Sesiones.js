@@ -15,8 +15,8 @@ export default function Sesiones(props) {
           <div className="col-lg-6">
             <div class={props.mobile ? styles.sesion_mobile : styles.sesion}>
               <iframe
-                width="100%"
                 height="100%"
+                width="100%"
                 src={sesion[1]}
                 title={sesion[3]}
                 frameBorder="0"
