@@ -93,23 +93,20 @@ export default function Editorial(props) {
           h="2570"
           class={props.mobile ? styles.cover_mobile : styles.cover}
         />
-        {/*<p class={styles.cover_blurb_font}>
+        <p class={styles.cover_titulo_font}>
+          {"----> " + portada_data.titulo + " <----"}
+        </p>
+        <p class={styles.cover_blurb_font}>
           {portada_data.blurb}
-        </p>*/}
-
-        {/*<a class={props.mobile ? styles.boton_mas_mobile : styles.boton_mas} href={"/archivo?id="+portada_data.id}>
-          CHÉCALA YA
-      </a>*/}
-
-
+        </p>
         <CustomButton
           src={"/img/leer_mas.png"}
           hover_src={"/img/leer_mas.png"}
           w={28}
           h={10}
           resp_w={props.mobile ? "20vw" : "10vw"}
-          type="internal"
-          href={"/archivo?id="+portada_data.id}
+          type="external"
+          href={portada_data.link}//{"/archivo?id="+portada_data.id}
           button_class={props.mobile ? styles.boton_mas_mobile : styles.boton_mas}
         />
       </div>
@@ -134,35 +131,37 @@ export default function Editorial(props) {
     );
   };
 
-  const getRaro = () => {
+  const getOther = (type) => {
+    let articulo_data = {"tipo":"","foto_path":"/dummy.png","blurb":""};
+    for (let i = 0; i < articulos.length; i++) {
+      articulo_data = articulos[i];
+      if (articulo_data.tipo === type && articulo_data.activo) break;
+    }
     return (
       <div class={styles.cover_container}>
-        <p class={props.mobile ? styles.font_raro_mobile : styles.font_raro}>
-          RARO
+        <p class={
+          props.mobile ?
+          (type === "RARO" ? styles.font_raro_mobile : styles.font_SPA_mobile) :
+          (type === "RARO" ? styles.font_raro : styles.font_SPA)
+        }>
+          {type === "RARO" ? "RARO" : (props.mobile ? "S.P.A." : "SOLO PARA ADULTOS")}
         </p>
         <CustomImage
           resp_w={props.mobile ? "95vw" : "75vw"}
-          src="https://vvqskzptir4l8fs6.public.blob.vercel-storage.com/articulos/placeholderraro-pDEYgQ484Np3mj2kRXT3UjYctRLI39.png"
+          src={articulo_data.foto_path}
           w="1200"
           h="475"
           class={props.mobile ? styles.raro_mobile : styles.raro}
         />
-      </div>
-    );
-  };
-
-  const getSPA = () => {
-    return (
-      <div class={styles.cover_container}>
-        <p class={props.mobile ? styles.font_SPA_mobile : styles.font_SPA}>
-          {props.mobile ? "S.P.A." : "SOLO PARA ADULTOS"}
-        </p>
-        <CustomImage
-          resp_w={props.mobile ? "95vw" : "75vw"}
-          src="https://vvqskzptir4l8fs6.public.blob.vercel-storage.com/articulos/placeholderraro-pDEYgQ484Np3mj2kRXT3UjYctRLI39.png"
-          w="1200"
-          h="475"
-          class={props.mobile ? styles.raro_mobile : styles.raro}
+        <CustomButton
+          src={"/img/leer_mas.png"}
+          hover_src={"/img/leer_mas.png"}
+          w={28}
+          h={10}
+          resp_w={props.mobile ? "20vw" : "10vw"}
+          type="external"
+          href={articulo_data.link}
+          button_class={props.mobile ? styles.boton_mas_mobile : styles.boton_mas}
         />
       </div>
     );
@@ -204,8 +203,8 @@ export default function Editorial(props) {
         mobile={props.mobile}
       >
         {getPortada()}
-        {getRaro()}
-        {getSPA()}
+        {getOther("RARO")}
+        {getOther("S.P.A.")}
         {/*getArchivo()*/}
       </Section>
     </Fragment>

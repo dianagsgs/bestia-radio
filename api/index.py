@@ -144,7 +144,8 @@ def get_eventos():
             "fecha":item[4].strftime("%Y-%m-%d"),
             "hora":item[5].strftime("%H:%M:%S"),            
             "precio":item[6],
-            "registro":item[7]
+            "registro":item[7],
+            "galeria":item[8]
         }
         eventos.append(evento)
     resp = Response(response=json.dumps(eventos), status=200, mimetype="text/plain")

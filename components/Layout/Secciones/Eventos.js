@@ -20,7 +20,7 @@ export default function Eventos(props) {
 
         let desc_pasado =
           <div class={props.mobile ? styles.event_desc_mob : styles.event_desc}>
-            {evento.nombre}, {evento.fecha} - {evento.galeria !== undefined ? <a class={styles.boton_registro} href="/galeria">GALERIA</a> :"GALERIA"}
+            {evento.nombre}, {evento.fecha} - {evento.galeria !== null ? <a class={styles.boton_registro} target="_blank" href={evento.galeria}>GALERIA</a> :"GALERIA"}
           </div>;
 
         let desc_futuro = 

@@ -15,6 +15,7 @@ import Dona from "../components/Layout/Dona";
 import Eventos from "../components/Layout/Secciones/Eventos";
 import Quees from "../components/Layout/Secciones/Quees";
 import Player from "../components/Layout/Player";
+import Redes from "../components/UI/Redes";
 
 export default function Home(props) {
 
@@ -62,6 +63,21 @@ export default function Home(props) {
         <Sesiones mobile={mobile} />
         <Programacion mobile={mobile} />
         <Quees mobile={mobile} />
+
+        {mobile ? 
+          <div class={styles.redes_container}>
+            <Redes
+              styles_insta={styles.insta}
+              styles_face={styles.face}
+              styles_youtube={styles.youtube}
+              styles_twitch={styles.twitch}
+              styles_tiktok={styles.tiktok}
+              styles_whats={styles.whats}
+              mobile={mobile}
+            />
+          </div>
+          : <span/>
+        }
       </main>
     </div>
   );

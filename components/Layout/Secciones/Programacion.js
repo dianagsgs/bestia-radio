@@ -33,7 +33,7 @@ export default function Programacion(props) {
     day = day-1;
     let days = ["LUNES", "MARTES", "MIERCOLES", "JUEVES", "VIERNES"];
     for(let i = 0; i < days.length; i++) {
-      let index = (i + day) % 5; 
+      let index = (props.mobile ? (i + day) % 5 : i); 
       let item =
         <div class={props.mobile ? styles.un_dia_mobile : styles.un_dia}>
           <p class={styles.font_nombre_dia}>{days[index]}</p>

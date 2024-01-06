@@ -249,11 +249,11 @@ export default function Subirblob(props) {
         </p>
 
         {/*<p>Fecha:<input id="fecha_articulo" type="date"/></p>*/}
-        <p>Blurb:<input id="blurb" type="text"/></p>
+        <p>Blurb (textito chiquito bonito bebe):<input id="blurb" type="text"/></p>
 
         <p>Texto largo (opcional):<textarea id="texto_articulo" cols="40" rows="5"/></p>
         <p>Autor (opcional):<input id="autor" type="text"/></p>
-        <p>Link noticia (opcional):<input id="link_articulo" type="text"/></p>
+        <p>Link (Para noticia es lo que va a decir "aqui" al final (opcional), para los otros 3 link a WIX (necesario)):<input id="link_articulo" type="text"/></p>
         <button onClick={() => guardar_articulo()}>GUARDAR</button>
         <p>----------------------------------</p>
         <h4>GESTIONAR ARTICULOS</h4>
