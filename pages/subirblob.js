@@ -5,22 +5,33 @@ import axios from "axios";
 import styles from "../styles/subirblob.module.css";
 
 export default function Subirblob(props) {
-  
-  // ----------------------- SUBIR BLOB:
-  // 1. PONER EL BLOB_NAME CORRECTO y GUARDAR. Ejemplos:
-  // -- Para banners: 'banners/{desktop | mobile}/shure_sm7db.gif'
-  // 2. Ir a http://localhost:3000/subirblob
-  // 3. Seleccionar archivo
-  // 4. Hacer click en subir
-  // 5. Esperar a la alerta y tomar nota del URL para usar despues
+ 
+  /** ------------------------ CONSTANTS */
 
-
-  const BLOB_NAME = 'articulos/placeholderraro.png';
   // TODO: no subir el TOKEN ASI
   const BLOB_TOKEN = "vercel_blob_rw_VVQSKZPtiR4L8fS6_2GXlbBWoqH8N9DPnAoUCoq8tQKFazo";
+  const BLOB_NAME = 'articulos/placeholderraro.png';
+  
   const [file, setFile] = useState(null);
   const [logged_in, setLoggedIn] = useState(false);
   const [articulos, setArticulos] = useState([{id: "wait"}]);
+
+  /** ------------------------ FUNCTIONS */
+
+  /** GENERAL */
+
+  const alertError = (api, error) => {
+    alert("HUBO UN PROBLEMA CON: " + api + "-" + error +". Por favor toma un screenshot de toda la pantalla y contacta a Diana");
+  };
+
+  const showFile = input => {
+    setFile(input.target.files[0]);
+  };
+
+  const subir_blob = async () => {
+    const { url } = await put(BLOB_NAME, file, { access: 'public', token: BLOB_TOKEN });
+    alert('URL: ' + url);
+  };
 
   const login = () => {
     let email = document.getElementById("login_email").value;
@@ -34,26 +45,16 @@ export default function Subirblob(props) {
         alert("LOGIN INCORRECTO");
       } else {
         setLoggedIn(true);
+        document.cookie = "bestiaAdminLoggedIn=true";
       }
     }).catch((error) => {
       if (error.response) {
-        console.log(error.response)
-        console.log(error.response.status)
-        console.log(error.response.headers)
+        alertError("login", error);
       }
     })
-  }
-
-  const subir_blob = async () => {
-    const { url } = await put(BLOB_NAME, file, { access: 'public', token: BLOB_TOKEN });
-    alert('URL: ' + url);
   };
 
-  const showFile = input => {
-    setFile(input.target.files[0]);
-  }
-
-  // ----------------------- GUARDAR COSAS:
+  /** GUARDAR COSAS */
 
   const guardar_cosas = (api, values) => {
     axios({
@@ -63,12 +64,9 @@ export default function Subirblob(props) {
     .then((response) => {
       alert("listo "+api);
       location.reload();
-      setLoggedIn(true);
     }).catch((error) => {
       if (error.response) {
-        console.log(error.response)
-        console.log(error.response.status)
-        console.log(error.response.headers)
+        alertError(api,error);
       }
     })
   };
@@ -160,22 +158,7 @@ export default function Subirblob(props) {
     }
   }
 
-
-  useEffect(() => {
-    axios({
-      method: "GET",
-      url:"/api/get_articulos"
-    })
-    .then((response) => {
-      setArticulos(response.data);
-    }).catch((error) => {
-      if (error.response) {
-        console.log(error.response)
-        console.log(error.response.status)
-        console.log(error.response.headers)
-      }
-    })
-  }, []);
+  /** GET COSAS */
 
   const getListaArticulos = () => {
     let items=[];
@@ -192,6 +175,8 @@ export default function Subirblob(props) {
     return items;
   };
 
+  /** OCULTAR COSAS */
+
   const hideArticulo = (id, activo) => {
     let set_where = `SET Activo = ${!activo} WHERE Id = ${id}`
     axios({
@@ -201,19 +186,21 @@ export default function Subirblob(props) {
     .then((response) => {
       alert("listo update_articulo");
       location.reload();
-      setLoggedIn(true);
     }).catch((error) => {
       if (error.response) {
-        console.log(error.response)
-        console.log(error.response.status)
-        console.log(error.response.headers)
+        alertError("update_articulo", error)
       }
     })
   };
 
+  /** EDITAR COSAS */
+
   const editArticulo = (id) => {
     console.log("edit " + id);
   };
+
+  /** BORRAR COSAS */
+
   const dropArticulo = (id, titulo) => {
     let yes = confirm("estas segura de que quieres borrar " + titulo + "??");
     if (yes) {
@@ -222,49 +209,28 @@ export default function Subirblob(props) {
   };
 
 
-  return (
-    <Fragment>
-      {logged_in ? 
-      <span style={{padding: "2vw"}}>
+  /** ------------------------ USE EFFECT */
 
-        <h4>AGREGAR ARTICULO</h4>
-        <p>Id (no cambiar):<input
-          id="id_articulo"
-          type="text"
-          value={articulos[0]["id"]+1}
-          disabled
-        /></p>
-        <p>Tipo:<select id="tipo">
-          <option>RARO</option>
-          <option>NOTICIA</option>
-          <option>S.P.A.</option>
-          <option>ENTREVISTA</option>
-        </select></p>
-        <p>Titulo:<input id="titulo_articulo" type="text"/></p>
+  useEffect(() => {
+    setLoggedIn(document.cookie.includes("bestiaAdminLoggedIn=true"));
+    axios({
+      method: "GET",
+      url:"/api/get_articulos"
+    })
+    .then((response) => {
+      setArticulos(response.data);
+    }).catch((error) => {
+      if (error.response) {
+        alertError("get_articulos", error);
+      }
+    })
+  }, []);
 
-        <p>Subir foto -- medidas:</p>
-        <p>1200x675 - NOTICIA, 2048x2560 - PORTADA, 1200x474 - RARO y S.P.A.</p>
-        <p>
-          <input type="file" onChange={showFile}></input>
-        </p>
+  /** ------------------------ CONTENT */
 
-        {/*<p>Fecha:<input id="fecha_articulo" type="date"/></p>*/}
-        <p>Blurb (textito chiquito bonito bebe):<input id="blurb" type="text"/></p>
-
-        <p>Texto largo (opcional):<textarea id="texto_articulo" cols="40" rows="5"/></p>
-        <p>Autor (opcional):<input id="autor" type="text"/></p>
-        <p>Link (Para noticia es lo que va a decir "aqui" al final (opcional), para los otros 3 link a WIX (necesario)):<input id="link_articulo" type="text"/></p>
-        <button onClick={() => guardar_articulo()}>GUARDAR</button>
-        <p>----------------------------------</p>
-        <h4>GESTIONAR ARTICULOS</h4>
-        <p>Nota: Si necesitas editar o borrar por completo un artículo pide ayuda a Diana por ahora. Si necesitas que solo deje de aparecer, lo puedes ocultar haciendo click en "hide"</p>
-        {getListaArticulos()}
-
-        <p style={{color: "red"}}>///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////</p>
-        <h1 style={{color: "red"}}> --------------- DANGER ZONE ---------------  </h1>
-        <p style={{color: "red"}}>no usar ninguna de las herramientas debajo de este punto, si necesitas editar el contenido de esas tablas pedir ayuda a Diana por ahora.</p>
-        <p style={{color: "red"}}>///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////</p>
-
+  const subirBlobContent = () => {
+    return (
+      <span>
         <h4>SUBIR BLOB:</h4>
         <p>
           VERIFICA QUE EL BLOB_NAME SEA CORRECTO: {BLOB_NAME}
@@ -275,10 +241,78 @@ export default function Subirblob(props) {
         <p>
           <button onClick={() => subir_blob()}>SUBIR</button>
         </p>
+      </span>
+    );
+  };
 
+  const articuloContent = () => {
+    return (
+      <span>
+        <h4>AGREGAR ARTICULO</h4>
+
+        <p>Id (no cambiar):<input
+          id="id_articulo"
+          type="text"
+          value={articulos[0]["id"]+1}
+          disabled
+        /></p>
+        
+        <p>Tipo:<select id="tipo">
+          <option>RARO</option>
+          <option>NOTICIA</option>
+          <option>S.P.A.</option>
+          <option>ENTREVISTA</option>
+        </select></p>
+        
+        <p>Titulo:<input id="titulo_articulo" type="text"/></p>
+
+        <p>Subir foto -- medidas:</p>
+        <p>1200x675 - NOTICIA, 2048x2560 - PORTADA, 1200x474 - RARO y S.P.A.</p>
         <p>
-          ------------------------
+          <input type="file" onChange={showFile}></input>
         </p>
+
+        {/*<p>Fecha:<input id="fecha_articulo" type="date"/></p>*/}
+        
+        <p>Blurb (textito chiquito bonito bebe):<input id="blurb" type="text"/></p>
+
+        <p>Link (Para noticia es lo que va a decir "aqui" al final (opcional), para los otros 3 link a WIX (necesario)):<input id="link_articulo" type="text"/></p>
+
+        <p>Texto largo (opcional):<textarea id="texto_articulo" cols="40" rows="5"/></p>
+        
+        <p>Autor (opcional):<input id="autor" type="text"/></p>
+        
+        <button onClick={() => guardar_articulo()}>GUARDAR</button>
+
+        <p>---------------------------------------------------------------------</p>
+
+        <h4>GESTIONAR ARTICULOS</h4>
+        <p>Nota: Si necesitas editar o borrar por completo un artículo pide ayuda a Diana por ahora. Si necesitas que solo deje de aparecer, lo puedes ocultar haciendo click en "hide"</p>
+        {getListaArticulos()}
+      </span>
+    );
+  };
+
+  const eventoContent = () => {
+    return (
+      <span>
+        <h4>AGREGAR EVENTO</h4>  
+        Id:<input id="id_evento" type="text"></input>
+        Path foto flyer:<input id="flyer" type="text"></input>
+        Nombre:<input id="nombre_evento" type="text"></input>
+        Lugar:<input id="lugar" type="text"></input>
+        Fecha:<input id="fecha_evento" type="date"></input>
+        Hora:<input id="hora_evento" type="time"></input>
+        Precio:<input id="precio" type="text"></input>
+        Registro:<input id="registro" type="checkbox"></input>
+        <button onClick={() => guardar_evento()}>GUARDAR</button>
+      </span>
+    );
+  };
+
+  const programaContent = () => {
+    return (
+      <span>
         <h4>AGREGAR PROGRAMA</h4>
         Id:<input id="id_programa" type="text"></input>
         Nombre:<input id="nombre_programa" type="text"></input>
@@ -292,11 +326,13 @@ export default function Subirblob(props) {
         Sabado:<input id="sabado" type="checkbox"></input>
         Domingo:<input id="domingo" type="checkbox"></input>
         <button onClick={() => guardar_programa()}>GUARDAR</button>
+      </span>
+    );
+  };
 
-        <p>
-          ------------------------
-        </p>
-
+  const locutorContent = () => {
+    return (
+      <span>
         <h4>AGREGAR LOCUTOR</h4>
         Id:<input id="id_locutor" type="text"></input>
         Nombre:<input id="nombre_locutor" type="text"></input>
@@ -314,27 +350,12 @@ export default function Subirblob(props) {
         Id Locutor:<input id="id_locutor_link" type="text"></input>
         Id Programa:<input id="id_programa_link" type="text"></input>
         <button onClick={() => guardar_link()}>GUARDAR</button>
-
-        <p>
-          ------------------------
-        </p>
-
-        <h4>AGREGAR EVENTO</h4>  
-        Id:<input id="id_evento" type="text"></input>
-        Path foto flyer:<input id="flyer" type="text"></input>
-        Nombre:<input id="nombre_evento" type="text"></input>
-        Lugar:<input id="lugar" type="text"></input>
-        Fecha:<input id="fecha_evento" type="date"></input>
-        Hora:<input id="hora_evento" type="time"></input>
-        Precio:<input id="precio" type="text"></input>
-        Registro:<input id="registro" type="checkbox"></input>
-        <button onClick={() => guardar_evento()}>GUARDAR</button>
-
-        <p>
-          ------------------------
-        </p>
       </span>
-      :
+    );
+  };
+
+  const loginContent = () => {
+    return (
       <span>
         <p>PLEASE LOGIN</p>
         <p>
@@ -345,6 +366,34 @@ export default function Subirblob(props) {
         </p>
         <button onClick={() => login()}>LOGIN</button>
       </span>
+    );
+  };
+
+  return (
+    <Fragment>
+      {logged_in ? 
+      <span style={{padding: "2vw"}}>
+        {articuloContent()}
+        <p  style={{color: "red"}}>///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////</p>
+        <h1 style={{color: "red"}}> --------------- DANGER ZONE ---------------  </h1>
+        <p  style={{color: "red"}}>no usar ninguna de las herramientas debajo de este punto, si necesitas editar el contenido de esas tablas pedir ayuda a Diana por ahora.</p>
+        <p  style={{color: "red"}}>///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////</p>
+        {subirBlobContent()}
+        <p>
+          ------------------------
+        </p>
+        {eventoContent()}
+        <p>
+          ------------------------
+        </p>
+        {programaContent()}
+        <p>
+          ------------------------
+        </p>
+        {locutorContent()}
+      </span>
+      :
+      loginContent()
       }
     </Fragment>
   );
