@@ -21,8 +21,8 @@
 
 .menu_button {
   position: absolute;
-  left: 80vw;
-  top: 3.2vh;
+  left: 77vw;
+  top: 3.9vh;
 }
 
 .logo_desktop {
@@ -34,7 +34,7 @@
 .logo_mobile {
   position: absolute;
   left: 44vw;
-  top: 1.4vh;
+  top: 0.5vh;
 }
 
 
@@ -68,28 +68,28 @@
 
 
 .tienda_mobile {
-  top: 8vh; 
+  top: 11vh; 
 }
 .ruidodeldia_mobile {
-  top: 12vh;
+  top: 15vh;
 }
 .editorial_mobile {
-  top: 16vh;
+  top: 19vh;
 }
 .eventos_mobile {
-  top: 20vh;
+  top: 23vh;
 }
 /*.radioteca_mobile {
   top: 23vh;
 }*/
 .sesiones_mobile {
-  top: 24vh;
+  top: 27vh;
 }
 .programacion_mobile {
-  top: 28vh;
+  top: 31vh;
 }
 .locutores_mobile {
-  top: 32vh;
+  top: 35vh;
 }
 .quees_mobile {
   top: 36vh; 
@@ -106,11 +106,11 @@
 }
 
 .menu_container {
-  background-color: rgb(255, 245, 185);
-  margin-top: 6vh;
+  background-color: rgba(248, 243, 212, 0.904);
+  margin-top: 10vh;
   margin-left: 62vw;
   width: 36vw;
-  padding-top: 37vh;
+  padding-top: 29vh;
 }
 
 .invisible {

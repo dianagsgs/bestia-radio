@@ -36,7 +36,7 @@ export default function Editorial(props) {
                 {articulos[i].tipo}
               </div>
               <CustomImage
-                resp_w={props.mobile ? "80vw" : "24vw"}
+                resp_w={props.mobile ? "95vw" : "24vw"}
                 src={articulos[i].foto_path}
                 w={noticias ? "1200" :"2048"}
                 h={noticias ? "675" : "2570"}
@@ -93,10 +93,10 @@ export default function Editorial(props) {
           h="2570"
           class={props.mobile ? styles.cover_mobile : styles.cover}
         />
-        <p class={styles.cover_titulo_font}>
-          {"----> " + portada_data.titulo + " <----"}
+        <p class={props.mobile ? styles.cover_titulo_font_mobile : styles.cover_titulo_font}>
+          {props.mobile ?  portada_data.titulo : "----> " + portada_data.titulo + " <----"}
         </p>
-        <p class={styles.cover_blurb_font}>
+        <p class={props.mobile ? styles.cover_blurb_font_mobile : styles.cover_blurb_font}>
           {portada_data.blurb}
         </p>
         <CustomButton
@@ -104,7 +104,7 @@ export default function Editorial(props) {
           hover_src={"/img/leer_mas.png"}
           w={28}
           h={10}
-          resp_w={props.mobile ? "20vw" : "10vw"}
+          resp_w={props.mobile ? "35vw" : "10vw"}
           type="external"
           href={portada_data.link}//{"/archivo?id="+portada_data.id}
           button_class={props.mobile ? styles.boton_mas_mobile : styles.boton_mas}
@@ -158,7 +158,7 @@ export default function Editorial(props) {
           hover_src={"/img/leer_mas.png"}
           w={28}
           h={10}
-          resp_w={props.mobile ? "20vw" : "10vw"}
+          resp_w={props.mobile ? "35vw" : "10vw"}
           type="external"
           href={articulo_data.link}
           button_class={props.mobile ? styles.boton_mas_mobile : styles.boton_mas}

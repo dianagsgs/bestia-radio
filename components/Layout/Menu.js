@@ -62,7 +62,7 @@ const Menu = (props) => {
           hover_src={mobile ? "/img/logo_mobile.png" : "/img/logo.png"}
           w={140}
           h={mobile ? 140 : 190}
-          resp_w={mobile ? "15vw" : "12vw"}
+          resp_w={mobile ? "18vw" : "12vw"}
           type="home"
           button_class={mobile ? styles.logo_mobile : styles.logo_desktop}
         />
@@ -76,8 +76,8 @@ const Menu = (props) => {
               src={"/img/menu/menu_mobile.png"}
               hover_src={"/img/menu/menu_mobile.png"}
               w={100}
-              h={30}
-              resp_w={"16vw"}
+              h={25}
+              resp_w={"18vw"}
               type="action"
               actionClickHandler={openMenu}
               button_class={styles.menu_button}

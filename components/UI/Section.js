@@ -11,7 +11,7 @@ export default function Section(props) {
           id={props.id}
         >
           <CustomImage
-            resp_w={props.mobile ? "50vw ": "15vw"}
+            resp_w={props.mobile ? "40vw ": "15vw"}
             src={props.titulo}
             w="130"
             h="30"

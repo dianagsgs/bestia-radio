@@ -21,7 +21,7 @@ export default function Player(props) {
           className="radioplayer"
           data-src="https://streams.radio.co/s4aaec47cd/listen"
           data-playbutton="true"
-          data-volumeslider="true"
+          data-volumeslider={props.mobile ? "false" : "true"}
           data-elapsedtime="false"
           data-nowplaying="true"
           data-showplayer="false"

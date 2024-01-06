@@ -69,27 +69,35 @@
     font-size: 2.5vh;
 }
 
+.cover_blurb_font_mobile {
+    padding-left: 11vw;
+    padding-right: 8vw;
+    font-family: "ContentFont", sans-serif;
+    font-size: 4.5vw;
+}
+
 .cover_titulo_font {
     padding-left: 23.5vw;
     font-family: "PlayerFont", sans-serif;
     font-size: 6vh;
 }
 
+.cover_titulo_font_mobile {
+    padding-top: 1.5vh;
+    padding-left: 14vw;
+    font-family: "PlayerFont", sans-serif;
+    font-size: 5vh;
+}
+
 .boton_mas {
   margin-left: 34vw;
   padding-bottom: 6vh;
-   /*margin-left: 34vw;
-    background-color: black;
-    color: rgb(248, 104, 104);
-    font-family: "PlayerFont", sans-serif;
-    font-size: 3.2vh;
-    padding-left: 1vw;
-    padding-right: 1vw;
-    padding-top: 1.5vh;
-    padding-bottom: 1.5vh;
-    border-radius: 0.5vw;
-    margin-bottom: 10vh;*/
 }
+
+.boton_mas_mobile {
+    margin-left: 28vw;
+    padding-bottom: 3vh;
+  }
 
 .mini_noticia{
     background-color: rgba(216, 216, 249, 0.38);
@@ -160,10 +168,10 @@
     font-size: 7vh;
 }
 
-.mini_noticia_mobile {
-    background-color: rgba(37, 37, 118, 0.38);
+.mini_noticias_mobile {
+    background-color: rgba(216, 216, 249, 0.38);
     width: 100vw;
-    height: 62vh;
+    height: 60vh;
     overflow-y: scroll;
 }
 
