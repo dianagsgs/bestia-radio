@@ -274,7 +274,7 @@ export default function Subirblob(props) {
 
         {/*<p>Fecha:<input id="fecha_articulo" type="date"/></p>*/}
         
-        <p>Blurb (textito chiquito bonito bebe):<input id="blurb" type="text"/></p>
+        <p>Blurb (textito chiquito bonito bebe):<textarea id="blurb"  cols="40" rows="5"/></p>
 
         <p>Link (Para noticia es lo que va a decir "aqui" al final (opcional), para los otros 3 link a WIX (necesario)):<input id="link_articulo" type="text"/></p>
 
