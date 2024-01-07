@@ -10,14 +10,14 @@ const Menu = (props) => {
   let mobile = props.mobile;
   let sections = [
     ["tienda","https://www.somoslabestia.com/shop-1",mobile ? styles.tienda_mobile : styles.tienda],
-    ["editorial","#editorial",mobile ? styles.editorial_mobile : styles.editorial],
     ["ruidodeldia","#ruidodeldia",mobile ? styles.ruidodeldia_mobile : styles.ruidodeldia],
+    ["portada","#portada",mobile ? styles.portada_mobile : styles.portada],
+    ["raro","#raro",mobile ? styles.raro_mobile : styles.raro],
+    ["soloparaadultos","#soloparaadultos",mobile ? styles.soloparaadultos_mobile : styles.soloparaadultos],
     ["eventos","#eventos",mobile ? styles.eventos_mobile : styles.eventos],
-    //["radioteca","#radioteca",mobile ? styles.radioteca_mobile : styles.radioteca],
     ["sesiones","#sesiones",mobile ? styles.sesiones_mobile : styles.sesiones],
     ["programacion","#programacion",mobile ? styles.programacion_mobile : styles.programacion],
-    // ["locutores","/locutores",mobile ? styles.locutores_mobile : styles.locutores],
-    ["quees","#quees",mobile ? styles.locutores_mobile : styles.locutores] // styles.quees_mobile : styles.quees
+    ["quees","#quees",mobile ? styles.quees_mobile : styles.quees]
   ];
   const [visible, setVisible] = useState(false);
 

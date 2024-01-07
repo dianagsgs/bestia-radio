@@ -17,7 +17,7 @@ function MyApp({ Component, pageProps }) {
     backgroundImage: background_src,
     backgroundSize: "100vw 100%",
     backgroundAttachment: "fixed",
-    backgroundPosition: windowSize === "small" ? "0vw 0vh" : "0vw 0vh"
+    backgroundPosition: windowSize === "small" ? "0vw 0vh" : "0vw 0vh" // nonalt fondo desk 10vh
   };
 
   useEffect(() => {

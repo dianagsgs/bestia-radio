@@ -39,31 +39,31 @@
 
 
 .tienda {
-  top: 56vh; 
+  top: 53vh; 
 }
 .ruidodeldia {
-  top: 61vh;
+  top: 58vh;
 }
-.editorial {
-  top: 66vh;
+.portada {
+  top: 63vh;
+}
+.raro {
+  top: 68vh;
+}
+.soloparaadultos {
+  top: 73vh;
 }
 .eventos {
-  top: 71vh;
+  top: 78vh;
 }
-/*.radioteca {
-  top: 74vh;
-}*/
 .sesiones {
-  top: 76vh;
+  top: 83vh;
 }
 .programacion {
-  top: 81vh;
-}
-.locutores {
-  top: 86vh;
+  top: 88vh;
 }
 .quees {
-  top: 91vh; 
+  top: 93vh; 
 }
 
 
@@ -73,26 +73,26 @@
 .ruidodeldia_mobile {
   top: 15vh;
 }
-.editorial_mobile {
+.portada_mobile {
   top: 19vh;
 }
-.eventos_mobile {
+.raro_mobile {
   top: 23vh;
 }
-/*.radioteca_mobile {
-  top: 23vh;
-}*/
-.sesiones_mobile {
+.soloparaadultos_mobile {
   top: 27vh;
 }
-.programacion_mobile {
+.eventos_mobile {
   top: 31vh;
 }
-.locutores_mobile {
+.sesiones_mobile {
   top: 35vh;
 }
+.programacion_mobile {
+  top: 39vh;
+}
 .quees_mobile {
-  top: 36vh; 
+  top: 43vh; 
 }
 
 .menu_item_mobile {
@@ -110,7 +110,7 @@
   margin-top: 10vh;
   margin-left: 62vw;
   width: 36vw;
-  padding-top: 29vh;
+  padding-top: 38vh;
 }
 
 .invisible {

@@ -82,7 +82,7 @@ export default function Editorial(props) {
       if (portada_data.tipo === "ENTREVISTA" && portada_data.activo) break;
     }
     let portada =
-      <div class={styles.cover_container}>
+      <div class={props.mobile ? styles.cover_container_mobile : styles.cover_container}>
         <CustomImage
           resp_w={props.mobile ? "95vw" : "75vw"}
           src={portada_data.foto_path}
@@ -135,7 +135,7 @@ export default function Editorial(props) {
       if (articulo_data.tipo === type && articulo_data.activo) break;
     }
     return (
-      <div class={styles.cover_container}>
+      <div class={props.mobile ? styles.cover_container_mobile : styles.cover_container}>
         <CustomImage
           resp_w={props.mobile ? "95vw" : "75vw"}
           src={articulo_data.foto_path}

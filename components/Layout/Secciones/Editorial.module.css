@@ -82,12 +82,11 @@
 }
 .font_cover { /* TITULO portada */
     padding-top: 1vh;
-    padding-left: 20vw;
+    padding-left: 22vw;
     width: 75vw;
     font-family: "PlayerFont", sans-serif;
     font-size: 3vw;
 }
-
 .cover_blurb_font { /* BLURB portada */
     padding-left: 10vw;
     padding-right: 10vw;
@@ -95,6 +94,14 @@
     font-size: 2.5vh;
 }
 /* Mobile */
+.cover_container_mobile { /* CONTAINER portada, raro, y SPA */
+    background-color: rgba(216, 216, 249, 0.38);
+    margin-bottom: 4vh;
+    width: 95vw;
+}
+.cover_mobile {
+    margin-bottom: 3vh;
+}
 .boton_mas_mobile {
     margin-left: 28vw;
     padding-bottom: 3vh;
@@ -103,12 +110,11 @@
     padding-left: 11vw;
     padding-right: 8vw;
     font-family: "ContentFont", sans-serif;
-    font-size: 4.5vw;
+    font-size: 4vw;
 }
 .font_cover_mobile {
-    padding-top: 1vh;
-    padding-left: 20vw;
+    padding-left: 5vw;
     width: 100vw;
     font-family: "PlayerFont", sans-serif;
-    font-size: 7vh;
+    font-size: 3.5vh;
 }
