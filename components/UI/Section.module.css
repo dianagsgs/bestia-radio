@@ -1,0 +1,24 @@
+.section {
+    min-width: 100vw;
+    padding-top: 18vh;
+    padding-left: 17vw;
+    padding-right: 3vw;
+}
+
+.section_mobile {
+    min-height: 80vh;
+    padding-top: 12vh;
+    padding-left: 3vw;
+    padding-right: 3vw;
+   
+}
+
+.titulo {
+   padding-bottom: 3vh;
+}
+
+.titulo_mobile {
+    margin-left: 1vw;
+    padding-bottom: 2vh;
+    z-index: -1;
+}

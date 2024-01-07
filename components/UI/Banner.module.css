@@ -10,8 +10,8 @@
 
 .desktop_banner {
   position: sticky;
-  top: 76vh;
-  padding-left: 25vw;
+  top: 82vh;
+  padding-left: 30vw;
   z-index: 10;
   margin-top: -90px; 
 }

@@ -1,0 +1,85 @@
+@font-face {
+  font-family: "ContentFont";
+  src: url("/fonts/HelveticaRoundedLTStd-Bd.otf") format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.font_nombre {
+    font-family: "ContentFont", sans-serif;
+    font-size: 4.5vh;
+    margin-left: 3vw;
+    margin-right: 4vw;
+    margin-top: 3vh;
+}
+
+.font_horario {
+    font-family: "ContentFont", sans-serif;
+    font-size: 2.5vh;
+    margin-left: 3vw;
+    margin-right: 4vw;
+    margin-top: 3vh;
+}
+
+.font_horario_mobile {
+    font-family: "ContentFont", sans-serif;
+    font-size: 1.6vh;
+    margin-left: 3vw;
+    margin-right: 4vw;
+    margin-top: 3vh;
+}
+
+.font_insta {
+    font-family: "ContentFont", sans-serif;
+    font-size: 2vh;
+    margin-left: 3vw;
+    margin-right: 4vw;
+}
+
+.font_bio {
+    font-family: "ContentFont", sans-serif;
+    font-size: 3.2vh;
+    margin-left: 3vw;
+    margin-right: 4vw;
+    margin-top: 3vh;
+}
+
+.font_bio_mobile {
+    font-family: "ContentFont", sans-serif;
+    font-size:2.5vh;
+    margin-left: 3vw;
+    margin-right: 4vw;
+    margin-top: 3vh;
+}
+
+.foto_locutor_fuera {
+    border-radius: 6vw;
+    padding: 1.2vw;
+    overflow: hidden;
+    background-color: black;
+}
+
+.foto_locutor_fuera_mobile {
+    border-radius: 6vw;
+    padding: 2vw;
+    overflow: hidden;
+    background-color: black;
+    width: 62vw;
+    height: 25.5vh;
+}
+
+.foto_locutor_dentro {
+    border-radius: 5vw;
+    overflow: hidden;
+}
+
+.foto_locutor_dentro_mobile {
+    border-radius: 5vw;
+    overflow: hidden;
+}
+
+.content {
+    margin-left: 5vw;
+    margin-top: 11vh;
+    padding-bottom: 15vh;
+}

@@ -1,0 +1,63 @@
+.player_desktop {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 5;
+  }
+
+.speaker {
+    position: fixed;
+    left: 65vw;
+    top: 4.6vh;
+    z-index: 7;
+}
+
+.insta {
+  position: fixed;
+  left: 79.5vw;
+  top: 3.8vh;
+  z-index: 7;
+}
+
+.face {
+  position: fixed;
+  left: 82.6vw;
+  top: 3.8vh;
+  z-index: 7;
+}
+
+.youtube {
+  position: fixed;
+  left: 86vw;
+  top: 3.8vh;
+  z-index: 7;
+}
+
+.twitch {
+  position: fixed;
+  left: 89.4vw;
+  top: 3.8vh;
+  z-index: 7;
+}
+
+.tiktok {
+  position: fixed;
+  left: 92.5vw;
+  top: 3.8vh;
+  z-index: 7;
+}
+
+.whats {
+  position: fixed;
+  left: 95.6vw;
+  top: 3.8vh;
+  z-index: 7;
+}
+
+/* MOBILE */
+  
+.player_mobile {
+    position: fixed;
+    top: 9.8vh;
+    z-index: 1;
+}

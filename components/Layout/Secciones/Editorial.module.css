@@ -1,0 +1,180 @@
+.font_blurb {
+    padding-left: 1vw;
+    padding-top: 3vh;
+    width: 23vw;
+    font-family: "ContentFont", sans-serif;
+    font-size: 2vh;
+}
+
+.font_titulo {
+    padding-top: 1vh;
+    padding-left: 1vw;
+    width: 23vw;
+    font-family: "PlayerFont", sans-serif;
+    font-size: 2vw;
+}
+
+.font_tipo {
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+    padding-left: 1vw;
+    width: 23vw;
+    font-family: "PlayerFont", sans-serif;
+    font-size: 1.2vw;
+}
+
+.cover_container {
+    background-color: rgba(216, 216, 249, 0.38);
+    margin-bottom: 4vh;
+}
+
+.font_cover {
+    padding-top: 1vh;
+    padding-left: 30vw;
+    width: 75vw;
+    font-family: "PlayerFont", sans-serif;
+    font-size: 5vw;
+}
+
+.font_raro {
+    padding-top: 1vh;
+    padding-left: 33.5vw;
+    width: 75vw;
+    font-family: "PlayerFont", sans-serif;
+    font-size: 5vw;
+}
+
+.font_SPA {
+    padding-top: 1vh;
+    padding-left: 19vw;
+    width: 75vw;
+    font-family: "PlayerFont", sans-serif;
+    font-size: 5vw;
+}
+
+.cover {
+    padding-left: 5vw;
+    margin-bottom: 3vh;
+}
+
+.raro {
+    padding-left: 5vw;
+    margin-bottom: 3vh;
+}
+
+.cover_blurb_font {
+    padding-left: 20vw;
+    padding-right: 5vw;
+    font-family: "ContentFont", sans-serif;
+    font-size: 2.5vh;
+}
+
+.cover_blurb_font_mobile {
+    padding-left: 11vw;
+    padding-right: 8vw;
+    font-family: "ContentFont", sans-serif;
+    font-size: 4.5vw;
+}
+
+.cover_titulo_font {
+    padding-left: 23.5vw;
+    font-family: "PlayerFont", sans-serif;
+    font-size: 6vh;
+}
+
+.cover_titulo_font_mobile {
+    padding-top: 1.5vh;
+    padding-left: 14vw;
+    font-family: "PlayerFont", sans-serif;
+    font-size: 5vh;
+}
+
+.boton_mas {
+  margin-left: 34vw;
+  padding-bottom: 6vh;
+}
+
+.boton_mas_mobile {
+    margin-left: 28vw;
+    padding-bottom: 3vh;
+  }
+
+.mini_noticia{
+    background-color: rgba(216, 216, 249, 0.38);
+    width: 24vw;
+    height: 62vh;
+    overflow-y: scroll;
+}
+
+.editorial{
+    background-color: rgba(216, 216, 249, 0.38);
+    width: 26vw;
+    height: 90;
+    overflow-y: scroll;
+    margin-bottom: 5vh;
+    padding-bottom: 3vh;
+}
+
+.titulo {
+    padding-bottom: 3vh;
+}
+
+.otra_foto {
+    cursor: pointer;
+    margin-left: 1vw;
+}
+
+.link {
+    color: blue;   
+}
+
+.font_titulo_mobile {
+    padding-top: 1vh;
+    padding-left: 1vw;
+    width: 100vw;
+    font-family: "PlayerFont", sans-serif;
+    font-size: 4vh;
+}
+
+.font_tipo_mobile {
+    padding-top: 1vh;
+    padding-left: 1vw;
+    width: 100vw;
+    font-family: "PlayerFont", sans-serif;
+    font-size: 3vh;
+}
+
+.font_cover_mobile {
+    padding-top: 1vh;
+    padding-left: 20vw;
+    width: 100vw;
+    font-family: "PlayerFont", sans-serif;
+    font-size: 7vh;
+}
+
+.font_raro_mobile {
+    padding-top: 1vh;
+    padding-left: 31vw;
+    width: 100vw;
+    font-family: "PlayerFont", sans-serif;
+    font-size: 7vh;
+}
+
+.font_SPA_mobile {
+    padding-top: 1vh;
+    padding-left: 31vw;
+    width: 100vw;
+    font-family: "PlayerFont", sans-serif;
+    font-size: 7vh;
+}
+
+.mini_noticias_mobile {
+    background-color: rgba(216, 216, 249, 0.38);
+    width: 100vw;
+    height: 60vh;
+    overflow-y: scroll;
+}
+
+.raro_mobile {
+  padding-bottom: 5vh;
+};

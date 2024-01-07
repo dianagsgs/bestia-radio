@@ -1,137 +1,122 @@
 .menu_desktop {
   position: fixed;
-  bottom: 0;
+  bottom: 0vh;
   left: 0;
-  width: 100%;
-  height: 60px;
-  background-image: url("/img/menu/pattern.jpg");
-  background-position: center;
-  background-size: contain;
-  background-repeat: repeat-x;
+  width: 15vw;
+  height: 100vh;
   z-index: 999;
 }
-.menu_desktop a {
-  color: #1b1e21;
-}
-.menu_desktop .logo {
-  position: absolute;
+
+.menu_mobile {
+  position: fixed;
   top: 0;
   left: 0;
-  height: 100%;
-  cursor: pointer;
+  width: 100vw;
+  height: 10vh;
+  background-image: url("/img/menu/barra_superior.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  z-index: 999;
 }
-.menu_desktop .clock_box {
+
+.menu_button {
   position: absolute;
-  top: 0;
-  right: 0;
-  height: 100%;
+  left: 77vw;
+  top: 3.9vh;
 }
-.menu_desktop .clock {
+
+.logo_desktop {
   position: absolute;
-  top: 13px;
-  right: 20px;
-  height: 100%;
-  color: white;
-  font-size: 22px;
+  left: 2vw;
+  top: 17vh;
 }
-.menu_desktop .social {
+
+.logo_mobile {
   position: absolute;
-  top: 13px;
-  right: 110px;
-  height: 100%;
-  color: white;
-  font-size: 22px;
+  left: 44vw;
+  top: 0.5vh;
 }
-.menu_desktop .social img {
-  width: 35px;
+
+
+.tienda {
+  top: 56vh; 
 }
-.menu_desktop .social_mobile {
-  display: none;
-  position: absolute;
-  top: 13px;
-  right: 20px;
-  height: 100%;
-  color: white;
-  font-size: 22px;
+.ruidodeldia {
+  top: 61vh;
 }
-.menu_desktop .social_mobile img {
-  width: 30px;
+.editorial {
+  top: 66vh;
 }
-.menu_desktop .hidden {
-  position: absolute;
-  top: -500px;
-  left: 0;
-  width: 500px;
-  height: 500px;
-  overflow: hidden;
+.eventos {
+  top: 71vh;
 }
-.menu_desktop .hidden .head img {
-  width: 100%;
+/*.radioteca {
+  top: 74vh;
+}*/
+.sesiones {
+  top: 76vh;
 }
-.menu_desktop .hidden .content {
-  background-color: white;
+.programacion {
+  top: 81vh;
 }
-.menu_desktop .hidden .content .left {
-  padding: 10px !important;
-  height: 440px;
-  border-right: 1px solid #a8c9f1;
+.locutores {
+  top: 86vh;
 }
-.menu_desktop .hidden .content .right {
-  padding: 10px !important;
-  height: 440px;
-  background-color: #d3e5fa;
-  border-right: 4px solid #2a54b5;
+.quees {
+  top: 91vh; 
 }
-.menu_desktop .hidden .menu_item {
-  display: block;
-  padding: 5px 0;
-  margin-bottom: 10px;
-  cursor: pointer;
+
+
+.tienda_mobile {
+  top: 11vh; 
 }
-.menu_desktop .hidden .menu_item img {
-  width: 30px;
-  margin-right: 5px;
+.ruidodeldia_mobile {
+  top: 15vh;
 }
-.menu_desktop .hidden .menu_item .arrow {
-  opacity: 0;
+.editorial_mobile {
+  top: 19vh;
 }
-.menu_desktop .hidden .menu_item .arrow img {
-  width: 20px;
-  position: absolute;
-  right: 5px;
+.eventos_mobile {
+  top: 23vh;
 }
-.menu_desktop .hidden .menu_box {
-  height: 400px;
-  overflow: hidden;
-  overflow-y: scroll;
+/*.radioteca_mobile {
+  top: 23vh;
+}*/
+.sesiones_mobile {
+  top: 27vh;
 }
-.menu_desktop .hidden .menu_box a {
-  color: #1d2124;
+.programacion_mobile {
+  top: 31vh;
 }
-.menu_desktop .hidden .menu_box_item {
-  padding: 5px 0;
-  cursor: pointer;
+.locutores_mobile {
+  top: 35vh;
 }
-.menu_desktop .hidden .menu_box_item img {
-  width: 25px;
-  margin-right: 5px;
+.quees_mobile {
+  top: 36vh; 
 }
-.menu_desktop .hidden .menu_item:hover .arrow {
-  opacity: 1;
+
+.menu_item_mobile {
+  position:absolute;
+  left: 64vw;
 }
-.menu_desktop .hidden .menu_item.active .arrow {
-  opacity: 1;
+
+.menu_item {
+  position:absolute;
+  left: 3.3vw;
 }
-.menu_mobile {
-  display: none;
+
+.menu_container {
+  background-color: rgba(248, 243, 212, 0.904);
+  margin-top: 10vh;
+  margin-left: 62vw;
+  width: 36vw;
+  padding-top: 29vh;
 }
-.menu_mobile {
+
+.invisible {
+  display:none;
 }
-@media only screen and (max-width: 1000px) {
-  .menu_desktop {
-    display: none;
-  }
-  .menu_mobile {
-    display: block;
-  }
+
+.menu_link:hover {
+  color:rgb(16, 230, 16);
 }

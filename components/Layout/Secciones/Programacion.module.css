@@ -1,0 +1,28 @@
+.un_dia {
+    background-color: rgba(216, 216, 249, 0.38);
+    width:15vw;
+    padding-left: 1vw;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+}
+
+.un_dia_mobile {
+    background-color: rgba(216, 216, 249, 0.38);
+    width:90vw;
+    margin-left: 1.4vw;
+    padding-left: 5vw;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+}
+
+.font_nombre_dia {
+    font-family: "ContentFont", sans-serif;
+    font-size: 3vh;
+}
+
+.font_horario {
+    font-family: "ContentFont", sans-serif;
+    font-size: 1.8vh;
+    white-space: nowrap;
+    overflow: hidden;
+}

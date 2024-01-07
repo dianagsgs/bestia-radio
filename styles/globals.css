@@ -15,109 +15,134 @@ a {
   box-sizing: border-box;
 }
 
-/* RADIO */
-.radio_box {
-  position: absolute;
-  top: 10px;
-  left: 230px;
-  height: 100%;
-  color: white;
-  font-size: 22px;
+@font-face {
+  font-family: "PlayerFont";
+  src: url("/fonts/ConcertOne-Regular.ttf") format('opentype');
+  font-weight: normal;
+  font-style: normal;
 }
+p.customfont { 
+    
+    font-size: 3.5vh;
+    margin-left: 3vw;
+    margin-right: 4vw;
+    margin-top: 3vh;
+}
+
+/* RADIO */
+
 .radioco-playButton-playing {
-  width: 45px;
-  height: 45px;
-  background-image: url("/img/radio/play.png");
-  background-size: contain;
+  position:fixed;
+  width: 6vh;
+  height: 6vh;
+  background-image: url("/img/player/player_boton_play.png");
   background-repeat: no-repeat;
-  background-position: center;
-  margin-right: 10px;
+  background-size: contain;
+  top: 3vh;
+  left: 16vw;
+  cursor: pointer;
+  z-index: 7;
 }
 .radioco-playButton-paused {
-  width: 45px;
-  height: 45px;
-  background-image: url("/img/radio/stop.png");
-  background-size: contain;
+  position: fixed;
+  width: 6vh;
+  height: 6vh;
+  background-image: url("/img/player/player_boton_pausa.png");
   background-repeat: no-repeat;
-  background-position: center;
-  margin-right: 10px;
+  background-size: contain;
+  top: 3vh;
+  left: 16vw;
+  cursor: pointer;
+  z-index: 7;
 }
 .radioco-nowPlaying {
-  display: inline-block;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-left: 20px;
-  padding-right: 20px;
-  height: 40px;
-  width: auto;
-  font-size: 16px;
-  color: #3eda58;
-  background-color: black !important;
-  margin-right: 20px;
+  position:fixed;
+  top: 3.5vh;
+  left: 20vw;
+  height: 5vh;
+  padding-bottom: 0.5vh;
+  padding-left: 1vw;
+  width: 44vw;
+  font-size: 3.1vh;
+  font-family: "PlayerFont";
+  color: #000000;
   overflow: hidden;
+  z-index: 7;
+  background-color: rgba(164, 45, 102, 0.186);
+  border-radius: 1vw;
 }
+
 .radioco-volume {
-  width: 100px;
-  height: 50px;
-  vertical-align: top;
-  margin-top: 20px;
-  position: relative;
+  position: fixed;
+  z-index: 7;
+  top: 5vh;
+  left: 67vw;
+  width: 10vw;
 }
+
 input[type="range"] {
   -webkit-appearance: none;
-  -moz-apperance: none;
-  border-radius: 6px;
-  height: 6px;
-  background-image: -webkit-gradient(
-    linear,
-    left top,
-    right top,
-    color-stop(0.15, #ccc),
-    color-stop(0.15, #ccc)
-  );
+  appearance: none;
+  background-image: url("/img/player/player_volumen_barra.png");
+  background-repeat: no-repeat;
+  background-size: 10vw 2.5vh;
+  border-radius: 1vw;
+  height: 2.6vh;
+  cursor: pointer;
 }
 input[type="range"]::-webkit-slider-thumb {
-  -webkit-appearance: none !important;
-  border-radius: 50%;
-  height: 15px;
-  width: 15px;
-  background-color: #bad5e0;
-  border: 1px solid #aaa;
-}
-.volume-icon {
-  position: absolute;
-  top: 3px;
-  left: 470px;
-  height: 100%;
-  color: white;
-  font-size: 22px;
-  width: 25px;
-}
-.volume-icon img {
-  width: 100%;
+  -webkit-appearance: none;
+  appearance: none;
+  background-image: url("/img/player/player_volumen_modulador.png");
+  background-size: 3.8vh;
+  background-repeat: no-repeat;
+  width: 1.9vw;
+  height: 4vh;
+  
 }
 
 @media only screen and (max-width: 1000px) {
-  .radio_box {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    height: 100%;
-    color: white;
-    font-size: 22px;
+  .radioco-playButton-playing {
+    position:fixed;
+    width: 3.5vh;
+    height: 3.5vh;
+    background-image: url("/img/player/player_boton_play.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    top: 11vh;
+    left: 29vw;    
+  }
+  .radioco-playButton-paused {
+    position:fixed;
+    width: 3.5vh;
+    height: 3.5vh;
+    background-image: url("/img/player/player_boton_pausa.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    top: 11vh;
+    left: 29vw; 
   }
   .radioco-nowPlaying {
-    display: inline-block;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-left: 20px;
-    padding-right: 20px;
-    height: 40px;
-    width: 150px;
-    font-size: 16px;
-    color: #3eda58;
-    background-color: black !important;
-    margin-right: 20px;
+    position:fixed;
+    top: 11vh;
+    left: 38vw;
+    height: 3.5vh;
+    width: 59vw;
+    padding-top: 0.4vh;
+    padding-left: 2.9vw;
+    padding-right: 0.8vw;
+    font-size: 3.8vw;
+    font-family: "PlayerFont";
+    color: #000000;
+    background-color: rgba(164, 45, 102, 0.186);
+    border-radius: 3vw;
     overflow: hidden;
+    z-index: 7;
+  }
+  
+  .radioco-volume {
+    display: none;
   }
 }
+
+
