@@ -83,9 +83,6 @@ export default function Editorial(props) {
     }
     let portada =
       <div class={styles.cover_container}>
-        <p class={props.mobile ? styles.font_cover_mobile : styles.font_cover}>
-          PORTADA
-        </p>
         <CustomImage
           resp_w={props.mobile ? "95vw" : "75vw"}
           src={portada_data.foto_path}
@@ -93,8 +90,8 @@ export default function Editorial(props) {
           h="2570"
           class={props.mobile ? styles.cover_mobile : styles.cover}
         />
-        <p class={props.mobile ? styles.cover_titulo_font_mobile : styles.cover_titulo_font}>
-          {props.mobile ?  portada_data.titulo : "----> " + portada_data.titulo + " <----"}
+        <p class={props.mobile ? styles.font_cover_mobile : styles.font_cover}>
+          {portada_data.titulo}
         </p>
         <p class={props.mobile ? styles.cover_blurb_font_mobile : styles.cover_blurb_font}>
           {portada_data.blurb}
@@ -139,19 +136,12 @@ export default function Editorial(props) {
     }
     return (
       <div class={styles.cover_container}>
-        <p class={
-          props.mobile ?
-          (type === "RARO" ? styles.font_raro_mobile : styles.font_SPA_mobile) :
-          (type === "RARO" ? styles.font_raro : styles.font_SPA)
-        }>
-          {type === "RARO" ? "RARO" : (props.mobile ? "S.P.A." : "SOLO PARA ADULTOS")}
-        </p>
         <CustomImage
           resp_w={props.mobile ? "95vw" : "75vw"}
           src={articulo_data.foto_path}
           w="1200"
           h="475"
-          class={props.mobile ? styles.raro_mobile : styles.raro}
+          class={props.mobile ? styles.cover_mobile : styles.cover}
         />
         <CustomButton
           src={"/img/leer_mas.png"}
@@ -198,15 +188,37 @@ export default function Editorial(props) {
       </Section>
 
       <Section
+        id="portada"
+        titulo="/img/titulos/portada.png"
+        mobile={props.mobile}
+      >
+        {getPortada()}
+      </Section>
+
+
+      <Section
+        id="raro"
+        titulo="/img/titulos/raro.png"
+        mobile={props.mobile}
+      >
+        {getOther("RARO")}
+      </Section>
+
+      <Section
+        id="soloparaadultos"
+        titulo="/img/titulos/soloparaadultos.png"
+        mobile={props.mobile}
+      >
+        {getOther("S.P.A.")}
+      </Section>
+
+      {/*<Section
         id="editorial"
         titulo="/img/titulos/editorial.png"
         mobile={props.mobile}
       >
-        {getPortada()}
-        {getOther("RARO")}
-        {getOther("S.P.A.")}
-        {/*getArchivo()*/}
-      </Section>
+        {getArchivo()}
+      </Section>*/}
     </Fragment>
   );
 }

@@ -1,3 +1,5 @@
+/* CARRUSELES NOTICIAS y ARCHIVO */
+/* Desktop */
 .font_blurb {
     padding-left: 1vw;
     padding-top: 3vh;
@@ -5,7 +7,6 @@
     font-family: "ContentFont", sans-serif;
     font-size: 2vh;
 }
-
 .font_titulo {
     padding-top: 1vh;
     padding-left: 1vw;
@@ -13,7 +14,6 @@
     font-family: "PlayerFont", sans-serif;
     font-size: 2vw;
 }
-
 .font_tipo {
     padding-top: 1vh;
     padding-bottom: 1vh;
@@ -22,91 +22,16 @@
     font-family: "PlayerFont", sans-serif;
     font-size: 1.2vw;
 }
-
-.cover_container {
-    background-color: rgba(216, 216, 249, 0.38);
-    margin-bottom: 4vh;
+.link {
+    color: blue;   
 }
-
-.font_cover {
-    padding-top: 1vh;
-    padding-left: 30vw;
-    width: 75vw;
-    font-family: "PlayerFont", sans-serif;
-    font-size: 5vw;
-}
-
-.font_raro {
-    padding-top: 1vh;
-    padding-left: 33.5vw;
-    width: 75vw;
-    font-family: "PlayerFont", sans-serif;
-    font-size: 5vw;
-}
-
-.font_SPA {
-    padding-top: 1vh;
-    padding-left: 19vw;
-    width: 75vw;
-    font-family: "PlayerFont", sans-serif;
-    font-size: 5vw;
-}
-
-.cover {
-    padding-left: 5vw;
-    margin-bottom: 3vh;
-}
-
-.raro {
-    padding-left: 5vw;
-    margin-bottom: 3vh;
-}
-
-.cover_blurb_font {
-    padding-left: 20vw;
-    padding-right: 5vw;
-    font-family: "ContentFont", sans-serif;
-    font-size: 2.5vh;
-}
-
-.cover_blurb_font_mobile {
-    padding-left: 11vw;
-    padding-right: 8vw;
-    font-family: "ContentFont", sans-serif;
-    font-size: 4.5vw;
-}
-
-.cover_titulo_font {
-    padding-left: 23.5vw;
-    font-family: "PlayerFont", sans-serif;
-    font-size: 6vh;
-}
-
-.cover_titulo_font_mobile {
-    padding-top: 1.5vh;
-    padding-left: 14vw;
-    font-family: "PlayerFont", sans-serif;
-    font-size: 5vh;
-}
-
-.boton_mas {
-  margin-left: 34vw;
-  padding-bottom: 6vh;
-}
-
-.boton_mas_mobile {
-    margin-left: 28vw;
-    padding-bottom: 3vh;
-  }
-
-.mini_noticia{
+.mini_noticia { /* CONTAINER mini noticia */
     background-color: rgba(216, 216, 249, 0.38);
     width: 24vw;
     height: 62vh;
     overflow-y: scroll;
 }
-
-.editorial{
+.editorial{ /* CONTAINER editorial */
     background-color: rgba(216, 216, 249, 0.38);
     width: 26vw;
     height: 90;
@@ -114,20 +39,11 @@
     margin-bottom: 5vh;
     padding-bottom: 3vh;
 }
-
-.titulo {
-    padding-bottom: 3vh;
-}
-
-.otra_foto {
+.otra_foto { /* FOTO editorial */
     cursor: pointer;
     margin-left: 1vw;
 }
-
-.link {
-    color: blue;   
-}
-
+/* Mobile */
 .font_titulo_mobile {
     padding-top: 1vh;
     padding-left: 1vw;
@@ -135,7 +51,6 @@
     font-family: "PlayerFont", sans-serif;
     font-size: 4vh;
 }
-
 .font_tipo_mobile {
     padding-top: 1vh;
     padding-left: 1vw;
@@ -143,31 +58,6 @@
     font-family: "PlayerFont", sans-serif;
     font-size: 3vh;
 }
-
-.font_cover_mobile {
-    padding-top: 1vh;
-    padding-left: 20vw;
-    width: 100vw;
-    font-family: "PlayerFont", sans-serif;
-    font-size: 7vh;
-}
-
-.font_raro_mobile {
-    padding-top: 1vh;
-    padding-left: 31vw;
-    width: 100vw;
-    font-family: "PlayerFont", sans-serif;
-    font-size: 7vh;
-}
-
-.font_SPA_mobile {
-    padding-top: 1vh;
-    padding-left: 31vw;
-    width: 100vw;
-    font-family: "PlayerFont", sans-serif;
-    font-size: 7vh;
-}
-
 .mini_noticias_mobile {
     background-color: rgba(216, 216, 249, 0.38);
     width: 100vw;
@@ -175,6 +65,50 @@
     overflow-y: scroll;
 }
 
-.raro_mobile {
-  padding-bottom: 5vh;
-};
+/* PORTADA RARO & SPA */
+/* Desktop */
+.cover_container { /* CONTAINER portada, raro, y SPA */
+    background-color: rgba(216, 216, 249, 0.38);
+    margin-bottom: 4vh;
+}
+.cover { /* IMAGEN portada, raro, y SPA */
+    padding-top: 7vh;
+    padding-left: 5vw;
+    margin-bottom: 3vh;
+}
+.boton_mas { /* LEER MAS portada, raro, y SPA */
+    margin-left: 34vw;
+    padding-bottom: 6vh;
+}
+.font_cover { /* TITULO portada */
+    padding-top: 1vh;
+    padding-left: 20vw;
+    width: 75vw;
+    font-family: "PlayerFont", sans-serif;
+    font-size: 3vw;
+}
+
+.cover_blurb_font { /* BLURB portada */
+    padding-left: 10vw;
+    padding-right: 10vw;
+    font-family: "ContentFont", sans-serif;
+    font-size: 2.5vh;
+}
+/* Mobile */
+.boton_mas_mobile {
+    margin-left: 28vw;
+    padding-bottom: 3vh;
+  }
+.cover_blurb_font_mobile {
+    padding-left: 11vw;
+    padding-right: 8vw;
+    font-family: "ContentFont", sans-serif;
+    font-size: 4.5vw;
+}
+.font_cover_mobile {
+    padding-top: 1vh;
+    padding-left: 20vw;
+    width: 100vw;
+    font-family: "PlayerFont", sans-serif;
+    font-size: 7vh;
+}
