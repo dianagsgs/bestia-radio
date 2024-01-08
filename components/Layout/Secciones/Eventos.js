@@ -75,9 +75,15 @@ export default function Eventos(props) {
           infinite={false}
         >
           {/*getItems()*/}
-          <InstagramEmbed url="https://www.instagram.com/p/CzWyZ6ZOL-7/" width={328} />
-          <InstagramEmbed url="https://www.instagram.com/p/C1A8pNBLOyJ/" width={328} />
-          <InstagramEmbed url="https://www.instagram.com/p/Cyuez3Vuitm/" width={328} />
+          <div class={props.mobile ? styles.instagram_embed_mobile : styles.instagram_embed}>
+            <InstagramEmbed url="https://www.instagram.com/p/CzWyZ6ZOL-7/" width={328} />
+          </div>
+          <div class={props.mobile ? styles.instagram_embed_mobile : styles.instagram_embed}>
+            <InstagramEmbed url="https://www.instagram.com/p/C1A8pNBLOyJ/" width={328} />
+          </div>
+          <div class={props.mobile ? styles.instagram_embed_mobile : styles.instagram_embed}>
+            <InstagramEmbed url="https://www.instagram.com/p/Cyuez3Vuitm/" width={328} />
+          </div>
         </ResponsiveCarousel>
       </Section>
     </Fragment>

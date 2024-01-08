@@ -1,9 +1,10 @@
 .sesion {
-  width: 35vw;
-  height: 45vh;
+  width: 38vw;
+  height: 50vh;
   background-color: rgba(216, 216, 249, 0.38);
   padding: 1.5vw;
   border-radius: 1vw;
+  margin-left: 1vw;
 }
 
 .sesion_mobile {

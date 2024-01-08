@@ -12,7 +12,6 @@ export default function Sesiones(props) {
       for(let i = 0; i < sesiones.length; i++){
         let sesion = sesiones[i];
         let item =
-          <div className="col-lg-6">
             <div class={props.mobile ? styles.sesion_mobile : styles.sesion}>
               <iframe
                 height="100%"
@@ -23,8 +22,7 @@ export default function Sesiones(props) {
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowFullScreen
               />
-            </div>    
-          </div>;
+            </div>;
         items.push(item);
       }
     }
@@ -54,7 +52,7 @@ export default function Sesiones(props) {
         titulo="/img/titulos/sesiones.png"
         mobile={props.mobile}
       >
-        <div className="row">
+        <div className={props.mobile ? "" : "row"}>
           {getItems()}
         </div>
       </Section>
