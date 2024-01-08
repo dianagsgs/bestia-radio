@@ -181,7 +181,7 @@ export default function Editorial(props) {
         mobile={props.mobile}
       >
         <ResponsiveCarousel
-          infinite={true}
+          infinite={false}
         >
           {getItems(true)}
         </ResponsiveCarousel>
