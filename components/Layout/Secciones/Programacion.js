@@ -14,7 +14,7 @@ export default function Programacion(props) {
     if (programacion_day !== undefined) {
       for (let i = 10; i < 21; i++) {
         let time = i + "hrs";
-        let programa = programacion_day[time] == undefined ? "" : programacion_day[time];
+        let programa = programacion_day[time] == undefined ? "Sandwich Musical" : programacion_day[time];
         let item = 
           <p class={styles.font_horario}>
             {time} - {programa}

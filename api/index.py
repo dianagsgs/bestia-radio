@@ -185,7 +185,7 @@ def get_programas():
 @app.route('/api/get_articulos', methods=["GET"])
 def get_articulos():
     conn = start_connection()
-    data = execute_query('''SELECT Id, Tipo, Titulo, Foto_path, Blurb, Link, Activo FROM articulo ORDER BY Fecha DESC''', conn)
+    data = execute_query('''SELECT Id, Tipo, Titulo, Foto_path, Blurb, Link, Activo FROM articulo ORDER BY Fecha DESC, Id DESC''', conn)
     conn.close()
     articulos = []
     for item in data:

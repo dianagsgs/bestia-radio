@@ -6,6 +6,10 @@
     padding-bottom: 1.5vh;
 }
 
+.sections_container {
+  padding-top: 15vh;
+}
+
 .insta {
     position: absolute;
     left: 10vw;

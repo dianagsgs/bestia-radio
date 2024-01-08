@@ -8,7 +8,10 @@ p.customfont {
     font-family: "ContentFont", sans-serif;
     font-size: 3.5vh;
     margin-right: 4vw;
-    padding-bottom: 18vh;
+    margin-bottom: 18vh;
+    padding: 2vw;
+    border-radius: 1vw;;
+    background-color: rgba(216, 216, 249, 0.38);
 }
 
 p.mobilefont { 
@@ -16,5 +19,8 @@ p.mobilefont {
   font-size: 2vh;
   margin-left: 3vw;
   margin-right: 4vw;
-  margin-top: 3vh;
+  margin-top: 1vh;
+  padding: 1vh;
+  border-radius: 1vh;
+  background-color: rgba(216, 216, 249, 0.38);
 }

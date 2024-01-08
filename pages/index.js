@@ -52,17 +52,19 @@ export default function Home(props) {
         <Dona mobile={mobile}/>
 
         {/* SECCIONES */}
-        <TwitchYChat mobile={mobile} />
+        <div class={styles.sections_container}>
+          <TwitchYChat mobile={mobile} />
 
-        <Editorial mobile={mobile} />
+          <Editorial mobile={mobile} />
 
-        <Eventos mobile={mobile} />
-        
-        {/*<Radioteca mobile={mobile} />*/}
+          <Eventos mobile={mobile} />
 
-        <Sesiones mobile={mobile} />
-        <Programacion mobile={mobile} />
-        <Quees mobile={mobile} />
+          {/*<Radioteca mobile={mobile} />*/}
+
+          <Sesiones mobile={mobile} />
+          <Programacion mobile={mobile} />
+          <Quees mobile={mobile} />
+        </div>
 
         {mobile ? 
           <div class={styles.redes_container}>
