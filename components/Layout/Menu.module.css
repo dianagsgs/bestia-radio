@@ -11,8 +11,9 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
+  width: 100%;
   height: 10vh;
+  background-color: #fef8db;
   background-image: url("/img/menu/barra_superior.png");
   background-repeat: no-repeat;
   background-size: contain;
