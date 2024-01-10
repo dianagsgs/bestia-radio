@@ -41,7 +41,7 @@ export default function Eventos(props) {
               class={styles.flyer}
             />
             {pasado ? desc_pasado : desc_futuro}
-          </div>
+          </div>;
         items.push(item);
       }
     }
