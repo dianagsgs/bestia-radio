@@ -33,7 +33,7 @@ export default function Editorial(props) {
               (noticias ? styles.mini_noticia : styles.editorial)
             }>
               <div class={props.mobile ? styles.font_tipo_mobile : styles.font_tipo}>
-                {articulos[i].tipo}: {articulos[i].fecha}
+                {articulos[i].fecha}
               </div>
               <CustomImage
                 resp_w={props.mobile ? "95vw" : "24vw"}
@@ -210,6 +210,14 @@ export default function Editorial(props) {
         mobile={props.mobile}
       >
         {getOther("S.P.A.")}
+      </Section>
+
+      <Section
+        id="vacalado"
+        titulo="/img/titulos/vacalado.png"
+        mobile={props.mobile}
+      >
+        {getOther("VA CALADO")}
       </Section>
 
       {/*<Section

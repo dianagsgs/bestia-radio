@@ -20,6 +20,14 @@
     font-size: 3vh;
 }
 
+.font_horario_even {
+    font-family: "ContentFont", sans-serif;
+    font-size: 1.8vh;
+    white-space: nowrap;
+    overflow: hidden;
+    background-color: rgba(0, 0, 255, 0.15);
+}
+
 .font_horario {
     font-family: "ContentFont", sans-serif;
     font-size: 1.8vh;

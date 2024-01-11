@@ -14,6 +14,7 @@ const Menu = (props) => {
     ["portada","#portada",mobile ? styles.portada_mobile : styles.portada],
     ["raro","#raro",mobile ? styles.raro_mobile : styles.raro],
     ["soloparaadultos","#soloparaadultos",mobile ? styles.soloparaadultos_mobile : styles.soloparaadultos],
+    ["vacalado","#vacalado",mobile ? styles.vacalado_mobile : styles.vacalado],
     ["eventos","#eventos",mobile ? styles.eventos_mobile : styles.eventos],
     ["sesiones","#sesiones",mobile ? styles.sesiones_mobile : styles.sesiones],
     ["programacion","#programacion",mobile ? styles.programacion_mobile : styles.programacion],

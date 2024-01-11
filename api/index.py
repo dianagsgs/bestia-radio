@@ -182,6 +182,49 @@ def get_programas():
     resp = Response(response=json.dumps(programas), status=200, mimetype="text/plain")
     return resp
 
+@app.route('/api/get_all_programas', methods=["GET"])
+def get_all_programas():
+    conn = start_connection()
+    data_lunes = execute_query('''SELECT Id, Nombre, Hora, Activo FROM programa WHERE Lunes = true''', conn)
+    data_martes = execute_query('''SELECT Id, Nombre, Hora, Activo FROM programa WHERE Martes = true''', conn)
+    data_miercoles = execute_query('''SELECT Id, Nombre, Hora, Activo FROM programa WHERE Miercoles = true''', conn)
+    data_jueves = execute_query('''SELECT Id, Nombre, Hora, Activo FROM programa WHERE Jueves = true''', conn)
+    data_viernes = execute_query('''SELECT Id, Nombre, Hora, Activo FROM programa WHERE Viernes = true''', conn)
+    conn.close()
+
+    programas_lunes, max_lunes = programas_bonitos(data_lunes)
+    programas_martes, max_martes = programas_bonitos(data_martes)
+    programas_miercoles, max_miercoles = programas_bonitos(data_miercoles)
+    programas_jueves, max_jueves = programas_bonitos(data_jueves)
+    programas_viernes, max_viernes = programas_bonitos(data_viernes)
+
+    programas = {
+        "LUNES":programas_lunes,
+        "MARTES":programas_martes,
+        "MIERCOLES":programas_miercoles,
+        "JUEVES":programas_jueves,
+        "VIERNES":programas_viernes,
+        "max_id": max(max_lunes,max_martes,max_miercoles,max_jueves,max_viernes)
+    }
+
+    resp = Response(response=json.dumps(programas), status=200, mimetype="text/plain")
+    return resp
+
+def programas_bonitos(lista):
+    nueva_lista = []
+    max_id = 0
+    for item in lista:
+        if item[0] > max_id:
+            max_id = item[0]
+        programa = {
+            "id":item[0],
+            "nombre":item[1],
+            "hora":item[2].strftime("%H:%M:%S"),
+            "activo":item[3]
+        }
+        nueva_lista.append(programa)
+    return nueva_lista, max_id
+
 @app.route('/api/get_articulos', methods=["GET"])
 def get_articulos():
     conn = start_connection()
@@ -253,6 +296,11 @@ def post_articulo():
 def update_articulo():
     execute_insert('''UPDATE articulo ''' + request.args["set_where"])
     return "success update articulo"
+
+@app.route('/api/update_programa', methods=["POST"])
+def update_programa():
+    execute_insert('''UPDATE programa ''' + request.args["set_where"])
+    return "success update programa"
 
 
 if __name__ == "__main__":

@@ -28,7 +28,7 @@
 .logo_desktop {
   position: absolute;
   left: 2vw;
-  top: 17vh;
+  top: 14vh;
 }
 
 .logo_mobile {
@@ -39,31 +39,34 @@
 
 
 .tienda {
-  top: 53vh; 
+  top: 50vh; 
 }
 .ruidodeldia {
-  top: 58vh;
+  top: 55vh;
 }
 .portada {
-  top: 63vh;
+  top: 60vh;
 }
 .raro {
-  top: 68vh;
+  top: 65vh;
 }
 .soloparaadultos {
-  top: 73vh;
+  top: 70vh;
+}
+.vacalado {
+  top: 75vh;
 }
 .eventos {
-  top: 78vh;
+  top: 80vh;
 }
 .sesiones {
-  top: 83vh;
+  top: 85vh;
 }
 .programacion {
-  top: 88vh;
+  top: 90vh;
 }
 .quees {
-  top: 93vh; 
+  top: 95vh; 
 }
 
 
