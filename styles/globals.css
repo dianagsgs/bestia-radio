@@ -17,22 +17,21 @@ a {
 
 @font-face {
   font-family: "PlayerFont";
-  src: url("/fonts/ConcertOne-Regular.ttf") format('opentype');
+  src: url("/fonts/ConcertOne-Regular.ttf") format("opentype");
   font-weight: normal;
   font-style: normal;
 }
-p.customfont { 
-    
-    font-size: 3.5vh;
-    margin-left: 3vw;
-    margin-right: 4vw;
-    margin-top: 3vh;
+p.customfont {
+  font-size: 3.5vh;
+  margin-left: 3vw;
+  margin-right: 4vw;
+  margin-top: 3vh;
 }
 
 /* RADIO */
 
 .radioco-playButton-playing {
-  position:fixed;
+  position: fixed;
   width: 6vh;
   height: 6vh;
   background-image: url("/img/player/player_boton_play.png");
@@ -56,7 +55,7 @@ p.customfont {
   z-index: 7;
 }
 .radioco-nowPlaying {
-  position:fixed;
+  position: fixed;
   top: 3.5vh;
   left: 20vw;
   height: 5vh;
@@ -98,35 +97,34 @@ input[type="range"]::-webkit-slider-thumb {
   background-repeat: no-repeat;
   width: 1.9vw;
   height: 4vh;
-  
 }
 
 @media only screen and (max-width: 1000px) {
   .radioco-playButton-playing {
-    position:fixed;
-    width: 3.5vh;
-    height: 3.5vh;
+    position: fixed;
+    width: 5vh;
+    height: 5vh;
     background-image: url("/img/player/player_boton_play.png");
     background-repeat: no-repeat;
     background-size: contain;
-    top: 11vh;
-    left: 29vw;    
+    top: 103px;
+    left: 29vw;
   }
   .radioco-playButton-paused {
-    position:fixed;
-    width: 3.5vh;
-    height: 3.5vh;
+    position: fixed;
+    width: 5vh;
+    height: 5vh;
     background-image: url("/img/player/player_boton_pausa.png");
     background-repeat: no-repeat;
     background-size: contain;
-    top: 11vh;
-    left: 29vw; 
+    top: 103px;
+    left: 29vw;
   }
   .radioco-nowPlaying {
-    position:fixed;
-    top: 11vh;
+    position: fixed;
+    top: 105px;
     left: 38vw;
-    height: 3.5vh;
+    height: 5vh;
     width: 59vw;
     padding-top: 0.4vh;
     padding-left: 2.9vw;
@@ -139,10 +137,27 @@ input[type="range"]::-webkit-slider-thumb {
     overflow: hidden;
     z-index: 7;
   }
-  
   .radioco-volume {
     display: none;
   }
 }
 
-
+@media only screen and (max-width: 800px) {
+  .radioco-playButton-playing {
+    width: 3.5vh;
+    height: 3.5vh;
+    top: 93px;
+    left: 29vw;
+  }
+  .radioco-playButton-paused {
+    width: 3.5vh;
+    height: 3.5vh;
+    top: 93px;
+    left: 29vw;
+  }
+  .radioco-nowPlaying {
+    height: 3.5vh;
+    top: 93px;
+    left: 38vw;
+  }
+}
