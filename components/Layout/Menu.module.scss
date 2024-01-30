@@ -1,0 +1,196 @@
+.menu_desktop {
+  position: fixed;
+  bottom: 0vh;
+  left: 0;
+  width: 15vw;
+  height: 100vh;
+  z-index: 999;
+}
+
+.menu_mobile {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 10vh;
+  background-image: url("/img/menu/barra_superior.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  z-index: 999;
+}
+
+.menu_button {
+  position: absolute;
+  left: 77vw;
+  top: 3.9vh;
+}
+
+.logo_desktop {
+  position: absolute;
+  left: 2vw;
+  top: 14vh;
+}
+
+.logo_mobile {
+  position: absolute;
+  left: 44vw;
+  top: 0.5vh;
+}
+
+.tienda {
+  top: 50vh;
+}
+.ruidodeldia {
+  top: 55vh;
+}
+.portada {
+  top: 60vh;
+}
+.raro {
+  top: 65vh;
+}
+.soloparaadultos {
+  top: 70vh;
+}
+.vacalado {
+  top: 75vh;
+}
+.eventos {
+  top: 80vh;
+}
+.sesiones {
+  top: 85vh;
+}
+.programacion {
+  top: 90vh;
+}
+.quees {
+  top: 95vh;
+}
+
+.tienda_mobile {
+  top: 11vh;
+}
+.ruidodeldia_mobile {
+  top: 15vh;
+}
+.portada_mobile {
+  top: 19vh;
+}
+.raro_mobile {
+  top: 23vh;
+}
+.soloparaadultos_mobile {
+  top: 27vh;
+}
+.eventos_mobile {
+  top: 31vh;
+}
+.sesiones_mobile {
+  top: 35vh;
+}
+.programacion_mobile {
+  top: 39vh;
+}
+.quees_mobile {
+  top: 43vh;
+}
+
+.menu_container {
+  background-color: rgba(248, 243, 212, 0.904);
+  margin-top: 10vh;
+  margin-left: 62vw;
+  width: 36vw;
+  padding-top: 38vh;
+}
+
+.invisible {
+  display: none;
+}
+
+.menu_link:hover {
+  color: rgb(16, 230, 16);
+}
+
+.newMenu {
+  .newMenuDesktopContainer {
+    position: fixed;
+    top: 120px;
+    left: 0;
+    width: 18vw;
+    @media screen and (max-width: 1000px) {
+      display: none;
+    }
+    .newMenuDesktop {
+      .logo {
+        margin: auto;
+        width: 70%;
+        .logoImg {
+          width: 100%;
+          height: 100%;
+        }
+      }
+      .newMenuDesktopItems {
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        row-gap: 0.5rem;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+  }
+  .newMenuMobileContainer {
+    display: none;
+    z-index: 999;
+    width: 100vw;
+    @media screen and (max-width: 1000px) {
+      display: block;
+    }
+    .newMenuMobile {
+      background-color: #fef8da;
+      padding: 0.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .box {
+        width: 32%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .name {
+        width: 100px;
+        .nameImg {
+          width: 100%;
+          height: 100%;
+        }
+      }
+      .logo {
+        width: 60px;
+        .logoImg {
+          width: 100%;
+          height: 100%;
+        }
+      }
+      .burger {
+        width: 80px;
+        .burgerImg {
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+    .newMenuMobileItems {
+      z-index: 999;
+      position: absolute;
+      right: 0;
+      max-width: 600px;
+      padding: 1rem;
+      background-color: rgba(248, 243, 212, 0.904);
+      display: flex;
+      flex-direction: column;
+      row-gap: 0.5rem;
+    }
+  }
+}

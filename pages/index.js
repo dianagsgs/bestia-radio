@@ -1,9 +1,7 @@
 import Head from "next/head";
 import Script from "next/script";
-import styles from "../styles/index.module.css";
-
+import styles from "../styles/index.module.scss";
 import Banner from "../components/UI/Banner";
-
 import HeadContent from "../components/Layout/HeadContent";
 import Menu from "../components/Layout/Menu";
 import TwitchYChat from "../components/Layout/Secciones/TwitchYChat";
@@ -18,7 +16,6 @@ import Player from "../components/Layout/Player";
 import Redes from "../components/UI/Redes";
 
 export default function Home(props) {
-
   let mobile = props.windowSize === "small";
 
   return (
@@ -27,7 +24,7 @@ export default function Home(props) {
         <title>La Bestia Radio</title>
         <HeadContent />
       </Head>
-      
+
       <main style={props.background_style}>
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-7SYHST9BWV"
@@ -42,14 +39,15 @@ export default function Home(props) {
           gtag('config', 'G-7SYHST9BWV');
         `}
         </Script>
-         
-        <Banner mobile={mobile}/>
 
-        <Player mobile={mobile}/>
+        <Banner mobile={mobile} />
 
-        <Menu home={true} mobile={mobile}/>
+        <div className={styles.headerContainer}>
+          <Menu home={true} mobile={mobile} />
+          <Player mobile={mobile} />
+        </div>
 
-        <Dona mobile={mobile}/>
+        <Dona mobile={mobile} />
 
         {/* SECCIONES */}
         <div class={styles.sections_container}>
@@ -66,7 +64,7 @@ export default function Home(props) {
           <Quees mobile={mobile} />
         </div>
 
-        {mobile ? 
+        {mobile ? (
           <div class={styles.redes_container}>
             <Redes
               styles_insta={styles.insta}
@@ -78,8 +76,9 @@ export default function Home(props) {
               mobile={mobile}
             />
           </div>
-          : <span/>
-        }
+        ) : (
+          <span />
+        )}
       </main>
     </div>
   );

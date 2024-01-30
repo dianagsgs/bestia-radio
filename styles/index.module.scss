@@ -1,0 +1,50 @@
+.redes_container {
+  background-color: rgb(219, 108, 115);
+  width: 100vw;
+  height: 7.5vh;
+  padding-top: 1.5vh;
+  padding-bottom: 1.5vh;
+}
+
+.sections_container {
+  padding-top: 15vh;
+}
+
+.insta {
+  position: absolute;
+  left: 10vw;
+}
+
+.face {
+  position: absolute;
+  left: 24vw;
+}
+
+.youtube {
+  position: absolute;
+  left: 38vw;
+}
+
+.twitch {
+  position: absolute;
+  left: 52vw;
+}
+
+.tiktok {
+  position: absolute;
+  left: 66vw;
+}
+
+.whats {
+  position: absolute;
+  left: 80vw;
+}
+
+.headerContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  z-index: 999;
+  height: 400px;
+}

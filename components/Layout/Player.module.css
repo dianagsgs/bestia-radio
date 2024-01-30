@@ -1,15 +1,12 @@
 .player_desktop {
-    position: fixed;
-    left: 0;
-    top: 0;
-    z-index: 5;
-  }
+  z-index: 999;
+}
 
 .speaker {
-    position: fixed;
-    left: 65vw;
-    top: 4.6vh;
-    z-index: 7;
+  position: fixed;
+  left: 65vw;
+  top: 4.6vh;
+  z-index: 7;
 }
 
 .insta {
@@ -55,9 +52,7 @@
 }
 
 /* MOBILE */
-  
+
 .player_mobile {
-    position: fixed;
-    top: 9.8vh;
-    z-index: 1;
+  z-index: 999;
 }
