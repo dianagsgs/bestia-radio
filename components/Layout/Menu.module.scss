@@ -124,14 +124,14 @@
     .newMenuDesktop {
       .logo {
         margin: auto;
-        width: 70%;
+        width: 50%;
         .logoImg {
           width: 100%;
           height: 100%;
         }
       }
       .newMenuDesktopItems {
-        padding: 2rem;
+        padding: 1rem;
         display: flex;
         flex-direction: column;
         row-gap: 0.5rem;
