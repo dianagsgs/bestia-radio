@@ -43,7 +43,7 @@ export default function Eventos(props) {
           >
             <InstagramEmbed
               url="https://www.instagram.com/p/CzWyZ6ZOL-7/"
-              width={"100%"}
+              width={props.mobile ? "100%" : "93%"}
             />
           </div>
           <div
@@ -55,7 +55,7 @@ export default function Eventos(props) {
           >
             <InstagramEmbed
               url="https://www.instagram.com/p/C1A8pNBLOyJ/"
-              width={"100%"}
+              width={props.mobile ? "100%" : "93%"}
             />
           </div>
           <div
@@ -67,7 +67,7 @@ export default function Eventos(props) {
           >
             <InstagramEmbed
               url="https://www.instagram.com/p/Cyuez3Vuitm/"
-              width={"100%"}
+              width={props.mobile ? "100%" : "93%"}
             />
           </div>
         </ResponsiveCarousel>

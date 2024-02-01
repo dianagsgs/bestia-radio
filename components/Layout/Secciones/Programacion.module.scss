@@ -8,7 +8,7 @@
 
 .un_dia_mobile {
   background-color: rgba(216, 216, 249, 0.38);
-  width: 90vw;
+  width: 70%;
   margin-left: 1.4vw;
   padding-left: 5vw;
   padding-top: 2vh;
@@ -38,7 +38,7 @@
 .showsContainer {
   width: 100%;
   .showSchedule {
-    width: 75%;
+    /* width: 75%; // movi esto a un_dia_mobile pq estaba afectando el look en desktop*/
     margin: auto;
   }
 }

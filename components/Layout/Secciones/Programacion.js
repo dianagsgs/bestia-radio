@@ -74,7 +74,6 @@ export default function Programacion(props) {
 
   return (
     <Fragment>
-      <h1>HOLA</h1>
       <Section
         id="programacion"
         titulo="/img/titulos/programacion.png"
