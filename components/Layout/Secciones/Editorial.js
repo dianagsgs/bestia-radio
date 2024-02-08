@@ -1,14 +1,12 @@
-import styles from "./Editorial.module.css";
+import styles from "./Editorial.module.scss";
 import { Fragment, useEffect, useState } from "react";
-import Section from "../../UI/Section"
-
+import Section from "../../UI/Section";
 import CustomImage from "../../UI/CustomImage";
 import CustomButton from "../../UI/CustomButton";
-
 import { useRouter } from "next/router";
-
 import axios from "axios";
 import ResponsiveCarousel from "../../UI/ResponsiveCarousel";
+import classNames from "classnames";
 
 export default function Editorial(props) {
   const [articulos, setArticulos] = useState([]);
@@ -16,58 +14,98 @@ export default function Editorial(props) {
 
   const goToStory = (id) => {
     router.push("/archivo?id=" + id);
-  }
+  };
 
   const getItems = (noticias) => {
     let items = [];
     let first_one = true;
     for (let i = 0; i < articulos.length; i++) {
-      let check = noticias ? articulos[i].tipo === "NOTICIA" : articulos[i].tipo !== "NOTICIA";
+      let check = noticias
+        ? articulos[i].tipo === "NOTICIA"
+        : articulos[i].tipo !== "NOTICIA";
       if (check && articulos[i].activo) {
-        if(!noticias && first_one) {
+        if (!noticias && first_one) {
           first_one = false;
         } else {
-          let item =
-            <div class={props.mobile ? 
-              (noticias ? styles.mini_noticias_mobile : styles.editorial_mobile) :
-              (noticias ? styles.mini_noticia : styles.editorial)
-            }>
-              <div class={props.mobile ? styles.font_tipo_mobile : styles.font_tipo}>
-                {articulos[i].tipo}
+          let item = (
+            <div
+              class={
+                props.mobile
+                  ? noticias
+                    ? styles.mini_noticias_mobile
+                    : styles.editorial_mobile
+                  : noticias
+                  ? styles.mini_noticia
+                  : styles.editorial
+              }
+            >
+              <div
+                class={
+                  props.mobile ? styles.font_tipo_mobile : styles.font_tipo
+                }
+              >
+                {articulos[i].fecha}
               </div>
               <CustomImage
                 resp_w={props.mobile ? "95vw" : "24vw"}
                 src={articulos[i].foto_path}
-                w={noticias ? "1200" :"2048"}
+                w={noticias ? "1200" : "2048"}
                 h={noticias ? "675" : "2570"}
-                id={"foto"+i}
-                class={props.mobile ?
-                  (noticias ? styles.noticias_foto_mobile : styles.otra_foto_mobile) :
-                  (noticias ? styles.noticias_foto : styles.otra_foto)}
-                onclick={noticias ? () => console.log("nothing") : () => goToStory(articulos[i].id)}
+                id={"foto" + i}
+                class={
+                  props.mobile
+                    ? noticias
+                      ? styles.noticias_foto_mobile
+                      : styles.otra_foto_mobile
+                    : noticias
+                    ? styles.noticias_foto
+                    : styles.otra_foto
+                }
+                onclick={
+                  noticias
+                    ? () => console.log("nothing")
+                    : () => goToStory(articulos[i].id)
+                }
               />
-              {noticias ?
+              {noticias ? (
                 <span>
-                  <div class={props.mobile ? styles.font_titulo_mobile : styles.font_titulo}>
+                  <div
+                    className={classNames(
+                      props.mobile
+                        ? styles.font_titulo_mobile
+                        : styles.font_titulo,
+                      styles.newsTitle
+                    )}
+                  >
                     {articulos[i].titulo}
                   </div>
-                  <p class={props.mobile ? styles.font_blurb_mobile : styles.font_blurb}>
+                  <p
+                    className={classNames(
+                      props.mobile
+                        ? styles.font_blurb_mobile
+                        : styles.font_blurb,
+                      styles.newsBody
+                    )}
+                  >
                     {articulos[i].blurb}
-                    {articulos[i].link === "" || articulos[i].link === null ?
-                      <span/> :
-                      <a 
+                    {articulos[i].link === "" || articulos[i].link === null ? (
+                      <span />
+                    ) : (
+                      <a
                         class={styles.link}
                         target="_blank"
                         href={articulos[i].link}
                       >
                         aquí.
                       </a>
-                    }
+                    )}
                   </p>
-                </span> :
-                <span/>
-              }
-            </div>;
+                </span>
+              ) : (
+                <span />
+              )}
+            </div>
+          );
           items.push(item);
         }
       }
@@ -76,13 +114,17 @@ export default function Editorial(props) {
   };
 
   const getPortada = () => {
-    let portada_data = {"tipo":"","foto_path":"/dummy.png","blurb":""};
+    let portada_data = { tipo: "", foto_path: "/dummy.png", blurb: "" };
     for (let i = 0; i < articulos.length; i++) {
       portada_data = articulos[i];
       if (portada_data.tipo === "ENTREVISTA" && portada_data.activo) break;
     }
-    let portada =
-      <div class={props.mobile ? styles.cover_container_mobile : styles.cover_container}>
+    let portada = (
+      <div
+        class={
+          props.mobile ? styles.cover_container_mobile : styles.cover_container
+        }
+      >
         <CustomImage
           resp_w={props.mobile ? "95vw" : "75vw"}
           src={portada_data.foto_path}
@@ -93,7 +135,13 @@ export default function Editorial(props) {
         <p class={props.mobile ? styles.font_cover_mobile : styles.font_cover}>
           {portada_data.titulo}
         </p>
-        <p class={props.mobile ? styles.cover_blurb_font_mobile : styles.cover_blurb_font}>
+        <p
+          class={
+            props.mobile
+              ? styles.cover_blurb_font_mobile
+              : styles.cover_blurb_font
+          }
+        >
           {portada_data.blurb}
         </p>
         <CustomButton
@@ -103,12 +151,15 @@ export default function Editorial(props) {
           h={10}
           resp_w={props.mobile ? "35vw" : "10vw"}
           type="external"
-          href={portada_data.link}//{"/archivo?id="+portada_data.id}
-          button_class={props.mobile ? styles.boton_mas_mobile : styles.boton_mas}
+          href={portada_data.link} //{"/archivo?id="+portada_data.id}
+          button_class={
+            props.mobile ? styles.boton_mas_mobile : styles.boton_mas
+          }
         />
       </div>
+    );
     return portada;
-  }
+  };
 
   const getArchivo = () => {
     return (
@@ -119,9 +170,7 @@ export default function Editorial(props) {
         >
           ARCHIVO
         </p>
-        <ResponsiveCarousel
-          infinite={true}
-        >
+        <ResponsiveCarousel infinite={true}>
           {getItems(false)}
         </ResponsiveCarousel>
       </span>
@@ -129,13 +178,17 @@ export default function Editorial(props) {
   };
 
   const getOther = (type) => {
-    let articulo_data = {"tipo":"","foto_path":"/dummy.png","blurb":""};
+    let articulo_data = { tipo: "", foto_path: "/dummy.png", blurb: "" };
     for (let i = 0; i < articulos.length; i++) {
       articulo_data = articulos[i];
       if (articulo_data.tipo === type && articulo_data.activo) break;
     }
     return (
-      <div class={props.mobile ? styles.cover_container_mobile : styles.cover_container}>
+      <div
+        class={
+          props.mobile ? styles.cover_container_mobile : styles.cover_container
+        }
+      >
         <CustomImage
           resp_w={props.mobile ? "95vw" : "75vw"}
           src={articulo_data.foto_path}
@@ -151,7 +204,9 @@ export default function Editorial(props) {
           resp_w={props.mobile ? "35vw" : "10vw"}
           type="external"
           href={articulo_data.link}
-          button_class={props.mobile ? styles.boton_mas_mobile : styles.boton_mas}
+          button_class={
+            props.mobile ? styles.boton_mas_mobile : styles.boton_mas
+          }
         />
       </div>
     );
@@ -160,19 +215,20 @@ export default function Editorial(props) {
   useEffect(() => {
     axios({
       method: "GET",
-      url:"/api/get_articulos"
+      url: "/api/get_articulos",
     })
-    .then((response) => {
-      setArticulos(response.data);
-    }).catch((error) => {
-      if (error.response) {
-        console.log(error.response)
-        console.log(error.response.status)
-        console.log(error.response.headers)
-      }
-    })
+      .then((response) => {
+        setArticulos(response.data);
+      })
+      .catch((error) => {
+        if (error.response) {
+          console.log(error.response);
+          console.log(error.response.status);
+          console.log(error.response.headers);
+        }
+      });
   }, []);
-  
+
   return (
     <Fragment>
       <Section
@@ -180,9 +236,7 @@ export default function Editorial(props) {
         titulo="/img/titulos/ruidodeldia.png"
         mobile={props.mobile}
       >
-        <ResponsiveCarousel
-          infinite={false}
-        >
+        <ResponsiveCarousel infinite={false}>
           {getItems(true)}
         </ResponsiveCarousel>
       </Section>
@@ -195,12 +249,7 @@ export default function Editorial(props) {
         {getPortada()}
       </Section>
 
-
-      <Section
-        id="raro"
-        titulo="/img/titulos/raro.png"
-        mobile={props.mobile}
-      >
+      <Section id="raro" titulo="/img/titulos/raro.png" mobile={props.mobile}>
         {getOther("RARO")}
       </Section>
 
@@ -210,6 +259,14 @@ export default function Editorial(props) {
         mobile={props.mobile}
       >
         {getOther("S.P.A.")}
+      </Section>
+
+      <Section
+        id="vacalado"
+        titulo="/img/titulos/vacalado.png"
+        mobile={props.mobile}
+      >
+        {getOther("VA CALADO")}
       </Section>
 
       {/*<Section

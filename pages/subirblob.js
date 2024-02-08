@@ -14,7 +14,8 @@ export default function Subirblob(props) {
   
   const [file, setFile] = useState(null);
   const [logged_in, setLoggedIn] = useState(false);
-  const [articulos, setArticulos] = useState([{id: "wait"}]);
+  const [articulos, setArticulos] = useState([{id: "wait_art"}]);
+  const [programas, setProgramas] = useState({LUNES: [],MARTES:[], MIERCOLES:[], JUEVES:[], VIERNES:[], max_id:"wait_prog"});
 
   /** ------------------------ FUNCTIONS */
 
@@ -77,14 +78,14 @@ export default function Subirblob(props) {
     let id = document.getElementById("id_programa").value;
     let nombre = document.getElementById("nombre_programa").value;
     let hora = document.getElementById("hora_programa").value;
-    let activo = document.getElementById("activo").checked;
+    let activo = true;
     let lunes = document.getElementById("lunes").checked;
     let martes = document.getElementById("martes").checked;
     let miercoles = document.getElementById("miercoles").checked;
     let jueves = document.getElementById("jueves").checked;
     let viernes = document.getElementById("viernes").checked;
-    let sabado = document.getElementById("sabado").checked;
-    let domingo = document.getElementById("domingo").checked;
+    let sabado = false;
+    let domingo = false;
     let values = 
       "("+id+", '"+nombre+"', '"+hora+":00', "+activo+", "+lunes+", "+martes+", "+miercoles+", "+jueves+", "+viernes+", "+sabado+", "+domingo+")"
     
@@ -166,9 +167,25 @@ export default function Subirblob(props) {
       let item = 
       <div>
         {articulos[i].tipo}: {articulos[i].titulo}
-        <button onClick={() => hideArticulo(articulos[i].id, articulos[i].activo)}>{articulos[i].activo ? "HIDE" : "UNHIDE"}</button>
-        <button disabled onClick={() => editArticulo(articulos[i].id)}>EDIT</button>
-        <button disabled onClick={() => dropArticulo(articulos[i].id, articulos[i].titulo)}>DROP</button>
+        <button onClick={() => hideAlgo(articulos[i].id, articulos[i].activo, "update_articulo")}>{articulos[i].activo ? "HIDE" : "UNHIDE"}</button>
+        <button disabled onClick={() => editAlgo("articulo", articulos[i].id)}>EDIT</button>
+        <button disabled onClick={() => dropAlgo("articulo", articulos[i].id, articulos[i].titulo)}>DROP</button>
+      </div>;
+      items.push(item);
+    }
+    return items;
+  };
+
+  const getListaProgramas = (day) => {
+    
+    let items=[];
+    for(let i = 0; i < day.length; i++) {
+      let item = 
+      <div>
+        {day[i].hora}: {day[i].nombre}
+        <button onClick={() => hideAlgo(day[i].id, day[i].activo,"update_programa")}>{day[i].activo ? "HIDE" : "UNHIDE"}</button>
+        <button disabled onClick={() => editPrograma("programa",day[i].id)}>EDIT</button>
+        <button disabled onClick={() => dropPrograma("programa", day[i].id, day[i].titulo)}>DROP</button>
       </div>;
       items.push(item);
     }
@@ -177,31 +194,31 @@ export default function Subirblob(props) {
 
   /** OCULTAR COSAS */
 
-  const hideArticulo = (id, activo) => {
+  const hideAlgo = (id, activo, api) => {
     let set_where = `SET Activo = ${!activo} WHERE Id = ${id}`
     axios({
       method: "POST",
-      url:"/api/update_articulo?set_where="+set_where
+      url:"/api/"+api+"?set_where="+set_where
     })
     .then((response) => {
-      alert("listo update_articulo");
+      alert("listo "+ api);
       location.reload();
     }).catch((error) => {
       if (error.response) {
-        alertError("update_articulo", error)
+        alertError(api, error)
       }
     })
   };
 
   /** EDITAR COSAS */
 
-  const editArticulo = (id) => {
+  const editAlgo = (tabla, id) => {
     console.log("edit " + id);
   };
 
   /** BORRAR COSAS */
 
-  const dropArticulo = (id, titulo) => {
+  const dropAlgo = (tabla, id, titulo) => {
     let yes = confirm("estas segura de que quieres borrar " + titulo + "??");
     if (yes) {
       console.log("drop " + id);
@@ -222,6 +239,17 @@ export default function Subirblob(props) {
     }).catch((error) => {
       if (error.response) {
         alertError("get_articulos", error);
+      }
+    })
+    axios({
+      method: "GET",
+      url:"/api/get_all_programas"
+    })
+    .then((response) => {
+      setProgramas(response.data);
+    }).catch((error) => {
+      if (error.response) {
+        alertError("get_programas", error);
       }
     })
   }, []);
@@ -258,16 +286,17 @@ export default function Subirblob(props) {
         /></p>
         
         <p>Tipo:<select id="tipo">
-          <option>RARO</option>
           <option>NOTICIA</option>
-          <option>S.P.A.</option>
           <option>ENTREVISTA</option>
+          <option>RARO</option>
+          <option>S.P.A.</option>
+          <option>VA CALADO</option>
         </select></p>
         
         <p>Titulo:<input id="titulo_articulo" type="text"/></p>
 
         <p>Subir foto -- medidas:</p>
-        <p>1200x675 - NOTICIA, 2048x2560 - PORTADA, 1200x474 - RARO y S.P.A.</p>
+        <p>1200x675 - NOTICIA, 2048x2560 - PORTADA, 1200x474 - RARO y S.P.A. y VA CALADO</p>
         <p>
           <input type="file" onChange={showFile}></input>
         </p>
@@ -314,18 +343,48 @@ export default function Subirblob(props) {
     return (
       <span>
         <h4>AGREGAR PROGRAMA</h4>
-        Id:<input id="id_programa" type="text"></input>
-        Nombre:<input id="nombre_programa" type="text"></input>
-        Hora:<input id="hora_programa" type="time"></input>
-        Activo:<input id="activo" type="checkbox"></input>
-        Lunes:<input id="lunes" type="checkbox"></input>
-        Martes:<input id="martes" type="checkbox"></input>
-        Miercoles:<input id="miercoles" type="checkbox"></input>
-        Jueves:<input id="jueves" type="checkbox"></input>
-        Viernes:<input id="viernes" type="checkbox"></input>
-        Sabado:<input id="sabado" type="checkbox"></input>
-        Domingo:<input id="domingo" type="checkbox"></input>
+        <p>NOTA: ANTES DE AGREGAR UN PROGRAMA ASEGURATE DE QUE NO HAYA OTRO PROGRAMA *ACTIVO* EL MISMO DIA A LA MISMA HORA, SI NO, COSAS RARAS PASARAN</p>
+        <p>
+          Id (no cambiar):<input id="id_programa" type="text" disabled value={programas.max_id+1}></input>
+        </p>
+        <p>
+          Nombre:<input id="nombre_programa" type="text"></input>
+        </p>
+        <p>
+          Hora !!24 HRS!!:<input id="hora_programa" type="time"></input>
+        </p>
+        <p>
+          Lunes:<input id="lunes" type="checkbox"></input>
+        </p>
+        <p>
+          Martes:<input id="martes" type="checkbox"></input>
+        </p>
+        <p>
+          Miercoles:<input id="miercoles" type="checkbox"></input>
+        </p>
+        <p>
+          Jueves:<input id="jueves" type="checkbox"></input>
+        </p>
+        <p>
+          Viernes:<input id="viernes" type="checkbox"></input>
+        </p>
+        {/** SABADO Y DOMINGO tambien existen en DB */}
         <button onClick={() => guardar_programa()}>GUARDAR</button>
+
+        <p>---------------------------------------------------------------------</p>
+
+        <h4>GESTIONAR PROGRAMAS</h4>
+        <p>Nota: Por el momento no se pueden borrar ni editar los programas pero si se pueden desactivar, si le picas HIDE a algun programa que está muchos días se desactivará para todos los días</p>
+        <p>LUNES</p>
+        {getListaProgramas(programas.LUNES)}
+        <p>MARTES</p>
+        {getListaProgramas(programas.MARTES)}
+        <p>MIERCOLES</p>
+        {getListaProgramas(programas.MIERCOLES)}
+        <p>JUEVES</p>
+        {getListaProgramas(programas.JUEVES)}
+        <p>VIERNES</p>
+        {getListaProgramas(programas.VIERNES)}
       </span>
     );
   };
@@ -374,6 +433,9 @@ export default function Subirblob(props) {
       {logged_in ? 
       <span style={{padding: "2vw"}}>
         {articuloContent()}
+        <p>---------------------------------------------------------------------</p>
+        <p>---------------------------------------------------------------------</p>
+        {programaContent()}
         <p  style={{color: "red"}}>///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////</p>
         <h1 style={{color: "red"}}> --------------- DANGER ZONE ---------------  </h1>
         <p  style={{color: "red"}}>no usar ninguna de las herramientas debajo de este punto, si necesitas editar el contenido de esas tablas pedir ayuda a Diana por ahora.</p>
@@ -383,10 +445,6 @@ export default function Subirblob(props) {
           ------------------------
         </p>
         {eventoContent()}
-        <p>
-          ------------------------
-        </p>
-        {programaContent()}
         <p>
           ------------------------
         </p>

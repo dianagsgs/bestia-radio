@@ -1,11 +1,9 @@
 .mobile_banner{
   position: fixed;
-  width: 100vw;
-  top: 80%;
-  left: 50%;
-  margin-left: -50vw;  /* Negative half of width. */
+  width: 90vw;
+  top: 86vh;
+  left: 5vw;
   z-index: 10;
-  text-align: center;
 }
 
 .desktop_banner {
