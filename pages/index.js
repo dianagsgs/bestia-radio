@@ -16,6 +16,8 @@ import Player from "../components/Layout/Player";
 import Redes from "../components/UI/Redes";
 import PageBackground from "../components/Layout/PageBackground/PageBackground";
 
+import { Analytics } from "@vercel/analytics/react";
+
 export default function Home(props) {
   let mobile = props.windowSize === "small";
 
@@ -40,38 +42,49 @@ export default function Home(props) {
         `}
         </Script>
         <PageBackground>
-          <Banner mobile={mobile} />
-          <div className={styles.headerContainer}>
-            <Menu home={true} mobile={mobile} />
-            <Player mobile={mobile} />
-          </div>
-          <Dona mobile={mobile} />
+          
 
-          {/* SECCIONES */}
-          <div class={styles.sections_container}>
-            <TwitchYChat mobile={mobile} />
-            <Editorial mobile={mobile} />
-            <Eventos mobile={mobile} />
-            <Sesiones mobile={mobile} />
-            <Programacion mobile={mobile} />
-            <Quees mobile={mobile} />
-          </div>
+        <Banner mobile={mobile} />
 
-          {mobile ? (
-            <div class={styles.redes_container}>
-              <Redes
-                styles_insta={styles.insta}
-                styles_face={styles.face}
-                styles_youtube={styles.youtube}
-                styles_twitch={styles.twitch}
-                styles_tiktok={styles.tiktok}
-                styles_whats={styles.whats}
-                mobile={mobile}
-              />
-            </div>
-          ) : (
-            <span />
-          )}
+        <div className={styles.headerContainer}>
+          <Menu home mobile={mobile} />
+          <Player mobile={mobile} />
+        </div>
+
+        <Dona mobile={mobile} />
+
+        {/* SECCIONES */}
+        <div class={styles.sections_container}>
+          <TwitchYChat mobile={mobile} />
+
+          <Editorial mobile={mobile} />
+
+          <Eventos mobile={mobile} />
+
+          {/*<Radioteca mobile={mobile} />*/}
+
+          <Sesiones mobile={mobile} />
+          <Programacion mobile={mobile} />
+          <Quees mobile={mobile} />
+        </div>
+
+        {mobile ? (
+          <div class={styles.redes_container}>
+            <Redes
+              styles_insta={styles.insta}
+              styles_face={styles.face}
+              styles_youtube={styles.youtube}
+              styles_twitch={styles.twitch}
+              styles_tiktok={styles.tiktok}
+              styles_whats={styles.whats}
+              mobile={mobile}
+            />
+          </div>
+        ) : (
+          <span />
+        )}
+        <Analytics />
+
         </PageBackground>
       </main>
     </div>
