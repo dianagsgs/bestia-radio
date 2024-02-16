@@ -58,7 +58,7 @@ p.customfont {
   position: fixed;
   top: 3.5vh;
   left: 20vw;
-  height: 5vh;
+  height: 50px;
   padding-bottom: 0.5vh;
   padding-left: 1vw;
   width: 44vw;
@@ -102,12 +102,12 @@ input[type="range"]::-webkit-slider-thumb {
 @media only screen and (max-width: 1000px) {
   .radioco-playButton-playing {
     position: fixed;
-    width: 5vh;
-    height: 5vh;
+    width: 40px;
+    height: 40px;
     background-image: url("/img/player/player_boton_play.png");
     background-repeat: no-repeat;
     background-size: contain;
-    top: 103px;
+    top: 80px;
     left: 29vw;
   }
   .radioco-playButton-paused {
@@ -122,14 +122,14 @@ input[type="range"]::-webkit-slider-thumb {
   }
   .radioco-nowPlaying {
     position: fixed;
-    top: 105px;
+    top: 80px;
     left: 38vw;
-    height: 5vh;
+    height: 40px;
     width: 59vw;
     padding-top: 0.4vh;
     padding-left: 2.9vw;
     padding-right: 0.8vw;
-    font-size: 3.8vw;
+    font-size: 20px;
     font-family: "PlayerFont";
     color: #000000;
     background-color: rgba(164, 45, 102, 0.186);
@@ -144,10 +144,10 @@ input[type="range"]::-webkit-slider-thumb {
 
 @media only screen and (max-width: 800px) {
   .radioco-playButton-playing {
-    width: 3.5vh;
-    height: 3.5vh;
-    top: 93px;
-    left: 29vw;
+    width: 20px;
+    height: 20px;
+    top: 80px;
+    left: 100px;
   }
   .radioco-playButton-paused {
     width: 3.5vh;
@@ -156,8 +156,9 @@ input[type="range"]::-webkit-slider-thumb {
     left: 29vw;
   }
   .radioco-nowPlaying {
-    height: 3.5vh;
-    top: 93px;
-    left: 38vw;
+    height: 30px;
+    top: 75px;
+    left: 150px;
+    font-size: 14px;
   }
 }

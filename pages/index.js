@@ -15,7 +15,7 @@ import Quees from "../components/Layout/Secciones/Quees";
 import Player from "../components/Layout/Player";
 import Redes from "../components/UI/Redes";
 
-import { Analytics } from '@vercel/analytics/react';
+import { Analytics } from "@vercel/analytics/react";
 
 export default function Home(props) {
   let mobile = props.windowSize === "small";
@@ -45,7 +45,7 @@ export default function Home(props) {
         <Banner mobile={mobile} />
 
         <div className={styles.headerContainer}>
-          <Menu home={true} mobile={mobile} />
+          <Menu home mobile={mobile} />
           <Player mobile={mobile} />
         </div>
 
