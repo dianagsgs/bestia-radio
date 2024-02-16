@@ -14,6 +14,7 @@ import Eventos from "../components/Layout/Secciones/Eventos";
 import Quees from "../components/Layout/Secciones/Quees";
 import Player from "../components/Layout/Player";
 import Redes from "../components/UI/Redes";
+import PageBackground from "../components/Layout/PageBackground/PageBackground";
 
 import { Analytics } from "@vercel/analytics/react";
 
@@ -26,8 +27,7 @@ export default function Home(props) {
         <title>La Bestia Radio</title>
         <HeadContent />
       </Head>
-
-      <main style={props.background_style}>
+      <main>
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-7SYHST9BWV"
           strategy="afterInteractive"
@@ -41,6 +41,8 @@ export default function Home(props) {
           gtag('config', 'G-7SYHST9BWV');
         `}
         </Script>
+        <PageBackground>
+          
 
         <Banner mobile={mobile} />
 
@@ -82,6 +84,8 @@ export default function Home(props) {
           <span />
         )}
         <Analytics />
+
+        </PageBackground>
       </main>
     </div>
   );

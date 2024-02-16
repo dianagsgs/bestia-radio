@@ -8,6 +8,43 @@ import { InstagramEmbed } from "react-social-media-embed";
 export default function Eventos(props) {
   const [eventos, setEventos] = useState(null);
 
+  const getItems = () => {
+    let items = [];
+    if(eventos !== null){
+      for(let i = 0; i < eventos.length; i++){
+        let evento = eventos[i];
+        
+        let fecha = new Date(evento.fecha+"T"+evento.hora+"-06:00");
+        let pasado = fecha < Date.now();
+
+        let desc_pasado =
+          <div class={props.mobile ? styles.event_desc_mob : styles.event_desc}>
+            {evento.nombre}, {evento.fecha} - {evento.galeria !== null ? <a class={styles.boton_registro} target="_blank" href={evento.galeria}>GALERIA</a> :"GALERIA"}
+          </div>;
+
+        let desc_futuro = 
+          <div class={props.mobile ? styles.event_desc_mob : styles.event_desc}>
+            {evento.nombre}, {evento.precio} - {evento.registro ? <a class={styles.boton_registro} href="mailto:contacto@somoslabestia.com?Subject=Solicitud%20de%20registro%20para%20evento&body=Me%20quiero%20registrar%20para%3A%0ANombre%3A%0AApellido%3A%0ACorreo%3A">con registro</a> :" sin registro"}
+          </div>;
+
+        let item =
+          <div className="col-lg-3" id={"evento_"+i}>
+            <CustomImage
+              resp_w={props.mobile ? "80vw" : "20vw"}
+              src={evento.flyer}
+              w="83"
+              h="110"
+              id={"foto"+i}
+              class={styles.flyer}
+            />
+            {pasado ? desc_pasado : desc_futuro}
+          </div>;
+        items.push(item);
+      }
+    }
+    return items;
+  };
+
   useEffect(() => {
     axios({
       method: "GET",
