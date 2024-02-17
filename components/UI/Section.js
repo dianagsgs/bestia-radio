@@ -1,25 +1,23 @@
-import CustomImage from "./CustomImage";
-import styles from "./Section.module.css";
-import { Fragment } from "react";
+import Image from "next/image";
+import styles from "./Section.module.scss";
 
-
-export default function Section(props) {  
+export default function Section(props) {
   return (
-    <Fragment>
-      <section
-          className={props.mobile ? styles.section_mobile : styles.section}
-          id={props.id}
-        >
-          <CustomImage
-            resp_w={props.mobile ? "40vw ": "15vw"}
-            src={props.titulo}
-            w="130"
-            h="30"
-            id={"titulo" + props.id}
-            class={props.mobile ? styles.titulo_mobile : styles.titulo}
-          />
-          {props.children}
-        </section>  
-    </Fragment>
+    <section
+      className={props.mobile ? styles.section_mobile : styles.section}
+      id={props.id}
+    >
+      <div className={styles.title}>
+        <Image
+          src={props.titulo}
+          width={130}
+          height={30}
+          alt="titulo"
+          layout="responsive"
+          className={styles.titleImg}
+        />
+      </div>
+      {props.children}
+    </section>
   );
 }

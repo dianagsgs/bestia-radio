@@ -1,20 +1,13 @@
-import styles from "./Dona.module.css";
-import { Fragment } from "react";
-import CustomButton from "../UI/CustomButton";
+import styles from "./Dona.module.scss";
+import Link from "next/link";
+import Image from "next/image";
 
-export default function Dona(props) {  
+export default function Dona() {
   return (
-    <Fragment>
-      <CustomButton
-        src={"/img/dona.png"}
-        hover_src={"/img/dona.png"}
-        w={10}
-        h={10}
-        resp_w={props.mobile ? "20vw" : "6.5vw"}
-        type="external"
-        href="https://ko-fi.com/labestiaradiocdmx"
-        button_class={props.mobile ? styles.dona_mobile : styles.dona}
-      />
-    </Fragment>
+    <div className={styles.donut}>
+      <Link href="https://ko-fi.com/labestiaradiocdmx">
+        <Image src="/img/dona.png" width={346} height={344} />
+      </Link>
+    </div>
   );
 }

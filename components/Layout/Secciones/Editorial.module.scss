@@ -75,6 +75,7 @@
   /* CONTAINER portada, raro, y SPA */
   background-color: rgba(216, 216, 249, 0.38);
   margin-bottom: 4vh;
+  padding-bottom: 2rem;
 }
 .cover {
   /* IMAGEN portada, raro, y SPA */
@@ -109,6 +110,7 @@
   background-color: rgba(216, 216, 249, 0.38);
   margin-bottom: 4vh;
   width: 95vw;
+  padding-bottom: 2rem;
 }
 .cover_mobile {
   margin-bottom: 3vh;
@@ -149,5 +151,17 @@
     padding: 1.5rem;
     font-size: 1rem;
     line-height: 1rem;
+  }
+}
+
+.portadaLink {
+  background-color: red;
+  width: 150px;
+  margin: auto;
+  @media screen and (max-width: 1000px) {
+    width: 130px;
+  }
+  @media screen and (max-width: 750px) {
+    width: 100px;
   }
 }
