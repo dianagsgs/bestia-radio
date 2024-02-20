@@ -25,3 +25,15 @@
 .instagram_embed_mobile {
   padding-left: 2vw;
 }
+
+.eventsSection {
+  .eventsItem {
+    padding: 1rem;
+    @media screen and (max-width: 1000px) {
+      padding: 2rem 6rem;
+    }
+    @media screen and (max-width: 800px) {
+      padding: 2rem 4rem;
+    }
+  }
+}

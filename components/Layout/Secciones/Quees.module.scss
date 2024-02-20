@@ -1,0 +1,36 @@
+@font-face {
+  font-family: "ContentFont";
+  src: url("/fonts/HelveticaRoundedLTStd-Bd.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+}
+p.customfont {
+  font-family: "ContentFont", sans-serif;
+  font-size: 3.5vh;
+  margin-right: 4vw;
+  margin-bottom: 18vh;
+  padding: 2vw;
+  border-radius: 1vw;
+  background-color: rgba(216, 216, 249, 0.38);
+}
+
+p.mobilefont {
+  font-family: "ContentFont", sans-serif;
+  font-size: 2vh;
+  margin-left: 3vw;
+  margin-right: 4vw;
+  margin-top: 1vh;
+  padding: 1vh;
+  border-radius: 1vh;
+  background-color: rgba(216, 216, 249, 0.38);
+}
+
+.lbrSection {
+  font-family: "ContentFont", sans-serif;
+  font-size: 1.2rem;
+  margin-right: 4vw;
+  margin-bottom: 18vh;
+  padding: 2vw;
+  border-radius: 1vw;
+  background-color: rgba(216, 216, 249, 0.38);
+}
