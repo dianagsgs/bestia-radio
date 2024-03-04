@@ -16,6 +16,7 @@ export default function Subirblob(props) {
   const [logged_in, setLoggedIn] = useState(false);
   const [articulos, setArticulos] = useState([{id: "wait_art"}]);
   const [programas, setProgramas] = useState({LUNES: [],MARTES:[], MIERCOLES:[], JUEVES:[], VIERNES:[], max_id:"wait_prog"});
+  const [seccion, setSeccion] = useState("articulo");
 
   /** ------------------------ FUNCTIONS */
 
@@ -54,6 +55,10 @@ export default function Subirblob(props) {
       }
     })
   };
+
+  const selectSection = () => {
+    setSeccion(document.getElementById("secciones").value);
+  }
 
   /** GUARDAR COSAS */
 
@@ -161,6 +166,8 @@ export default function Subirblob(props) {
 
   /** GET COSAS */
 
+  // GET ARTICULOS
+
   const getListaArticulos = () => {
     let items=[];
     for(let i = 0; i < articulos.length; i++) {
@@ -175,6 +182,8 @@ export default function Subirblob(props) {
     }
     return items;
   };
+
+  // GET PROGRAMAS
 
   const getListaProgramas = (day) => {
     
@@ -431,27 +440,32 @@ export default function Subirblob(props) {
   return (
     <Fragment>
       {logged_in ? 
-      <span style={{padding: "2vw"}}>
-        {articuloContent()}
-        <p>---------------------------------------------------------------------</p>
-        <p>---------------------------------------------------------------------</p>
-        {programaContent()}
-        <p  style={{color: "red"}}>///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////</p>
-        <h1 style={{color: "red"}}> --------------- DANGER ZONE ---------------  </h1>
-        <p  style={{color: "red"}}>no usar ninguna de las herramientas debajo de este punto, si necesitas editar el contenido de esas tablas pedir ayuda a Diana por ahora.</p>
-        <p  style={{color: "red"}}>///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////</p>
-        {subirBlobContent()}
-        <p>
-          ------------------------
-        </p>
-        {eventoContent()}
-        <p>
-          ------------------------
-        </p>
-        {locutorContent()}
-      </span>
+        <span style={{"display": "block"}}>
+          <p>Elige una seccion:</p>
+          <select name="secciones" id="secciones" onChange={() => selectSection()}>
+            <option value="articulo">ARTICULOS</option>
+            <option value="programa">PROGRAMAS</option>
+            <option value="danger">DANGER ZONE</option>
+          </select>
+          <p>------------------------</p>
+          {seccion === 'articulo' ? articuloContent() : <span/>}
+          {seccion === 'programa' ? programaContent() : <span/>}
+          {seccion === 'danger' ?
+            <span>
+              <p  style={{color: "red"}}>///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////</p>
+              <h1 style={{color: "red"}}> --------------- DANGER ZONE ---------------  </h1>
+              <p  style={{color: "red"}}>no usar ninguna de las herramientas debajo de este punto, si necesitas editar el contenido de esas tablas pedir ayuda a Diana por ahora.</p>
+              <p  style={{color: "red"}}>///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////</p>
+              {subirBlobContent()}
+              <p>------------------------</p>
+              {eventoContent()}
+              <p>------------------------</p>
+              {locutorContent()}
+            </span> : <span/>
+          }
+        </span>
       :
-      loginContent()
+        loginContent()
       }
     </Fragment>
   );
