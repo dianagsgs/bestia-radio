@@ -1,5 +1,5 @@
 import { Fragment, useEffect, useState } from "react";
-import { put } from "@vercel/blob";
+import { put, del } from "@vercel/blob";
 import axios from "axios";
 
 import styles from "../styles/subirblob.module.css";
@@ -16,7 +16,9 @@ export default function Subirblob(props) {
   const [logged_in, setLoggedIn] = useState(false);
   const [articulos, setArticulos] = useState([{id: "wait_art"}]);
   const [programas, setProgramas] = useState({LUNES: [],MARTES:[], MIERCOLES:[], JUEVES:[], VIERNES:[], max_id:"wait_prog"});
-  const [seccion, setSeccion] = useState("articulo");
+  const [seccion, setSeccion] = useState("");
+  const [tipoArticulo, setTipoArticulo] = useState("");
+  const [accionArticulo, setAccionArticulo] = useState("");
 
   /** ------------------------ FUNCTIONS */
 
@@ -34,6 +36,13 @@ export default function Subirblob(props) {
     const { url } = await put(BLOB_NAME, file, { access: 'public', token: BLOB_TOKEN });
     alert('URL: ' + url);
   };
+
+  const borrar_blob = async (urlToDelete) => {
+    await del(urlToDelete, { token: BLOB_TOKEN });
+    return "deleted";
+  }
+
+
 
   const login = () => {
     let email = document.getElementById("login_email").value;
@@ -58,6 +67,14 @@ export default function Subirblob(props) {
 
   const selectSection = () => {
     setSeccion(document.getElementById("secciones").value);
+  }
+
+  const tipoArticuloChange = () => {
+    setTipoArticulo(document.getElementById("tipo").value);
+  }
+
+  const accionArticuloChange = () => {
+    setAccionArticulo(document.getElementById("accionArticulo").value);
   }
 
   /** GUARDAR COSAS */
@@ -148,7 +165,7 @@ export default function Subirblob(props) {
 
       const { url } = await put("articulos/"+file.name, file, { access: 'public', token: BLOB_TOKEN });
 
-      let id = document.getElementById("id_articulo").value;
+      let id = articulos[0]["id"]+1;
       let tipo = document.getElementById("tipo").value;
       let titulo = document.getElementById("titulo_articulo").value; 
       let blurb = document.getElementById("blurb").value;
@@ -173,10 +190,10 @@ export default function Subirblob(props) {
     for(let i = 0; i < articulos.length; i++) {
       let item = 
       <div>
-        {articulos[i].tipo}: {articulos[i].titulo}
+        {articulos[i].id}. {articulos[i].tipo}: {articulos[i].titulo}
         <button onClick={() => hideAlgo(articulos[i].id, articulos[i].activo, "update_articulo")}>{articulos[i].activo ? "HIDE" : "UNHIDE"}</button>
         <button disabled onClick={() => editAlgo("articulo", articulos[i].id)}>EDIT</button>
-        <button disabled onClick={() => dropAlgo("articulo", articulos[i].id, articulos[i].titulo)}>DROP</button>
+        <button onClick={() => dropAlgo("articulo", articulos[i].id, articulos[i].titulo, articulos[i].foto_path)}>DROP</button>
       </div>;
       items.push(item);
     }
@@ -194,7 +211,7 @@ export default function Subirblob(props) {
         {day[i].hora}: {day[i].nombre}
         <button onClick={() => hideAlgo(day[i].id, day[i].activo,"update_programa")}>{day[i].activo ? "HIDE" : "UNHIDE"}</button>
         <button disabled onClick={() => editPrograma("programa",day[i].id)}>EDIT</button>
-        <button disabled onClick={() => dropPrograma("programa", day[i].id, day[i].titulo)}>DROP</button>
+        <button disabled onClick={() => dropPrograma("programa", day[i].id, day[i].titulo, "")}>DROP</button>
       </div>;
       items.push(item);
     }
@@ -227,10 +244,17 @@ export default function Subirblob(props) {
 
   /** BORRAR COSAS */
 
-  const dropAlgo = (tabla, id, titulo) => {
+  const dropAlgo = (tabla, id, titulo, url) => {
     let yes = confirm("estas segura de que quieres borrar " + titulo + "??");
     if (yes) {
-      console.log("drop " + id);
+      console.log("drop " + id + url);
+
+      /** DELETE FROM tabla
+          WHERE Id = id;
+
+          if (url !== "") {borrar_blob(url)};
+          
+          */
     }
   };
 
@@ -285,48 +309,68 @@ export default function Subirblob(props) {
   const articuloContent = () => {
     return (
       <span>
-        <h4>AGREGAR ARTICULO</h4>
+        <p>Qué quieres hacer?</p>
+        <select id="accionArticulo"  onChange={() => accionArticuloChange()}>
+          <option value="" default></option>
+          <option value="SUBIR">Subir algo nuevo</option>
+          <option value="GESTIONAR">Gestionar existentes (ocultar, borrar, editar)</option>
+        </select>
+        <p>------------------------</p>
 
-        <p>Id (no cambiar):<input
-          id="id_articulo"
-          type="text"
-          value={articulos[0]["id"]+1}
-          disabled
-        /></p>
-        
-        <p>Tipo:<select id="tipo">
-          <option>NOTICIA</option>
-          <option>ENTREVISTA</option>
-          <option>RARO</option>
-          <option>S.P.A.</option>
-          <option>VA CALADO</option>
-        </select></p>
-        
-        <p>Titulo:<input id="titulo_articulo" type="text"/></p>
-
-        <p>Subir foto -- medidas:</p>
-        <p>1200x675 - NOTICIA, 2048x2560 - PORTADA, 1200x474 - RARO y S.P.A. y VA CALADO</p>
-        <p>
-          <input type="file" onChange={showFile}></input>
-        </p>
-
-        {/*<p>Fecha:<input id="fecha_articulo" type="date"/></p>*/}
-        
-        <p>Blurb (textito chiquito bonito bebe):<textarea id="blurb"  cols="40" rows="5"/></p>
-
-        <p>Link (Para noticia es lo que va a decir "aqui" al final (opcional), para los otros 3 link a WIX (necesario)):<input id="link_articulo" type="text"/></p>
-
-        <p>Texto largo (opcional):<textarea id="texto_articulo" cols="40" rows="5"/></p>
-        
-        <p>Autor (opcional):<input id="autor" type="text"/></p>
-        
-        <button onClick={() => guardar_articulo()}>GUARDAR</button>
-
-        <p>---------------------------------------------------------------------</p>
-
-        <h4>GESTIONAR ARTICULOS</h4>
-        <p>Nota: Si necesitas editar o borrar por completo un artículo pide ayuda a Diana por ahora. Si necesitas que solo deje de aparecer, lo puedes ocultar haciendo click en "hide"</p>
-        {getListaArticulos()}
+        {accionArticulo === "SUBIR" ? 
+          <span>
+            <p>1. Elige un tipo de artículo para subir:
+              <select id="tipo" onChange={() => tipoArticuloChange()}>
+                <option value="" default></option>
+                <option value="NOTICIA">Noticia</option>
+                <option value="ENTREVISTA">Portada</option>
+                <option value="RARO">Raro</option>
+                <option value="S.P.A.">Solo Para Adultos</option>
+                <option value="VA CALADO">Va Calado</option>
+              </select>
+            </p>
+            
+            {tipoArticulo !== "" ?
+              <span>
+                <p>2. Título: <input id="titulo_articulo" type="text"/></p>
+                <p>3. Texto corto que saldrá debajo del título:</p>
+                <textarea id="blurb"  cols="40" rows="5"/>
+                {tipoArticulo !== "NOTICIA" ?
+                  <p>4. URL (posiblemente de Wix) a donde va a llevar el botón de "chécala ya":</p>
+                  :
+                  <p>4. (opcional) URL a donde va a llevar la palabra "aqui" al final del texto:</p>
+                }
+                <input id="link_articulo" type="text"/>
+                <p>
+                  5. Sube una imagen con medidas {
+                    tipoArticulo === "NOTICIA" ? 
+                      "1200x675" :
+                      tipoArticulo === "ENTREVISTA" ? "2048x2560" : "1200x474"
+                  }:
+                </p>
+                <p>
+                  <input type="file" onChange={showFile}></input>
+                </p>
+                {/*<p>Fecha: <input id="fecha_articulo" type="date"/></p>*/}
+                {/*<p>Texto largo (opcional):<textarea id="texto_articulo" cols="40" rows="5"/></p>*/}
+                {/*<p>Autor (opcional):<input id="autor" type="text"/></p>*/}
+                6. <button onClick={() => guardar_articulo()}>GUARDAR</button>
+              </span>
+              :
+              <span/>
+            }
+          </span>
+          :
+          <span>
+            {accionArticulo === "GESTIONAR" ?
+              <span>
+                <p>Nota: Si necesitas editar o borrar por completo un artículo pide ayuda a Diana por ahora. Si necesitas que solo deje de aparecer, lo puedes ocultar haciendo click en "hide"</p>
+                {getListaArticulos()}
+              </span>
+            :
+            <span/>}
+          </span>
+          }
       </span>
     );
   };
@@ -427,10 +471,10 @@ export default function Subirblob(props) {
       <span>
         <p>PLEASE LOGIN</p>
         <p>
-          EMAIL:<input id="login_email" type="text"></input>
+          EMAIL: <input id="login_email" type="text"></input>
         </p>
         <p>
-          PASS:<input id="login_pw" type="password"></input>
+          PASS: <input id="login_pw" type="password"></input>
         </p>
         <button onClick={() => login()}>LOGIN</button>
       </span>
@@ -438,13 +482,14 @@ export default function Subirblob(props) {
   };
 
   return (
-    <Fragment>
+    <div class={styles.container}>
       {logged_in ? 
         <span style={{"display": "block"}}>
-          <p>Elige una seccion:</p>
+          <p>Elige una seccion de la página para agregar o editar contenido:</p>
           <select name="secciones" id="secciones" onChange={() => selectSection()}>
-            <option value="articulo">ARTICULOS</option>
-            <option value="programa">PROGRAMAS</option>
+            <option value="" default></option>
+            <option value="articulo">ARTICULOS (noticias, raro, va calado, s.p.a., portada)</option>
+            <option value="programa">PROGRAMACION</option>
             <option value="danger">DANGER ZONE</option>
           </select>
           <p>------------------------</p>
@@ -467,6 +512,6 @@ export default function Subirblob(props) {
       :
         loginContent()
       }
-    </Fragment>
+    </div>
   );
 }
