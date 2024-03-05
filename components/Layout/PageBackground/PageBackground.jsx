@@ -10,8 +10,13 @@ const PageBackground = ({ children }) => {
     setImage(randomImage);
   }, []);
 
-  // if viewport width is less than 1000px, change the background image
   useEffect(() => {
+    if (window.innerWidth < 1000) {
+      setIsMobile(true);
+    } else {
+      setIsMobile(false);
+    }
+
     const handleResize = () => {
       if (window.innerWidth < 1000) {
         setIsMobile(true);
