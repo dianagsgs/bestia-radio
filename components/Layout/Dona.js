@@ -5,9 +5,9 @@ import Image from "next/image";
 export default function Dona() {
   return (
     <div className={styles.donut}>
-      <Link href="https://ko-fi.com/labestiaradiocdmx">
+      <a href="https://ko-fi.com/labestiaradiocdmx" target="_blank">
         <Image src="/img/dona.png" width={346} height={344} />
-      </Link>
+      </a>
     </div>
   );
 }

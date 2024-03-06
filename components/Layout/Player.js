@@ -9,9 +9,9 @@ export default function Player(props) {
     <div className={styles.radioPlayer}>
       <div className={styles.radioPlayerLive}>
         <Image
-          src="/img/menu/menu-live.jpg"
-          width={354}
-          height={124}
+          src="/img/player/menu-live.jpg"
+          width={420}
+          height={80}
           className={styles.radioPlayerLiveImg}
         />
       </div>

@@ -149,14 +149,14 @@ export default function Editorial(props) {
           {portada_data.blurb}
         </p>
         <div className={styles.portadaLink}>
-          <Link href={portadaLink}>
+          <a href={portadaLink} target="_blank">
             <Image
               src="/img/leer_mas.png"
               width={28}
               height={10}
               layout="responsive"
             />
-          </Link>
+          </a>
         </div>
       </div>
     );
@@ -185,7 +185,7 @@ export default function Editorial(props) {
       articulo_data = articulos[i];
       if (articulo_data.tipo === type && articulo_data.activo) break;
     }
-    const articuloLunk = articulo_data?.link ?? "/";
+    const articuloLink = articulo_data?.link ?? "/";
 
     return (
       <div
@@ -201,14 +201,14 @@ export default function Editorial(props) {
           class={props.mobile ? styles.cover_mobile : styles.cover}
         />
         <div className={styles.portadaLink}>
-          <Link href={articuloLunk}>
+          <a href={articuloLink} target="_blank">
             <Image
               src="/img/leer_mas.png"
               width={28}
               height={10}
               layout="responsive"
             />
-          </Link>
+          </a>
         </div>
       </div>
     );

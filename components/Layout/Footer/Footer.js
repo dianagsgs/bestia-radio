@@ -1,5 +1,5 @@
 import Link from "next/link";
-import Redes from "../../UI/Redes";
+import Redes from "../../UI/Redes"; // TO DO -- usar componente de redes en lugar de repetir trabajo
 import styles from "./Footer.module.scss";
 import Image from "next/image";
 
@@ -35,14 +35,14 @@ export const Footer = () => {
     <div class={styles.footer}>
       {SOCIAL.map((item) => (
         <div className={styles.footerItem}>
-          <Link href={item.link}>
+          <a href={item.link} target="_blank">
             <Image
               src={`/img/social/${item.icon_src}`}
               alt={item.icon_src}
               width={40}
               height={40}
             />
-          </Link>
+          </a>
         </div>
       ))}
     </div>
