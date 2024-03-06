@@ -59,7 +59,7 @@
   padding-left: 1vw;
   width: 100vw;
   font-family: "PlayerFont", sans-serif;
-  font-size: 3vh;
+  font-size: 2vh;
 }
 .mini_noticias_mobile {
   background-color: rgba(216, 216, 249, 0.38);
@@ -75,6 +75,7 @@
   /* CONTAINER portada, raro, y SPA */
   background-color: rgba(216, 216, 249, 0.38);
   margin-bottom: 4vh;
+  padding-bottom: 2rem;
 }
 .cover {
   /* IMAGEN portada, raro, y SPA */
@@ -90,7 +91,7 @@
 .font_cover {
   /* TITULO portada */
   padding-top: 1vh;
-  padding-left: 13vw;
+  padding-left: 13.5vw;
   width: 75vw;
   font-family: "PlayerFont", sans-serif;
   font-size: 3vw;
@@ -109,6 +110,7 @@
   background-color: rgba(216, 216, 249, 0.38);
   margin-bottom: 4vh;
   width: 95vw;
+  padding-bottom: 2rem;
 }
 .cover_mobile {
   margin-bottom: 3vh;
@@ -125,10 +127,10 @@
   white-space: pre-wrap;
 }
 .font_cover_mobile {
-  padding-left: 6.5vw;
+  padding-left: 3.5vw;
   width: 95vw;
   font-family: "PlayerFont", sans-serif;
-  font-size: 3.3vh;
+  font-size: 2.3vh;
 }
 
 .newsTitle {
@@ -142,6 +144,7 @@
   }
 }
 .newsBody {
+  font-family: "ContentFont", sans-serif;
   padding: 1.1rem;
   font-size: 1rem;
   line-height: 1rem;
@@ -149,5 +152,17 @@
     padding: 1.5rem;
     font-size: 1rem;
     line-height: 1rem;
+  }
+}
+
+.portadaLink {
+  background-color: red;
+  width: 150px;
+  margin: auto;
+  @media screen and (max-width: 1000px) {
+    width: 130px;
+  }
+  @media screen and (max-width: 750px) {
+    width: 100px;
   }
 }

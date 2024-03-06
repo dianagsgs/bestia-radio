@@ -47,3 +47,16 @@
   width: 100vw;
   z-index: 999;
 }
+
+.background {
+  background-image: url("/img/Fondo/fondo_desktop_0.png");
+  background-position: 50% 40%;
+  background-size: contain;
+}
+
+.homeContainer {
+  padding-top: 150px;
+  @media screen and (max-width: 1000px) {
+    padding-top: 110px;
+  }
+}

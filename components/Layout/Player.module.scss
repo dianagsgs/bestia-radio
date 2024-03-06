@@ -5,7 +5,7 @@
 .speaker {
   position: fixed;
   left: 65vw;
-  top: 4.6vh;
+  top: 5vh;
   z-index: 7;
 }
 
@@ -55,4 +55,34 @@
 
 .player_mobile {
   z-index: 999;
+}
+
+.radioPlayer {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 999;
+  width: 100%;
+  background-color: #d66364;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+  .radioPlayerLive {
+    max-width: 150px;
+    @media screen and (max-width: 1000px) {
+      max-width: 100px;
+    }
+    @media screen and (max-width: 800px) {
+      max-width: 70px;
+    }
+  }
+  @media screen and (max-width: 1000px) {
+    position: initial;
+    height: 70px;
+  }
+  @media screen and (max-width: 800px) {
+    height: 60px;
+  }
 }

@@ -1,0 +1,53 @@
+.mobile_banner {
+  position: fixed;
+  width: 90vw;
+  top: 86vh;
+  left: 5vw;
+  z-index: 10;
+}
+
+.desktop_banner {
+  position: sticky;
+  top: 82vh;
+  padding-left: 30vw;
+  z-index: 10;
+  margin-top: -90px;
+}
+
+.close {
+  width: 3vh;
+  z-index: 15;
+  padding-bottom: 9vh;
+  cursor: pointer;
+}
+
+.close_mobile {
+  width: 2vh;
+  z-index: 15;
+  padding-bottom: 4vh;
+  position: absolute;
+}
+
+.invisible {
+  display: none;
+}
+
+.adBanner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 999;
+  width: 100%;
+  text-align: center;
+  padding: 1rem;
+  .adBannerImg {
+    width: 100%;
+    max-width: 700px;
+    @media screen and (max-width: 1000px) {
+      max-width: 400px;
+    }
+    @media screen and (max-width: 800px) {
+      max-width: 200px;
+    }
+  }
+}

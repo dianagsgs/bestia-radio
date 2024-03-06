@@ -1,24 +1,20 @@
+import Image from "next/image";
 import CustomImage from "../UI/CustomImage";
 import Radio from "../UI/Radio";
 import Redes from "../UI/Redes";
-import styles from "./Player.module.css";
-import { Fragment } from "react";
+import styles from "./Player.module.scss";
 
 export default function Player(props) {
   return (
-    <Fragment>
-      <CustomImage
-        resp_w={props.mobile ? "100vw" : "100vw"}
-        src={
-          props.mobile
-            ? "/img/player/player_mobile.png"
-            : "/img/player/player_base.png"
-        }
-        w="83"
-        h={props.mobile ? "10" : "5"}
-        id="player"
-        class={props.mobile ? styles.player_mobile : styles.player_desktop}
-      />
+    <div className={styles.radioPlayer}>
+      <div className={styles.radioPlayerLive}>
+        <Image
+          src="/img/player/menu-live.jpg"
+          width={420}
+          height={80}
+          className={styles.radioPlayerLiveImg}
+        />
+      </div>
       <div
         className="radioplayer"
         data-src="https://streams.radio.co/s4aaec47cd/listen"
@@ -27,7 +23,7 @@ export default function Player(props) {
         data-elapsedtime="false"
         data-nowplaying="true"
         data-showplayer="false"
-      ></div>
+      />
       <Radio />
       {props.mobile ? (
         <span />
@@ -51,6 +47,6 @@ export default function Player(props) {
           />
         </span>
       )}
-    </Fragment>
+    </div>
   );
 }

@@ -37,7 +37,7 @@ p.customfont {
   background-image: url("/img/player/player_boton_play.png");
   background-repeat: no-repeat;
   background-size: contain;
-  top: 3vh;
+  top: 4vh;
   left: 16vw;
   cursor: pointer;
   z-index: 7;
@@ -49,20 +49,20 @@ p.customfont {
   background-image: url("/img/player/player_boton_pausa.png");
   background-repeat: no-repeat;
   background-size: contain;
-  top: 3vh;
+  top: 4vh;
   left: 16vw;
   cursor: pointer;
   z-index: 7;
 }
 .radioco-nowPlaying {
   position: fixed;
-  top: 3.5vh;
+  top: 4vh;
   left: 20vw;
-  height: 5vh;
-  padding-bottom: 0.5vh;
+  height: 6vh;
+  padding-top: 0.3vh;
   padding-left: 1vw;
   width: 44vw;
-  font-size: 3.1vh;
+  font-size: 3.3vh;
   font-family: "PlayerFont";
   color: #000000;
   overflow: hidden;
@@ -74,7 +74,7 @@ p.customfont {
 .radioco-volume {
   position: fixed;
   z-index: 7;
-  top: 5vh;
+  top: 5.5vh;
   left: 67vw;
   width: 10vw;
 }
@@ -102,34 +102,34 @@ input[type="range"]::-webkit-slider-thumb {
 @media only screen and (max-width: 1000px) {
   .radioco-playButton-playing {
     position: fixed;
-    width: 5vh;
-    height: 5vh;
+    width: 40px;
+    height: 40px;
     background-image: url("/img/player/player_boton_play.png");
     background-repeat: no-repeat;
     background-size: contain;
-    top: 103px;
+    top: 80px;
     left: 29vw;
   }
   .radioco-playButton-paused {
     position: fixed;
-    width: 5vh;
-    height: 5vh;
+    width: 40px;
+    height: 40px;
     background-image: url("/img/player/player_boton_pausa.png");
     background-repeat: no-repeat;
     background-size: contain;
-    top: 103px;
+    top: 80px;
     left: 29vw;
   }
   .radioco-nowPlaying {
     position: fixed;
-    top: 105px;
+    top: 80px;
     left: 38vw;
-    height: 5vh;
+    height: 40px;
     width: 59vw;
     padding-top: 0.4vh;
     padding-left: 2.9vw;
     padding-right: 0.8vw;
-    font-size: 3.8vw;
+    font-size: 20px;
     font-family: "PlayerFont";
     color: #000000;
     background-color: rgba(164, 45, 102, 0.186);
@@ -144,20 +144,21 @@ input[type="range"]::-webkit-slider-thumb {
 
 @media only screen and (max-width: 800px) {
   .radioco-playButton-playing {
-    width: 3.5vh;
-    height: 3.5vh;
-    top: 93px;
-    left: 29vw;
+    width: 30px;
+    height: 30px;
+    top: 75px;
+    left: 110px;
   }
   .radioco-playButton-paused {
-    width: 3.5vh;
-    height: 3.5vh;
-    top: 93px;
-    left: 29vw;
+    width: 30px;
+    height: 30px;
+    top: 75px;
+    left: 110px;
   }
   .radioco-nowPlaying {
-    height: 3.5vh;
-    top: 93px;
-    left: 38vw;
+    height: 30px;
+    top: 75px;
+    left: 150px;
+    font-size: 14px;
   }
 }

@@ -1,0 +1,12 @@
+.pageBackground {
+  background-position: 50% 15%;
+  background-attachment: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  @media screen and (max-width: 1000px) {
+    background-attachment: fixed !important;
+    background-size: contain !important;
+    background-repeat: repeat-y !important;
+    background-position: center;
+  }
+}
