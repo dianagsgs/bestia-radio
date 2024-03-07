@@ -54,6 +54,9 @@
   font-family: "PlayerFont", sans-serif;
   font-size: 4vh;
 }
+.font_blurb_mobile {
+  font-family: "ContentFont", sans-serif;
+}
 .font_tipo_mobile {
   padding-top: 1vh;
   padding-left: 1vw;
@@ -134,7 +137,8 @@
 }
 
 .newsTitle {
-  padding: 1.5rem;
+  padding-top: 1.5rem;
+  padding-left: 1.5rem;
   font-size: 1.5rem;
   line-height: 1.5rem;
   @media screen and (max-width: 1000px) {
@@ -144,9 +148,8 @@
   }
 }
 .newsBody {
-  font-family: "ContentFont", sans-serif;
   padding: 1.1rem;
-  font-size: 1rem;
+  font-size: 0.9rem;
   line-height: 1rem;
   @media screen and (max-width: 1000px) {
     padding: 1.5rem;
