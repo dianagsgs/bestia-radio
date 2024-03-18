@@ -32,49 +32,47 @@ p.customfont {
 
 .radioco-playButton-playing {
   position: fixed;
-  width: 6vh;
-  height: 6vh;
+  width: 40px;
+  height: 40px;
   background-image: url("/img/player/player_boton_play.png");
   background-repeat: no-repeat;
   background-size: contain;
-  top: 4vh;
+  top: 35px;
   left: 16vw;
   cursor: pointer;
   z-index: 7;
 }
 .radioco-playButton-paused {
   position: fixed;
-  width: 6vh;
-  height: 6vh;
+  width: 40px;
+  height: 40px;
   background-image: url("/img/player/player_boton_pausa.png");
   background-repeat: no-repeat;
   background-size: contain;
-  top: 4vh;
+  top: 35px;
   left: 16vw;
   cursor: pointer;
   z-index: 7;
 }
 .radioco-nowPlaying {
   position: fixed;
-  top: 4vh;
+  top: 35px;
   left: 20vw;
-  height: 6vh;
-  padding-top: 0.3vh;
-  padding-left: 1vw;
   width: 44vw;
-  font-size: 3.3vh;
+  font-size: 20px;
   font-family: "PlayerFont";
   color: #000000;
   overflow: hidden;
   z-index: 7;
   background-color: rgba(164, 45, 102, 0.186);
   border-radius: 1vw;
+  padding: 5px 10px;
 }
 
 .radioco-volume {
   position: fixed;
   z-index: 7;
-  top: 5.5vh;
+  top: 40px;
   left: 67vw;
   width: 10vw;
 }

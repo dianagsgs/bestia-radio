@@ -16,6 +16,7 @@ import Redes from "../components/UI/Redes";
 import PageBackground from "../components/Layout/PageBackground/PageBackground";
 import { Analytics } from "@vercel/analytics/react";
 import { Footer } from "../components/Layout/Footer/Footer";
+import SponsorAd from "../components/UI/SponsorAd/SponsorAd";
 
 export default function Home(props) {
   let mobile = props.windowSize === "small";
@@ -61,6 +62,7 @@ export default function Home(props) {
           <Footer />
           <Analytics />
         </PageBackground>
+        <SponsorAd />
       </main>
     </div>
   );
