@@ -1,5 +1,5 @@
 import { Fragment, useEffect, useState } from "react";
-import { put } from "@vercel/blob";
+import { put, del } from "@vercel/blob";
 import axios from "axios";
 
 import styles from "../styles/subirblob.module.css";
@@ -10,12 +10,16 @@ export default function Subirblob(props) {
 
   // TODO: no subir el TOKEN ASI
   const BLOB_TOKEN = "vercel_blob_rw_VVQSKZPtiR4L8fS6_2GXlbBWoqH8N9DPnAoUCoq8tQKFazo";
-  const BLOB_NAME = 'articulos/placeholderraro.png';
   
   const [file, setFile] = useState(null);
   const [logged_in, setLoggedIn] = useState(false);
   const [articulos, setArticulos] = useState([{id: "wait_art"}]);
   const [programas, setProgramas] = useState({LUNES: [],MARTES:[], MIERCOLES:[], JUEVES:[], VIERNES:[], max_id:"wait_prog"});
+  const [seccion, setSeccion] = useState("");
+  const [tipoArticulo, setTipoArticulo] = useState("");
+  const [accionArticulo, setAccionArticulo] = useState("");
+  const [editandoArticulo, setEditandoArticulo] = useState(false);
+  const [articuloEditado, setArticuloEditado] = useState([]);
 
   /** ------------------------ FUNCTIONS */
 
@@ -29,10 +33,17 @@ export default function Subirblob(props) {
     setFile(input.target.files[0]);
   };
 
-  const subir_blob = async () => {
-    const { url } = await put(BLOB_NAME, file, { access: 'public', token: BLOB_TOKEN });
-    alert('URL: ' + url);
+  const subir_blob = async (blob_name) => {
+    const { url } = await put(blob_name, file, { access: 'public', token: BLOB_TOKEN });
+    return(url);
   };
+
+  const borrar_blob = async (urlToDelete) => {
+    await del(urlToDelete, { token: BLOB_TOKEN });
+    return "deleted";
+  }
+
+
 
   const login = () => {
     let email = document.getElementById("login_email").value;
@@ -54,6 +65,18 @@ export default function Subirblob(props) {
       }
     })
   };
+
+  const selectSection = () => {
+    setSeccion(document.getElementById("secciones").value);
+  }
+
+  const tipoArticuloChange = () => {
+    setTipoArticulo(document.getElementById("tipo").value);
+  }
+
+  const accionArticuloChange = () => {
+    setAccionArticulo(document.getElementById("accionArticulo").value);
+  }
 
   /** GUARDAR COSAS */
 
@@ -137,13 +160,13 @@ export default function Subirblob(props) {
    // GUARDAR ARTICULO:
 
    const guardar_articulo = async () => {
-    let confirm = window.confirm("Asegurate de que todos los datos estén corretos y si es así, da click en ok Aceptar para guardar");
+    let confirm = window.confirm("Asegurate de que todos los datos estén corretos y si es así, da click en Aceptar para guardar");
 
     if (confirm) {
 
-      const { url } = await put("articulos/"+file.name, file, { access: 'public', token: BLOB_TOKEN });
+      const { url } = subir_blob("articulos/"+file.name);
 
-      let id = document.getElementById("id_articulo").value;
+      let id = articulos[0]["id"]+1;
       let tipo = document.getElementById("tipo").value;
       let titulo = document.getElementById("titulo_articulo").value; 
       let blurb = document.getElementById("blurb").value;
@@ -161,20 +184,26 @@ export default function Subirblob(props) {
 
   /** GET COSAS */
 
+  // GET ARTICULOS
+
   const getListaArticulos = () => {
     let items=[];
     for(let i = 0; i < articulos.length; i++) {
       let item = 
-      <div>
-        {articulos[i].tipo}: {articulos[i].titulo}
-        <button onClick={() => hideAlgo(articulos[i].id, articulos[i].activo, "update_articulo")}>{articulos[i].activo ? "HIDE" : "UNHIDE"}</button>
-        <button disabled onClick={() => editAlgo("articulo", articulos[i].id)}>EDIT</button>
-        <button disabled onClick={() => dropAlgo("articulo", articulos[i].id, articulos[i].titulo)}>DROP</button>
-      </div>;
+      <tr>
+        <td>{articulos[i].id} -- </td>
+        <td>{articulos[i].tipo}</td>
+        <td>{articulos[i].titulo}</td>
+        <td><button onClick={() => hideAlgo(articulos[i].id, articulos[i].activo, "update_articulo")}>{articulos[i].activo ? "HIDE" : "UNHIDE"}</button></td>
+        <td><button onClick={() => editAlgo("articulo", articulos[i].id,articulos[i].titulo,articulos[i].blurb,articulos[i].link)}>EDIT</button></td>
+        <td><button onClick={() => dropAlgo("articulo", articulos[i].id, articulos[i].titulo, articulos[i].foto_path,"delete_articulo")}>DROP</button></td>
+      </tr>;
       items.push(item);
     }
     return items;
   };
+
+  // GET PROGRAMAS
 
   const getListaProgramas = (day) => {
     
@@ -185,7 +214,7 @@ export default function Subirblob(props) {
         {day[i].hora}: {day[i].nombre}
         <button onClick={() => hideAlgo(day[i].id, day[i].activo,"update_programa")}>{day[i].activo ? "HIDE" : "UNHIDE"}</button>
         <button disabled onClick={() => editPrograma("programa",day[i].id)}>EDIT</button>
-        <button disabled onClick={() => dropPrograma("programa", day[i].id, day[i].titulo)}>DROP</button>
+        <button disabled onClick={() => dropPrograma("programa", day[i].id, day[i].titulo, "")}>DROP</button>
       </div>;
       items.push(item);
     }
@@ -212,16 +241,66 @@ export default function Subirblob(props) {
 
   /** EDITAR COSAS */
 
-  const editAlgo = (tabla, id) => {
-    console.log("edit " + id);
+  const editAlgo = (tabla, id, titulo, blurb,link) => {
+    setEditandoArticulo(true);
+    setArticuloEditado([id,titulo, blurb,link]);
+  };
+
+  const cancelarEdicion = () => {
+    setEditandoArticulo(false);
+    setArticuloEditado([]);
+  };
+
+  const guardarEdicion = (id,api_guardar) => {
+    let confirm = window.confirm("Asegurate de que todos los datos estén corretos y si es así, da click en Aceptar para guardar");
+
+    if (confirm) {
+
+      let titulo = document.getElementById("titulo_articulo").value; 
+      let blurb = document.getElementById("blurb").value;
+      let link = document.getElementById("link_articulo").value;
+
+      let set_where = `SET titulo = '${titulo}', blurb = '${blurb}', link = '${link}' WHERE Id = ${id}`
+      axios({
+        method: "POST",
+        url:"/api/"+api_guardar+"?set_where="+set_where
+      })
+      .then((response) => {
+        alert("listo "+ api_guardar);
+        location.reload();
+      }).catch((error) => {
+        if (error.response) {
+          alertError(api_guardar, error)
+        }
+      })
+
+    }
   };
 
   /** BORRAR COSAS */
 
-  const dropAlgo = (tabla, id, titulo) => {
+  const dropAlgo = (tabla, id, titulo, url, api) => {
     let yes = confirm("estas segura de que quieres borrar " + titulo + "??");
-    if (yes) {
-      console.log("drop " + id);
+    if (yes) {      
+      // delete record from db
+      let delete_where = `DELETE FROM ${tabla} WHERE Id = ${id}`
+      axios({
+        method: "POST",
+        url:"/api/"+api+"?delete_where="+delete_where
+      })
+      .then((response) => {
+        // delete image from blobstore
+        if (url !== "") {borrar_blob(url)};
+
+        alert("se elimino de la base de datos "+ titulo);
+      }).catch((error) => {
+        if (error.response) {
+          alertError(api, error)
+        }
+      })
+
+      // hide just in case either of the delete actions fail
+      hideAlgo(id, true, "update_articulo");
     }
   };
 
@@ -256,68 +335,104 @@ export default function Subirblob(props) {
 
   /** ------------------------ CONTENT */
 
-  const subirBlobContent = () => {
-    return (
-      <span>
-        <h4>SUBIR BLOB:</h4>
-        <p>
-          VERIFICA QUE EL BLOB_NAME SEA CORRECTO: {BLOB_NAME}
-        </p>
-        <p>
-          <input type="file" onChange={showFile}></input>
-        </p>
-        <p>
-          <button onClick={() => subir_blob()}>SUBIR</button>
-        </p>
-      </span>
-    );
-  };
-
   const articuloContent = () => {
     return (
       <span>
-        <h4>AGREGAR ARTICULO</h4>
+        <p>Qué quieres hacer?</p>
+        <select id="accionArticulo"  onChange={() => accionArticuloChange()}>
+          <option value="" default></option>
+          <option value="SUBIR">Subir algo nuevo</option>
+          <option value="GESTIONAR">Gestionar existentes (ocultar, borrar, editar)</option>
+        </select>
+        <p>------------------------</p>
 
-        <p>Id (no cambiar):<input
-          id="id_articulo"
-          type="text"
-          value={articulos[0]["id"]+1}
-          disabled
-        /></p>
-        
-        <p>Tipo:<select id="tipo">
-          <option>NOTICIA</option>
-          <option>ENTREVISTA</option>
-          <option>RARO</option>
-          <option>S.P.A.</option>
-          <option>VA CALADO</option>
-        </select></p>
-        
-        <p>Titulo:<input id="titulo_articulo" type="text"/></p>
-
-        <p>Subir foto -- medidas:</p>
-        <p>1200x675 - NOTICIA, 2048x2560 - PORTADA, 1200x474 - RARO y S.P.A. y VA CALADO</p>
-        <p>
-          <input type="file" onChange={showFile}></input>
-        </p>
-
-        {/*<p>Fecha:<input id="fecha_articulo" type="date"/></p>*/}
-        
-        <p>Blurb (textito chiquito bonito bebe):<textarea id="blurb"  cols="40" rows="5"/></p>
-
-        <p>Link (Para noticia es lo que va a decir "aqui" al final (opcional), para los otros 3 link a WIX (necesario)):<input id="link_articulo" type="text"/></p>
-
-        <p>Texto largo (opcional):<textarea id="texto_articulo" cols="40" rows="5"/></p>
-        
-        <p>Autor (opcional):<input id="autor" type="text"/></p>
-        
-        <button onClick={() => guardar_articulo()}>GUARDAR</button>
-
-        <p>---------------------------------------------------------------------</p>
-
-        <h4>GESTIONAR ARTICULOS</h4>
-        <p>Nota: Si necesitas editar o borrar por completo un artículo pide ayuda a Diana por ahora. Si necesitas que solo deje de aparecer, lo puedes ocultar haciendo click en "hide"</p>
-        {getListaArticulos()}
+        {accionArticulo === "SUBIR" ? 
+          <span>
+            <p>1. Elige un tipo de artículo para subir:
+              <select id="tipo" onChange={() => tipoArticuloChange()}>
+                <option value="" default></option>
+                <option value="NOTICIA">Noticia</option>
+                <option value="ENTREVISTA">Portada</option>
+                <option value="RARO">Raro</option>
+                <option value="S.P.A.">Solo Para Adultos</option>
+                <option value="VA CALADO">Va Calado</option>
+              </select>
+            </p>
+            
+            {tipoArticulo !== "" ?
+              <span>
+                <p>2. Título: <input id="titulo_articulo" type="text"/></p>
+                <p>3. Texto corto que saldrá debajo del título:</p>
+                <textarea id="blurb"  cols="40" rows="5"/>
+                {tipoArticulo !== "NOTICIA" ?
+                  <p>4. URL (posiblemente de Wix) a donde va a llevar el botón de "chécala ya":</p>
+                  :
+                  <p>4. (opcional) URL a donde va a llevar la palabra "aqui" al final del texto:</p>
+                }
+                <input id="link_articulo" type="text"/>
+                <p>
+                  5. Sube una imagen con medidas {
+                    tipoArticulo === "NOTICIA" ? 
+                      "1200x675" :
+                      tipoArticulo === "ENTREVISTA" ? "2048x2560" : "1200x474"
+                  }:
+                </p>
+                <p>
+                  <input type="file" onChange={showFile}></input>
+                </p>
+                {/*<p>Fecha: <input id="fecha_articulo" type="date"/></p>*/}
+                {/*<p>Texto largo (opcional):<textarea id="texto_articulo" cols="40" rows="5"/></p>*/}
+                {/*<p>Autor (opcional):<input id="autor" type="text"/></p>*/}
+                6. <button onClick={() => guardar_articulo()}>GUARDAR</button>
+              </span>
+              :
+              <span/>
+            }
+          </span>
+          :
+          <span>
+            {accionArticulo === "GESTIONAR" ?
+              <span>
+                {editandoArticulo ?
+                  <span>
+                    <p>
+                      <b>EDITAR: {articuloEditado[0]}</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; o &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      <button onClick={() => cancelarEdicion()}>CANCELAR</button>
+                    </p>
+                    <p>Nota: Por ahora solo se puede editar el título, el texto, y el link:</p>
+                    <p>
+                      Título: <input id="titulo_articulo" type="text" defaultValue={articuloEditado[1]}/>
+                    </p>
+                    <p>Blurb:</p>
+                    <textarea id="blurb"  cols="40" rows="5" defaultValue={articuloEditado[2]}/>
+                    <p>
+                      {"NOTICIA"/*articulos[articuloEditado].tipo*/ !== "NOTICIA" ?
+                        "Link de \"chécala ya\": "
+                      :
+                        "Link de la palabra \"aqui\" al final del texto: "
+                      }
+                      <input id="link_articulo" type="text" defaultValue={articuloEditado[3]}/>
+                    </p>
+                    <p><button onClick={() => guardarEdicion(articuloEditado[0],"update_articulo")}>GUARDAR CAMBIOS</button></p>
+                  </span>
+                :
+                  <table>
+                    <tr>
+                      <th>ID --</th>
+                      <th>TIPO</th>
+                      <th>Título</th>
+                      <th>Ocultar</th>
+                      <th>Editar</th>
+                      <th>Borrar</th>
+                    </tr>
+                    {getListaArticulos()}
+                  </table>
+                }
+              </span>
+            :
+            <span/>}
+          </span>
+          }
       </span>
     );
   };
@@ -413,15 +528,44 @@ export default function Subirblob(props) {
     );
   };
 
+  const sesionesContent = () => {
+    return (
+      <span>
+        <p style={{color: "red"}} >----------- WORK IN PROGRESS: aun no hace nada</p>
+        {/** TO DO
+         * get nombres de las dos sesiones activas y poner en el dropdown
+         * habilitar selectYTSesion para guardar en const sesion seleccionada
+         * obtener el slug para el embed de YT con el link (considerar con ? y sin ?)
+         * habilitar guardarSesionYT para
+         * 1. set Activo de la sesion seleccionada a false
+         * 2. crear nueva entrada en DB con nueva sesion (activo = true)
+         * 
+         * FUTURO -- agregar una flechita donde la gente pueda ir a ver las sesiones pasadas
+         */}
+        <p>¿Cuál sesión quieres reemplazar?</p>
+        <select name="sesiones_youtube" id="sesiones_youtube" onChange={() => selectYTSesion()}>
+          <option value="" default></option>
+          <option value="">UNA</option>
+          <option value="">DOS</option>
+        </select>
+        <p>¿Cuál es el link de YouTube de la nueva sesión? Ejemplo: https://www.youtube.com/watch?v=TGq-gEhQ0Sw</p>
+        <p><input id="link_sesion_yt" type="text"/></p>
+        <p>¿De quién nueva sesión? Ejemplo: Shame (esto solo es para poder identificar las sesiones más fácil en el backend)</p>
+        <p><input id="link_sesion_yt" type="text"/></p>
+        <p onClick={() => guardarSesionYT()}><button>GUARDAR</button></p>
+      </span>
+    );
+  };
+
   const loginContent = () => {
     return (
       <span>
         <p>PLEASE LOGIN</p>
         <p>
-          EMAIL:<input id="login_email" type="text"></input>
+          EMAIL: <input id="login_email" type="text"></input>
         </p>
         <p>
-          PASS:<input id="login_pw" type="password"></input>
+          PASS: <input id="login_pw" type="password"></input>
         </p>
         <button onClick={() => login()}>LOGIN</button>
       </span>
@@ -429,30 +573,36 @@ export default function Subirblob(props) {
   };
 
   return (
-    <Fragment>
+    <div class={styles.container}>
       {logged_in ? 
-      <span style={{padding: "2vw"}}>
-        {articuloContent()}
-        <p>---------------------------------------------------------------------</p>
-        <p>---------------------------------------------------------------------</p>
-        {programaContent()}
-        <p  style={{color: "red"}}>///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////</p>
-        <h1 style={{color: "red"}}> --------------- DANGER ZONE ---------------  </h1>
-        <p  style={{color: "red"}}>no usar ninguna de las herramientas debajo de este punto, si necesitas editar el contenido de esas tablas pedir ayuda a Diana por ahora.</p>
-        <p  style={{color: "red"}}>///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////</p>
-        {subirBlobContent()}
-        <p>
-          ------------------------
-        </p>
-        {eventoContent()}
-        <p>
-          ------------------------
-        </p>
-        {locutorContent()}
-      </span>
+        <span style={{"display": "block"}}>
+          <p>Elige una seccion de la página para agregar o editar contenido:</p>
+          <select name="secciones" id="secciones" onChange={() => selectSection()}>
+            <option value="" default></option>
+            <option value="articulo">ARTICULOS (noticias, raro, va calado, s.p.a., portada)</option>
+            <option value="programa">PROGRAMACION</option>
+            <option value="sesiones">SESIONES YOUTUBE</option>
+            <option value="danger">DANGER ZONE</option>
+          </select>
+          <p>------------------------</p>
+          {seccion === 'articulo' ? articuloContent() : <span/>}
+          {seccion === 'programa' ? programaContent() : <span/>}
+          {seccion === 'sesiones' ? sesionesContent() : <span/>}
+          {seccion === 'danger' ?
+            <span>
+              <p  style={{color: "red"}}>///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////</p>
+              <h1 style={{color: "red"}}> --------------- DANGER ZONE ---------------  </h1>
+              <p  style={{color: "red"}}>no usar ninguna de las herramientas debajo de este punto, si necesitas editar el contenido de esas tablas pedir ayuda a Diana por ahora.</p>
+              <p  style={{color: "red"}}>///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////</p>
+              {eventoContent()}
+              <p>------------------------</p>
+              {locutorContent()}
+            </span> : <span/>
+          }
+        </span>
       :
-      loginContent()
+        loginContent()
       }
-    </Fragment>
+    </div>
   );
 }
