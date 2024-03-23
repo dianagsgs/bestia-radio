@@ -21,7 +21,7 @@ PASSWORD = os.environ.get('POSTGRES_PASSWORD')
 HOST = os.environ.get('POSTGRES_HOST')
 PORT = "5432"
 
-# HELPERS
+############# HELPERS
 def start_connection():
     # Connect to the database 
     conn = psycopg2.connect(database=DATABASE, 
@@ -51,9 +51,33 @@ def execute_insert(query):
     conn.commit()
     conn.close()
 
-# ROUTES
+def programas_bonitos(lista):
+    nueva_lista = []
+    max_id = 0
+    for item in lista:
+        if item[0] > max_id:
+            max_id = item[0]
+        programa = {
+            "id":item[0],
+            "nombre":item[1],
+            "hora":item[2].strftime("%H:%M:%S"),
+            "activo":item[3]
+        }
+        nueva_lista.append(programa)
+    return nueva_lista, max_id
 
-# DATABASE ACTUAL ROUTES
+############# ROUTES
+
+@app.route('/api/login', methods=["GET"])
+def login():
+    conn = start_connection()
+    data = execute_query(request.args["query"], conn)
+    conn.close()
+    resp = Response(response=json.dumps(str(data)), status=200, mimetype="text/plain")
+    return resp
+
+#### GETS
+
 @app.route('/api/get_banners', methods=["GET"])
 def get_banners():
     conn = start_connection()
@@ -210,21 +234,6 @@ def get_all_programas():
     resp = Response(response=json.dumps(programas), status=200, mimetype="text/plain")
     return resp
 
-def programas_bonitos(lista):
-    nueva_lista = []
-    max_id = 0
-    for item in lista:
-        if item[0] > max_id:
-            max_id = item[0]
-        programa = {
-            "id":item[0],
-            "nombre":item[1],
-            "hora":item[2].strftime("%H:%M:%S"),
-            "activo":item[3]
-        }
-        nueva_lista.append(programa)
-    return nueva_lista, max_id
-
 @app.route('/api/get_articulos', methods=["GET"])
 def get_articulos():
     conn = start_connection()
@@ -254,13 +263,7 @@ def get_articulo():
     resp = Response(response=json.dumps(str(data[0])), status=200, mimetype="text/plain")
     return resp
 
-@app.route('/api/login', methods=["GET"])
-def login():
-    conn = start_connection()
-    data = execute_query(request.args["query"], conn)
-    conn.close()
-    resp = Response(response=json.dumps(str(data)), status=200, mimetype="text/plain")
-    return resp
+#### POSTS
 
 @app.route('/api/post_programa', methods=["POST"])
 def post_programa():
@@ -292,6 +295,8 @@ def post_articulo():
                 VALUES ''' + request.args["values"])
     return "success articulo"
 
+#### UPDATES
+
 @app.route('/api/update_articulo', methods=["POST"])
 def update_articulo():
     execute_insert('''UPDATE articulo ''' + request.args["set_where"])
@@ -302,6 +307,12 @@ def update_programa():
     execute_insert('''UPDATE programa ''' + request.args["set_where"])
     return "success update programa"
 
+#### DELETES
+
+@app.route('/api/delete_articulo', methods=["POST"])
+def delete_articulo():
+    execute_insert(request.args["delete_where"])
+    return "success delete articulo"
 
 if __name__ == "__main__":
     app.run(debug=True)

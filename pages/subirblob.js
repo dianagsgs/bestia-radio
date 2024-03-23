@@ -10,7 +10,6 @@ export default function Subirblob(props) {
 
   // TODO: no subir el TOKEN ASI
   const BLOB_TOKEN = "vercel_blob_rw_VVQSKZPtiR4L8fS6_2GXlbBWoqH8N9DPnAoUCoq8tQKFazo";
-  const BLOB_NAME = 'articulos/placeholderraro.png';
   
   const [file, setFile] = useState(null);
   const [logged_in, setLoggedIn] = useState(false);
@@ -19,6 +18,8 @@ export default function Subirblob(props) {
   const [seccion, setSeccion] = useState("");
   const [tipoArticulo, setTipoArticulo] = useState("");
   const [accionArticulo, setAccionArticulo] = useState("");
+  const [editandoArticulo, setEditandoArticulo] = useState(false);
+  const [articuloEditado, setArticuloEditado] = useState(-1);
 
   /** ------------------------ FUNCTIONS */
 
@@ -32,9 +33,9 @@ export default function Subirblob(props) {
     setFile(input.target.files[0]);
   };
 
-  const subir_blob = async () => {
-    const { url } = await put(BLOB_NAME, file, { access: 'public', token: BLOB_TOKEN });
-    alert('URL: ' + url);
+  const subir_blob = async (blob_name) => {
+    const { url } = await put(blob_name, file, { access: 'public', token: BLOB_TOKEN });
+    return(url);
   };
 
   const borrar_blob = async (urlToDelete) => {
@@ -163,7 +164,7 @@ export default function Subirblob(props) {
 
     if (confirm) {
 
-      const { url } = await put("articulos/"+file.name, file, { access: 'public', token: BLOB_TOKEN });
+      const { url } = subir_blob("articulos/"+file.name);
 
       let id = articulos[0]["id"]+1;
       let tipo = document.getElementById("tipo").value;
@@ -189,12 +190,14 @@ export default function Subirblob(props) {
     let items=[];
     for(let i = 0; i < articulos.length; i++) {
       let item = 
-      <div>
-        {articulos[i].id}. {articulos[i].tipo}: {articulos[i].titulo}
-        <button onClick={() => hideAlgo(articulos[i].id, articulos[i].activo, "update_articulo")}>{articulos[i].activo ? "HIDE" : "UNHIDE"}</button>
-        <button disabled onClick={() => editAlgo("articulo", articulos[i].id)}>EDIT</button>
-        <button onClick={() => dropAlgo("articulo", articulos[i].id, articulos[i].titulo, articulos[i].foto_path)}>DROP</button>
-      </div>;
+      <tr>
+        <td>{articulos[i].id} -- </td>
+        <td>{articulos[i].tipo}</td>
+        <td>{articulos[i].titulo}</td>
+        <td><button onClick={() => hideAlgo(articulos[i].id, articulos[i].activo, "update_articulo")}>{articulos[i].activo ? "HIDE" : "UNHIDE"}</button></td>
+        <td><button onClick={() => editAlgo("articulo", articulos[i].id)}>EDIT</button></td>
+        <td><button onClick={() => dropAlgo("articulo", articulos[i].id, articulos[i].titulo, articulos[i].foto_path,"delete_articulo")}>DROP</button></td>
+      </tr>;
       items.push(item);
     }
     return items;
@@ -240,21 +243,39 @@ export default function Subirblob(props) {
 
   const editAlgo = (tabla, id) => {
     console.log("edit " + id);
+    setEditandoArticulo(true);
+    setArticuloEditado(id);
   };
+
+  const cancelarEdicion = () => {
+    setEditandoArticulo(false);
+    setArticuloEditado(-1);
+  }
 
   /** BORRAR COSAS */
 
-  const dropAlgo = (tabla, id, titulo, url) => {
+  const dropAlgo = (tabla, id, titulo, url, api) => {
     let yes = confirm("estas segura de que quieres borrar " + titulo + "??");
-    if (yes) {
-      console.log("drop " + id + url);
+    if (yes) {      
+      // delete record from db
+      let delete_where = `DELETE FROM ${tabla} WHERE Id = ${id}`
+      axios({
+        method: "POST",
+        url:"/api/"+api+"?delete_where="+delete_where
+      })
+      .then((response) => {
+        // delete image from blobstore
+        if (url !== "") {borrar_blob(url)};
 
-      /** DELETE FROM tabla
-          WHERE Id = id;
+        alert("se elimino de la base de datos "+ titulo);
+      }).catch((error) => {
+        if (error.response) {
+          alertError(api, error)
+        }
+      })
 
-          if (url !== "") {borrar_blob(url)};
-          
-          */
+      // hide just in case either of the delete actions fail
+      hideAlgo(id, true, "update_articulo");
     }
   };
 
@@ -288,23 +309,6 @@ export default function Subirblob(props) {
   }, []);
 
   /** ------------------------ CONTENT */
-
-  const subirBlobContent = () => {
-    return (
-      <span>
-        <h4>SUBIR BLOB:</h4>
-        <p>
-          VERIFICA QUE EL BLOB_NAME SEA CORRECTO: {BLOB_NAME}
-        </p>
-        <p>
-          <input type="file" onChange={showFile}></input>
-        </p>
-        <p>
-          <button onClick={() => subir_blob()}>SUBIR</button>
-        </p>
-      </span>
-    );
-  };
 
   const articuloContent = () => {
     return (
@@ -364,8 +368,28 @@ export default function Subirblob(props) {
           <span>
             {accionArticulo === "GESTIONAR" ?
               <span>
-                <p>Nota: Si necesitas editar o borrar por completo un artículo pide ayuda a Diana por ahora. Si necesitas que solo deje de aparecer, lo puedes ocultar haciendo click en "hide"</p>
-                {getListaArticulos()}
+                {editandoArticulo ?
+                  <span>
+                    <p>EDITAR: {articuloEditado}</p>
+                    <button onClick={() => cancelarEdicion()}>CANCELAR</button>
+                    <p>Titulo:</p>
+                    <p>Blurb:</p>
+                    <p>Imagen: </p>
+                    <button onClick={() => guardarEdicion()}>GUARDAR CAMBIOS</button>
+                  </span>
+                :
+                  <table>
+                    <tr>
+                      <th>ID --</th>
+                      <th>TIPO</th>
+                      <th>Título</th>
+                      <th>Hide</th>
+                      <th>Edit</th>
+                      <th>Drop</th>
+                    </tr>
+                    {getListaArticulos()}
+                  </table>
+                }
               </span>
             :
             <span/>}
@@ -501,8 +525,6 @@ export default function Subirblob(props) {
               <h1 style={{color: "red"}}> --------------- DANGER ZONE ---------------  </h1>
               <p  style={{color: "red"}}>no usar ninguna de las herramientas debajo de este punto, si necesitas editar el contenido de esas tablas pedir ayuda a Diana por ahora.</p>
               <p  style={{color: "red"}}>///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////</p>
-              {subirBlobContent()}
-              <p>------------------------</p>
               {eventoContent()}
               <p>------------------------</p>
               {locutorContent()}
