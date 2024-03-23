@@ -19,7 +19,7 @@ export default function Subirblob(props) {
   const [tipoArticulo, setTipoArticulo] = useState("");
   const [accionArticulo, setAccionArticulo] = useState("");
   const [editandoArticulo, setEditandoArticulo] = useState(false);
-  const [articuloEditado, setArticuloEditado] = useState(-1);
+  const [articuloEditado, setArticuloEditado] = useState([]);
 
   /** ------------------------ FUNCTIONS */
 
@@ -160,7 +160,7 @@ export default function Subirblob(props) {
    // GUARDAR ARTICULO:
 
    const guardar_articulo = async () => {
-    let confirm = window.confirm("Asegurate de que todos los datos estén corretos y si es así, da click en ok Aceptar para guardar");
+    let confirm = window.confirm("Asegurate de que todos los datos estén corretos y si es así, da click en Aceptar para guardar");
 
     if (confirm) {
 
@@ -195,7 +195,7 @@ export default function Subirblob(props) {
         <td>{articulos[i].tipo}</td>
         <td>{articulos[i].titulo}</td>
         <td><button onClick={() => hideAlgo(articulos[i].id, articulos[i].activo, "update_articulo")}>{articulos[i].activo ? "HIDE" : "UNHIDE"}</button></td>
-        <td><button onClick={() => editAlgo("articulo", articulos[i].id)}>EDIT</button></td>
+        <td><button onClick={() => editAlgo("articulo", articulos[i].id,articulos[i].titulo,articulos[i].blurb,articulos[i].link)}>EDIT</button></td>
         <td><button onClick={() => dropAlgo("articulo", articulos[i].id, articulos[i].titulo, articulos[i].foto_path,"delete_articulo")}>DROP</button></td>
       </tr>;
       items.push(item);
@@ -241,16 +241,41 @@ export default function Subirblob(props) {
 
   /** EDITAR COSAS */
 
-  const editAlgo = (tabla, id) => {
-    console.log("edit " + id);
+  const editAlgo = (tabla, id, titulo, blurb,link) => {
     setEditandoArticulo(true);
-    setArticuloEditado(id);
+    setArticuloEditado([id,titulo, blurb,link]);
   };
 
   const cancelarEdicion = () => {
     setEditandoArticulo(false);
-    setArticuloEditado(-1);
-  }
+    setArticuloEditado([]);
+  };
+
+  const guardarEdicion = (id,api_guardar) => {
+    let confirm = window.confirm("Asegurate de que todos los datos estén corretos y si es así, da click en Aceptar para guardar");
+
+    if (confirm) {
+
+      let titulo = document.getElementById("titulo_articulo").value; 
+      let blurb = document.getElementById("blurb").value;
+      let link = document.getElementById("link_articulo").value;
+
+      let set_where = `SET titulo = '${titulo}', blurb = '${blurb}', link = '${link}' WHERE Id = ${id}`
+      axios({
+        method: "POST",
+        url:"/api/"+api_guardar+"?set_where="+set_where
+      })
+      .then((response) => {
+        alert("listo "+ api_guardar);
+        location.reload();
+      }).catch((error) => {
+        if (error.response) {
+          alertError(api_guardar, error)
+        }
+      })
+
+    }
+  };
 
   /** BORRAR COSAS */
 
@@ -370,12 +395,25 @@ export default function Subirblob(props) {
               <span>
                 {editandoArticulo ?
                   <span>
-                    <p>EDITAR: {articuloEditado}</p>
-                    <button onClick={() => cancelarEdicion()}>CANCELAR</button>
-                    <p>Titulo:</p>
+                    <p>
+                      <b>EDITAR: {articuloEditado[0]}</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; o &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                      <button onClick={() => cancelarEdicion()}>CANCELAR</button>
+                    </p>
+                    <p>Nota: Por ahora solo se puede editar el título, el texto, y el link:</p>
+                    <p>
+                      Título: <input id="titulo_articulo" type="text" defaultValue={articuloEditado[1]}/>
+                    </p>
                     <p>Blurb:</p>
-                    <p>Imagen: </p>
-                    <button onClick={() => guardarEdicion()}>GUARDAR CAMBIOS</button>
+                    <textarea id="blurb"  cols="40" rows="5" defaultValue={articuloEditado[2]}/>
+                    <p>
+                      {"NOTICIA"/*articulos[articuloEditado].tipo*/ !== "NOTICIA" ?
+                        "Link de \"chécala ya\": "
+                      :
+                        "Link de la palabra \"aqui\" al final del texto: "
+                      }
+                      <input id="link_articulo" type="text" defaultValue={articuloEditado[3]}/>
+                    </p>
+                    <p><button onClick={() => guardarEdicion(articuloEditado[0],"update_articulo")}>GUARDAR CAMBIOS</button></p>
                   </span>
                 :
                   <table>
@@ -383,9 +421,9 @@ export default function Subirblob(props) {
                       <th>ID --</th>
                       <th>TIPO</th>
                       <th>Título</th>
-                      <th>Hide</th>
-                      <th>Edit</th>
-                      <th>Drop</th>
+                      <th>Ocultar</th>
+                      <th>Editar</th>
+                      <th>Borrar</th>
                     </tr>
                     {getListaArticulos()}
                   </table>
@@ -490,6 +528,35 @@ export default function Subirblob(props) {
     );
   };
 
+  const sesionesContent = () => {
+    return (
+      <span>
+        <p style={{color: "red"}} >----------- WORK IN PROGRESS: aun no hace nada</p>
+        {/** TO DO
+         * get nombres de las dos sesiones activas y poner en el dropdown
+         * habilitar selectYTSesion para guardar en const sesion seleccionada
+         * obtener el slug para el embed de YT con el link (considerar con ? y sin ?)
+         * habilitar guardarSesionYT para
+         * 1. set Activo de la sesion seleccionada a false
+         * 2. crear nueva entrada en DB con nueva sesion (activo = true)
+         * 
+         * FUTURO -- agregar una flechita donde la gente pueda ir a ver las sesiones pasadas
+         */}
+        <p>¿Cuál sesión quieres reemplazar?</p>
+        <select name="sesiones_youtube" id="sesiones_youtube" onChange={() => selectYTSesion()}>
+          <option value="" default></option>
+          <option value="">UNA</option>
+          <option value="">DOS</option>
+        </select>
+        <p>¿Cuál es el link de YouTube de la nueva sesión? Ejemplo: https://www.youtube.com/watch?v=TGq-gEhQ0Sw</p>
+        <p><input id="link_sesion_yt" type="text"/></p>
+        <p>¿De quién nueva sesión? Ejemplo: Shame (esto solo es para poder identificar las sesiones más fácil en el backend)</p>
+        <p><input id="link_sesion_yt" type="text"/></p>
+        <p onClick={() => guardarSesionYT()}><button>GUARDAR</button></p>
+      </span>
+    );
+  };
+
   const loginContent = () => {
     return (
       <span>
@@ -514,11 +581,13 @@ export default function Subirblob(props) {
             <option value="" default></option>
             <option value="articulo">ARTICULOS (noticias, raro, va calado, s.p.a., portada)</option>
             <option value="programa">PROGRAMACION</option>
+            <option value="sesiones">SESIONES YOUTUBE</option>
             <option value="danger">DANGER ZONE</option>
           </select>
           <p>------------------------</p>
           {seccion === 'articulo' ? articuloContent() : <span/>}
           {seccion === 'programa' ? programaContent() : <span/>}
+          {seccion === 'sesiones' ? sesionesContent() : <span/>}
           {seccion === 'danger' ?
             <span>
               <p  style={{color: "red"}}>///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////</p>
