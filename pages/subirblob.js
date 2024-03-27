@@ -33,11 +33,6 @@ export default function Subirblob(props) {
     setFile(input.target.files[0]);
   };
 
-  const subir_blob = async (blob_name) => {
-    const { url } = await put(blob_name, file, { access: 'public', token: BLOB_TOKEN });
-    return(url);
-  };
-
   const borrar_blob = async (urlToDelete) => {
     await del(urlToDelete, { token: BLOB_TOKEN });
     return "deleted";
@@ -164,16 +159,16 @@ export default function Subirblob(props) {
 
     if (confirm) {
 
-      const { url } = subir_blob("articulos/"+file.name);
+      const { url } = await put("articulos/"+file.name, file, { access: 'public', token: BLOB_TOKEN });
 
       let id = articulos[0]["id"]+1;
       let tipo = document.getElementById("tipo").value;
       let titulo = document.getElementById("titulo_articulo").value; 
       let blurb = document.getElementById("blurb").value;
-      let texto = document.getElementById("texto_articulo").value;
+      let texto = ""; // document.getElementById("texto_articulo").value;
       let date = new Date();
       let fecha =date.toISOString();// document.getElementById("fecha_articulo").value;
-      let autor = document.getElementById("autor").value;
+      let autor = ""; // document.getElementById("autor").value;
       let link = document.getElementById("link_articulo").value;
       let values = 
         "("+id+", '"+tipo+"', '"+titulo+"', '"+url+"', '"+blurb+"', '"+texto+"', '"+fecha+"', '"+autor+"', '"+link+"', true)";
