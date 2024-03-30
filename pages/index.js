@@ -3,20 +3,18 @@ import Script from "next/script";
 import styles from "../styles/index.module.scss";
 import Banner from "../components/UI/Banner";
 import HeadContent from "../components/Layout/HeadContent";
-import Menu from "../components/Layout/Menu";
 import TwitchYChat from "../components/Layout/Secciones/TwitchYChat";
 import Programacion from "../components/Layout/Secciones/Programacion";
 import Editorial from "../components/Layout/Secciones/Editorial";
 import Sesiones from "../components/Layout/Secciones/Sesiones";
-import Dona from "../components/Layout/Dona";
+import Dona from "../components/UI/Dona/Dona";
 import Eventos from "../components/Layout/Secciones/Eventos";
 import Quees from "../components/Layout/Secciones/Quees";
-import Player from "../components/Layout/Player";
-import Redes from "../components/UI/Redes";
 import PageBackground from "../components/Layout/PageBackground/PageBackground";
 import { Analytics } from "@vercel/analytics/react";
 import { Footer } from "../components/Layout/Footer/Footer";
 import SponsorAd from "../components/UI/SponsorAd/SponsorAd";
+import Nav from "../components/Layout/Nav/Nav";
 
 export default function Home(props) {
   let mobile = props.windowSize === "small";
@@ -41,14 +39,11 @@ export default function Home(props) {
           gtag('config', 'G-7SYHST9BWV');
         `}
         </Script>
+        <Nav />
+        <SponsorAd />
+        <Dona />
         <PageBackground>
           <Banner mobile={mobile} />
-          <div className={styles.headerContainer}>
-            <Menu home mobile={mobile} />
-            <Player mobile={mobile} />
-          </div>
-          <Dona mobile={mobile} />
-
           {/* SECCIONES */}
           <div class={styles.homeContainer}>
             <TwitchYChat mobile={mobile} />
@@ -62,7 +57,6 @@ export default function Home(props) {
           <Footer />
           <Analytics />
         </PageBackground>
-        <SponsorAd />
       </main>
     </div>
   );

@@ -30,133 +30,72 @@ p.customfont {
 
 /* RADIO */
 
-.radioco-playButton-playing {
-  position: fixed;
+.radioco-playButton-playing,
+.radioco-playButton-paused {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 40px;
   height: 40px;
   background-image: url("/img/player/player_boton_play.png");
   background-repeat: no-repeat;
   background-size: contain;
-  top: 35px;
-  left: 16vw;
   cursor: pointer;
-  z-index: 7;
 }
 .radioco-playButton-paused {
-  position: fixed;
-  width: 40px;
-  height: 40px;
   background-image: url("/img/player/player_boton_pausa.png");
-  background-repeat: no-repeat;
-  background-size: contain;
-  top: 35px;
-  left: 16vw;
-  cursor: pointer;
-  z-index: 7;
 }
 .radioco-nowPlaying {
-  position: fixed;
-  top: 35px;
-  left: 20vw;
-  width: 44vw;
+  position: absolute;
+  top: 0;
+  left: 50px;
+  width: 440px;
+  height: 40px;
   font-size: 20px;
   font-family: "PlayerFont";
   color: #000000;
   overflow: hidden;
-  z-index: 7;
-  background-color: rgba(164, 45, 102, 0.186);
-  border-radius: 1vw;
-  padding: 5px 10px;
+  background-color: rgb(246, 148, 148);
+  border-radius: 20px;
+  padding: 5px 20px;
 }
-
 .radioco-volume {
-  position: fixed;
-  z-index: 7;
-  top: 40px;
-  left: 67vw;
-  width: 10vw;
+  position: absolute;
+  top: 10px;
+  left: 500px;
+  width: 100px;
+  background-color: transparent;
 }
-
 input[type="range"] {
   -webkit-appearance: none;
   appearance: none;
   background-image: url("/img/player/player_volumen_barra.png");
   background-repeat: no-repeat;
-  background-size: 10vw 2.5vh;
-  border-radius: 1vw;
-  height: 2.6vh;
+  background-size: 100px 15px;
+  height: 40px;
   cursor: pointer;
 }
 input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
   background-image: url("/img/player/player_volumen_modulador.png");
-  background-size: 3.8vh;
+  background-size: 25px;
   background-repeat: no-repeat;
-  width: 1.9vw;
-  height: 4vh;
+  width: 25px;
+  height: 25px;
+  position: relative;
+  top: -12px;
 }
 
-@media only screen and (max-width: 1000px) {
-  .radioco-playButton-playing {
-    position: fixed;
-    width: 40px;
-    height: 40px;
-    background-image: url("/img/player/player_boton_play.png");
-    background-repeat: no-repeat;
-    background-size: contain;
-    top: 80px;
-    left: 29vw;
-  }
-  .radioco-playButton-paused {
-    position: fixed;
-    width: 40px;
-    height: 40px;
-    background-image: url("/img/player/player_boton_pausa.png");
-    background-repeat: no-repeat;
-    background-size: contain;
-    top: 80px;
-    left: 29vw;
-  }
+@media only screen and (max-width: 1200px) {
   .radioco-nowPlaying {
-    position: fixed;
-    top: 80px;
-    left: 38vw;
-    height: 40px;
-    width: 59vw;
-    padding-top: 0.4vh;
-    padding-left: 2.9vw;
-    padding-right: 0.8vw;
-    font-size: 20px;
-    font-family: "PlayerFont";
-    color: #000000;
-    background-color: rgba(164, 45, 102, 0.186);
-    border-radius: 3vw;
-    overflow: hidden;
-    z-index: 7;
+    width: 200px;
   }
   .radioco-volume {
-    display: none;
-  }
-}
-
-@media only screen and (max-width: 800px) {
-  .radioco-playButton-playing {
-    width: 30px;
-    height: 30px;
-    top: 75px;
-    left: 110px;
-  }
-  .radioco-playButton-paused {
-    width: 30px;
-    height: 30px;
-    top: 75px;
-    left: 110px;
-  }
-  .radioco-nowPlaying {
-    height: 30px;
-    top: 75px;
-    left: 150px;
-    font-size: 14px;
+    position: absolute;
+    top: 10px;
+    left: 270px;
+    width: 100px;
+    background-color: transparent;
   }
 }

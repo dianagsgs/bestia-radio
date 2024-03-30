@@ -1,9 +1,9 @@
 .sponsorAd {
   position: fixed;
-  top: 250px;
+  top: 120px;
   right: -550px;
   z-index: 10000;
-  width: 500px;
+  width: 200px;
   transition-duration: 0.8s;
   .sponsorAdImg {
     width: 100%;
@@ -14,9 +14,12 @@
     transition-duration: 0.8s;
     animation: pulse 1s infinite;
   }
+  @media screen and (max-width: 1200px) {
+    top: 150px;
+    width: 150px;
+  }
 }
 
-// pulsing animation
 @keyframes pulse {
   0% {
     transform: scale(1);

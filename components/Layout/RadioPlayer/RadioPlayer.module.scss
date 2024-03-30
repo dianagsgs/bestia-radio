@@ -1,0 +1,9 @@
+.radioPlayerContainer {
+  position: relative;
+  width: 680px;
+  height: 40px;
+  @media screen and (max-width: 1200px) {
+    width: 400px;
+    margin: auto;
+  }
+}
