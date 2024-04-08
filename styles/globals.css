@@ -116,6 +116,21 @@ input[type="range"]::-webkit-slider-thumb {
   .radioco-volume {
     top: 20px;
     left: 900px;
+    width: 200px;
     background-color: transparent;
+  }
+  input[type="range"] {
+    background-size: 200px 20px;
+  }
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    background-image: url("/img/player/player_volumen_modulador.png");
+    background-size: 35px;
+    background-repeat: no-repeat;
+    width: 35px;
+    height: 35px;
+    position: relative;
+    top: -8px;
   }
 }

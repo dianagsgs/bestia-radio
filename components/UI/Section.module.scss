@@ -3,6 +3,9 @@
   padding-left: 17vw;
   padding-right: 3vw;
   padding-bottom: 7vh;
+  @media screen and (min-width: 2000px) {
+    padding-left: 16vw;
+  }
 }
 
 .section_mobile {
