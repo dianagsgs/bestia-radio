@@ -15,11 +15,13 @@ export default function Subirblob(props) {
   const [logged_in, setLoggedIn] = useState(false);
   const [articulos, setArticulos] = useState([{id: "wait_art"}]);
   const [programas, setProgramas] = useState({LUNES: [],MARTES:[], MIERCOLES:[], JUEVES:[], VIERNES:[], max_id:"wait_prog"});
+  const [sesiones, setSesiones] = useState([{id: "wait_ses"}]);
   const [seccion, setSeccion] = useState("");
   const [tipoArticulo, setTipoArticulo] = useState("");
   const [accionArticulo, setAccionArticulo] = useState("");
   const [editandoArticulo, setEditandoArticulo] = useState(false);
   const [articuloEditado, setArticuloEditado] = useState([]);
+  const [sesionYT, setYTSesion] = useState(-1);
 
   /** ------------------------ FUNCTIONS */
 
@@ -31,11 +33,6 @@ export default function Subirblob(props) {
 
   const showFile = input => {
     setFile(input.target.files[0]);
-  };
-
-  const subir_blob = async (blob_name) => {
-    const { url } = await put(blob_name, file, { access: 'public', token: BLOB_TOKEN });
-    return(url);
   };
 
   const borrar_blob = async (urlToDelete) => {
@@ -76,6 +73,10 @@ export default function Subirblob(props) {
 
   const accionArticuloChange = () => {
     setAccionArticulo(document.getElementById("accionArticulo").value);
+  }
+
+  const selectYTSesion = () => {
+    setYTSesion(document.getElementById("sesiones_youtube").value);
   }
 
   /** GUARDAR COSAS */
@@ -164,16 +165,16 @@ export default function Subirblob(props) {
 
     if (confirm) {
 
-      const { url } = subir_blob("articulos/"+file.name);
+      const { url } = await put("articulos/"+file.name, file, { access: 'public', token: BLOB_TOKEN });
 
       let id = articulos[0]["id"]+1;
       let tipo = document.getElementById("tipo").value;
       let titulo = document.getElementById("titulo_articulo").value; 
       let blurb = document.getElementById("blurb").value;
-      let texto = document.getElementById("texto_articulo").value;
+      let texto = ""; // document.getElementById("texto_articulo").value;
       let date = new Date();
       let fecha =date.toISOString();// document.getElementById("fecha_articulo").value;
-      let autor = document.getElementById("autor").value;
+      let autor = ""; // document.getElementById("autor").value;
       let link = document.getElementById("link_articulo").value;
       let values = 
         "("+id+", '"+tipo+"', '"+titulo+"', '"+url+"', '"+blurb+"', '"+texto+"', '"+fecha+"', '"+autor+"', '"+link+"', true)";
@@ -181,6 +182,19 @@ export default function Subirblob(props) {
       guardar_cosas("post_articulo",values);
     }
   }
+
+  // GUARDAR SESION:
+
+  const guardarSesionYT = () => {
+    let confirm = window.confirm("Asegurate de que todos los datos estén corretos y si es así, da click en Aceptar para guardar");;
+    if (confirm) {
+      {/** TO DO
+      * 1. obtener el slug para el embed de YT con el link (considerar con ? y sin ?)
+      * 2. set Activo de la sesionYT a false
+      * 3. crear nueva entrada en DB con nueva sesion (activo = true)
+      */}
+    }
+  };
 
   /** GET COSAS */
 
@@ -319,7 +333,7 @@ export default function Subirblob(props) {
       if (error.response) {
         alertError("get_articulos", error);
       }
-    })
+    });
     axios({
       method: "GET",
       url:"/api/get_all_programas"
@@ -330,7 +344,18 @@ export default function Subirblob(props) {
       if (error.response) {
         alertError("get_programas", error);
       }
+    });
+    axios({
+      method: "GET",
+      url: "/api/get_sesiones",
     })
+    .then((response) => {
+      setSesiones(response.data);
+    }).catch((error) => {
+      if (error.response) {
+        alertError("get_programas", error);
+      }
+    });
   }, []);
 
   /** ------------------------ CONTENT */
@@ -532,26 +557,16 @@ export default function Subirblob(props) {
     return (
       <span>
         <p style={{color: "red"}} >----------- WORK IN PROGRESS: aun no hace nada</p>
-        {/** TO DO
-         * get nombres de las dos sesiones activas y poner en el dropdown
-         * habilitar selectYTSesion para guardar en const sesion seleccionada
-         * obtener el slug para el embed de YT con el link (considerar con ? y sin ?)
-         * habilitar guardarSesionYT para
-         * 1. set Activo de la sesion seleccionada a false
-         * 2. crear nueva entrada en DB con nueva sesion (activo = true)
-         * 
-         * FUTURO -- agregar una flechita donde la gente pueda ir a ver las sesiones pasadas
-         */}
         <p>¿Cuál sesión quieres reemplazar?</p>
         <select name="sesiones_youtube" id="sesiones_youtube" onChange={() => selectYTSesion()}>
           <option value="" default></option>
-          <option value="">UNA</option>
-          <option value="">DOS</option>
+          <option value={sesiones[0][0]}>{sesiones[0][3]}</option>
+          <option value={sesiones[1][0]}>{sesiones[1][3]}</option>
         </select>
         <p>¿Cuál es el link de YouTube de la nueva sesión? Ejemplo: https://www.youtube.com/watch?v=TGq-gEhQ0Sw</p>
         <p><input id="link_sesion_yt" type="text"/></p>
         <p>¿De quién nueva sesión? Ejemplo: Shame (esto solo es para poder identificar las sesiones más fácil en el backend)</p>
-        <p><input id="link_sesion_yt" type="text"/></p>
+        <p><input id="name_sesion_yt" type="text"/></p>
         <p onClick={() => guardarSesionYT()}><button>GUARDAR</button></p>
       </span>
     );
