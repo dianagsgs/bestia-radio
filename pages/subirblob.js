@@ -15,6 +15,7 @@ export default function Subirblob(props) {
   const [logged_in, setLoggedIn] = useState(false);
   const [articulos, setArticulos] = useState([{id: "wait_art"}]);
   const [programas, setProgramas] = useState({LUNES: [],MARTES:[], MIERCOLES:[], JUEVES:[], VIERNES:[], max_id:"wait_prog"});
+  const [sesiones, setSesiones] = useState([{id: "wait_ses"}]);
   const [seccion, setSeccion] = useState("");
   const [tipoArticulo, setTipoArticulo] = useState("");
   const [accionArticulo, setAccionArticulo] = useState("");
@@ -314,7 +315,7 @@ export default function Subirblob(props) {
       if (error.response) {
         alertError("get_articulos", error);
       }
-    })
+    });
     axios({
       method: "GET",
       url:"/api/get_all_programas"
@@ -325,7 +326,18 @@ export default function Subirblob(props) {
       if (error.response) {
         alertError("get_programas", error);
       }
+    });
+    axios({
+      method: "GET",
+      url: "/api/get_sesiones",
     })
+    .then((response) => {
+      setSesiones(response.data);
+    }).catch((error) => {
+      if (error.response) {
+        alertError("get_programas", error);
+      }
+    });
   }, []);
 
   /** ------------------------ CONTENT */
@@ -524,6 +536,7 @@ export default function Subirblob(props) {
   };
 
   const sesionesContent = () => {
+    console.log("sesiones: " + sesiones);
     return (
       <span>
         <p style={{color: "red"}} >----------- WORK IN PROGRESS: aun no hace nada</p>
