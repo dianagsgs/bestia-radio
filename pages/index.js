@@ -15,8 +15,24 @@ import { Analytics } from "@vercel/analytics/react";
 import { Footer } from "../components/Layout/Footer/Footer";
 import SponsorAd from "../components/UI/SponsorAd/SponsorAd";
 import Nav from "../components/Layout/Nav/Nav";
+import client from "../lib/contentful";
+
+// Getting contentul data
+export async function getStaticProps() {
+  const response = await client.getEntry("6xWLtLIKQItN5hpSoDQ6Gr");
+
+  return {
+    props: {
+      data: response.fields,
+    },
+    revalidate: 1,
+  };
+}
 
 export default function Home(props) {
+  const contentfulData = props.data;
+  console.log("contentfulData", contentfulData);
+  // const sponsorAdData = contentfulData.sponsorAd.fields;
   let mobile = props.windowSize === "small";
 
   return (
@@ -40,7 +56,12 @@ export default function Home(props) {
         `}
         </Script>
         <Nav />
-        <SponsorAd />
+        {contentfulData.sponsor1?.fields?.file && (
+          <SponsorAd
+            image={contentfulData.sponsor1.fields.file.url}
+            link={contentfulData.sponsor1Link}
+          />
+        )}
         <Dona />
         <PageBackground>
           <Banner mobile={mobile} />
