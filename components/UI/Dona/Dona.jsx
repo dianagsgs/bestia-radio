@@ -1,5 +1,4 @@
 import styles from "./Dona.module.scss";
-import Link from "next/link";
 import Image from "next/image";
 
 export default function Dona() {

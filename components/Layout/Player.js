@@ -15,7 +15,7 @@ export default function Player(props) {
           className={styles.radioPlayerLiveImg}
         />
       </div>
-      <div
+      {/* <div
         className="radioplayer"
         data-src="https://streams.radio.co/s4aaec47cd/listen"
         data-playbutton="true"
@@ -23,8 +23,8 @@ export default function Player(props) {
         data-elapsedtime="false"
         data-nowplaying="true"
         data-showplayer="false"
-      />
-      <Radio />
+      /> */}
+      {/* <Radio /> */}
       {props.mobile ? (
         <span />
       ) : (

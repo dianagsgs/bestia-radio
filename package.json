@@ -20,6 +20,7 @@
     "axios": "^1.5.1",
     "classnames": "^2.5.1",
     "concurrently": "^8.2.2",
+    "contentful": "^10.8.8",
     "fade": "^0.2.0",
     "jquery": "^3.6.0",
     "kysely": "^0.26.3",
