@@ -141,7 +141,7 @@ const Nav = () => {
               <Link href="#programacion" className={styles.newMenuDesktopItem}>
                 <span className={styles.newMenuDesktopItem}>PROGRAMACIÓN</span>
               </Link>
-              <Link href="/" className={styles.newMenuDesktopItem}>
+              <Link href="#quees" className={styles.newMenuDesktopItem}>
                 <span className={styles.newMenuDesktopItem}>QUÉ ES LBR?</span>
               </Link>
             </div>
@@ -228,7 +228,7 @@ const Nav = () => {
                 <Link href="#programacion" className={styles.newMenuMobileItem}>
                   <span className={styles.newMenuMobileItem}>PROGRAMACIÓN</span>
                 </Link>
-                <Link href="/" className={styles.newMenuMobileItem}>
+                <Link href="#quees" className={styles.newMenuMobileItem}>
                   <span className={styles.newMenuMobileItem}>QUÉ ES LBR?</span>
                 </Link>
               </div>
