@@ -50,3 +50,10 @@ https://codevoweb.com/how-to-integrate-flask-framework-with-nextjs/
 
 Useful sample code:
 https://github.com/vercel/examples/tree/main/python/nextjs-flask
+
+DB COMPUTE TIME INFO:
+
+En 22 días (del 10 al 31 de marzo) se usaron 53.93 horas = 2.45 horas por día, con el rango de 0.25-1 VCPU
+
+El 31 de marzo en la noche cambié a rango 1-3 VCPU que será como 4x aumento 2.5 x 4 = 10 horas por día (?). MONITOREAR TODO EL MES DE ABRIL.
+
