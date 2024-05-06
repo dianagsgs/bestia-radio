@@ -1,8 +1,8 @@
 .donut {
   position: fixed;
-  top: 120px;
+  top: 200px;
   right: 30px;
-  width: 100px;
+  width: 90px;
   z-index: 9999;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -16,9 +16,9 @@
     width: 70px;
   }
   @media screen and (max-width: 750px) {
-    top: 140px;
-    right: 20px;
-    bottom: auto;
-    width: 60px;
+    top: auto;
+    bottom: 20px;
+    right: 10px;
+    width: 70px;
   }
 }
