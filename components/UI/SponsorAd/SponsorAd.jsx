@@ -10,7 +10,7 @@ export function SponsorAd({ image, link }) {
 
   setTimeout(() => {
     setShow((prev) => !prev);
-  }, 10000);
+  }, 400000);
 
   return (
     <div
