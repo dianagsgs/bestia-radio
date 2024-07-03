@@ -46,7 +46,7 @@ export default function Programacion(props) {
             styles.showSchedule
           )}
         >
-          <p class={styles.font_nombre_dia}>{days[index]}</p>
+          <p class={styles.showsScheduleDay}>{days[index]}</p>
           {getProgramas(days[index])}
         </div>
       );

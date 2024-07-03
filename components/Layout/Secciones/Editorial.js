@@ -1,5 +1,5 @@
 import styles from "./Editorial.module.scss";
-import { Fragment, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Section from "../../UI/Section";
 import CustomImage from "../../UI/CustomImage";
 import CustomButton from "../../UI/CustomButton";
@@ -7,6 +7,8 @@ import { useRouter } from "next/router";
 import axios from "axios";
 import ResponsiveCarousel from "../../UI/ResponsiveCarousel";
 import classNames from "classnames";
+import Link from "next/link";
+import Image from "next/image";
 
 export default function Editorial(props) {
   const [articulos, setArticulos] = useState([]);
@@ -119,6 +121,8 @@ export default function Editorial(props) {
       portada_data = articulos[i];
       if (portada_data.tipo === "ENTREVISTA" && portada_data.activo) break;
     }
+    const portadaLink = portada_data?.link ?? "/";
+
     let portada = (
       <div
         class={
@@ -144,18 +148,16 @@ export default function Editorial(props) {
         >
           {portada_data.blurb}
         </p>
-        <CustomButton
-          src={"/img/leer_mas.png"}
-          hover_src={"/img/leer_mas.png"}
-          w={28}
-          h={10}
-          resp_w={props.mobile ? "35vw" : "10vw"}
-          type="external"
-          href={portada_data.link} //{"/archivo?id="+portada_data.id}
-          button_class={
-            props.mobile ? styles.boton_mas_mobile : styles.boton_mas
-          }
-        />
+        <div className={styles.portadaLink}>
+          <a href={portadaLink} target="_blank">
+            <Image
+              src="/img/leer_mas.png"
+              width={28}
+              height={10}
+              layout="responsive"
+            />
+          </a>
+        </div>
       </div>
     );
     return portada;
@@ -183,6 +185,8 @@ export default function Editorial(props) {
       articulo_data = articulos[i];
       if (articulo_data.tipo === type && articulo_data.activo) break;
     }
+    const articuloLink = articulo_data?.link ?? "/";
+
     return (
       <div
         class={
@@ -196,18 +200,16 @@ export default function Editorial(props) {
           h="475"
           class={props.mobile ? styles.cover_mobile : styles.cover}
         />
-        <CustomButton
-          src={"/img/leer_mas.png"}
-          hover_src={"/img/leer_mas.png"}
-          w={28}
-          h={10}
-          resp_w={props.mobile ? "35vw" : "10vw"}
-          type="external"
-          href={articulo_data.link}
-          button_class={
-            props.mobile ? styles.boton_mas_mobile : styles.boton_mas
-          }
-        />
+        <div className={styles.portadaLink}>
+          <a href={articuloLink} target="_blank">
+            <Image
+              src="/img/leer_mas.png"
+              width={28}
+              height={10}
+              layout="responsive"
+            />
+          </a>
+        </div>
       </div>
     );
   };
@@ -230,7 +232,7 @@ export default function Editorial(props) {
   }, []);
 
   return (
-    <Fragment>
+    <>
       <Section
         id="ruidodeldia"
         titulo="/img/titulos/ruidodeldia.png"
@@ -240,7 +242,6 @@ export default function Editorial(props) {
           {getItems(true)}
         </ResponsiveCarousel>
       </Section>
-
       <Section
         id="portada"
         titulo="/img/titulos/portada.png"
@@ -248,11 +249,9 @@ export default function Editorial(props) {
       >
         {getPortada()}
       </Section>
-
       <Section id="raro" titulo="/img/titulos/raro.png" mobile={props.mobile}>
         {getOther("RARO")}
       </Section>
-
       <Section
         id="soloparaadultos"
         titulo="/img/titulos/soloparaadultos.png"
@@ -260,7 +259,6 @@ export default function Editorial(props) {
       >
         {getOther("S.P.A.")}
       </Section>
-
       <Section
         id="vacalado"
         titulo="/img/titulos/vacalado.png"
@@ -268,14 +266,6 @@ export default function Editorial(props) {
       >
         {getOther("VA CALADO")}
       </Section>
-
-      {/*<Section
-        id="editorial"
-        titulo="/img/titulos/editorial.png"
-        mobile={props.mobile}
-      >
-        {getArchivo()}
-      </Section>*/}
-    </Fragment>
+    </>
   );
 }

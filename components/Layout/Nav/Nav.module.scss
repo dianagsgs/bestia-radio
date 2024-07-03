@@ -1,0 +1,133 @@
+.navDesktop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  height: 100px;
+  background-color: #d66364;
+  .navPlayer {
+    display: flex;
+    gap: 20px;
+    align-items: flex-end;
+    .navPlayerLive {
+      width: 150px;
+      @media screen and (min-width: 2000px) {
+        width: 250px;
+      }
+    }
+  }
+  .navSocial {
+    display: flex;
+    justify-content: flex-end;
+    .navSocialItem {
+      cursor: pointer;
+      width: 60px;
+    }
+  }
+  @media screen and (max-width: 1200px) {
+    display: none;
+  }
+  @media screen and (min-width: 2000px) {
+    padding: 0 100px;
+  }
+}
+
+.newMenu {
+  .newMenuDesktopContainer {
+    position: fixed;
+    top: 120px;
+    left: 0;
+    width: 15vw;
+    padding: 1rem;
+    @media screen and (max-width: 1200px) {
+      display: none;
+    }
+    .newMenuDesktop {
+      text-align: right;
+      .logo {
+        display: inline-block;
+        width:70%;
+        margin-bottom: 2vh;
+        
+        .logoImg {
+          width: 100%;
+          height: 100%;
+        }
+      }
+      .newMenuDesktopItems {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        .newMenuDesktopItem {
+          font-size: 1.4rem;
+          cursor: pointer;
+          font-family: "PlayerFont";
+        }
+      }
+    }
+  }
+  .newMenuMobileContainer {
+    display: none;
+    z-index: 999;
+    width: 100vw;
+    @media screen and (max-width: 1200px) {
+      display: block;
+    }
+    .newMenuMobile {
+      background-color: #fef8da;
+      padding: 0.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .box {
+        width: 25%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .name {
+        width: 100px;
+        .nameImg {
+          width: 100%;
+          height: 100%;
+        }
+      }
+      .logo {
+        width: 40px;
+        .logoImg {
+          width: 100%;
+          height: 100%;
+        }
+      }
+      .burger {
+        width: 80px;
+        .burgerImg {
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+    .newMenuMobileItems {
+      z-index: 9999;
+      position: absolute;
+      top: 30px;
+      right: 0;
+      max-width: 600px;
+      padding: 1rem;
+      background-color: rgba(248, 243, 212, 0.904);
+      display: flex;
+      flex-direction: column;
+      row-gap: 0.5rem;
+      font-family: "PlayerFont";
+    }
+  }
+  .newMenuMobilePlayer {
+    background-color: #d66364;
+    padding: 20px;
+  }
+}

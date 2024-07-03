@@ -1,0 +1,88 @@
+.player_desktop {
+  z-index: 999;
+}
+
+.speaker {
+  position: fixed;
+  left: 65vw;
+  top: 40px;
+  z-index: 7;
+}
+
+.insta {
+  position: fixed;
+  left: 79.5vw;
+  top: 25px;
+  z-index: 7;
+}
+
+.face {
+  position: fixed;
+  left: 82.6vw;
+  top: 25px;
+  z-index: 7;
+}
+
+.youtube {
+  position: fixed;
+  left: 86vw;
+  top: 25px;
+  z-index: 7;
+}
+
+.twitch {
+  position: fixed;
+  left: 89.4vw;
+  top: 25px;
+  z-index: 7;
+}
+
+.tiktok {
+  position: fixed;
+  left: 92.5vw;
+  top: 25px;
+  z-index: 7;
+}
+
+.whats {
+  position: fixed;
+  left: 95.6vw;
+  top: 25px;
+  z-index: 7;
+}
+
+/* MOBILE */
+
+.player_mobile {
+  z-index: 999;
+}
+
+.radioPlayer {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 999;
+  width: 100%;
+  background-color: #d66364;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1rem;
+  .radioPlayerLive {
+    max-width: 150px;
+    @media screen and (max-width: 1000px) {
+      max-width: 100px;
+    }
+    @media screen and (max-width: 800px) {
+      max-width: 70px;
+    }
+  }
+  @media screen and (max-width: 1000px) {
+    position: initial;
+    height: 70px;
+  }
+  @media screen and (max-width: 800px) {
+    height: 60px;
+  }
+}

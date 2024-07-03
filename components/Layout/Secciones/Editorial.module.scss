@@ -54,12 +54,15 @@
   font-family: "PlayerFont", sans-serif;
   font-size: 4vh;
 }
+.font_blurb_mobile {
+  font-family: "ContentFont", sans-serif;
+}
 .font_tipo_mobile {
   padding-top: 1vh;
   padding-left: 1vw;
   width: 100vw;
   font-family: "PlayerFont", sans-serif;
-  font-size: 3vh;
+  font-size: 2vh;
 }
 .mini_noticias_mobile {
   background-color: rgba(216, 216, 249, 0.38);
@@ -75,6 +78,7 @@
   /* CONTAINER portada, raro, y SPA */
   background-color: rgba(216, 216, 249, 0.38);
   margin-bottom: 4vh;
+  padding-bottom: 2rem;
 }
 .cover {
   /* IMAGEN portada, raro, y SPA */
@@ -90,17 +94,18 @@
 .font_cover {
   /* TITULO portada */
   padding-top: 1vh;
-  padding-left: 22vw;
+  padding-left:19.5vw;
   width: 75vw;
   font-family: "PlayerFont", sans-serif;
   font-size: 3vw;
 }
 .cover_blurb_font {
   /* BLURB portada */
-  padding-left: 10vw;
+  padding-left: 9vw;
   padding-right: 10vw;
   font-family: "ContentFont", sans-serif;
-  font-size: 2.5vh;
+  font-size: 3vh;
+  white-space: pre-wrap;
 }
 /* Mobile */
 .cover_container_mobile {
@@ -108,6 +113,7 @@
   background-color: rgba(216, 216, 249, 0.38);
   margin-bottom: 4vh;
   width: 95vw;
+  padding-bottom: 2rem;
 }
 .cover_mobile {
   margin-bottom: 3vh;
@@ -117,20 +123,22 @@
   padding-bottom: 3vh;
 }
 .cover_blurb_font_mobile {
-  padding-left: 11vw;
-  padding-right: 8vw;
+  padding-left: 7vw;
+  padding-right: 7vw;
   font-family: "ContentFont", sans-serif;
   font-size: 4vw;
+  white-space: pre-wrap;
 }
 .font_cover_mobile {
-  padding-left: 5vw;
+  padding-left: 3.5vw;
   width: 95vw;
   font-family: "PlayerFont", sans-serif;
-  font-size: 3.5vh;
+  font-size: 2.3vh;
 }
 
 .newsTitle {
-  padding: 1.5rem;
+  padding-top: 1.5rem;
+  padding-left: 1.5rem;
   font-size: 1.5rem;
   line-height: 1.5rem;
   @media screen and (max-width: 1000px) {
@@ -141,11 +149,23 @@
 }
 .newsBody {
   padding: 1.1rem;
-  font-size: 1rem;
+  font-size: 0.9rem;
   line-height: 1rem;
   @media screen and (max-width: 1000px) {
     padding: 1.5rem;
     font-size: 1rem;
     line-height: 1rem;
+  }
+}
+
+.portadaLink {
+  background-color: red;
+  width: 150px;
+  margin: auto;
+  @media screen and (max-width: 1000px) {
+    width: 130px;
+  }
+  @media screen and (max-width: 750px) {
+    width: 100px;
   }
 }

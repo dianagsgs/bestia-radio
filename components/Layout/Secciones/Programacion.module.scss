@@ -38,7 +38,13 @@
 .showsContainer {
   width: 100%;
   .showSchedule {
-    /* width: 75%; // movi esto a un_dia_mobile pq estaba afectando el look en desktop*/
     margin: auto;
+    padding: 0;
+    width: 100%;
+    padding: 1rem;
+    .showsScheduleDay {
+      font-size: 1.5rem;
+      font-family: "ContentFont", sans-serif;
+    }
   }
 }

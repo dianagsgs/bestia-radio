@@ -575,6 +575,7 @@ export default function Subirblob(props) {
   };
 
   const sesionesContent = () => {
+    console.log("sesiones: " + sesiones);
     return (
       <span>
         <p>¿Cuál sesión quieres reemplazar?</p>

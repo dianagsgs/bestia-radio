@@ -6,8 +6,6 @@ import ResponsiveCarousel from "../../UI/ResponsiveCarousel";
 import { InstagramEmbed } from "react-social-media-embed";
 
 export default function Eventos(props) {
-  const [eventos, setEventos] = useState(null);
-
   useEffect(() => {
     axios({
       method: "GET",
@@ -33,42 +31,14 @@ export default function Eventos(props) {
         mobile={props.mobile}
       >
         <ResponsiveCarousel infinite={false}>
-          {/*getItems()*/}
-          <div
-            class={
-              props.mobile
-                ? styles.instagram_embed_mobile
-                : styles.instagram_embed
-            }
-          >
-            <InstagramEmbed
-              url="https://www.instagram.com/p/CzWyZ6ZOL-7/"
-              width={props.mobile ? "100%" : "93%"}
-            />
+          <div class={styles.eventsItem}>
+            <InstagramEmbed url="https://www.instagram.com/p/C7N3W5FOtfN/" />
           </div>
-          <div
-            class={
-              props.mobile
-                ? styles.instagram_embed_mobile
-                : styles.instagram_embed
-            }
-          >
-            <InstagramEmbed
-              url="https://www.instagram.com/p/C1A8pNBLOyJ/"
-              width={props.mobile ? "100%" : "93%"}
-            />
+          <div class={styles.eventsItem}>
+            <InstagramEmbed url="https://www.instagram.com/p/C8X_YZdOekx" />
           </div>
-          <div
-            class={
-              props.mobile
-                ? styles.instagram_embed_mobile
-                : styles.instagram_embed
-            }
-          >
-            <InstagramEmbed
-              url="https://www.instagram.com/p/Cyuez3Vuitm/"
-              width={props.mobile ? "100%" : "93%"}
-            />
+          <div class={styles.eventsItem}>
+            <InstagramEmbed url="https://www.instagram.com/p/C8nzrpzuQet/" />
           </div>
         </ResponsiveCarousel>
       </Section>
