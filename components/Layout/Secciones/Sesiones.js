@@ -11,19 +11,18 @@ export default function Sesiones(props) {
     if (sesiones !== null) {
       for (let i = 0; i < sesiones.length; i++) {
         let sesion = sesiones[i];
-        let item = (
-          <div class={styles.sesion}>
-            <iframe
-              height="100%"
-              width="100%"
-              src={sesion[1]}
-              title={sesion[3]}
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowFullScreen
-            />
-          </div>
-        );
+        let item =
+            <div class={props.mobile ? styles.sesion_mobile : styles.sesion}>
+              <iframe
+                height="100%"
+                width="100%"
+                src={sesion[0]}
+                title={sesion[2]}
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowFullScreen
+              />
+            </div>;
         items.push(item);
       }
     }

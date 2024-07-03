@@ -21,6 +21,7 @@ export default function Subirblob(props) {
   const [accionArticulo, setAccionArticulo] = useState("");
   const [editandoArticulo, setEditandoArticulo] = useState(false);
   const [articuloEditado, setArticuloEditado] = useState([]);
+  const [sesionYT, setYTSesion] = useState(-1);
 
   /** ------------------------ FUNCTIONS */
 
@@ -72,6 +73,10 @@ export default function Subirblob(props) {
 
   const accionArticuloChange = () => {
     setAccionArticulo(document.getElementById("accionArticulo").value);
+  }
+
+  const selectYTSesion = () => {
+    setYTSesion(document.getElementById("sesiones_youtube").value);
   }
 
   /** GUARDAR COSAS */
@@ -177,6 +182,40 @@ export default function Subirblob(props) {
       guardar_cosas("post_articulo",values);
     }
   }
+
+  // GUARDAR SESION:
+
+  const guardarSesionYT = () => {
+    let confirm = window.confirm("Asegurate de que todos los datos estén corretos y si es así, da click en Aceptar para guardar");
+    if (confirm) {
+      
+      // GET LINK and name
+      let raw_link = document.getElementById("link_sesion_yt").value;
+      let video_id = raw_link.split("?v=")[1]; /** TO DO -- validar que la cadena sea correcta EJEMPLO https://youtu.be/usHkBfytjUY */
+      let link_embed = "https://www.youtube.com/embed/" + video_id;
+      let video_name = document.getElementById("name_sesion_yt").value;
+      console.log('guardando ' + link_embed);
+
+      // SET OLD TO FALSE
+      let set_where = "SET activo = false WHERE id =" + sesionYT;
+      axios({
+        method: "POST",
+        url:"/api/update_sesion?set_where="+set_where
+      })
+      .then((response) => {
+        console.log('set to false ' + sesionYT);
+      }).catch((error) => {
+        if (error.response) {
+          alertError(api_guardar, error)
+        }
+      });
+
+      // GUARDAR NUEVA SESION (Url, Activo, Nombre)
+      let values = "('"+link_embed+"',true,'"+video_name+"')";
+      console.log("VALUES " + values);
+      guardar_cosas("post_sesion",values);      
+    }
+  };
 
   /** GET COSAS */
 
@@ -335,7 +374,7 @@ export default function Subirblob(props) {
       setSesiones(response.data);
     }).catch((error) => {
       if (error.response) {
-        alertError("get_programas", error);
+        alertError("get_sesiones", error);
       }
     });
   }, []);
@@ -539,27 +578,16 @@ export default function Subirblob(props) {
     console.log("sesiones: " + sesiones);
     return (
       <span>
-        <p style={{color: "red"}} >----------- WORK IN PROGRESS: aun no hace nada</p>
-        {/** TO DO
-         * get nombres de las dos sesiones activas y poner en el dropdown
-         * habilitar selectYTSesion para guardar en const sesion seleccionada
-         * obtener el slug para el embed de YT con el link (considerar con ? y sin ?)
-         * habilitar guardarSesionYT para
-         * 1. set Activo de la sesion seleccionada a false
-         * 2. crear nueva entrada en DB con nueva sesion (activo = true)
-         * 
-         * FUTURO -- agregar una flechita donde la gente pueda ir a ver las sesiones pasadas
-         */}
         <p>¿Cuál sesión quieres reemplazar?</p>
         <select name="sesiones_youtube" id="sesiones_youtube" onChange={() => selectYTSesion()}>
           <option value="" default></option>
-          <option value="">UNA</option>
-          <option value="">DOS</option>
+          <option value={sesiones[0][3]}>{sesiones[0][2]}</option>
+          <option value={sesiones[1][3]}>{sesiones[1][2]}</option>
         </select>
         <p>¿Cuál es el link de YouTube de la nueva sesión? Ejemplo: https://www.youtube.com/watch?v=TGq-gEhQ0Sw</p>
         <p><input id="link_sesion_yt" type="text"/></p>
         <p>¿De quién nueva sesión? Ejemplo: Shame (esto solo es para poder identificar las sesiones más fácil en el backend)</p>
-        <p><input id="link_sesion_yt" type="text"/></p>
+        <p><input id="name_sesion_yt" type="text"/></p>
         <p onClick={() => guardarSesionYT()}><button>GUARDAR</button></p>
       </span>
     );

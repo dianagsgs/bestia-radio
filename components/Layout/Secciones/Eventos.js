@@ -32,13 +32,13 @@ export default function Eventos(props) {
       >
         <ResponsiveCarousel infinite={false}>
           <div class={styles.eventsItem}>
-            <InstagramEmbed url="https://www.instagram.com/p/C4LrnF3ucj7/" />
+            <InstagramEmbed url="https://www.instagram.com/p/C7N3W5FOtfN/" />
           </div>
           <div class={styles.eventsItem}>
-            <InstagramEmbed url="https://www.instagram.com/p/C30b5NROsuR/" />
+            <InstagramEmbed url="https://www.instagram.com/p/C8X_YZdOekx" />
           </div>
           <div class={styles.eventsItem}>
-            <InstagramEmbed url="https://www.instagram.com/p/C3Q7zEbulKF/" />
+            <InstagramEmbed url="https://www.instagram.com/p/C8nzrpzuQet/" />
           </div>
         </ResponsiveCarousel>
       </Section>
