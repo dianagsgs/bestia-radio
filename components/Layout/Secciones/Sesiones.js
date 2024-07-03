@@ -16,8 +16,8 @@ export default function Sesiones(props) {
               <iframe
                 height="100%"
                 width="100%"
-                src={sesion[1]}
-                title={sesion[3]}
+                src={sesion[0]}
+                title={sesion[2]}
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowFullScreen
