@@ -295,6 +295,12 @@ def post_articulo():
                 VALUES ''' + request.args["values"])
     return "success articulo"
 
+@app.route('/api/post_sesion', methods=["POST"])
+def post_sesion():
+    execute_insert('''INSERT INTO sesion (Url, Activo, Nombre)
+                VALUES ''' + request.args["values"])
+    return "success sesion"
+
 #### UPDATES
 
 @app.route('/api/update_articulo', methods=["POST"])
@@ -305,6 +311,11 @@ def update_articulo():
 @app.route('/api/update_programa', methods=["POST"])
 def update_programa():
     execute_insert('''UPDATE programa ''' + request.args["set_where"])
+    return "success update programa"
+
+@app.route('/api/update_sesion', methods=["POST"])
+def update_sesion():
+    execute_insert('''UPDATE sesion ''' + request.args["set_where"])
     return "success update programa"
 
 #### DELETES
