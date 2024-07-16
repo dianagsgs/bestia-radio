@@ -10,7 +10,7 @@ export function SponsorAd({ image, link }) {
 
   setTimeout(() => {
     setShow((prev) => !prev);
-  }, 400000);
+  }, 200000);
 
   return (
     <div
@@ -19,8 +19,16 @@ export function SponsorAd({ image, link }) {
       })}
     >
       <Image
-        src={`https:${image}`}
-        alt="shure-ad-1"
+        src="/img/assets/Butcher-ad-1.png"
+        alt="Butcher&Sons"
+        width={2155}
+        height={968}
+        className={styles.sponsorAdImg}
+      />
+      
+      <Image
+        src="/img/assets/shure-ad-1.png"
+        alt="SHURE"
         width={1155}
         height={368}
         className={styles.sponsorAdImg}
