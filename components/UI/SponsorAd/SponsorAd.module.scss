@@ -4,14 +4,14 @@
   right: -550px;
   z-index: 10000;
   width: 200px;
-  transition-duration: 0.8s;
+  transition-duration: 0.4s;
   .sponsorAdImg {
     width: 100%;
     height: auto;
   }
   &.visible {
     right: 0;
-    transition-duration: 0.8s;
+    transition-duration: 0.4s;
     animation: pulse 1s infinite;
   }
   @media screen and (max-width: 1200px) {

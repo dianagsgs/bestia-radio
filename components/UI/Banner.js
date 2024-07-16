@@ -37,8 +37,8 @@ const Banner = (props) => {
         setDesktopList(response_data[1]);
         setLinkList(response_data[2]);
 
-        // rotateBanner(link_list, chosen_banner);
-        setBanner(2);
+        rotateBanner(link_list, chosen_banner);
+        //setBanner(2);
       })
       .catch((error) => {
         if (error.response) {
