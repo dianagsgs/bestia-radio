@@ -5,7 +5,7 @@ import classNames from "classnames";
 
 const Banner = (props) => {
   const [visible, setVisible] = useState(true);
-  const [chosen_banner, setBanner] = useState(0);
+  const [chosen_banner, setBanner] = useState(2);
   const [mobile_list, setMobileList] = useState([]);
   const [desktop_list, setDesktopList] = useState([]);
   const [link_list, setLinkList] = useState([]);
@@ -14,7 +14,7 @@ const Banner = (props) => {
   // let rnd_banner = Math.floor(Math.random() * img_list.length);
 
   const rotateBanner = (list, current) => {
-    setTimeout(() => {
+    setTimeout(() => {  
       let new_chosen = current + 1;
       if (new_chosen >= list.length) {
         new_chosen = 0;
@@ -38,6 +38,7 @@ const Banner = (props) => {
         setLinkList(response_data[2]);
 
         rotateBanner(link_list, chosen_banner);
+        //setBanner(2);
       })
       .catch((error) => {
         if (error.response) {
